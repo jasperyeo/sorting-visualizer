@@ -1,0 +1,11 @@
+<div class="sort__wrapper">
+  <div class="sort__header">
+    <button (click)="resetArray()">Reset Array</button>
+    <button (click)="sort(sortArray, 'quick')">Quick Sort</button>
+  </div>
+  <div class="sort__container">
+    <div *ngFor="let bar of sortArray; index as i;" class="sort__bar" [id]="'bar'+i"
+        [ngStyle]="{ 'height': bar.value + 'px', 'background-color': (bar.selected ? 'red' : 'turquoise') }">
+    </div>
+  </div>
+</div>
