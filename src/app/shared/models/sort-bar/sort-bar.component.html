@@ -1,0 +1,7 @@
+<div class="sort__container">
+  <label *ngIf="hoverValue || showValue" class="sort__label">{{ value }}</label>
+  <div class="sort__bar"
+    [style.height]="value + 'px'"
+    [style.background-color]="(selected ? 'red' : 'turquoise')">
+  </div>
+</div>

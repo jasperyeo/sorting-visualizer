@@ -1,0 +1,23 @@
+.sort {
+  &__container {
+    position: relative;
+  }
+
+  &__bar {
+    width: .2rem;
+    margin: 0 .1rem;
+
+    &:hover {
+      background-color: blue !important;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    color: blue;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+}
