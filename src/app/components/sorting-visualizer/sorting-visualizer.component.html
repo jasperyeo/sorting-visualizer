@@ -12,28 +12,46 @@
         <option *ngFor="let algorithm of category?.algorithms" [value]="algorithm?.value">{{ algorithm?.label }}</option>
       </optgroup>
     </select>
-    <button (click)="!sorting ? sort(sortArray, sortMethod) : stop()" [disabled]="!sortMethod.length">{{ sorting ? 'Stop' : 'Start' }}</button>
+    <button (click)="!sorting ? sort(sortArray, sortMethod) : stop()"
+      [disabled]="!sortMethod.length ||
+      elementCount < 2 || (elementCount * 4) >= viewWidth ||
+      minValue <= 0 || maxValue * 0.8 > viewHeight">
+      {{ sorting ? 'Stop' : 'Start' }}
+    </button>
   </div>
-  <div *ngIf="showControlPanel" class="sort__subheader">
+  <div class="sort__subheader">
     <div class="sort__info" #settings>
       <p class="sort__info--header" (click)="showSettings = !showSettings">
         <span class="sort__info--title">&#9881; Settings:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showSettings }">&#x25B2;</span>
       </p>
-      <div *ngIf="showSettings">
+      <div *ngIf="showControlPanel && showSettings">
         <br>
         <input type="checkbox" id="enable-audio" [(ngModel)]="enableAudio"/>
         <label for="enable-audio">Enable Audio</label><br>
         <input type="checkbox" id="show-values" [(ngModel)]="showValues"/>
         <label for="show-values">Show Values</label>
         <br><br>
+        <hr />
+        <br>
+        <label>Element count and max value initialized automatically within screen dimensions.</label>
+        <br><br>
         <label>Element Count:</label>
-        <input type="number" min="0" [(ngModel)]="elementCount"/>
+        <input type="number" min="2" [(ngModel)]="elementCount" [disabled]="sorting"/>
+        <label *ngIf="elementCount < 2" class="sort__info--warning">Please enter a minimum count of 2.</label>
+        <label *ngIf="elementCount >= viewWidth / 12" class="sort__info--warning">Generated count exceed window width.</label>
+        <br><br>
         <label>Min / Max:</label>
         <div>
-          <input type="number" class="sort__info--input-half" min="0" [(ngModel)]="minValue"/>
-          <input type="number" class="sort__info--input-half" [min]="minValue" [(ngModel)]="maxValue"/>
+          <input type="number" class="sort__info--input-half" min="0" [(ngModel)]="minValue" [disabled]="sorting"/>
+          <input type="number" class="sort__info--input-half" [min]="minValue" [(ngModel)]="maxValue" [disabled]="sorting"/>
         </div>
+        <label *ngIf="minValue <= 0" class="sort__info--warning">Please enter a min value of 1.</label>
+        <label *ngIf="maxValue > viewHeight * 0.45" class="sort__info--warning">Max value exceed window height.</label>
+        <br>
+        <label>Delay (ms):</label>
+        <input type="number" min="0" [(ngModel)]="sortDelay" [disabled]="sorting"/>
+        <label *ngIf="sortDelay < 0" class="sort__info--warning">Please enter a positive delay.</label>
       </div>
     </div>
     <div class="sort__info" #statistics>
@@ -41,7 +59,7 @@
         <span class="sort__info--title">&#9871; Statistics:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showStatistics }">&#x25B2;</span>
       </p>
-      <p *ngIf="showStatistics">
+      <p *ngIf="showControlPanel && showStatistics">
         <br>
         Sort Attempts:&nbsp;<span class="sort__info--value">{{ sortAttempts }}</span><br>
         Elements:&nbsp;<span class="sort__info--value">{{ sortArray?.length }}</span><br>
@@ -54,7 +72,7 @@
         <span class="sort__info--title">? Algorithm Information: {{ sortMethod ? (sortMethod | titlecase) + 'sort' : 'None selected' }}</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showInfo }">&#x25B2;</span>
       </p>
-      <p *ngIf="showInfo">
+      <p *ngIf="showControlPanel && showInfo">
         <br>
         {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="(sortMethod | titlecase) + 'sort'">Wikipedia.</a>
       </p>
@@ -72,7 +90,7 @@
   </div>
   <div class="sort__container">
     <sort-bar *ngFor="let bar of sortArray; index as i;"
-      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [selected]="bar.selected" [showValue]="showValues">
+      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [color]="bar.color" [showValue]="showValues">
     </sort-bar>
   </div>
 </div>

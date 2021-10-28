@@ -66,6 +66,7 @@
     padding: 2rem;
     margin: 1rem;
     cursor: pointer;
+    z-index: 2;
 
     &--header {
       display: flex;
@@ -90,6 +91,10 @@
 
     &--info {
       width: 50rem;
+    }
+
+    &--warning {
+      color: red;
     }
   }
 
