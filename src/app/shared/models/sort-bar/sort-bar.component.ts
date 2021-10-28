@@ -8,9 +8,9 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
 export class SortBarComponent implements OnInit {
 
   @Input('id') public id: string = '';
+  @Input('color') public color: string = 'turquoise';
   @Input('sortDelay') public sortDelay: number = 20;
   @Input('value') public value: number = 100;
-  @Input('selected') public selected: boolean = false;
   @Input('showValue') public showValue: boolean = true;
   public hoverValue: boolean = false;
 
