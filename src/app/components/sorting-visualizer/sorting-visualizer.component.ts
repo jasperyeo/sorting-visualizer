@@ -14,7 +14,7 @@ export class SortingVisualizerComponent implements OnInit {
 
   public readonly audioContext: AudioContext = new AudioContext();
   public sortArray: SortBarComponent[] = [];
-  public sortDelay: number = 100;
+  public sortDelay: number = 50;
   public sortMethod: string = '';
   public sortDescription: string = '';
   public sortLink: string = '';
