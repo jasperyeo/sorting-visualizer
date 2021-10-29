@@ -8,13 +8,13 @@
     margin: 0 .1rem;
 
     &:hover {
-      background-color: blue !important;
+      background-color: white !important;
     }
   }
 
   &__label {
     position: absolute;
-    color: blue;
+    color: white;
     top: -2rem;
     left: 50%;
     transform: translateX(-50%);
