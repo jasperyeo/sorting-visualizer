@@ -52,6 +52,12 @@ export class SortingVisualizerComponent implements OnInit {
           link: ''
         }
       ]
+    },
+    {
+      category: 'Library',
+      algorithms: [
+        
+      ]
     }
   ];
 
@@ -73,6 +79,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   @HostListener('window:resize')
+  @HostListener('window:orientation')
   public windowChange(): void {
     this.viewWidth = window.innerWidth;
     this.viewHeight = window.innerHeight;
@@ -83,6 +90,7 @@ export class SortingVisualizerComponent implements OnInit {
 
   private _scrapAlgorithmInformation(): void {
     this.sortAlgorithms.forEach(category => {
+      if (category === 'Library') return;
       category.algorithms.forEach((algo: any) => {
         this._sortingVisualizerService.getWikipediaSummary(algo.value + 'sort').then((res: any) => {
           if (res) {
@@ -213,6 +221,7 @@ export class SortingVisualizerComponent implements OnInit {
     for (let i = start, r = 0; i < mid; r++, i++) {
       if (!this.sorting) return;
       while (k < end && array[k].value < array[i].value) {
+        this.noOfCompares++;
         cloned[r] = array[k];
         r++;
         k++;
@@ -224,6 +233,7 @@ export class SortingVisualizerComponent implements OnInit {
       if (!this.sorting) return;
       array[i + start] = cloned[i];
       array[i + start].color = 'red';
+      this.noOfSwaps++;
       if (this.enableAudio) this._playBeep(3, array[i + start].value, 50);
       await this.sleep(this.sortDelay);
       array[i + start].color = 'turquoise';

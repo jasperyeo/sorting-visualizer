@@ -73,6 +73,10 @@ input[type="number"] {
   padding: 1.2rem;
 }
 
+input[type="range"] {
+  cursor: pointer;
+}
+
 select {
   cursor: pointer;
   border: none;
