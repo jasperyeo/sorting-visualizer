@@ -20,7 +20,7 @@
     </button>
   </div>
   <div class="sort__subheader">
-    <div class="sort__info" #settings>
+    <div *ngIf="showControlPanel" class="sort__info" #settings>
       <p class="sort__info--header" (click)="showSettings = !showSettings">
         <span class="sort__info--title">&#9881; Settings:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showSettings }">&#x25B2;</span>
@@ -49,12 +49,11 @@
         <label *ngIf="minValue <= 0" class="sort__info--warning">Please enter a min value of 1.</label>
         <label *ngIf="maxValue > viewHeight * 0.45" class="sort__info--warning">Max value exceed window height.</label>
         <br>
-        <label>Delay (ms):</label>
-        <input type="number" min="0" [(ngModel)]="sortDelay" [disabled]="sorting"/>
-        <label *ngIf="sortDelay < 0" class="sort__info--warning">Please enter a positive delay.</label>
+        <label>Delay: {{ sortDelay === 0 ? 'Fast' : sortDelay === 100 ? 'Slow' : 'Normal'  }}</label>
+        <input type="range" id="sortDelay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay" [disabled]="sorting">
       </div>
     </div>
-    <div class="sort__info" #statistics>
+    <div *ngIf="showControlPanel" class="sort__info" #statistics>
       <p class="sort__info--header" (click)="showStatistics = !showStatistics">
         <span class="sort__info--title">&#9871; Statistics:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showStatistics }">&#x25B2;</span>
@@ -67,7 +66,7 @@
         Swaps:&nbsp;<span class="sort__info--value">{{ noOfSwaps }}</span><br>
       </p>
     </div>
-    <div class="sort__info sort__info--info" #information>
+    <div *ngIf="showControlPanel" class="sort__info sort__info--info" #information>
       <p class="sort__info--header" (click)="showInfo = !showInfo">
         <span class="sort__info--title">? Algorithm Information: {{ sortMethod ? (sortMethod | titlecase) + 'sort' : 'None selected' }}</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showInfo }">&#x25B2;</span>
