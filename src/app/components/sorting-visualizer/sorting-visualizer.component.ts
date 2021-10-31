@@ -37,14 +37,19 @@ export class SortingVisualizerComponent implements OnInit {
   
   public sortAlgorithms: any[] = [
     {
-      category: 'Logarithmic',
+      category: 'Partitioning',
       algorithms: [
         {
           label: 'Quick Sort',
           value: 'quick',
           description: '',
           link: ''
-        },
+        }
+      ]
+    },
+    {
+      category: 'Merging',
+      algorithms: [
         {
           label: 'Merge Sort',
           value: 'merge',
@@ -54,9 +59,14 @@ export class SortingVisualizerComponent implements OnInit {
       ]
     },
     {
-      category: 'Library',
+      category: 'Exchanging',
       algorithms: [
-        
+        {
+          label: 'Bubble Sort',
+          value: 'bubble',
+          description: '',
+          link: ''
+        }
       ]
     }
   ];
@@ -161,12 +171,15 @@ export class SortingVisualizerComponent implements OnInit {
       case 'merge':
         this.mergeSort(array, 0, array.length).then(() => this.sorting = false);
         break;
+      case 'bubble':
+        this.bubbleSort(array).then(() => this.sorting = false);
+        break;
     }
   }
 
-  public compare(arrayI: SortBarComponent[], i: number, arrayJ: SortBarComponent[], j: number): boolean {
+  public compare(array: SortBarComponent[], i: number, j: number): boolean {
     this.noOfCompares++;
-    return arrayI[i].value >= arrayJ[j].value;
+    return array[i].value >= array[j].value;
   }
 
   public async swap(array: SortBarComponent[], i: number, j: number): Promise<void> {
@@ -186,12 +199,12 @@ export class SortingVisualizerComponent implements OnInit {
       array[j].color = 'red';
       while (i < j) {
         if (!this.sorting) return;
-        while (this.compare(array, pivot, array, i) && i < j) {
+        while (this.compare(array, pivot, i) && i < j) {
           array[i].color = 'turquoise';
           i++;
           array[i].color = 'red';
         }
-        while (!this.compare(array, pivot, array, j)) {
+        while (!this.compare(array, pivot, j)) {
           array[j].color = 'turquoise';
           j--;
           array[j].color = 'red';
@@ -237,6 +250,18 @@ export class SortingVisualizerComponent implements OnInit {
       if (this.enableAudio) this._playBeep(3, array[i + start].value, 50);
       await this.sleep(this.sortDelay);
       array[i + start].color = 'turquoise';
+    }
+  }
+
+  public async bubbleSort(array: SortBarComponent[]): Promise<void> {
+    for (let i = 0; i < array.length; i++) {
+      if (!this.sorting) return;
+      for (let j = 0; j < (array.length - i - 1); j++) {
+        if (!this.sorting) return;
+        if (this.compare(array, j, j + 1)) {
+          await this.swap(array, j, j + 1);
+        }
+      }
     }
   }
 }
