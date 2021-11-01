@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { merge } from 'lodash';
 
-import { SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 
 import { SortingVisualizerService } from './sorting-visualizer.service';
 
@@ -185,39 +184,39 @@ export class SortingVisualizerComponent implements OnInit {
   public async swap(array: SortBarComponent[], i: number, j: number): Promise<void> {
     if (this.enableAudio) this._playBeep(3, array[i].value, 50);
     this.noOfSwaps++;
-    array[i].color = 'red';
+    array[i].color = SortBarColor.SWAP;
     [array[i], array[j]] = [array[j], array[i]];
     await this.sleep(this.sortDelay);
-    array[j].color = 'turquoise';
+    array[j].color = SortBarColor.NORMAL;
   }
 
   public async quickSort(array: SortBarComponent[], left: number, right: number): Promise<void> {
     if (left < right) {
       const pivot: number = left;
-      array[pivot].color = 'green';
+      array[pivot].color = SortBarColor.PIVOT;
       let i: number = left, j: number = right;
-      array[j].color = 'red';
+      array[j].color = SortBarColor.SWAP;
       while (i < j) {
         if (!this.sorting) return;
         while (this.compare(array, pivot, i) && i < j) {
-          array[i].color = 'turquoise';
+          array[i].color = SortBarColor.NORMAL;
           i++;
-          array[i].color = 'red';
+          array[i].color = SortBarColor.SWAP;
         }
         while (!this.compare(array, pivot, j)) {
-          array[j].color = 'turquoise';
+          array[j].color = SortBarColor.NORMAL;
           j--;
-          array[j].color = 'red';
+          array[j].color = SortBarColor.SWAP;
         }
-        array[pivot].color = 'green';
+        array[pivot].color = SortBarColor.PIVOT;
         if (i < j) {
           await this.swap(array, i, j);
         }
       }
       await this.swap(array, pivot, j);
-      array[i].color = 'turquoise';
-      array[j].color = 'turquoise';
-      array[pivot].color = 'turquoise';
+      array[i].color = SortBarColor.NORMAL;
+      array[j].color = SortBarColor.NORMAL;
+      array[pivot].color = SortBarColor.NORMAL;
       await this.quickSort(array, left, j - 1);
       await this.quickSort(array, j + 1, right);
     }
@@ -245,11 +244,11 @@ export class SortingVisualizerComponent implements OnInit {
     for (let i = 0; i < k - start; i++) {
       if (!this.sorting) return;
       array[i + start] = cloned[i];
-      array[i + start].color = 'red';
+      array[i + start].color = SortBarColor.SWAP;
       this.noOfSwaps++;
       if (this.enableAudio) this._playBeep(3, array[i + start].value, 50);
       await this.sleep(this.sortDelay);
-      array[i + start].color = 'turquoise';
+      array[i + start].color = SortBarColor.NORMAL;
     }
   }
 
