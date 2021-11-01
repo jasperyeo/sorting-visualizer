@@ -29,3 +29,9 @@ export class SortBarComponent implements OnInit {
   }
 
 }
+
+export enum SortBarColor {
+  NORMAL = 'turquoise',
+  SWAP = 'red',
+  PIVOT = 'green'
+}

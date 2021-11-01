@@ -1,9 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { merge } from 'lodash';
 
-import { SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
-
+import { SortBarColor, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
+
+import * as algorithms from './../../algorithms/index';
 
 @Component({
   selector: 'sorting-visualizer',
@@ -37,14 +37,19 @@ export class SortingVisualizerComponent implements OnInit {
   
   public sortAlgorithms: any[] = [
     {
-      category: 'Logarithmic',
+      category: 'Partitioning',
       algorithms: [
         {
           label: 'Quick Sort',
           value: 'quick',
           description: '',
           link: ''
-        },
+        }
+      ]
+    },
+    {
+      category: 'Merging',
+      algorithms: [
         {
           label: 'Merge Sort',
           value: 'merge',
@@ -54,9 +59,25 @@ export class SortingVisualizerComponent implements OnInit {
       ]
     },
     {
-      category: 'Library',
+      category: 'Selection',
       algorithms: [
-        
+        {
+          label: 'Selection Sort',
+          value: 'selection',
+          description: '',
+          link: ''
+        }
+      ]
+    },
+    {
+      category: 'Exchanging',
+      algorithms: [
+        {
+          label: 'Bubble Sort',
+          value: 'bubble',
+          description: '',
+          link: ''
+        }
       ]
     }
   ];
@@ -104,7 +125,7 @@ export class SortingVisualizerComponent implements OnInit {
     });
   }
  
-  private _playBeep(gain: number, hertz: number, ms: number): void {
+  public playBeep(gain: number, hertz: number, ms: number): void {
     const oscillator: OscillatorNode = this.audioContext.createOscillator();
     const createdGain: GainNode = this.audioContext.createGain();
     oscillator.connect(createdGain);
@@ -117,7 +138,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   public resetArray(): void {
-    if (this.enableAudio) this._playBeep(3, 10, 200);
+    if (this.enableAudio) this.playBeep(3, 10, 200);
     this.sortAttempts = 0;
     this.noOfCompares = 0;
     this.noOfSwaps = 0;
@@ -156,87 +177,17 @@ export class SortingVisualizerComponent implements OnInit {
     this.sorting = true;
     switch (mode) {
       case 'quick':
-        this.quickSort(array, 0, array.length - 1).then(() => this.sorting = false);
+        algorithms.quickSort(this, array, 0, array.length - 1).then(() => this.sorting = false);
         break;
       case 'merge':
-        this.mergeSort(array, 0, array.length).then(() => this.sorting = false);
+        algorithms.mergeSort(this, array, 0, array.length).then(() => this.sorting = false);
         break;
-    }
-  }
-
-  public compare(arrayI: SortBarComponent[], i: number, arrayJ: SortBarComponent[], j: number): boolean {
-    this.noOfCompares++;
-    return arrayI[i].value >= arrayJ[j].value;
-  }
-
-  public async swap(array: SortBarComponent[], i: number, j: number): Promise<void> {
-    if (this.enableAudio) this._playBeep(3, array[i].value, 50);
-    this.noOfSwaps++;
-    array[i].color = 'red';
-    [array[i], array[j]] = [array[j], array[i]];
-    await this.sleep(this.sortDelay);
-    array[j].color = 'turquoise';
-  }
-
-  public async quickSort(array: SortBarComponent[], left: number, right: number): Promise<void> {
-    if (left < right) {
-      const pivot: number = left;
-      array[pivot].color = 'green';
-      let i: number = left, j: number = right;
-      array[j].color = 'red';
-      while (i < j) {
-        if (!this.sorting) return;
-        while (this.compare(array, pivot, array, i) && i < j) {
-          array[i].color = 'turquoise';
-          i++;
-          array[i].color = 'red';
-        }
-        while (!this.compare(array, pivot, array, j)) {
-          array[j].color = 'turquoise';
-          j--;
-          array[j].color = 'red';
-        }
-        array[pivot].color = 'green';
-        if (i < j) {
-          await this.swap(array, i, j);
-        }
-      }
-      await this.swap(array, pivot, j);
-      array[i].color = 'turquoise';
-      array[j].color = 'turquoise';
-      array[pivot].color = 'turquoise';
-      await this.quickSort(array, left, j - 1);
-      await this.quickSort(array, j + 1, right);
-    }
-  }
-
-  public async mergeSort(array: SortBarComponent[], start: number, end: number): Promise<void> {
-    if (start >= end - 1) return;
-    const mid: number = start + Math.trunc((end - start) / 2);
-    await this.mergeSort(array, start, mid);
-    await this.mergeSort(array, mid, end);
-    const cloned: SortBarComponent[] = Array(end - start).fill(array[0]);
-    let k: number = mid;
-
-    for (let i = start, r = 0; i < mid; r++, i++) {
-      if (!this.sorting) return;
-      while (k < end && array[k].value < array[i].value) {
-        this.noOfCompares++;
-        cloned[r] = array[k];
-        r++;
-        k++;
-      }
-      cloned[r] = array[i];
-    }
-
-    for (let i = 0; i < k - start; i++) {
-      if (!this.sorting) return;
-      array[i + start] = cloned[i];
-      array[i + start].color = 'red';
-      this.noOfSwaps++;
-      if (this.enableAudio) this._playBeep(3, array[i + start].value, 50);
-      await this.sleep(this.sortDelay);
-      array[i + start].color = 'turquoise';
+      case 'selection':
+        algorithms.selectionSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'bubble':
+        algorithms.bubbleSort(this, array).then(() => this.sorting = false);
+        break;
     }
   }
 }
