@@ -5,7 +5,7 @@
     </div>
     <h1 class="sort__header--menu" (click)="showControlPanel = !showControlPanel">Menu</h1>
     <h1 class="sort__header--title">Sorting Visualizer</h1>
-    <button (click)="resetArray()" [disabled]="sorting">Generate / Reset</button>
+    <button (click)="resetArray()" [disabled]="sorting">Generate</button>
     <select name="sorts" id="sorts" [disabled]="sorting" [(ngModel)]="sortMethod" (change)="selectAlgorithm(sortMethod)">
       <option value="" disabled selected hidden>Choose algorithm</option>
       <optgroup *ngFor="let category of sortAlgorithms" [label]="category?.category">
@@ -34,8 +34,6 @@
         <br><br>
         <hr />
         <br>
-        <label>Element count and max value initialized automatically within screen dimensions.</label>
-        <br><br>
         <label>Element Count:</label>
         <input type="number" min="2" [(ngModel)]="elementCount" [disabled]="sorting"/>
         <label *ngIf="elementCount < 2" class="sort__info--warning">Please enter a minimum count of 2.</label>
