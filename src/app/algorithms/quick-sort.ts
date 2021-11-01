@@ -5,7 +5,7 @@ import { compare, swap } from './common';
 export async function quickSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[], left: number, right: number): Promise<void> {
   if (left < right) {
     const pivot: number = left;
-    array[pivot].color = SortBarColor.PIVOT;
+    //array[pivot].color = SortBarColor.PIVOT;
     let i: number = left, j: number = right;
     array[j].color = SortBarColor.SWAP;
     while (i < j) {
@@ -20,7 +20,7 @@ export async function quickSort(visualizer: SortingVisualizerComponent, array: S
         j--;
         array[j].color = SortBarColor.SWAP;
       }
-      array[pivot].color = SortBarColor.PIVOT;
+      //array[pivot].color = SortBarColor.PIVOT;
       if (i < j) {
         await swap(visualizer, array, i, j);
       }

@@ -59,6 +59,17 @@ export class SortingVisualizerComponent implements OnInit {
       ]
     },
     {
+      category: 'Selection',
+      algorithms: [
+        {
+          label: 'Selection Sort',
+          value: 'selection',
+          description: '',
+          link: ''
+        }
+      ]
+    },
+    {
       category: 'Exchanging',
       algorithms: [
         {
@@ -170,6 +181,9 @@ export class SortingVisualizerComponent implements OnInit {
         break;
       case 'merge':
         algorithms.mergeSort(this, array, 0, array.length).then(() => this.sorting = false);
+        break;
+      case 'selection':
+        algorithms.selectionSort(this, array).then(() => this.sorting = false);
         break;
       case 'bubble':
         algorithms.bubbleSort(this, array).then(() => this.sorting = false);
