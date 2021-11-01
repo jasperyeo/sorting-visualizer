@@ -100,7 +100,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   @HostListener('window:resize')
-  @HostListener('window:orientation')
+  @HostListener('window:orientationchange')
   public windowChange(): void {
     this.viewWidth = window.innerWidth;
     this.viewHeight = window.innerHeight;
