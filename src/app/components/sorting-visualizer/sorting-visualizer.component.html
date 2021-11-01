@@ -68,12 +68,12 @@
     </div>
     <div *ngIf="showControlPanel" class="sort__info sort__info--info" #information>
       <p class="sort__info--header" (click)="showInfo = !showInfo">
-        <span class="sort__info--title">? Algorithm Information: {{ sortMethod ? (sortMethod | titlecase) + 'sort' : 'None selected' }}</span>
+        <span class="sort__info--title">? Algorithm Information: {{ sortMethod ? (sortMethod | titlecase) + ' Sort' : 'None selected' }}</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showInfo }">&#x25B2;</span>
       </p>
       <p *ngIf="showControlPanel && showInfo">
         <br>
-        {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="(sortMethod | titlecase) + 'sort'">Wikipedia.</a>
+        {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="(sortMethod | titlecase) + ' Sort'">Wikipedia.</a>
       </p>
     </div>
     <!-- <div class="sort__info sort__info--credits" #credits>

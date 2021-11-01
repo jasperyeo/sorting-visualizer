@@ -10,7 +10,9 @@ export async function swap(visualizer: SortingVisualizerComponent, array: SortBa
   if (visualizer.enableAudio) visualizer.playBeep(3, array[i].value, 50);
   visualizer.noOfSwaps++;
   array[i].color = SortBarColor.SWAP;
+  array[j].color = SortBarColor.SWAP;
   [array[i], array[j]] = [array[j], array[i]];
   await visualizer.sleep(visualizer.sortDelay);
+  array[i].color = SortBarColor.NORMAL;
   array[j].color = SortBarColor.NORMAL;
 }
