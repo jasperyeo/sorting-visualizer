@@ -70,6 +70,17 @@ export class SortingVisualizerComponent implements OnInit {
       ]
     },
     {
+      category: 'Insertion',
+      algorithms: [
+        {
+          label: 'Insertion Sort',
+          value: 'insertion',
+          description: '',
+          link: ''
+        }
+      ]
+    },
+    {
       category: 'Exchanging',
       algorithms: [
         {
@@ -100,7 +111,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   @HostListener('window:resize')
-  @HostListener('window:orientation')
+  @HostListener('window:orientationchange')
   public windowChange(): void {
     this.viewWidth = window.innerWidth;
     this.viewHeight = window.innerHeight;
@@ -184,6 +195,9 @@ export class SortingVisualizerComponent implements OnInit {
         break;
       case 'selection':
         algorithms.selectionSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'insertion':
+        algorithms.insertionSort(this, array).then(() => this.sorting = false);
         break;
       case 'bubble':
         algorithms.bubbleSort(this, array).then(() => this.sorting = false);
