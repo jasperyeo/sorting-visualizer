@@ -8,7 +8,7 @@
 
 # Sorting Visualizer
 
-Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors and delays.
+Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and delays.
 
 ## Implemented Sorting Algorithms
 
@@ -21,6 +21,8 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 ## Development Information
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
+
+Uses [Wikipedia Summary API](https://en.wikipedia.org/api/rest_v1/#/) for fetching sorting algorithms summaries and the links to the articles.
 
 ## License
 
