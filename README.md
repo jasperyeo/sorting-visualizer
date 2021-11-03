@@ -15,6 +15,7 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 - Quick Sort
 - Merge Sort
 - Selection Sort
+- Insertion Sort
 - Bubble Sort
 
 ## Development Information
