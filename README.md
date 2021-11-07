@@ -20,6 +20,7 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 
 ### Selection
 - Selection Sort
+- Heap Sort
 
 ### Insertion
 - Insertion Sort

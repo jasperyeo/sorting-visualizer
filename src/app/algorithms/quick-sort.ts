@@ -10,12 +10,12 @@ export async function quickSort(visualizer: SortingVisualizerComponent, array: S
     array[j].color = SortBarColor.SWAP;
     while (i < j) {
       if (!visualizer.sorting) return;
-      while (compare(visualizer, array, pivot, i) && i < j) {
+      while (compare(visualizer, array[pivot], array[i]) && i < j) {
         array[i].color = SortBarColor.NORMAL;
         i++;
         array[i].color = SortBarColor.SWAP;
       }
-      while (!compare(visualizer, array, pivot, j)) {
+      while (!compare(visualizer, array[pivot], array[j])) {
         array[j].color = SortBarColor.NORMAL;
         j--;
         array[j].color = SortBarColor.SWAP;

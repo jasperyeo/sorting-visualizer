@@ -8,7 +8,7 @@ export async function selectionSort(visualizer: SortingVisualizerComponent, arra
     let min: number = i;
     for (let j = i + 1; j < array.length; j++) {
       if (!visualizer.sorting) return;
-      if (compare(visualizer, array, min, j)) {
+      if (compare(visualizer, array[min], array[j])) {
         min = j;
       }
     }
