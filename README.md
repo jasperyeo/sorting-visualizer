@@ -12,10 +12,19 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 
 ## Implemented Sorting Algorithms
 
+### Partitioning
 - Quick Sort
+
+### Merging
 - Merge Sort
+
+### Selection
 - Selection Sort
+
+### Insertion
 - Insertion Sort
+
+### Exchanging
 - Bubble Sort
 
 ## Development Information
