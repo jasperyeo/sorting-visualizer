@@ -12,7 +12,7 @@ export async function mergeSort(visualizer: SortingVisualizerComponent, array: S
 
   for (let i = start, r = 0; i < mid; r++, i++) {
     if (!visualizer.sorting) return;
-    while (k < end && compare(visualizer, array, i, k)) {
+    while (k < end && compare(visualizer, array[i], array[k])) {
       cloned[r] = array[k];
       r++;
       k++;

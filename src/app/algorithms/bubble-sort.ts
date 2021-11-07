@@ -7,7 +7,7 @@ export async function bubbleSort(visualizer: SortingVisualizerComponent, array: 
     if (!visualizer.sorting) return;
     for (let j = 0; j < (array.length - i - 1); j++) {
       if (!visualizer.sorting) return;
-      if (compare(visualizer, array, j, j + 1)) {
+      if (compare(visualizer, array[j], array[j + 1])) {
         await swap(visualizer, array, j, j + 1);
       }
     }

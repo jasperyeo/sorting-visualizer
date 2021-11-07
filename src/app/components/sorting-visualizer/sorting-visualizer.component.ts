@@ -66,6 +66,12 @@ export class SortingVisualizerComponent implements OnInit {
           value: 'selection',
           description: '',
           link: ''
+        },
+        {
+          label: 'Heap Sort',
+          value: 'heap',
+          description: '',
+          link: ''
         }
       ]
     },
@@ -195,6 +201,9 @@ export class SortingVisualizerComponent implements OnInit {
         break;
       case 'selection':
         algorithms.selectionSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'heap':
+        algorithms.heapSort(this, array).then(() => this.sorting = false);
         break;
       case 'insertion':
         algorithms.insertionSort(this, array).then(() => this.sorting = false);

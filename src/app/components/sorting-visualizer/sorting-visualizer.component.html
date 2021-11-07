@@ -48,7 +48,7 @@
         <label *ngIf="maxValue > viewHeight * 0.45" class="sort__info--warning">Max value exceed window height.</label>
         <br>
         <label>Delay: {{ sortDelay === 0 ? 'Fast' : sortDelay === 100 ? 'Slow' : 'Normal'  }}</label>
-        <input type="range" id="sortDelay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay" [disabled]="sorting">
+        <input type="range" id="sortDelay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay">
       </div>
     </div>
     <div *ngIf="showControlPanel" class="sort__info" #statistics>
