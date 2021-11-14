@@ -27,6 +27,7 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 
 ### Exchanging
 - Bubble Sort
+- Gnome Sort
 
 ## Development Information
 
