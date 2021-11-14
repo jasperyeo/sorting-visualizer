@@ -8,7 +8,8 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
 export class SortBarComponent implements OnInit {
 
   @Input('id') public id: string = '';
-  @Input('color') public color: string = 'turquoise';
+  @Input('color') public color: string = SortBarColor.NORMAL;
+  @Input('style') public style: string = SortBarStyle.BAR;
   @Input('sortDelay') public sortDelay: number = 20;
   @Input('value') public value: number = 100;
   @Input('showValue') public showValue: boolean = true;
@@ -34,4 +35,9 @@ export enum SortBarColor {
   NORMAL = 'turquoise',
   SWAP = 'red',
   PIVOT = 'green'
+}
+
+export enum SortBarStyle {
+  BAR = 'bar',
+  POINT = 'point'
 }

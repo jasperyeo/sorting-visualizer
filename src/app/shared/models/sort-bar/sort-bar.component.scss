@@ -12,6 +12,19 @@
     }
   }
 
+  &__point {
+    width: 1rem;
+    height: 1rem;
+    margin: 0 .1rem;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &:hover {
+      background-color: white !important;
+    }
+  }
+
   &__label {
     position: absolute;
     color: white;

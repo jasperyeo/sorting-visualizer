@@ -5,9 +5,11 @@ import { compare, swap } from './common';
 export async function heapSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
   const size: number = array.length;
   for (let i: number = Math.floor(size / 2 - 1); i >= 0; i--) {
+    if (!visualizer.sorting) return;
     await heapify(visualizer, array, size, i);
   }
   for (let i: number = size - 1; i >= 0; i--) {
+    if (!visualizer.sorting) return;
     await swap(visualizer, array, 0, i);
     await heapify(visualizer, array, i, 0);
   }

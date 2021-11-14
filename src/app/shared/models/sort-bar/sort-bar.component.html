@@ -1,7 +1,11 @@
 <div class="sort__container">
   <label *ngIf="hoverValue || showValue" class="sort__label">{{ value }}</label>
-  <div class="sort__bar"
+  <div *ngIf="style === 'bar'" class="sort__bar"
     [style.height]="value + 'px'"
+    [style.background-color]="style === 'bar' ? color : 'transparent'">
+  </div>
+  <div *ngIf="style === 'point'" class="sort__point"
+    [style.margin-bottom]="(value - 10) + 'px'"
     [style.background-color]="color">
   </div>
 </div>
