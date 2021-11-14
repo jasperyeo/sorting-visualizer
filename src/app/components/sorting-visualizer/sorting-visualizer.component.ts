@@ -1,6 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 
-import { SortBarColor, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
+import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
 
 import * as algorithms from './../../algorithms/index';
@@ -18,6 +18,7 @@ export class SortingVisualizerComponent implements OnInit {
   public sortMethod: string = '';
   public sortDescription: string = '';
   public sortLink: string = '';
+  public sortStyle: string = SortBarStyle.POINT;
   public sortAttempts: number = 0;
   public elementCount: number = 400;
   public minValue: number = 5;
@@ -34,8 +35,13 @@ export class SortingVisualizerComponent implements OnInit {
   public showCredits: boolean = true;
   public enableAudio: boolean = false;
   public showValues: boolean = false;
+
+  public readonly sortStyles: string[] = [
+    SortBarStyle.BAR,
+    SortBarStyle.POINT
+  ];
   
-  public sortAlgorithms: any[] = [
+  public readonly sortAlgorithms: any[] = [
     {
       category: 'Partitioning',
       algorithms: [
@@ -99,7 +105,8 @@ export class SortingVisualizerComponent implements OnInit {
     }
   ];
 
-  constructor(private _sortingVisualizerService: SortingVisualizerService) { }
+  constructor(private _sortingVisualizerService: SortingVisualizerService,
+    private _renderer2: Renderer2) { }
 
   public sleep(delay: number): Promise<void> {
     return new Promise(resolve => {
@@ -163,6 +170,7 @@ export class SortingVisualizerComponent implements OnInit {
     for (let i: number = 0; i < this.elementCount; i++) {
       let sortBar: SortBarComponent = new SortBarComponent;
       sortBar.id = 'bar' + i.toString();
+      sortBar.style = this.sortStyle;
       sortBar.sortDelay = this.sortDelay;
       sortBar.value = this._randomNumberFromRange(this.minValue, this.maxValue);
       sortBar.showValue = this.showValues;

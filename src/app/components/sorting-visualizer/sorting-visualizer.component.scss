@@ -48,6 +48,10 @@ $xl-breakpoint: 1em;
     display: flex;
     flex-wrap: wrap;
 
+    &--select {
+      width: fit-content;
+    }
+
     &--menu {
       color: white;
       padding: 0px 1rem;
