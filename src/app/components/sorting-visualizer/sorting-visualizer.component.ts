@@ -129,8 +129,8 @@ export class SortingVisualizerComponent implements OnInit {
     this._scrapAlgorithmInformation();
   }
 
-  @HostListener('window:resize')
-  @HostListener('window:orientationchange')
+  //@HostListener('window:resize')
+  //@HostListener('window:orientationchange')
   public windowChange(): void {
     this.viewWidth = window.innerWidth;
     this.viewHeight = window.innerHeight;
