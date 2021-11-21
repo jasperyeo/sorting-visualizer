@@ -28,9 +28,22 @@
   &__label {
     position: absolute;
     color: white;
+    background-color: rgba(0, 0, 0, .5);
+    padding: .2rem;
+    border-radius: .8rem;
     top: -2rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+    animation: info-appear .2s ease-in-out;
+  }
+}
+
+@keyframes label-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

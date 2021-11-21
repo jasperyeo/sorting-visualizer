@@ -1,7 +1,9 @@
 <div class="sort__wrapper">
   <div class="sort__header">
-    <div class="sort__header--button-menu" [ngClass]="{ 'sort__subheader--expanded': showControlPanel }" (click)="showControlPanel = !showControlPanel">
-      &#9776;
+    <div class="sort__header--button-menu" (click)="showControlPanel = !showControlPanel">
+      <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+      <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+      <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
     </div>
     <h1 class="sort__header--menu" (click)="showControlPanel = !showControlPanel">Menu</h1>
     <h1 class="sort__header--title">Sorting Visualizer</h1>
@@ -22,7 +24,7 @@
   <div class="sort__subheader">
     <div *ngIf="showControlPanel" class="sort__info" #settings>
       <p class="sort__info--header" (click)="showSettings = !showSettings">
-        <span class="sort__info--title">&#9881; Settings:</span>
+        <span class="sort__info--title"><span class="sort__info--title--icon">&#9881;</span> Settings:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showSettings }">&#x25B2;</span>
       </p>
       <div *ngIf="showControlPanel && showSettings">
@@ -58,7 +60,7 @@
     </div>
     <div *ngIf="showControlPanel" class="sort__info" #statistics>
       <p class="sort__info--header" (click)="showStatistics = !showStatistics">
-        <span class="sort__info--title">&#9871; Statistics:</span>
+        <span class="sort__info--title"><span class="sort__info--title--icon">&#9871;</span> Statistics:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showStatistics }">&#x25B2;</span>
       </p>
       <p *ngIf="showControlPanel && showStatistics">
@@ -71,11 +73,12 @@
     </div>
     <div *ngIf="showControlPanel" class="sort__info sort__info--info" #information>
       <p class="sort__info--header" (click)="showInfo = !showInfo">
-        <span class="sort__info--title">? Algorithm Information: {{ sortMethod ? (sortMethod | titlecase) + ' Sort' : 'None selected' }}</span>
+        <span class="sort__info--title"><span class="sort__info--title--icon">?</span> Algorithm Information:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showInfo }">&#x25B2;</span>
       </p>
       <p *ngIf="showControlPanel && showInfo">
         <br>
+        <span>{{ sortMethod ? (sortMethod | titlecase) + ' Sort' : 'None' }}</span><br>
         {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="(sortMethod | titlecase) + ' Sort'">Wikipedia.</a>
       </p>
     </div>
