@@ -1,12 +1,14 @@
 <div class="sort__wrapper">
   <div class="sort__header">
-    <div class="sort__header--button-menu" [ngClass]="{ 'sort__subheader--expanded': showControlPanel }" (click)="showControlPanel = !showControlPanel">
-      &#9776;
+    <div class="sort__header--button-menu" (click)="showControlPanel = !showControlPanel">
+      <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+      <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+      <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
     </div>
     <h1 class="sort__header--menu" (click)="showControlPanel = !showControlPanel">Menu</h1>
     <h1 class="sort__header--title">Sorting Visualizer</h1>
     <button (click)="resetArray()" [disabled]="sorting">Generate</button>
-    <select name="sorts" id="sorts" [disabled]="sorting" [(ngModel)]="sortMethod" (change)="selectAlgorithm(sortMethod)">
+    <select name="sorts" id="sorts" [disabled]="sorting" [(ngModel)]="sortMethod" (change)="selectAlgorithm(sortMethod)" class="sort__header--select">
       <option value="" disabled selected hidden>Choose algorithm</option>
       <optgroup *ngFor="let category of sortAlgorithms" [label]="category?.category">
         <option *ngFor="let algorithm of category?.algorithms" [value]="algorithm?.value">{{ algorithm?.label }}</option>
@@ -22,7 +24,7 @@
   <div class="sort__subheader">
     <div *ngIf="showControlPanel" class="sort__info" #settings>
       <p class="sort__info--header" (click)="showSettings = !showSettings">
-        <span class="sort__info--title">&#9881; Settings:</span>
+        <span class="sort__info--title"><span class="sort__info--title--icon">&#9881;</span> Settings:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showSettings }">&#x25B2;</span>
       </p>
       <div *ngIf="showControlPanel && showSettings">
@@ -34,6 +36,11 @@
         <br><br>
         <hr />
         <br>
+        <label>Visualizer Style:</label>
+        <select name="styles" id="styles" [disabled]="sorting" [(ngModel)]="sortStyle">
+          <option *ngFor="let style of sortStyles" [value]="style">{{ style | titlecase }}</option>
+        </select>
+        <br><br>
         <label>Element Count:</label>
         <input type="number" min="2" [(ngModel)]="elementCount" [disabled]="sorting"/>
         <label *ngIf="elementCount < 2" class="sort__info--warning">Please enter a minimum count of 2.</label>
@@ -53,7 +60,7 @@
     </div>
     <div *ngIf="showControlPanel" class="sort__info" #statistics>
       <p class="sort__info--header" (click)="showStatistics = !showStatistics">
-        <span class="sort__info--title">&#9871; Statistics:</span>
+        <span class="sort__info--title"><span class="sort__info--title--icon">&#9871;</span> Statistics:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showStatistics }">&#x25B2;</span>
       </p>
       <p *ngIf="showControlPanel && showStatistics">
@@ -66,28 +73,19 @@
     </div>
     <div *ngIf="showControlPanel" class="sort__info sort__info--info" #information>
       <p class="sort__info--header" (click)="showInfo = !showInfo">
-        <span class="sort__info--title">? Algorithm Information: {{ sortMethod ? (sortMethod | titlecase) + ' Sort' : 'None selected' }}</span>
+        <span class="sort__info--title"><span class="sort__info--title--icon">?</span> Algorithm Information:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showInfo }">&#x25B2;</span>
       </p>
       <p *ngIf="showControlPanel && showInfo">
         <br>
+        <span>{{ sortMethod ? (sortMethod | titlecase) + ' Sort' : 'None' }}</span><br>
         {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="(sortMethod | titlecase) + ' Sort'">Wikipedia.</a>
       </p>
     </div>
-    <!-- <div class="sort__info sort__info--credits" #credits>
-      <p class="sort__info--header" (click)="showCredits = !showCredits">
-        <span class="sort__info--title">&copy; Credits:</span>
-        <span [ngClass]="{ 'sort__info--collapsed': !showCredits }">&#x25B2;</span>
-      </p>
-      <p *ngIf="showCredits">
-        <br>
-        Jasper Yeo<br>jasper.yeo.media@gmail.com
-      </p>
-    </div> -->
   </div>
   <div class="sort__container">
     <sort-bar *ngFor="let bar of sortArray; index as i;"
-      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [color]="bar.color" [showValue]="showValues">
+      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [color]="bar.color" [style]="bar.style" [showValue]="showValues">
     </sort-bar>
   </div>
 </div>

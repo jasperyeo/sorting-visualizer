@@ -48,6 +48,10 @@ $xl-breakpoint: 1em;
     display: flex;
     flex-wrap: wrap;
 
+    &--select {
+      width: fit-content;
+    }
+
     &--menu {
       color: white;
       padding: 0px 1rem;
@@ -75,7 +79,28 @@ $xl-breakpoint: 1em;
       color: white;
       cursor: pointer;
       font-size: 2rem;
+      padding: .2rem .5rem;
+    }
+
+    &--button-menu-bar {
+      background-color: white;
+      width: 2rem;
+      height: .2rem;
+      margin: .5rem 0px;
       transition: all .2s ease-in-out;
+      transform-origin: center;
+
+      &--expanded:nth-child(1) {
+        transform: translateY(.7rem) rotate(45deg);
+      }
+
+      &--expanded:nth-child(2) {
+        opacity: 0;
+      }
+
+      &--expanded:nth-child(3) {
+        transform: translateY(-.7rem) rotate(-45deg);
+      }
     }
 
     button {
@@ -86,10 +111,6 @@ $xl-breakpoint: 1em;
   &__subheader {
     display: flex;
     overflow-x: auto;
-
-    &--expanded {
-      transform: rotate(90deg);
-    }
   }
 
   &__info {
@@ -103,10 +124,17 @@ $xl-breakpoint: 1em;
     cursor: pointer;
     z-index: 2;
     flex-shrink: 0;
+    animation: info-appear .2s ease-in-out;
 
     &--header {
       display: flex;
       justify-content: space-between;
+
+      &:hover {
+        .sort__info--title--icon {
+          transform: rotate(360deg);
+        }
+      }
     }
 
     &--collapsed {
@@ -114,7 +142,11 @@ $xl-breakpoint: 1em;
     }
 
     &--title {
-      text-decoration: none; // original: underline
+
+      &--icon {
+        display: inline-block;
+        transition: all .2s ease-in-out;
+      }
     }
 
     &--value {
@@ -126,7 +158,7 @@ $xl-breakpoint: 1em;
     }
 
     &--info {
-      width: 50rem;
+      width: 30rem;
     }
 
     &--warning {
@@ -142,5 +174,14 @@ $xl-breakpoint: 1em;
     transform: translateX(-50%);
     display: flex;
     align-items: flex-end;
+  }
+}
+
+@keyframes info-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

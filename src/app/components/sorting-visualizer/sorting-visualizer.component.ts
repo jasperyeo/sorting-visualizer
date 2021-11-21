@@ -1,6 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
-import { SortBarColor, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
+import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
 
 import * as algorithms from './../../algorithms/index';
@@ -18,6 +18,7 @@ export class SortingVisualizerComponent implements OnInit {
   public sortMethod: string = '';
   public sortDescription: string = '';
   public sortLink: string = '';
+  public sortStyle: string = SortBarStyle.BAR;
   public sortAttempts: number = 0;
   public elementCount: number = 400;
   public minValue: number = 5;
@@ -34,8 +35,13 @@ export class SortingVisualizerComponent implements OnInit {
   public showCredits: boolean = true;
   public enableAudio: boolean = false;
   public showValues: boolean = false;
+
+  public readonly sortStyles: string[] = [
+    SortBarStyle.BAR,
+    SortBarStyle.POINT
+  ];
   
-  public sortAlgorithms: any[] = [
+  public readonly sortAlgorithms: any[] = [
     {
       category: 'Partitioning',
       algorithms: [
@@ -94,6 +100,12 @@ export class SortingVisualizerComponent implements OnInit {
           value: 'bubble',
           description: '',
           link: ''
+        },
+        {
+          label: 'Gnome Sort',
+          value: 'gnome',
+          description: '',
+          link: ''
         }
       ]
     }
@@ -116,8 +128,8 @@ export class SortingVisualizerComponent implements OnInit {
     this._scrapAlgorithmInformation();
   }
 
-  @HostListener('window:resize')
-  @HostListener('window:orientationchange')
+  //@HostListener('window:resize')
+  //@HostListener('window:orientationchange')
   public windowChange(): void {
     this.viewWidth = window.innerWidth;
     this.viewHeight = window.innerHeight;
@@ -130,7 +142,7 @@ export class SortingVisualizerComponent implements OnInit {
     this.sortAlgorithms.forEach(category => {
       if (category === 'Library') return;
       category.algorithms.forEach((algo: any) => {
-        this._sortingVisualizerService.getWikipediaSummary(algo.value + 'sort').then((res: any) => {
+        this._sortingVisualizerService.getWikipediaSummary(algo.value + ' sort').then((res: any) => {
           if (res) {
             algo.description = res.extract;
             if (res.content_urls && res.content_urls.desktop) {
@@ -163,6 +175,7 @@ export class SortingVisualizerComponent implements OnInit {
     for (let i: number = 0; i < this.elementCount; i++) {
       let sortBar: SortBarComponent = new SortBarComponent;
       sortBar.id = 'bar' + i.toString();
+      sortBar.style = this.sortStyle;
       sortBar.sortDelay = this.sortDelay;
       sortBar.value = this._randomNumberFromRange(this.minValue, this.maxValue);
       sortBar.showValue = this.showValues;
@@ -210,6 +223,9 @@ export class SortingVisualizerComponent implements OnInit {
         break;
       case 'bubble':
         algorithms.bubbleSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'gnome':
+        algorithms.gnomeSort(this, array).then(() => this.sorting = false);
         break;
     }
   }
