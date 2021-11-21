@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
@@ -31,7 +31,7 @@ export class SortingVisualizerComponent implements OnInit {
   public showControlPanel: boolean = true;
   public showSettings: boolean = true;
   public showStatistics: boolean = true;
-  public showInfo: boolean = false;
+  public showInfo: boolean = true;
   public showCredits: boolean = true;
   public enableAudio: boolean = false;
   public showValues: boolean = false;
@@ -111,8 +111,7 @@ export class SortingVisualizerComponent implements OnInit {
     }
   ];
 
-  constructor(private _sortingVisualizerService: SortingVisualizerService,
-    private _renderer2: Renderer2) { }
+  constructor(private _sortingVisualizerService: SortingVisualizerService) { }
 
   public sleep(delay: number): Promise<void> {
     return new Promise(resolve => {

@@ -1,11 +1,11 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'sort-bar',
   templateUrl: './sort-bar.component.html',
   styleUrls: ['./sort-bar.component.scss']
 })
-export class SortBarComponent implements OnInit {
+export class SortBarComponent  {
 
   @Input('id') public id: string = '';
   @Input('color') public color: string = SortBarColor.NORMAL;
@@ -16,8 +16,6 @@ export class SortBarComponent implements OnInit {
   public hoverValue: boolean = false;
 
   constructor() {}
-
-  public ngOnInit(): void {}
 
   @HostListener('mouseover')
   public hoverShowValue(): void {
