@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 
 import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
@@ -35,6 +35,7 @@ export class SortingVisualizerComponent implements OnInit {
   public showCredits: boolean = true;
   public enableAudio: boolean = false;
   public showValues: boolean = false;
+  public loading: boolean = false;
 
   public readonly sortStyles: string[] = [
     SortBarStyle.BAR,
@@ -128,14 +129,12 @@ export class SortingVisualizerComponent implements OnInit {
     this._scrapAlgorithmInformation();
   }
 
-  //@HostListener('window:resize')
-  //@HostListener('window:orientationchange')
+  @HostListener('window:resize')
   public windowChange(): void {
-    this.viewWidth = window.innerWidth;
-    this.viewHeight = window.innerHeight;
-    this.elementCount = Math.floor((this.viewWidth / 4) * 0.75);
-    this.maxValue = Math.floor(this.viewHeight * 0.45);
-    this.resetArray();
+    this.loading = true;
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   private _scrapAlgorithmInformation(): void {
@@ -166,21 +165,25 @@ export class SortingVisualizerComponent implements OnInit {
     oscillator.stop(this.audioContext.currentTime + ms * 0.001);
   }
 
-  public resetArray(): void {
+  public async resetArray(): Promise<void> {
     if (this.enableAudio) this.playBeep(3, 10, 200);
     this.sortAttempts = 0;
     this.noOfCompares = 0;
     this.noOfSwaps = 0;
     this.sortArray.splice(0);
+    this.sorting = true;
     for (let i: number = 0; i < this.elementCount; i++) {
       let sortBar: SortBarComponent = new SortBarComponent;
       sortBar.id = 'bar' + i.toString();
       sortBar.style = this.sortStyle;
       sortBar.sortDelay = this.sortDelay;
       sortBar.value = this._randomNumberFromRange(this.minValue, this.maxValue);
+      if (this.enableAudio) this.playBeep(3, sortBar.value, 50);
       sortBar.showValue = this.showValues;
       this.sortArray.push(sortBar);
+      await this.sleep(10);
     }
+    this.sorting = false;
   }
 
   private _randomNumberFromRange(min: number, max: number) {
