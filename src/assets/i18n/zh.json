@@ -1,0 +1,40 @@
+{
+  "TITLE": "排序可视化器",
+  "HEADER": {
+    "MENU": "菜单",
+    "RESET": "重启",
+    "CHOOSE_ALGORITHM": "选择算法",
+    "START": "开始",
+    "STOP": "停止"
+  },
+  "SUBHEADER": {
+    "SETTINGS": {
+      "TITLE": "设置",
+      "ENABLE_AUDIO": "启用音频",
+      "SHOW_VALUES": "显示值数",
+      "VISUALISER_STYLE": "可视化风格",
+      "ELEMENT_COUNT": "生成数量",
+      "ELEMENT_COUNT_MIN_WARNING": "请输入最小数量2。",
+      "ELEMENT_COUNT_MAX_WARNING": "生成的数量超过窗口宽度。",
+      "MIN_MAX": "最小/最大值数",
+      "MIN_MAX_MIN_WARNING": "请输入最小值数1。",
+      "MIN_MAX_MAX_WARNING": "最大值数超过窗口高度。",
+      "DELAY": "延迟间隔",
+      "DELAY_NORMAL": "中",
+      "DELAY_FAST": "快",
+      "DELAY_SLOW": "慢"
+    },
+    "STATISTICS": {
+      "TITLE": "统计数据",
+      "SORT_ATTEMPTS": "排序次数",
+      "ELEMENTS": "生成数量",
+      "COMPARES": "比较次数",
+      "SWAPS": "交换次数"
+    },
+    "ALGORITHM_INFORMATION": {
+      "TITLE": "算法信息",
+      "NONE": "无",
+      "WIKIPEDIA": "维基百科"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "TITLE": "Sorting Visualizer",
+  "HEADER": {
+    "MENU": "Menu",
+    "RESET": "Reset",
+    "CHOOSE_ALGORITHM": "Choose algorithm",
+    "START": "Start",
+    "STOP": "Stop"
+  },
+  "SUBHEADER": {
+    "SETTINGS": {
+      "TITLE": "Settings",
+      "ENABLE_AUDIO": "Enable Audio",
+      "SHOW_VALUES": "Show Values",
+      "VISUALISER_STYLE": "Visualization Style",
+      "ELEMENT_COUNT": "Element Count",
+      "ELEMENT_COUNT_MIN_WARNING": "Please enter a min amount of 2.",
+      "ELEMENT_COUNT_MAX_WARNING": "Generated count exceed window width.",
+      "MIN_MAX": "Min / Max",
+      "MIN_MAX_MIN_WARNING": "Please enter a min value of 1.",
+      "MIN_MAX_MAX_WARNING": "Max value exceed window height.",
+      "DELAY": "Delay",
+      "DELAY_NORMAL": "Normal",
+      "DELAY_FAST": "Fast",
+      "DELAY_SLOW": "Slow"
+    },
+    "STATISTICS": {
+      "TITLE": "Statistics",
+      "SORT_ATTEMPTS": "Sort Attempts",
+      "ELEMENTS": "Elements",
+      "COMPARES": "Compares",
+      "SWAPS": "Swaps"
+    },
+    "ALGORITHM_INFORMATION": {
+      "TITLE": "Algorithm Information",
+      "NONE": "None",
+      "WIKIPEDIA": "Wikipedia"
+    }
+  }
+}

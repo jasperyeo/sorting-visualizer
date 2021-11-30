@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
@@ -12,8 +13,10 @@ import * as algorithms from './../../algorithms/index';
 })
 export class SortingVisualizerComponent implements OnInit {
 
+  @Input('langs') public langs: any[] = [];
   public readonly audioContext: AudioContext = new AudioContext();
   public sortArray: SortBarComponent[] = [];
+  public lang: string = 'en';
   public sortDelay: number = 50;
   public sortMethod: string = '';
   public sortDescription: string = '';
@@ -112,7 +115,7 @@ export class SortingVisualizerComponent implements OnInit {
     }
   ];
 
-  constructor(private _sortingVisualizerService: SortingVisualizerService) { }
+  constructor(private _sortingVisualizerService: SortingVisualizerService, private _translateService: TranslateService) { }
 
   public sleep(delay: number): Promise<void> {
     return new Promise(resolve => {
@@ -192,6 +195,10 @@ export class SortingVisualizerComponent implements OnInit {
 
   public stop(): void {
     this.sorting = false;
+  }
+
+  public selectLang(lang: string): void {
+    this._translateService.use(lang);
   }
 
   public selectAlgorithm(mode: string): void {

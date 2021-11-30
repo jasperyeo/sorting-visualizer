@@ -1,0 +1,40 @@
+{
+  "TITLE": "Penyortir Visualizer",
+  "HEADER": {
+    "MENU": "Menu",
+    "RESET": "Setel Ulang",
+    "CHOOSE_ALGORITHM": "Pilih algoritme",
+    "START": "Mulai",
+    "STOP": "Berhenti"
+  },
+  "SUBHEADER": {
+    "SETTINGS": {
+      "TITLE": "Pengaturan",
+      "ENABLE_AUDIO": "Aktifkan Audio",
+      "SHOW_VALUES": "Tampilkan Nilai",
+      "VISUALISER_STYLE": "Gaya Visualisasi",
+      "ELEMENT_COUNT": "Jumlah Elemen",
+      "ELEMENT_COUNT_MIN_WARNING": "Silakan masukkan jumlah minimal 2.",
+      "ELEMENT_COUNT_MAX_WARNING": "Jumlah yang dihasilkan melebihi lebar jendela.",
+      "MIN_MAX": "Min / Maks",
+      "MIN_MAX_MIN_WARNING": "Silakan masukkan nilai minimal 1.",
+      "MIN_MAX_MAX_WARNING": "Nilai maksimum melebihi tinggi jendela.",
+      "DELAY": "Tunda",
+      "DELAY_NORMAL": "Normal",
+      "DELAY_FAST": "Cepat",
+      "DELAY_SLOW": "Lambat"
+    },
+    "STATISTICS": {
+      "TITLE": "Statistik",
+      "SORT_ATTEMPTS": "Urutan Percobaan",
+      "ELEMENTS": "Elemen",
+      "COMPARES": "Bandingkan",
+      "SWAPS": "Swap"
+    },
+    "ALGORITHM_INFORMATION": {
+      "TITLE": "Informasi Algoritma",
+      "NONE": "Tidak ada",
+      "WIKIPEDIA": "Wikipedia"
+    }
+  }
+}
