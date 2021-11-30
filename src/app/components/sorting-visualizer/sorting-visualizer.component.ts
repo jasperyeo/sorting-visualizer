@@ -1,4 +1,5 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
@@ -12,8 +13,10 @@ import * as algorithms from './../../algorithms/index';
 })
 export class SortingVisualizerComponent implements OnInit {
 
+  @Input('langs') public langs: any[] = [];
   public readonly audioContext: AudioContext = new AudioContext();
   public sortArray: SortBarComponent[] = [];
+  public lang: string = 'en';
   public sortDelay: number = 50;
   public sortMethod: string = '';
   public sortDescription: string = '';
@@ -35,6 +38,7 @@ export class SortingVisualizerComponent implements OnInit {
   public showCredits: boolean = true;
   public enableAudio: boolean = false;
   public showValues: boolean = false;
+  public loading: boolean = false;
 
   public readonly sortStyles: string[] = [
     SortBarStyle.BAR,
@@ -111,7 +115,7 @@ export class SortingVisualizerComponent implements OnInit {
     }
   ];
 
-  constructor(private _sortingVisualizerService: SortingVisualizerService) { }
+  constructor(private _sortingVisualizerService: SortingVisualizerService, private _translateService: TranslateService) { }
 
   public sleep(delay: number): Promise<void> {
     return new Promise(resolve => {
@@ -128,14 +132,12 @@ export class SortingVisualizerComponent implements OnInit {
     this._scrapAlgorithmInformation();
   }
 
-  //@HostListener('window:resize')
-  //@HostListener('window:orientationchange')
+  @HostListener('window:resize')
   public windowChange(): void {
-    this.viewWidth = window.innerWidth;
-    this.viewHeight = window.innerHeight;
-    this.elementCount = Math.floor((this.viewWidth / 4) * 0.75);
-    this.maxValue = Math.floor(this.viewHeight * 0.45);
-    this.resetArray();
+    this.loading = true;
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   private _scrapAlgorithmInformation(): void {
@@ -166,21 +168,25 @@ export class SortingVisualizerComponent implements OnInit {
     oscillator.stop(this.audioContext.currentTime + ms * 0.001);
   }
 
-  public resetArray(): void {
+  public async resetArray(): Promise<void> {
     if (this.enableAudio) this.playBeep(3, 10, 200);
     this.sortAttempts = 0;
     this.noOfCompares = 0;
     this.noOfSwaps = 0;
     this.sortArray.splice(0);
+    this.sorting = true;
     for (let i: number = 0; i < this.elementCount; i++) {
       let sortBar: SortBarComponent = new SortBarComponent;
       sortBar.id = 'bar' + i.toString();
       sortBar.style = this.sortStyle;
       sortBar.sortDelay = this.sortDelay;
       sortBar.value = this._randomNumberFromRange(this.minValue, this.maxValue);
+      if (this.enableAudio) this.playBeep(3, sortBar.value, 50);
       sortBar.showValue = this.showValues;
       this.sortArray.push(sortBar);
+      await this.sleep(10);
     }
+    this.sorting = false;
   }
 
   private _randomNumberFromRange(min: number, max: number) {
@@ -189,6 +195,10 @@ export class SortingVisualizerComponent implements OnInit {
 
   public stop(): void {
     this.sorting = false;
+  }
+
+  public selectLang(lang: string): void {
+    this._translateService.use(lang);
   }
 
   public selectAlgorithm(mode: string): void {

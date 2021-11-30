@@ -46,7 +46,7 @@ $xl-breakpoint: 1em;
     background-color: rgba(1, 1, 1, 0.5);
     padding: 1.5rem 1rem;
     display: flex;
-    flex-wrap: wrap;
+    overflow-x: auto;
 
     &--select {
       width: fit-content;
@@ -105,6 +105,10 @@ $xl-breakpoint: 1em;
 
     button {
       margin: 0 1rem;
+    }
+
+    &--lang {
+      margin-left: auto;
     }
   }
 
@@ -177,11 +181,43 @@ $xl-breakpoint: 1em;
   }
 }
 
+.fullscreen-load {
+
+  &__overlay {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(1, 1, 1, 0.75);
+    animation: info-appear .2s ease-in-out;
+  }
+
+  &__text {
+    position: fixed;
+    color: white;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    width: fit-content;
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes info-appear {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes loading-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.75;
   }
 }

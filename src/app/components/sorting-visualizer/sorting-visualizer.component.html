@@ -5,11 +5,11 @@
       <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
       <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
     </div>
-    <h1 class="sort__header--menu" (click)="showControlPanel = !showControlPanel">Menu</h1>
-    <h1 class="sort__header--title">Sorting Visualizer</h1>
-    <button (click)="resetArray()" [disabled]="sorting">Generate</button>
+    <h1 class="sort__header--menu" (click)="showControlPanel = !showControlPanel">{{ 'HEADER.MENU' | translate }}</h1>
+    <h1 class="sort__header--title">{{ 'TITLE' | translate }}</h1>
+    <button (click)="resetArray()" [disabled]="sorting">{{ 'HEADER.RESET' | translate }}</button>
     <select name="sorts" id="sorts" [disabled]="sorting" [(ngModel)]="sortMethod" (change)="selectAlgorithm(sortMethod)" class="sort__header--select">
-      <option value="" disabled selected hidden>Choose algorithm</option>
+      <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
       <optgroup *ngFor="let category of sortAlgorithms" [label]="category?.category">
         <option *ngFor="let algorithm of category?.algorithms" [value]="algorithm?.value">{{ algorithm?.label }}</option>
       </optgroup>
@@ -18,68 +18,73 @@
       [disabled]="!sortMethod.length ||
       elementCount < 2 || (elementCount * 4) >= viewWidth ||
       minValue <= 0 || maxValue * 0.8 > viewHeight">
-      {{ sorting ? 'Stop' : 'Start' }}
+      {{ sorting ? ('HEADER.STOP' | translate) : ('HEADER.START' | translate) }}
     </button>
+    <div class="sort__header--lang">
+      <select name="langs" id="langs" [(ngModel)]="lang" (change)="selectLang(lang)" class="sort__header--select">
+        <option *ngFor="let lang of langs" [value]="lang?.value">{{ lang?.label }}</option>
+      </select>
+    </div>
   </div>
   <div class="sort__subheader">
     <div *ngIf="showControlPanel" class="sort__info" #settings>
       <p class="sort__info--header" (click)="showSettings = !showSettings">
-        <span class="sort__info--title"><span class="sort__info--title--icon">&#9881;</span> Settings:</span>
+        <span class="sort__info--title"><span class="sort__info--title--icon">&#9881;</span> {{ 'SUBHEADER.SETTINGS.TITLE' | translate }}:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showSettings }">&#x25B2;</span>
       </p>
       <div *ngIf="showControlPanel && showSettings">
         <br>
         <input type="checkbox" id="enable-audio" [(ngModel)]="enableAudio"/>
-        <label for="enable-audio">Enable Audio</label><br>
+        <label for="enable-audio">{{ 'SUBHEADER.SETTINGS.ENABLE_AUDIO' | translate }}</label><br>
         <input type="checkbox" id="show-values" [(ngModel)]="showValues"/>
-        <label for="show-values">Show Values</label>
+        <label for="show-values">{{ 'SUBHEADER.SETTINGS.SHOW_VALUES' | translate }}</label>
         <br><br>
         <hr />
         <br>
-        <label>Visualizer Style:</label>
+        <label>{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
         <select name="styles" id="styles" [disabled]="sorting" [(ngModel)]="sortStyle">
           <option *ngFor="let style of sortStyles" [value]="style">{{ style | titlecase }}</option>
         </select>
         <br><br>
-        <label>Element Count:</label>
+        <label>{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
         <input type="number" min="2" [(ngModel)]="elementCount" [disabled]="sorting"/>
-        <label *ngIf="elementCount < 2" class="sort__info--warning">Please enter a minimum count of 2.</label>
-        <label *ngIf="elementCount >= viewWidth / 12" class="sort__info--warning">Generated count exceed window width.</label>
+        <label *ngIf="elementCount < 2" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MIN_WARNING' | translate }}</label>
+        <label *ngIf="elementCount >= viewWidth / 12" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MAX_WARNING' | translate }}</label>
         <br><br>
-        <label>Min / Max:</label>
+        <label>{{ 'SUBHEADER.SETTINGS.MIN_MAX' | translate }}:</label>
         <div>
           <input type="number" class="sort__info--input-half" min="0" [(ngModel)]="minValue" [disabled]="sorting"/>
           <input type="number" class="sort__info--input-half" [min]="minValue" [(ngModel)]="maxValue" [disabled]="sorting"/>
         </div>
-        <label *ngIf="minValue <= 0" class="sort__info--warning">Please enter a min value of 1.</label>
-        <label *ngIf="maxValue > viewHeight * 0.45" class="sort__info--warning">Max value exceed window height.</label>
+        <label *ngIf="minValue <= 0" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MIN_WARNING' | translate }}</label>
+        <label *ngIf="maxValue > viewHeight * 0.45" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MAX_WARNING' | translate }}</label>
         <br>
-        <label>Delay: {{ sortDelay === 0 ? 'Fast' : sortDelay === 100 ? 'Slow' : 'Normal'  }}</label>
+        <label>{{ 'SUBHEADER.SETTINGS.DELAY' | translate }}: {{ sortDelay === 0 ? ('SUBHEADER.SETTINGS.DELAY_FAST' | translate) : sortDelay === 100 ? ('SUBHEADER.SETTINGS.DELAY_SLOW' | translate) : ('SUBHEADER.SETTINGS.DELAY_NORMAL' | translate) }}</label>
         <input type="range" id="sortDelay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay">
       </div>
     </div>
     <div *ngIf="showControlPanel" class="sort__info" #statistics>
       <p class="sort__info--header" (click)="showStatistics = !showStatistics">
-        <span class="sort__info--title"><span class="sort__info--title--icon">&#9871;</span> Statistics:</span>
+        <span class="sort__info--title"><span class="sort__info--title--icon">&#9871;</span> {{ 'SUBHEADER.STATISTICS.TITLE' | translate }}:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showStatistics }">&#x25B2;</span>
       </p>
       <p *ngIf="showControlPanel && showStatistics">
         <br>
-        Sort Attempts:&nbsp;<span class="sort__info--value">{{ sortAttempts }}</span><br>
-        Elements:&nbsp;<span class="sort__info--value">{{ sortArray?.length }}</span><br>
-        Compares:&nbsp;<span class="sort__info--value">{{ noOfCompares }}</span><br>
-        Swaps:&nbsp;<span class="sort__info--value">{{ noOfSwaps }}</span><br>
+        {{ 'SUBHEADER.STATISTICS.SORT_ATTEMPTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortAttempts }}</span><br>
+        {{ 'SUBHEADER.STATISTICS.ELEMENTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortArray?.length }}</span><br>
+        {{ 'SUBHEADER.STATISTICS.COMPARES' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfCompares }}</span><br>
+        {{ 'SUBHEADER.STATISTICS.SWAPS' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfSwaps }}</span><br>
       </p>
     </div>
     <div *ngIf="showControlPanel" class="sort__info sort__info--info" #information>
       <p class="sort__info--header" (click)="showInfo = !showInfo">
-        <span class="sort__info--title"><span class="sort__info--title--icon">?</span> Algorithm Information:</span>
+        <span class="sort__info--title"><span class="sort__info--title--icon">?</span> {{ 'SUBHEADER.ALGORITHM_INFORMATION.TITLE' | translate }}:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showInfo }">&#x25B2;</span>
       </p>
       <p *ngIf="showControlPanel && showInfo">
         <br>
-        <span>{{ sortMethod ? (sortMethod | titlecase) + ' Sort' : 'None' }}</span><br>
-        {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="(sortMethod | titlecase) + ' Sort'">Wikipedia.</a>
+        <span>{{ sortMethod ? (sortMethod | titlecase) + ' Sort' : ('SUBHEADER.ALGORITHM_INFORMATION.NONE' | translate) }}</span><br>
+        {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="(sortMethod | titlecase) + ' Sort'">{{ 'SUBHEADER.ALGORITHM_INFORMATION.WIKIPEDIA' | translate }}</a>
       </p>
     </div>
   </div>
@@ -87,5 +92,8 @@
     <sort-bar *ngFor="let bar of sortArray; index as i;"
       [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [color]="bar.color" [style]="bar.style" [showValue]="showValues">
     </sort-bar>
+  </div>
+  <div *ngIf="loading" class="fullscreen-load__overlay">
+    <p class="fullscreen-load__text">Loading...</p>
   </div>
 </div>
