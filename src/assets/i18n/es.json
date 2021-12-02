@@ -1,0 +1,43 @@
+{
+  "TITLE": "Visualizador Ordenado",
+  "LOADING": "Cargando...",
+  "HEADER": {
+    "MENU": "Menú",
+    "RESET": "Reiniciar",
+    "CHOOSE_ALGORITHM": "Elija algoritmo",
+    "START": "Comienzo",
+    "STOP": "Parada"
+  },
+  "SUBHEADER": {
+    "SETTINGS": {
+      "TITLE": "Ajustes",
+      "ENABLE_AUDIO": "Habilitar Audio",
+      "SHOW_VALUES": "Mostrar Valores",
+      "VISUALISER_STYLE": "Estilo de Visualización",
+      "BAR": "Barra",
+      "POINT": "Punto",
+      "ELEMENT_COUNT": "Recuento de Elementos",
+      "ELEMENT_COUNT_MIN_WARNING": "Ingrese una cantidad mínima de 2.",
+      "ELEMENT_COUNT_MAX_WARNING": "El recuento generado supera el ancho de la ventana.",
+      "MIN_MAX": "Mínimo / máximo",
+      "MIN_MAX_MIN_WARNING": "Introduzca un valor mínimo de 1.",
+      "MIN_MAX_MAX_WARNING": "El valor máximo excede la altura de la ventana.",
+      "DELAY": "Demora",
+      "DELAY_NORMAL": "Normal",
+      "DELAY_FAST": "Rápido",
+      "DELAY_SLOW": "Lento"
+    },
+    "STATISTICS": {
+      "TITLE": "Estadísticas",
+      "SORT_ATTEMPTS": "Intentos de Ordenación",
+      "ELEMENTS": "Elementos",
+      "COMPARES": "Compara",
+      "SWAPS": "Intercambios"
+    },
+    "ALGORITHM_INFORMATION": {
+      "TITLE": "Información del Algoritmo",
+      "NONE": "Ninguno",
+      "WIKIPEDIA": "Wikipedia"
+    }
+  }
+}
