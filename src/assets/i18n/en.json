@@ -1,5 +1,6 @@
 {
   "TITLE": "Sorting Visualizer",
+  "LOADING": "Loading...",
   "HEADER": {
     "MENU": "Menu",
     "RESET": "Reset",
@@ -13,6 +14,8 @@
       "ENABLE_AUDIO": "Enable Audio",
       "SHOW_VALUES": "Show Values",
       "VISUALISER_STYLE": "Visualization Style",
+      "BAR": "Bar",
+      "POINT": "Point",
       "ELEMENT_COUNT": "Element Count",
       "ELEMENT_COUNT_MIN_WARNING": "Please enter a min amount of 2.",
       "ELEMENT_COUNT_MAX_WARNING": "Generated count exceed window width.",

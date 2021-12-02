@@ -49,68 +49,39 @@ export class SortingVisualizerComponent implements OnInit {
     {
       category: 'Partitioning',
       algorithms: [
-        {
-          label: 'Quick Sort',
-          value: 'quick',
-          description: '',
-          link: ''
-        }
+        { label: 'Quick Sort', value: 'quick' }
       ]
     },
     {
       category: 'Merging',
       algorithms: [
-        {
-          label: 'Merge Sort',
-          value: 'merge',
-          description: '',
-          link: ''
-        }
+        { label: 'Merge Sort',value: 'merge' }
       ]
     },
     {
       category: 'Selection',
       algorithms: [
-        {
-          label: 'Selection Sort',
-          value: 'selection',
-          description: '',
-          link: ''
-        },
-        {
-          label: 'Heap Sort',
-          value: 'heap',
-          description: '',
-          link: ''
-        }
+        { label: 'Selection Sort', value: 'selection' },
+        { label: 'Heap Sort', value: 'heap' }
       ]
     },
     {
       category: 'Insertion',
       algorithms: [
-        {
-          label: 'Insertion Sort',
-          value: 'insertion',
-          description: '',
-          link: ''
-        }
+        { label: 'Insertion Sort', value: 'insertion' }
       ]
     },
     {
       category: 'Exchanging',
       algorithms: [
-        {
-          label: 'Bubble Sort',
-          value: 'bubble',
-          description: '',
-          link: ''
-        },
-        {
-          label: 'Gnome Sort',
-          value: 'gnome',
-          description: '',
-          link: ''
-        }
+        { label: 'Bubble Sort', value: 'bubble' },
+        { label: 'Gnome Sort', value: 'gnome' }
+      ]
+    },
+    {
+      category: 'Non-Comparison',
+      algorithms: [
+        { label: 'Radix Sort', value: 'radix' }
       ]
     }
   ];
@@ -124,6 +95,10 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    if (localStorage.getItem('lang')) {
+      this.lang = localStorage.getItem('lang') as string;
+      this.selectLang(this.lang);
+    }
     this.viewWidth = window.innerWidth;
     this.viewHeight = window.innerHeight;
     this.elementCount = Math.floor(this.viewWidth / 14);
@@ -144,7 +119,7 @@ export class SortingVisualizerComponent implements OnInit {
     this.sortAlgorithms.forEach(category => {
       if (category === 'Library') return;
       category.algorithms.forEach((algo: any) => {
-        this._sortingVisualizerService.getWikipediaSummary(algo.value + ' sort').then((res: any) => {
+        this._sortingVisualizerService.getWikipediaSummary(algo.value + '_sort').then((res: any) => {
           if (res) {
             algo.description = res.extract;
             if (res.content_urls && res.content_urls.desktop) {
@@ -198,7 +173,9 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   public selectLang(lang: string): void {
-    this._translateService.use(lang);
+    this.loading = true;
+    localStorage.setItem('lang', lang);
+    this._translateService.use(lang).toPromise().then(res => this.loading = false);
   }
 
   public selectAlgorithm(mode: string): void {

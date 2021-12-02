@@ -1,5 +1,6 @@
 {
   "TITLE": "Penyortir Visualizer",
+  "LOADING": "Memuat...",
   "HEADER": {
     "MENU": "Menu",
     "RESET": "Setel Ulang",
@@ -13,6 +14,8 @@
       "ENABLE_AUDIO": "Aktifkan Audio",
       "SHOW_VALUES": "Tampilkan Nilai",
       "VISUALISER_STYLE": "Gaya Visualisasi",
+      "BAR": "Batang",
+      "POINT": "Titik",
       "ELEMENT_COUNT": "Jumlah Elemen",
       "ELEMENT_COUNT_MIN_WARNING": "Silakan masukkan jumlah minimal 2.",
       "ELEMENT_COUNT_MAX_WARNING": "Jumlah yang dihasilkan melebihi lebar jendela.",

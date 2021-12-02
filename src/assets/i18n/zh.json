@@ -1,5 +1,6 @@
 {
   "TITLE": "排序可视化器",
+  "LOADING": "加载...",
   "HEADER": {
     "MENU": "菜单",
     "RESET": "重启",
@@ -13,6 +14,8 @@
       "ENABLE_AUDIO": "启用音频",
       "SHOW_VALUES": "显示值数",
       "VISUALISER_STYLE": "可视化风格",
+      "BAR": "棍",
+      "POINT": "点",
       "ELEMENT_COUNT": "生成数量",
       "ELEMENT_COUNT_MIN_WARNING": "请输入最小数量2。",
       "ELEMENT_COUNT_MAX_WARNING": "生成的数量超过窗口宽度。",
