@@ -12,6 +12,7 @@ export class AppComponent {
   public readonly langs: any[] = [
     { label: 'English', value: 'en' },
     { label: '中文', value: 'zh' },
+    { label: 'Español', value: 'es' },
     { label: 'Bahasa', value: 'id' },
   ];
 
