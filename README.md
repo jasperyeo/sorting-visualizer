@@ -8,7 +8,7 @@
 
 # Sorting Visualizer
 
-Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and delays.
+Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and timings.
 
 ## Implemented Sorting Algorithms
 
