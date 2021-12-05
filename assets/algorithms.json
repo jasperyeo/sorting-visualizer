@@ -1,0 +1,34 @@
+[
+  {
+    "category": "Partitioning",
+    "algorithms": [
+      { "active": true, "label": "Quick Sort", "value": "quick" }
+    ]
+  },
+  {
+    "category": "Merging",
+    "algorithms": [
+      { "active": true, "label": "Merge Sort", "value": "merge" }
+    ]
+  },
+  {
+    "category": "Selection",
+    "algorithms": [
+      { "active": true, "label": "Selection Sort", "value": "selection" },
+      { "active": true, "label": "Heap Sort", "value": "heap" }
+    ]
+  },
+  {
+    "category": "Insertion",
+    "algorithms": [
+      { "active": true, "label": "Insertion Sort", "value": "insertion" }
+    ]
+  },
+  {
+    "category": "Exchanging",
+    "algorithms": [
+      { "active": true, "label": "Bubble Sort", "value": "bubble" },
+      { "active": true, "label": "Gnome Sort", "value": "gnome" }
+    ]
+  }
+]
