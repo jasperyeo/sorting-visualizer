@@ -6,6 +6,8 @@ import { SortingVisualizerService } from './sorting-visualizer.service';
 
 import * as algorithms from './../../algorithms/index';
 
+declare const window: any;
+
 @Component({
   selector: 'sorting-visualizer',
   templateUrl: './sorting-visualizer.component.html',
@@ -45,46 +47,7 @@ export class SortingVisualizerComponent implements OnInit {
     SortBarStyle.POINT
   ];
   
-  public readonly sortAlgorithms: any[] = [
-    {
-      category: 'Partitioning',
-      algorithms: [
-        { label: 'Quick Sort', value: 'quick' }
-      ]
-    },
-    {
-      category: 'Merging',
-      algorithms: [
-        { label: 'Merge Sort',value: 'merge' }
-      ]
-    },
-    {
-      category: 'Selection',
-      algorithms: [
-        { label: 'Selection Sort', value: 'selection' },
-        { label: 'Heap Sort', value: 'heap' }
-      ]
-    },
-    {
-      category: 'Insertion',
-      algorithms: [
-        { label: 'Insertion Sort', value: 'insertion' }
-      ]
-    },
-    {
-      category: 'Exchanging',
-      algorithms: [
-        { label: 'Bubble Sort', value: 'bubble' },
-        { label: 'Gnome Sort', value: 'gnome' }
-      ]
-    },
-    {
-      category: 'Non-Comparison',
-      algorithms: [
-        { label: 'Radix Sort', value: 'radix' }
-      ]
-    }
-  ];
+  public sortAlgorithms: any[] = [];
 
   constructor(private _sortingVisualizerService: SortingVisualizerService, private _translateService: TranslateService) { }
 
@@ -95,6 +58,10 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this._sortingVisualizerService.getJSON('./../../../assets/algorithms.json').then((res: any) => {
+      this.sortAlgorithms = res;
+      this._scrapAlgorithmInformation();
+    });
     if (localStorage.getItem('lang')) {
       this.lang = localStorage.getItem('lang') as string;
       this.selectLang(this.lang);
@@ -104,7 +71,6 @@ export class SortingVisualizerComponent implements OnInit {
     this.elementCount = Math.floor(this.viewWidth / 14);
     this.maxValue = Math.floor(this.viewHeight * 0.45);
     this.resetArray();
-    this._scrapAlgorithmInformation();
   }
 
   @HostListener('window:resize')
@@ -119,7 +85,8 @@ export class SortingVisualizerComponent implements OnInit {
     this.sortAlgorithms.forEach(category => {
       if (category === 'Library') return;
       category.algorithms.forEach((algo: any) => {
-        this._sortingVisualizerService.getWikipediaSummary(algo.value + '_sort').then((res: any) => {
+        let sortString: string[] = (algo.value as string).split(' ');
+        this._sortingVisualizerService.getWikipediaSummary(sortString.pop() + '_sort').then((res: any) => {
           if (res) {
             algo.description = res.extract;
             if (res.content_urls && res.content_urls.desktop) {
@@ -192,27 +159,30 @@ export class SortingVisualizerComponent implements OnInit {
   public sort(array: SortBarComponent[], mode: string): void {
     this.sortAttempts++;
     this.sorting = true;
-    switch (mode) {
-      case 'quick':
+    switch (mode.toUpperCase()) {
+      case 'QUICK':
         algorithms.quickSort(this, array, 0, array.length - 1).then(() => this.sorting = false);
         break;
-      case 'merge':
+      case 'MERGE':
         algorithms.mergeSort(this, array, 0, array.length).then(() => this.sorting = false);
         break;
-      case 'selection':
+      case 'SELECTION':
         algorithms.selectionSort(this, array).then(() => this.sorting = false);
         break;
-      case 'heap':
+      case 'HEAP':
         algorithms.heapSort(this, array).then(() => this.sorting = false);
         break;
-      case 'insertion':
+      case 'INSERTION':
         algorithms.insertionSort(this, array).then(() => this.sorting = false);
         break;
-      case 'bubble':
+      case 'BUBBLE':
         algorithms.bubbleSort(this, array).then(() => this.sorting = false);
         break;
-      case 'gnome':
+      case 'GNOME':
         algorithms.gnomeSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'LSD RADIX':
+        algorithms.lsdRadixSort(this, array).then(() => this.sorting = false);
         break;
     }
   }
