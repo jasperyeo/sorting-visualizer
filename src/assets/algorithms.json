@@ -1,0 +1,40 @@
+[
+  {
+    "category": "Partitioning",
+    "algorithms": [
+      { "active": true, "label": "Quick Sort", "value": "Quick" }
+    ]
+  },
+  {
+    "category": "Merging",
+    "algorithms": [
+      { "active": true, "label": "Merge Sort", "value": "Merge" }
+    ]
+  },
+  {
+    "category": "Selection",
+    "algorithms": [
+      { "active": true, "label": "Selection Sort", "value": "Selection" },
+      { "active": true, "label": "Heap Sort", "value": "Heap" }
+    ]
+  },
+  {
+    "category": "Insertion",
+    "algorithms": [
+      { "active": true, "label": "Insertion Sort", "value": "Insertion" }
+    ]
+  },
+  {
+    "category": "Exchanging",
+    "algorithms": [
+      { "active": true, "label": "Bubble Sort", "value": "Bubble" },
+      { "active": true, "label": "Gnome Sort", "value": "Gnome" }
+    ]
+  },
+  {
+    "category": "Non-Comparison",
+    "algorithms": [
+      { "active": true, "label": "LSD Radix Sort", "value": "LSD Radix" }
+    ]
+  }
+]

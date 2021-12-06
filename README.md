@@ -29,6 +29,9 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 - Bubble Sort
 - Gnome Sort
 
+### Non-Comparison
+- LSD Radix Sort
+
 ## Development Information
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
