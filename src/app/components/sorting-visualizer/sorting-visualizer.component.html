@@ -8,7 +8,7 @@
     <h1 class="sort__header--menu" (click)="showControlPanel = !showControlPanel">{{ 'HEADER.MENU' | translate }}</h1>
     <h1 class="sort__header--title">{{ 'TITLE' | translate }}</h1>
     <button (click)="resetArray()" [disabled]="sorting">{{ 'HEADER.RESET' | translate }}</button>
-    <select name="sorts" id="sorts" [disabled]="sorting" [(ngModel)]="sortMethod" (change)="selectAlgorithm(sortMethod)" class="sort__header--select">
+    <select name="sorts" id="sorts" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod" (change)="selectAlgorithm(sortMethod)" class="sort__header--select">
       <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
       <optgroup *ngFor="let category of sortAlgorithms" [label]="category?.category">
         <option *ngFor="let algorithm of category?.algorithms" [value]="algorithm?.value">{{ algorithm?.label }}</option>
@@ -43,7 +43,7 @@
         <br>
         <label>{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
         <select name="styles" id="styles" [disabled]="sorting" [(ngModel)]="sortStyle">
-          <option *ngFor="let style of sortStyles" [value]="style">{{ style | titlecase }}</option>
+          <option *ngFor="let style of sortStyles" [value]="style">{{ ('SUBHEADER.SETTINGS.' + style | uppercase) | translate }}</option>
         </select>
         <br><br>
         <label>{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
@@ -81,11 +81,11 @@
         <span class="sort__info--title"><span class="sort__info--title--icon">?</span> {{ 'SUBHEADER.ALGORITHM_INFORMATION.TITLE' | translate }}:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showInfo }">&#x25B2;</span>
       </p>
-      <p *ngIf="showControlPanel && showInfo">
+      <label *ngIf="showControlPanel && showInfo">
         <br>
-        <span>{{ sortMethod ? (sortMethod | titlecase) + ' Sort' : ('SUBHEADER.ALGORITHM_INFORMATION.NONE' | translate) }}</span><br>
-        {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="(sortMethod | titlecase) + ' Sort'">{{ 'SUBHEADER.ALGORITHM_INFORMATION.WIKIPEDIA' | translate }}</a>
-      </p>
+        <span>{{ sortMethod ? sortMethod + ' Sort' : ('SUBHEADER.ALGORITHM_INFORMATION.NONE' | translate) }}</span><br>
+        {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="sortMethod + ' Sort'">{{ 'SUBHEADER.ALGORITHM_INFORMATION.WIKIPEDIA' | translate }}</a>
+      </label>
     </div>
   </div>
   <div class="sort__container">
@@ -94,6 +94,6 @@
     </sort-bar>
   </div>
   <div *ngIf="loading" class="fullscreen-load__overlay">
-    <p class="fullscreen-load__text">Loading...</p>
+    <p class="fullscreen-load__text">{{ 'LOADING' | translate }}</p>
   </div>
 </div>

@@ -8,7 +8,7 @@
 
 # Sorting Visualizer
 
-Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and delays.
+Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and timings.
 
 ## Implemented Sorting Algorithms
 
@@ -28,6 +28,9 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 ### Exchanging
 - Bubble Sort
 - Gnome Sort
+
+### Non-Comparison
+- LSD Radix Sort
 
 ## Development Information
 
