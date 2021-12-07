@@ -12,6 +12,7 @@ export class SortBarComponent  {
   @Input('style') public style: string = SortBarStyle.BAR;
   @Input('sortDelay') public sortDelay: number = 20;
   @Input('value') public value: number = 100;
+  @Input('valueString') public valueString: string = '100';
   @Input('showValue') public showValue: boolean = true;
   public hoverValue: boolean = false;
 
