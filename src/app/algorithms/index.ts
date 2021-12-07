@@ -6,3 +6,4 @@ export * from './insertion-sort';
 export * from './bubble-sort';
 export * from './gnome-sort';
 export * from './lsd-radix-sort';
+export * from './msd-radix-sort';

@@ -90,7 +90,7 @@
   </div>
   <div class="sort__container">
     <sort-bar *ngFor="let bar of sortArray; index as i;"
-      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [color]="bar.color" [style]="bar.style" [showValue]="showValues">
+      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [style]="bar.style" [showValue]="showValues">
     </sort-bar>
   </div>
   <div *ngIf="loading" class="fullscreen-load__overlay">

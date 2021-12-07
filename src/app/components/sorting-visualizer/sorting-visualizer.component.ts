@@ -123,6 +123,7 @@ export class SortingVisualizerComponent implements OnInit {
       sortBar.style = this.sortStyle;
       sortBar.sortDelay = this.sortDelay;
       sortBar.value = this._randomNumberFromRange(this.minValue, this.maxValue);
+      sortBar.valueString = sortBar.value.toString();
       if (this.enableAudio) this.playBeep(3, sortBar.value, 50);
       sortBar.showValue = this.showValues;
       this.sortArray.push(sortBar);
@@ -183,6 +184,9 @@ export class SortingVisualizerComponent implements OnInit {
         break;
       case 'LSD RADIX':
         algorithms.lsdRadixSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'MSD RADIX':
+        algorithms.msdRadixSort(this, array, this.maxValue).then(() => this.sorting = false);
         break;
     }
   }

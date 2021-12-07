@@ -34,7 +34,8 @@
   {
     "category": "Non-Comparison",
     "algorithms": [
-      { "active": true, "label": "LSD Radix Sort", "value": "LSD Radix" }
+      { "active": true, "label": "LSD Radix Sort", "value": "LSD Radix" },
+      { "active": true, "label": "MSD Radix Sort", "value": "MSD Radix" }
     ]
   }
 ]
