@@ -7,7 +7,7 @@
     </div>
     <h1 class="sort__header--menu" (click)="showControlPanel = !showControlPanel">{{ 'HEADER.MENU' | translate }}</h1>
     <h1 class="sort__header--title">{{ 'TITLE' | translate }}</h1>
-    <button (click)="resetArray()" [disabled]="sorting">{{ 'HEADER.RESET' | translate }}</button>
+    <button (click)="resetArray()" [disabled]="sorting" [title]="'HEADER.RESET' | translate">&#8634;</button>
     <select name="sorts" id="sorts" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod" (change)="selectAlgorithm(sortMethod)" class="sort__header--select">
       <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
       <optgroup *ngFor="let category of sortAlgorithms" [label]="category?.category">
@@ -17,8 +17,10 @@
     <button (click)="!sorting ? sort(sortArray, sortMethod) : stop()"
       [disabled]="!sortMethod.length ||
       elementCount < 2 || (elementCount * 4) >= viewWidth ||
-      minValue <= 0 || maxValue * 0.8 > viewHeight">
-      {{ sorting ? ('HEADER.STOP' | translate) : ('HEADER.START' | translate) }}
+      minValue <= 0 || maxValue * 0.8 > viewHeight"
+      [title]="sorting ? ('HEADER.STOP' | translate) : ('HEADER.START' | translate)">
+      <span *ngIf="sorting">&#8718;</span>
+      <span *ngIf="!sorting">&#8811;</span>
     </button>
     <div class="sort__header--lang">
       <select name="langs" id="langs" [(ngModel)]="lang" (change)="selectLang(lang)" class="sort__header--select">
@@ -90,7 +92,7 @@
   </div>
   <div class="sort__container">
     <sort-bar *ngFor="let bar of sortArray; index as i;"
-      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [color]="bar.color" [style]="bar.style" [showValue]="showValues">
+      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [style]="bar.style" [showValue]="showValues">
     </sort-bar>
   </div>
   <div *ngIf="loading" class="fullscreen-load__overlay">

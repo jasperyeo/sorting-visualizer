@@ -10,6 +10,8 @@
 
 Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and timings.
 
+[Link to site >](https://jasperyeo.github.io/sorting-visualizer/)
+
 ## Implemented Sorting Algorithms
 
 ### Partitioning
@@ -30,7 +32,8 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 - Gnome Sort
 
 ### Non-Comparison
-- LSD Radix Sort
+- Least Significant Digit (LSD) Radix Sort
+- Most Significant Digit (MSD) Radix Sort
 
 ## Development Information
 
