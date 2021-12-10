@@ -17,15 +17,13 @@ export async function heapSort(visualizer: SortingVisualizerComponent, array: So
 
 async function heapify(visualizer: SortingVisualizerComponent, array: SortBarComponent[], size: number, i: number): Promise<void> {
   let max: number = i;
-  const left: number = 2 * i + 1;
-  const right: number = 2 * i + 2;
+  const left: number = 2 * i + 1, right: number = 2 * i + 2;
   if (left < size && compare(visualizer, array[left], array[max])) {
     max = left;
   }
   if (right < size && compare(visualizer, array[right], array[max])) {
     max = right;
   }
-
   if (max !== i) {
     await swap(visualizer, array, i, max);
     await heapify(visualizer, array, size, max);

@@ -6,10 +6,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from './../../shared/shared.module';
 
 import { SortingVisualizerComponent } from './sorting-visualizer.component';
+import { IntroDialogComponent } from './intro-dialog/intro-dialog.component';
 
 @NgModule({
   declarations: [
-    SortingVisualizerComponent
+    SortingVisualizerComponent,
+    IntroDialogComponent
   ],
   imports: [
     CommonModule,

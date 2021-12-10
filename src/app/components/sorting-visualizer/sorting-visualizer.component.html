@@ -95,7 +95,16 @@
       [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [style]="bar.style" [showValue]="showValues">
     </sort-bar>
   </div>
-  <div *ngIf="loading" class="fullscreen-load__overlay">
-    <p class="fullscreen-load__text">{{ 'LOADING' | translate }}</p>
+  <div class="sort__footer">
+    <p class="sort__footer--link" [title]="'FOOTER.ABOUT' | translate" (click)="showIntro = true">{{ 'FOOTER.ABOUT' | translate }}</p>
+    <p class="sort__footer--link" [title]="'FOOTER.BIG_O' | translate">{{ 'FOOTER.BIG_O' | translate }}</p>
+    <p class="sort__footer--link" [title]="'FOOTER.INSTRUCTIONS' | translate">{{ 'FOOTER.INSTRUCTIONS' | translate }}</p>
+    <a class="sort__footer--link" [title]="'FOOTER.GITHUB' | translate" href="https://github.com/jasperyeo/sorting-visualizer" target="_blank">{{ 'FOOTER.GITHUB' | translate }}</a>
   </div>
 </div>
+
+<div *ngIf="loading" class="fullscreen-load__overlay">
+  <p class="fullscreen-load__text">{{ 'LOADING' | translate }}</p>
+</div>
+
+<intro-dialog *ngIf="showIntro" (onDialogClose)="showIntro = false"></intro-dialog>

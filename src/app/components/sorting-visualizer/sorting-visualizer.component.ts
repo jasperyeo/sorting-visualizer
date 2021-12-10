@@ -1,12 +1,10 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
 
 import * as algorithms from './../../algorithms/index';
-
-declare const window: any;
 
 @Component({
   selector: 'sorting-visualizer',
@@ -41,6 +39,7 @@ export class SortingVisualizerComponent implements OnInit {
   public enableAudio: boolean = false;
   public showValues: boolean = false;
   public loading: boolean = false;
+  public showIntro: boolean = true;
 
   public readonly sortStyles: string[] = [
     SortBarStyle.BAR,
@@ -93,7 +92,7 @@ export class SortingVisualizerComponent implements OnInit {
               algo.link = res.content_urls.desktop.page;
             }
           }
-        })
+        });
       });
     });
   }
