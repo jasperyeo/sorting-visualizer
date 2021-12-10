@@ -33,6 +33,10 @@ $xl-breakpoint: 1em;
   }
 }
 
+:host {
+  position: relative;
+}
+
 .sort {
   &__wrapper {
     width: 100%;
@@ -173,11 +177,47 @@ $xl-breakpoint: 1em;
   &__container {
     width: fit-content;
     position: absolute;
-    bottom: 0;
+    bottom: 4rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: flex-end;
+  }
+
+  &__footer {
+    width: 100%;
+    overflow-x: auto;
+    height: 4rem;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(1, 1, 1, 0.5);
+    padding: 1.2rem 0;
+    padding-right: 1rem;
+
+    &--link {
+      cursor: pointer;
+      color: white;
+      text-decoration: none;
+      padding-left: 2rem;
+      white-space: nowrap;
+
+      &:hover {
+        color: turquoise;
+      }
+
+      &:after {
+        color: white;
+        content: "|";
+        padding-left: 2rem;
+      }
+
+      &:last-child:after {
+        content: "";
+        padding-left: 0px;
+      }
+    }
   }
 }
 

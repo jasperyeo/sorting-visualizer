@@ -10,7 +10,7 @@
 
 Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and timings.
 
-[Link to site >](https://jasperyeo.github.io/sorting-visualizer/)
+[https://jasperyeo.github.io/sorting-visualizer/](https://jasperyeo.github.io/sorting-visualizer/)
 
 ## Implemented Sorting Algorithms
 
