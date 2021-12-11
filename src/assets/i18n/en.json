@@ -9,6 +9,16 @@
     "REFERENCE": "Reference: ",
     "CLOSE": "Close"
   },
+  "COMPARISON": {
+    "TITLE": "Comparison Table",
+    "NAME": "Name",
+    "BEST": "Best",
+    "AVERAGE": "Average",
+    "WORST": "Worst",
+    "MEMORY": "Memory",
+    "METHOD": "Method",
+    "CLOSE": "Close"
+  },
   "HEADER": {
     "MENU": "Menu",
     "RESET": "Reset",
@@ -50,7 +60,7 @@
   },
   "FOOTER": {
     "ABOUT": "About",
-    "BIG_O": "Big 'O'",
+    "COMPARISON": "Comparison",
     "INSTRUCTIONS": "Instructions",
     "GITHUB": "GitHub"
   }

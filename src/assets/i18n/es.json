@@ -7,7 +7,17 @@
     "CTA": "Este visualizador demuestra cómo funcionan los algoritmos de clasificación comunes mediante el uso de colores, sonidos y tiempos.",
     "CRED": "Desarrollador: Jasper Yeo, 2021.",
     "REFERENCE": "Referencia: ",
-    "CLOSE": "Close"
+    "CLOSE": "Cerca"
+  },
+  "COMPARISON": {
+    "TITLE": "Tabla de Comparación",
+    "NAME": "Nombre",
+    "BEST": "Mejor",
+    "AVERAGE": "Promedio",
+    "WORST": "Peor",
+    "MEMORY": "Memoria",
+    "METHOD": "Método",
+    "CLOSE": "Cerca"
   },
   "HEADER": {
     "MENU": "Menú",
@@ -50,7 +60,7 @@
   },
   "FOOTER": {
     "ABOUT": "Sobre",
-    "BIG_O": "Big 'O'",
+    "COMPARISON": "Comparación",
     "INSTRUCTIONS": "Instrucciones",
     "GITHUB": "GitHub"
   }
