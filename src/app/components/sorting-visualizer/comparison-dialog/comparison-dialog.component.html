@@ -1,17 +1,20 @@
 <div class="comparison-dialog__overlay">
   <div class="comparison-dialog__container">
     <h1 class="comparison-dialog__title">{{ 'COMPARISON.TITLE' | translate }}</h1>
+    <div class="sticky-search">
+      <input type="text" [placeholder]="'COMPARISON.SEARCH' | translate" [(ngModel)]="sortSearchTerm" (keyup)="search()">
+      <div class="sticky-search__results">{{ 'COMPARISON.TOTAL_RESULTS' | translate }}{{ filteredAlgorithms?.length }}</div>
+    </div>
     <div class="comparison-dialog__content">
-      <input type="text" placeholder="Search" class="sticky-search" [(ngModel)]="sortSearchTerm" (keyup)="search()">
       <table>
         <thead>
           <tr>
-            <th class="sticky-header">{{ 'COMPARISON.NAME' | translate }}</th>
-            <th class="sticky-header">{{ 'COMPARISON.METHOD' | translate }}</th>
-            <th class="sticky-header">{{ 'COMPARISON.BEST' | translate }}</th>
-            <th class="sticky-header">{{ 'COMPARISON.AVERAGE' | translate }}</th>
-            <th class="sticky-header">{{ 'COMPARISON.WORST' | translate }}</th>
-            <th class="sticky-header">{{ 'COMPARISON.MEMORY' | translate }}</th>
+            <th class="sticky-header no-wrap">{{ 'COMPARISON.NAME' | translate }}</th>
+            <th class="sticky-header no-wrap">{{ 'COMPARISON.METHOD' | translate }}</th>
+            <th class="sticky-header no-wrap">{{ 'COMPARISON.BEST' | translate }}</th>
+            <th class="sticky-header no-wrap">{{ 'COMPARISON.AVERAGE' | translate }}</th>
+            <th class="sticky-header no-wrap">{{ 'COMPARISON.WORST' | translate }}</th>
+            <th class="sticky-header no-wrap">{{ 'COMPARISON.MEMORY' | translate }}</th>
           </tr>
         </thead>
         <tbody class="comparison-dialog__table">
@@ -22,15 +25,10 @@
               </a>
             </td>
             <td>{{ algo?.category }}</td>
-            <td [innerHTML]="algo?.best | bigONotation" [style.background-color]="complexityTime?.get(algo?.best)"></td>
-            <td [innerHTML]="algo?.average | bigONotation" [style.background-color]="complexityTime?.get(algo?.average)"></td>
-            <td [innerHTML]="algo?.worst | bigONotation" [style.background-color]="complexityTime?.get(algo?.worst)"></td>
-            <td [innerHTML]="algo?.memory | bigONotation" [style.background-color]="complexitySpace?.get(algo?.memory)"></td>
-          </tr>
-          <tr>
-            <td colspan="6">
-              Total results: {{ filteredAlgorithms?.length }}
-            </td>
+            <td class="no-wrap" [innerHTML]="algo?.best | bigONotation" [style.background-color]="complexityTime?.get(algo?.best)"></td>
+            <td class="no-wrap" [innerHTML]="algo?.average | bigONotation" [style.background-color]="complexityTime?.get(algo?.average)"></td>
+            <td class="no-wrap" [innerHTML]="algo?.worst | bigONotation" [style.background-color]="complexityTime?.get(algo?.worst)"></td>
+            <td class="no-wrap" [innerHTML]="algo?.memory | bigONotation" [style.background-color]="complexitySpace?.get(algo?.memory)"></td>
           </tr>
         </tbody>
       </table>

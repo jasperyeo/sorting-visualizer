@@ -2,7 +2,7 @@
   "TITLE": "Sorting Visualizer",
   "LOADING": "Loading...",
   "INTRO": {
-    "TITLE": "Welcome to Sorting Visualizer",
+    "TITLE": "Welcome",
     "DESC": "In computer science, a sorting algorithm is an algorithm that puts elements of a list into an order. The most frequently used orders are numerical order and lexicographical order, and either ascending or descending. Efficient sorting is important for optimizing the efficiency of other algorithms (such as search and merge algorithms) that require input data to be in sorted lists. Sorting is also often useful for canonicalizing data and for producing human-readable output.",
     "CTA": "This visualizer demonstrates how common sorting algorithms work through the use of colors, sounds, and timings.",
     "CRED": "Developer: Jasper Yeo, 2021.",
@@ -11,6 +11,8 @@
   },
   "COMPARISON": {
     "TITLE": "Comparison Table",
+    "SEARCH": "Search by Name or Method",
+    "TOTAL_RESULTS": "Total results: ",
     "NAME": "Name",
     "BEST": "Best",
     "AVERAGE": "Average",
@@ -34,6 +36,7 @@
       "VISUALISER_STYLE": "Visualization Style",
       "BAR": "Bar",
       "POINT": "Point",
+      "BALLOON": "Balloon",
       "ELEMENT_COUNT": "Element Count",
       "ELEMENT_COUNT_MIN_WARNING": "Please enter a min amount of 2.",
       "ELEMENT_COUNT_MAX_WARNING": "Generated count exceed window width.",
@@ -61,7 +64,6 @@
   "FOOTER": {
     "ABOUT": "About",
     "COMPARISON": "Comparison",
-    "INSTRUCTIONS": "Instructions",
     "GITHUB": "GitHub"
   }
 }

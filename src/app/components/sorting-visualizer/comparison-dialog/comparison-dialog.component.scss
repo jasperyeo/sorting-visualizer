@@ -29,6 +29,18 @@
     text-align: center;
     padding: 4rem;
     animation: dialog-appear .2s ease-in-out;
+
+    .sticky-search {
+      position: relative;
+  
+      &__results {
+        position: absolute;
+        top: 0.7rem;
+        right: 1rem;
+        color: gray;
+        font-size: 1.4rem;
+      }
+    }
   }
 
   &__title {
@@ -38,13 +50,7 @@
   &__content {
     overflow-x: auto;
     // overflow-y: hidden;
-    max-height: calc(100% - 9rem);
-
-    .sticky-search {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+    max-height: calc(100% - 12rem);
   }
 
   &__table {
@@ -58,6 +64,17 @@
   &__link {
     color: black;
   }
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+  background-color: white;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 
 @keyframes dialog-appear {

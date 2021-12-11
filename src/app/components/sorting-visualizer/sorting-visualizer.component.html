@@ -70,13 +70,44 @@
         <span class="sort__info--title"><span class="sort__info--title--icon">&#9871;</span> {{ 'SUBHEADER.STATISTICS.TITLE' | translate }}:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showStatistics }">&#x25B2;</span>
       </p>
-      <p *ngIf="showControlPanel && showStatistics">
+      <label *ngIf="showControlPanel && showStatistics">
         <br>
         {{ 'SUBHEADER.STATISTICS.SORT_ATTEMPTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortAttempts }}</span><br>
         {{ 'SUBHEADER.STATISTICS.ELEMENTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortArray?.length }}</span><br>
         {{ 'SUBHEADER.STATISTICS.COMPARES' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfCompares }}</span><br>
         {{ 'SUBHEADER.STATISTICS.SWAPS' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfSwaps }}</span><br>
-      </p>
+        <br>
+        <hr />
+        <br>
+        <table>
+          <tbody>
+            <tr>
+              <td>{{ 'COMPARISON.BEST' | translate }}</td>
+              <td [style.background-color]="complexityTime?.get(selectedAlgorithm?.best)">
+                <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.best | bigONotation"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'COMPARISON.AVERAGE' | translate }}</td>
+              <td [style.background-color]="complexityTime?.get(selectedAlgorithm?.average)">
+                <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.average | bigONotation"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'COMPARISON.WORST' | translate }}</td>
+              <td [style.background-color]="complexityTime?.get(selectedAlgorithm?.worst)">
+                <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.worst | bigONotation"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'COMPARISON.MEMORY' | translate }}</td>
+              <td [style.background-color]="complexitySpace?.get(selectedAlgorithm?.memory)">
+                <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.memory | bigONotation"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </label>
     </div>
     <div *ngIf="showControlPanel" class="sort__info sort__info--info" #information>
       <p class="sort__info--header" (click)="showInfo = !showInfo">
@@ -98,7 +129,6 @@
   <div class="sort__footer">
     <p class="sort__footer--link" [title]="'FOOTER.ABOUT' | translate" (click)="showIntro = true">{{ 'FOOTER.ABOUT' | translate }}</p>
     <p class="sort__footer--link" [title]="'FOOTER.COMPARISON' | translate" (click)="showComparison = true">{{ 'FOOTER.COMPARISON' | translate }}</p>
-    <p class="sort__footer--link" [title]="'FOOTER.INSTRUCTIONS' | translate">{{ 'FOOTER.INSTRUCTIONS' | translate }}</p>
     <a class="sort__footer--link" [title]="'FOOTER.GITHUB' | translate" href="https://github.com/jasperyeo/sorting-visualizer" target="_blank">{{ 'FOOTER.GITHUB' | translate }}</a>
   </div>
 </div>
