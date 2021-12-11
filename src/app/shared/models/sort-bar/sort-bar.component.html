@@ -4,7 +4,8 @@
     [style.height]="value + 'px'"
     [style.background-color]="style === 'bar' ? color : 'transparent'">
   </div>
-  <div *ngIf="style === 'point'" class="sort__point"
+  <div *ngIf="style === 'point' || style === 'balloon'" class="sort__point"
+    [class.sort__point--balloon]="style === 'balloon'"
     [style.margin-bottom]="(value - 10) + 'px'"
     [style.background-color]="color">
   </div>
