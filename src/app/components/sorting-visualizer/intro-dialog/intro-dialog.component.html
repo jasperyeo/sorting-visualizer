@@ -1,0 +1,30 @@
+<div class="intro-dialog__overlay">
+  <div class="intro-dialog__container">
+    <h1 class="intro-dialog__title">{{ 'INTRO.TITLE' | translate }}</h1>
+    <div class="intro-dialog__content">
+      <p>
+        {{ 'INTRO.DESC' | translate }}
+      </p>
+      <br><br>
+      <p>
+        {{ 'INTRO.CTA' | translate }}
+      </p>
+      <br><br>
+      <p>
+        {{ 'INTRO.CRED' | translate }}
+      </p>
+      <br><br>
+      <p>
+        {{ 'INTRO.REFERENCE' | translate }}
+        <a class="intro-dialog__url" href="https://en.wikipedia.org/wiki/Sorting_algorithm" target="_blank" title="Sorting Algorithm">
+          https://en.wikipedia.org/wiki/Sorting_algorithm
+        </a>
+      </p>
+    </div>
+    <div class="intro-dialog__footer">
+      <button (click)="closeDialog()" [title]="'INTRO.CLOSE' | translate">
+        {{ 'INTRO.CLOSE' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

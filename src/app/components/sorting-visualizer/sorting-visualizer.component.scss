@@ -1,36 +1,7 @@
-* {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-}
+@import './../../../styles.scss';
 
-// responsive breakpoints
-$xs-breakpoint: 10em;
-$sm-breakpoint: 20em;
-$md-breakpoint: 47.9375em;
-$lg-breakpoint: 61.9375em;
-$xl-breakpoint: 1em;
-
-@mixin respond($breakpoint) {
-  @if $breakpoint == xs {
-    @media only screen and (max-width: $xs-breakpoint) { @content };
-  }
-  @if $breakpoint == sm {
-    @media only screen and (max-width: $sm-breakpoint) { @content };
-  }
-  @if $breakpoint == md {
-    @media only screen and (max-width: $md-breakpoint) { @content };
-  }
-  @if $breakpoint == lg {
-    @media only screen and (max-width: $lg-breakpoint) { @content };
-  }
-  @if $breakpoint == xl {
-    @media only screen and (max-width: $xl-breakpoint) { @content };
-  }
+:host {
+  position: relative;
 }
 
 .sort {
@@ -173,11 +144,48 @@ $xl-breakpoint: 1em;
   &__container {
     width: fit-content;
     position: absolute;
-    bottom: 0;
+    bottom: 4rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: flex-end;
+  }
+
+  &__footer {
+    width: 100%;
+    overflow-x: auto;
+    height: 4rem;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(1, 1, 1, 0.5);
+    padding: 1.2rem 0;
+    padding-right: 1rem;
+    padding-left: 2rem;
+
+    &--link {
+      cursor: pointer;
+      color: white;
+      text-decoration: none;
+      padding-left: 2rem;
+      white-space: nowrap;
+
+      &:hover {
+        color: turquoise;
+      }
+
+      &:after {
+        color: white;
+        content: "|";
+        padding-left: 2rem;
+      }
+
+      &:last-child:after {
+        content: "";
+        padding-left: 0px;
+      }
+    }
   }
 }
 

@@ -11,10 +11,10 @@ export class AppComponent {
 
   public readonly title: string = 'Sorting Visualizer';
   public readonly langs: any[] = [
-    { label: 'English', value: 'en' },
-    { label: '中文', value: 'zh' },
-    { label: 'Español', value: 'es' },
-    { label: 'Bahasa', value: 'id' },
+    { label: 'EN', value: 'en' },
+    { label: '中', value: 'zh' },
+    { label: 'ES', value: 'es' },
+    { label: 'ID', value: 'id' },
   ];
 
   constructor(private _meta: Meta, private _title: Title, private _translateService: TranslateService) {
