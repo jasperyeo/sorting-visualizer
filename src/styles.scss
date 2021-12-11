@@ -1,3 +1,38 @@
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+// responsive breakpoints
+$xs-breakpoint: 10em;
+$sm-breakpoint: 20em;
+$md-breakpoint: 47.9375em;
+$lg-breakpoint: 61.9375em;
+$xl-breakpoint: 1em;
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == xs {
+    @media only screen and (max-width: $xs-breakpoint) { @content };
+  }
+  @if $breakpoint == sm {
+    @media only screen and (max-width: $sm-breakpoint) { @content };
+  }
+  @if $breakpoint == md {
+    @media only screen and (max-width: $md-breakpoint) { @content };
+  }
+  @if $breakpoint == lg {
+    @media only screen and (max-width: $lg-breakpoint) { @content };
+  }
+  @if $breakpoint == xl {
+    @media only screen and (max-width: $xl-breakpoint) { @content };
+  }
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -51,6 +86,7 @@ button, input[type="button"] {
   box-shadow: none;
   border-radius: .8rem;
   white-space: nowrap;
+  height: 3rem;
 
   :disabled {
     cursor: not-allowed !important;
@@ -95,4 +131,42 @@ select {
 
 a, a:active, a:visited {
   color: turquoise;
+}
+
+table, thead, tbody, tr, th, td {
+  border: 1px solid black;
+  color: black;
+  font-size: 1.4rem;
+  background-color: white;
+  a {
+    font-size: 1.4rem;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+th, td {
+  padding: .5rem 1rem;
+
+  &.sticky-header {
+    position: sticky;
+    top: 3rem;
+    z-index: 10;
+    background-color: white;
+  }
+}
+
+.fr {
+  display: inline-block;
+
+  &__top {
+    border-bottom: solid black 1px;
+  }
+}
+
+.whole {
+  display: inline;
+  vertical-align: super;
 }

@@ -40,6 +40,7 @@ export class SortingVisualizerComponent implements OnInit {
   public showValues: boolean = false;
   public loading: boolean = false;
   public showIntro: boolean = true;
+  public showComparison: boolean = false;
 
   public readonly sortStyles: string[] = [
     SortBarStyle.BAR,

@@ -9,6 +9,16 @@
     "REFERENCE": "参考: ",
     "CLOSE": "关闭"
   },
+  "COMPARISON": {
+    "TITLE": "比较列表",
+    "NAME": "名称",
+    "BEST": "最佳",
+    "AVERAGE": "平均",
+    "WORST": "最差",
+    "MEMORY": "空间",
+    "METHOD": "方法",
+    "CLOSE": "关闭"
+  },
   "HEADER": {
     "MENU": "菜单",
     "RESET": "重启",
@@ -50,7 +60,7 @@
   },
   "FOOTER": {
     "ABOUT": "关于",
-    "BIG_O": "Big 'O'",
+    "COMPARISON": "比较",
     "INSTRUCTIONS": "说明",
     "GITHUB": "GitHub"
   }

@@ -2,40 +2,121 @@
   {
     "category": "Partitioning",
     "algorithms": [
-      { "active": true, "label": "Quick Sort", "value": "Quick" }
+      {
+        "active": true,
+        "label": "Quick Sort",
+        "value": "Quick",
+        "category": "Partitioning",
+        "best": "nlogn",
+        "average": "nlogn",
+        "worst": "n^(2)",
+        "memory": "logn"
+      }
     ]
   },
   {
     "category": "Merging",
     "algorithms": [
-      { "active": true, "label": "Merge Sort", "value": "Merge" }
+      {
+        "active": true,
+        "label": "Merge Sort",
+        "value": "Merge",
+        "category": "Merging",
+        "best": "nlogn",
+        "average": "nlogn",
+        "worst": "nlogn",
+        "memory": "n"
+      }
     ]
   },
   {
     "category": "Selection",
     "algorithms": [
-      { "active": true, "label": "Selection Sort", "value": "Selection" },
-      { "active": true, "label": "Heap Sort", "value": "Heap" }
+      {
+        "active": true,
+        "label": "Selection Sort",
+        "value": "Selection",
+        "category": "Selection",
+        "best": "n^(2)",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
+      },
+      {
+        "active": true,
+        "label": "Heap Sort",
+        "value": "Heap",
+        "category": "Selection",
+        "best": "nlogn",
+        "average": "nlogn",
+        "worst": "nlogn",
+        "memory": "1"
+      }
     ]
   },
   {
     "category": "Insertion",
     "algorithms": [
-      { "active": true, "label": "Insertion Sort", "value": "Insertion" }
+      {
+        "active": true,
+        "label": "Insertion Sort",
+        "value": "Insertion",
+        "category": "Insertion",
+        "best": "n",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
+      }
     ]
   },
   {
     "category": "Exchanging",
     "algorithms": [
-      { "active": true, "label": "Bubble Sort", "value": "Bubble" },
-      { "active": true, "label": "Gnome Sort", "value": "Gnome" }
+      {
+        "active": true,
+        "label": "Bubble Sort",
+        "value": "Bubble",
+        "category": "Exchanging",
+        "best": "n",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
+      },
+      {
+        "active": true,
+        "label": "Gnome Sort", 
+        "value": "Gnome",
+        "category": "Exchanging",
+        "best": "n",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
+      }
     ]
   },
   {
     "category": "Non-Comparison",
     "algorithms": [
-      { "active": true, "label": "LSD Radix Sort", "value": "LSD Radix" },
-      { "active": true, "label": "MSD Radix Sort", "value": "MSD Radix" }
+      {
+        "active": true,
+        "label": "LSD Radix Sort",
+        "value": "LSD Radix",
+        "category": "Non-Comparison",
+        "best": "n",
+        "average": "n · (k/d)",
+        "worst": "n · (k/d)",
+        "memory": "n + 2^(d)"
+      },
+      {
+        "active": true,
+        "label": "MSD Radix Sort",
+        "value": "MSD Radix",
+        "category": "Non-Comparison",
+        "best": "-",
+        "average": "n · (k/d)",
+        "worst": "n · (k/d)",
+        "memory": "n + 2^(d)"
+      }
     ]
   }
 ]

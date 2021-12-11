@@ -7,7 +7,17 @@
     "CTA": "Visualisator ini mendemonstrasikan bagaimana algoritma pengurutan umum bekerja melalui penggunaan warna, suara, dan pengaturan waktu.",
     "CRED": "Pengembang: Jasper Yeo, 2021.",
     "REFERENCE": "Referensi: ",
-    "CLOSE": "Close"
+    "CLOSE": "Menutup"
+  },
+  "COMPARISON": {
+    "TITLE": "Tabel Perbandingan",
+    "NAME": "Nama",
+    "BEST": "Terbaik",
+    "AVERAGE": "Rata-rata",
+    "WORST": "Terburuk",
+    "MEMORY": "Penyimpanan",
+    "METHOD": "Metode",
+    "CLOSE": "Menutup"
   },
   "HEADER": {
     "MENU": "Menu",
@@ -50,7 +60,7 @@
   },
   "FOOTER": {
     "ABOUT": "Tentang",
-    "BIG_O": "Big 'O'",
+    "COMPARISON": "Perbandingan",
     "INSTRUCTIONS": "Instruksi",
     "GITHUB": "GitHub"
   }

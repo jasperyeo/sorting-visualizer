@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SortBarComponent } from './models/sort-bar/sort-bar.component';
+import { BigONotationPipe } from './pipes/big-o-notation.pipe';
 
 @NgModule({
   declarations: [
-    SortBarComponent
+    SortBarComponent,
+    BigONotationPipe
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    SortBarComponent
+    SortBarComponent,
+    BigONotationPipe
   ]
 })
 export class SharedModule { }
