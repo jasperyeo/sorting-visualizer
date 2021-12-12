@@ -15,6 +15,7 @@ import { complexityTime, complexitySpace } from './../../shared/models/complexit
 export class SortingVisualizerComponent implements OnInit {
 
   @Input('langs') public langs: any[] = [];
+  @Input('isMobileSafari') public isMobileSafari: boolean = false;
   public readonly complexityTime = complexityTime;
   public readonly complexitySpace = complexitySpace;
   public readonly audioContext: AudioContext = new AudioContext();
