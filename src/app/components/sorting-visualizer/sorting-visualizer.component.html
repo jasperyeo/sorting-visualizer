@@ -45,7 +45,7 @@
         <br>
         <label>{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
         <select name="styles" id="styles" [disabled]="sorting" [(ngModel)]="sortStyle">
-          <option *ngFor="let style of sortStyles" [value]="style">{{ ('SUBHEADER.SETTINGS.' + style | uppercase) | translate }}</option>
+          <option *ngFor="let style of sortStyles" [value]="style">{{ ('SUBHEADER.SETTINGS.' + style) | translate }}</option>
         </select>
         <br><br>
         <label>{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>

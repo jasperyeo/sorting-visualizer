@@ -37,6 +37,11 @@
       line-height: 3rem;
       margin-left: .2rem;
       cursor: pointer;
+      position: relative;
+
+      &:hover {
+        color: turquoise;
+      }
 
       @include respond(md) {
         display: none;
@@ -179,10 +184,6 @@
       padding-left: 2rem;
       white-space: nowrap;
 
-      &:last-child {
-        padding-right: 2rem;
-      }
-
       &:hover {
         color: turquoise;
       }
@@ -193,9 +194,13 @@
         padding-left: 2rem;
       }
 
-      &:last-child:after {
-        content: "";
-        padding-left: 0px;
+      &:last-child {
+        padding-right: 2rem;
+
+        &:after {
+          content: "";
+          padding-left: 0px;
+        }
       }
     }
   }
@@ -239,5 +244,16 @@
   }
   to {
     opacity: 0.75;
+  }
+}
+
+@keyframes menu-chevron-appear {
+  from {
+    opacity: 0;
+    right: 1rem;
+  }
+  to {
+    opacity: 1;
+    right: -1rem;
   }
 }
