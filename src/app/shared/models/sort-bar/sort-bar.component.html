@@ -1,12 +1,12 @@
 <div class="sort__container">
   <label *ngIf="hoverValue || showValue" class="sort__label">{{ value }}</label>
-  <div *ngIf="style === 'bar' || style === 'bamboo'" class="sort__bar"
+  <div *ngIf="style === 'BAR' || style === 'BAMBOO'" class="sort__bar"
     [style.height]="value + 'px'"
-    [style.background-color]="style === 'bar' || style === 'bamboo' ? color : 'transparent'">
-    <div *ngIf="style === 'bamboo'" class="sort__bar--bamboo"></div>
+    [style.background-color]="style === 'BAR' || style === 'BAMBOO' ? color : 'transparent'">
+    <div *ngIf="style === 'BAMBOO'" class="sort__bar--bamboo"></div>
   </div>
-  <div *ngIf="style === 'point' || style === 'balloon'" class="sort__point"
-    [class.sort__point--balloon]="style === 'balloon'"
+  <div *ngIf="style === 'POINT' || style === 'BALLOON'" class="sort__point"
+    [class.sort__point--balloon]="style === 'BALLOON'"
     [style.margin-bottom]="(value - 10) + 'px'"
     [style.background-color]="color">
   </div>

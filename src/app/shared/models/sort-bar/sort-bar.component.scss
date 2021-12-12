@@ -16,6 +16,8 @@
       display: block;
       height: 100%;
       background: repeating-linear-gradient(rgba(1, .2, .2, .5), rgba(1, .2, .2, .5) 20px, rgba(1, .2, .2, .7) 20px, rgba(1, .2, .2, .7) 22px);
+      animation: sway 6s ease-in-out infinite;
+      transform-origin: bottom;
     }
   }
 
@@ -79,5 +81,20 @@
 	100% {
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 		transform: translatey(0px);
+	}
+}
+
+@keyframes sway {
+  0% {
+		transform: rotate(0deg)
+	}
+	33% {
+		transform: rotate(-1deg)
+	}
+	66% {
+		transform: rotate(1deg)
+	}
+  100% {
+		transform: rotate(0deg)
 	}
 }

@@ -1,4 +1,4 @@
-<div class="sort__wrapper">
+<div class="sort__wrapper"  [class.sort__wrapper--msafari]="isMobileSafari">
   <div class="sort__header">
     <div class="sort__header--button-menu" (click)="showControlPanel = !showControlPanel">
       <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
@@ -45,7 +45,7 @@
         <br>
         <label>{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
         <select name="styles" id="styles" [disabled]="sorting" [(ngModel)]="sortStyle">
-          <option *ngFor="let style of sortStyles" [value]="style">{{ ('SUBHEADER.SETTINGS.' + style | uppercase) | translate }}</option>
+          <option *ngFor="let style of sortStyles" [value]="style">{{ ('SUBHEADER.SETTINGS.' + style) | translate }}</option>
         </select>
         <br><br>
         <label>{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
@@ -61,7 +61,7 @@
         <label *ngIf="minValue <= 0" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MIN_WARNING' | translate }}</label>
         <label *ngIf="maxValue > viewHeight * 0.45" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MAX_WARNING' | translate }}</label>
         <br>
-        <label>{{ 'SUBHEADER.SETTINGS.DELAY' | translate }}: {{ sortDelay === 0 ? ('SUBHEADER.SETTINGS.DELAY_FAST' | translate) : sortDelay === 100 ? ('SUBHEADER.SETTINGS.DELAY_SLOW' | translate) : ('SUBHEADER.SETTINGS.DELAY_NORMAL' | translate) }}</label>
+        <label>{{ 'SUBHEADER.SETTINGS.DELAY' | translate }}: {{ sortDelay === 0 ? ('SUBHEADER.SETTINGS.DELAY_FAST' | translate) : sortDelay === 100 ? ('SUBHEADER.SETTINGS.DELAY_SLOW' | translate) : ('SUBHEADER.SETTINGS.DELAY_NORMAL' | translate) }}</label><br>
         <input type="range" id="sortDelay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay">
       </div>
     </div>

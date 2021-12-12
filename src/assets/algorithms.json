@@ -91,6 +91,16 @@
         "average": "n^(2)",
         "worst": "n^(2)",
         "memory": "1"
+      },
+      {
+        "active": true,
+        "label": "Cocktail Shaker Sort",
+        "value": "Cocktail Shaker",
+        "category": "Exchanging",
+        "best": "n",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
       }
     ]
   },

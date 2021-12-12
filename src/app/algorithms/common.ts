@@ -1,9 +1,9 @@
 import { SortingVisualizerComponent } from './../components/sorting-visualizer/sorting-visualizer.component';
 import { SortBarColor, SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
 
-export function compare(visualizer: SortingVisualizerComponent, i: SortBarComponent, j: SortBarComponent): boolean {
+export function compare(visualizer: SortingVisualizerComponent, i: SortBarComponent, j: SortBarComponent, includeEquals: boolean = false): boolean {
   visualizer.noOfCompares++;
-  return i.value >= j.value;
+  return !includeEquals ? (i.value > j.value) : (i.value >= j.value);
 }
 
 export async function swap(visualizer: SortingVisualizerComponent, array: SortBarComponent[], i: number, j: number): Promise<void> {

@@ -16,6 +16,7 @@ export class AppComponent {
     { label: 'ES', value: 'es' },
     { label: 'ID', value: 'id' },
   ];
+  public isMobileSafari: boolean = false;
 
   constructor(private _meta: Meta, private _title: Title, private _translateService: TranslateService) {
     this._meta.addTags([
@@ -31,5 +32,11 @@ export class AppComponent {
     this._translateService.addLangs(this.langs.map(lang => lang.value));
     this._translateService.setDefaultLang('en');
     this._translateService.use('en');
+
+    if (navigator.platform == 'iPhone' || navigator.platform == 'iPod'){
+      if (navigator.userAgent.indexOf('Safari') != -1) {
+        this.isMobileSafari = true;
+      }
+    }
   }
 }
