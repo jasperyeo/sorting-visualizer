@@ -35,9 +35,9 @@
   
       &__results {
         position: absolute;
-        top: 0.7rem;
-        right: 1rem;
-        color: gray;
+        top: 100%;
+        right: 0px;
+        color: red;
         font-size: 1.4rem;
       }
     }
@@ -48,6 +48,7 @@
   }
 
   &__content {
+    position: relative;
     overflow-x: auto;
     // overflow-y: hidden;
     max-height: calc(100% - 12rem);
@@ -71,6 +72,8 @@
   top: 0px;
   z-index: 10;
   background-color: white;
+  border-bottom: 1px solid black;
+  filter: drop-shadow(0 1rem 0.75rem darkgray)
 }
 
 .no-wrap {

@@ -3,7 +3,6 @@
     <h1 class="comparison-dialog__title">{{ 'COMPARISON.TITLE' | translate }}</h1>
     <div class="sticky-search">
       <input type="text" [placeholder]="'COMPARISON.SEARCH' | translate" [(ngModel)]="sortSearchTerm" (keyup)="search()">
-      <div class="sticky-search__results">{{ 'COMPARISON.TOTAL_RESULTS' | translate }}{{ filteredAlgorithms?.length }}</div>
     </div>
     <div class="comparison-dialog__content">
       <table>
@@ -32,6 +31,7 @@
           </tr>
         </tbody>
       </table>
+      <!-- <label class="sticky-search__results">{{ 'COMPARISON.TOTAL_RESULTS' | translate }}{{ filteredAlgorithms?.length }}</label> -->
     </div>
     <div class="comparison-dialog__footer">
       <button (click)="closeDialog()" [title]="'INTRO.CLOSE' | translate">
