@@ -2,7 +2,7 @@
   "TITLE": "排序可视化器",
   "LOADING": "加载...",
   "INTRO": {
-    "TITLE": "欢迎来到排序可视化器",
+    "TITLE": "欢迎",
     "DESC": "在计算机科学与数学中，一个排序算法是一种能将一串资料依照特定排序方式进行排列的一种算法。最常用到的排序方式是数值顺序以及字典顺序。有效的排序算法在一些算法（例如搜索算法与合并算法）中是重要的，如此这些算法才能得到正确解答。排序算法也用在处理文字资料以及产生人类可读的输出结果.",
     "CTA": "这可视化器通过用颜色，音频，与时间间隔，展示了常用排序算法如何运作。",
     "CRED": "开发者: Jasper Yeo, 2021.",
@@ -11,6 +11,8 @@
   },
   "COMPARISON": {
     "TITLE": "比较列表",
+    "SEARCH": "按名称或方法搜索",
+    "TOTAL_RESULTS": "总成绩: ",
     "NAME": "名称",
     "BEST": "最佳",
     "AVERAGE": "平均",
@@ -34,6 +36,8 @@
       "VISUALISER_STYLE": "可视化风格",
       "BAR": "棍",
       "POINT": "点",
+      "BALLOON": "气球",
+      "BAMBOO": "竹子",
       "ELEMENT_COUNT": "生成数量",
       "ELEMENT_COUNT_MIN_WARNING": "请输入最小数量2。",
       "ELEMENT_COUNT_MAX_WARNING": "生成的数量超过窗口宽度。",
@@ -61,7 +65,6 @@
   "FOOTER": {
     "ABOUT": "关于",
     "COMPARISON": "比较",
-    "INSTRUCTIONS": "说明",
     "GITHUB": "GitHub"
   }
 }
