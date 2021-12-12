@@ -30,6 +30,7 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 ### Exchanging
 - Bubble Sort
 - Gnome Sort
+- Cocktail Shaker Sort
 
 ### Non-Comparison
 - Least Significant Digit (LSD) Radix Sort
