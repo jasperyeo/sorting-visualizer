@@ -25,7 +25,7 @@ export class SortingVisualizerComponent implements OnInit {
   public sortMethod: string = '';
   public sortDescription: string = '';
   public sortLink: string = '';
-  public sortStyle: string = SortBarStyle.BALLOON;
+  public sortStyle: string = SortBarStyle.BAR;
   public sortAttempts: number = 0;
   public elementCount: number = 400;
   public minValue: number = 5;
@@ -49,7 +49,8 @@ export class SortingVisualizerComponent implements OnInit {
   public readonly sortStyles: string[] = [
     SortBarStyle.BAR,
     SortBarStyle.POINT,
-    SortBarStyle.BALLOON
+    SortBarStyle.BALLOON,
+    SortBarStyle.BAMBOO
   ];
   
   public sortAlgorithms: any[] = [];

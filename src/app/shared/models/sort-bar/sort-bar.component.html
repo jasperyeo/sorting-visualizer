@@ -1,8 +1,9 @@
 <div class="sort__container">
   <label *ngIf="hoverValue || showValue" class="sort__label">{{ value }}</label>
-  <div *ngIf="style === 'bar'" class="sort__bar"
+  <div *ngIf="style === 'bar' || style === 'bamboo'" class="sort__bar"
     [style.height]="value + 'px'"
-    [style.background-color]="style === 'bar' ? color : 'transparent'">
+    [style.background-color]="style === 'bar' || style === 'bamboo' ? color : 'transparent'">
+    <div *ngIf="style === 'bamboo'" class="sort__bar--bamboo"></div>
   </div>
   <div *ngIf="style === 'point' || style === 'balloon'" class="sort__point"
     [class.sort__point--balloon]="style === 'balloon'"
