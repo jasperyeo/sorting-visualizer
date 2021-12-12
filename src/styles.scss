@@ -134,6 +134,7 @@ a, a:active, a:visited {
 }
 
 table, thead, tbody, tr, th, td {
+  border-collapse: collapse;
   border: 1px solid black;
   color: black;
   font-size: 1.4rem;
@@ -149,13 +150,6 @@ table {
 
 th, td {
   padding: .5rem 1rem;
-
-  &.sticky-header {
-    position: sticky;
-    top: 3rem;
-    z-index: 10;
-    background-color: white;
-  }
 }
 
 .fr {

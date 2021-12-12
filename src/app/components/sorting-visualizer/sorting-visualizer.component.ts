@@ -5,6 +5,7 @@ import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/s
 import { SortingVisualizerService } from './sorting-visualizer.service';
 
 import * as algorithms from './../../algorithms/index';
+import { complexityTime, complexitySpace } from './../../shared/models/complexity-time-space';
 
 @Component({
   selector: 'sorting-visualizer',
@@ -14,9 +15,12 @@ import * as algorithms from './../../algorithms/index';
 export class SortingVisualizerComponent implements OnInit {
 
   @Input('langs') public langs: any[] = [];
+  public readonly complexityTime = complexityTime;
+  public readonly complexitySpace = complexitySpace;
   public readonly audioContext: AudioContext = new AudioContext();
   public sortArray: SortBarComponent[] = [];
   public lang: string = 'en';
+  public selectedAlgorithm: any;
   public sortDelay: number = 50;
   public sortMethod: string = '';
   public sortDescription: string = '';
@@ -44,7 +48,9 @@ export class SortingVisualizerComponent implements OnInit {
 
   public readonly sortStyles: string[] = [
     SortBarStyle.BAR,
-    SortBarStyle.POINT
+    SortBarStyle.POINT,
+    SortBarStyle.BALLOON,
+    SortBarStyle.BAMBOO
   ];
   
   public sortAlgorithms: any[] = [];
@@ -58,7 +64,7 @@ export class SortingVisualizerComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this._sortingVisualizerService.getJSON('./../../../assets/algorithms.json').then((res: any) => {
+    this._sortingVisualizerService.getJSON('./assets/algorithms.json').then((res: any) => {
       this.sortAlgorithms = res;
       this._scrapAlgorithmInformation();
     });
@@ -152,6 +158,7 @@ export class SortingVisualizerComponent implements OnInit {
         if (algo.value === mode) {
           this.sortDescription = algo.description;
           this.sortLink = algo.link;
+          this.selectedAlgorithm = algo;
         }
       });
     });

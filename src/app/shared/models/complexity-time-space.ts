@@ -3,6 +3,9 @@ import { ComplexityColorCode } from './complexity-color-code';
 export const complexityTime: Map<string, string> = new Map([
   ['n', ComplexityColorCode.GOOD],
   ['nlogn', ComplexityColorCode.GOOD],
+  ['n · (k/d)', ComplexityColorCode.GOOD],
+  
+  ['nlog^(2)n', ComplexityColorCode.AVERAGE],
 
   ['n^(2)', ComplexityColorCode.BAD]
 ]);

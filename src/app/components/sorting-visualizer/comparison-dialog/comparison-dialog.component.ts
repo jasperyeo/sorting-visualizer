@@ -44,6 +44,6 @@ export class ComparisonDialogComponent implements OnInit {
       this.filteredAlgorithms = this.listedAlgorithms;
       return;
     }
-    this.filteredAlgorithms = this.listedAlgorithms.filter(algo => (algo.label as string).toUpperCase().includes(this.sortSearchTerm.toUpperCase()));
+    this.filteredAlgorithms = this.listedAlgorithms.filter(algo => (algo.label as string).toUpperCase().includes(this.sortSearchTerm.toUpperCase()) || (algo.category as string).toUpperCase().includes(this.sortSearchTerm.toUpperCase()));
   }
 }
