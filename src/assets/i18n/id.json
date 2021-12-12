@@ -37,6 +37,7 @@
       "BAR": "Batang",
       "POINT": "Titik",
       "BALLOON": "Balon",
+      "BAMBOO": "Bambu",
       "ELEMENT_COUNT": "Jumlah Elemen",
       "ELEMENT_COUNT_MIN_WARNING": "Silakan masukkan jumlah minimal 2.",
       "ELEMENT_COUNT_MAX_WARNING": "Jumlah yang dihasilkan melebihi lebar jendela.",

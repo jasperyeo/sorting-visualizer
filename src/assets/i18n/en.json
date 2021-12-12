@@ -37,6 +37,7 @@
       "BAR": "Bar",
       "POINT": "Point",
       "BALLOON": "Balloon",
+      "BAMBOO": "Bamboo",
       "ELEMENT_COUNT": "Element Count",
       "ELEMENT_COUNT_MIN_WARNING": "Please enter a min amount of 2.",
       "ELEMENT_COUNT_MAX_WARNING": "Generated count exceed window width.",

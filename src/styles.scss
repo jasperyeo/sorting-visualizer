@@ -134,6 +134,7 @@ a, a:active, a:visited {
 }
 
 table, thead, tbody, tr, th, td {
+  border-collapse: collapse;
   border: 1px solid black;
   color: black;
   font-size: 1.4rem;

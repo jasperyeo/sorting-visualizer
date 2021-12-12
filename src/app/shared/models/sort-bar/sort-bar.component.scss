@@ -6,9 +6,16 @@
   &__bar {
     width: 1rem;
     margin: 0 .1rem;
+    position: relative;
 
     &:hover {
       background-color: white !important;
+    }
+
+    &--bamboo {
+      display: block;
+      height: 100%;
+      background: repeating-linear-gradient(rgba(1, .2, .2, .5), rgba(1, .2, .2, .5) 20px, rgba(1, .2, .2, .7) 20px, rgba(1, .2, .2, .7) 22px);
     }
   }
 
