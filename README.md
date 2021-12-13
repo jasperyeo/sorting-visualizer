@@ -37,6 +37,9 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 - Least Significant Digit (LSD) Radix Sort
 - Most Significant Digit (MSD) Radix Sort
 
+### Others
+- Bogo Sort
+
 ## Development Information
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.

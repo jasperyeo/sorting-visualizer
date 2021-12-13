@@ -6,7 +6,6 @@
         "active": true,
         "label": "Quick Sort",
         "value": "Quick",
-        "category": "Partitioning",
         "best": "nlogn",
         "average": "nlogn",
         "worst": "n^(2)",
@@ -21,7 +20,6 @@
         "active": true,
         "label": "Merge Sort",
         "value": "Merge",
-        "category": "Merging",
         "best": "nlogn",
         "average": "nlogn",
         "worst": "nlogn",
@@ -36,7 +34,6 @@
         "active": true,
         "label": "Selection Sort",
         "value": "Selection",
-        "category": "Selection",
         "best": "n^(2)",
         "average": "n^(2)",
         "worst": "n^(2)",
@@ -46,7 +43,6 @@
         "active": true,
         "label": "Heap Sort",
         "value": "Heap",
-        "category": "Selection",
         "best": "nlogn",
         "average": "nlogn",
         "worst": "nlogn",
@@ -61,7 +57,6 @@
         "active": true,
         "label": "Insertion Sort",
         "value": "Insertion",
-        "category": "Insertion",
         "best": "n",
         "average": "n^(2)",
         "worst": "n^(2)",
@@ -76,7 +71,6 @@
         "active": true,
         "label": "Bubble Sort",
         "value": "Bubble",
-        "category": "Exchanging",
         "best": "n",
         "average": "n^(2)",
         "worst": "n^(2)",
@@ -86,7 +80,6 @@
         "active": true,
         "label": "Gnome Sort", 
         "value": "Gnome",
-        "category": "Exchanging",
         "best": "n",
         "average": "n^(2)",
         "worst": "n^(2)",
@@ -96,7 +89,6 @@
         "active": true,
         "label": "Cocktail Shaker Sort",
         "value": "Cocktail Shaker",
-        "category": "Exchanging",
         "best": "n",
         "average": "n^(2)",
         "worst": "n^(2)",
@@ -106,7 +98,6 @@
         "active": true,
         "label": "Exchange Sort",
         "value": "Exchange",
-        "category": "Exchanging",
         "best": "n^(2)",
         "average": "n^(2)",
         "worst": "n^(2)",
@@ -121,7 +112,6 @@
         "active": true,
         "label": "LSD Radix Sort",
         "value": "LSD Radix",
-        "category": "Non-Comparison",
         "best": "n",
         "average": "n · (k/d)",
         "worst": "n · (k/d)",
@@ -131,11 +121,24 @@
         "active": true,
         "label": "MSD Radix Sort",
         "value": "MSD Radix",
-        "category": "Non-Comparison",
         "best": "-",
         "average": "n · (k/d)",
         "worst": "n · (k/d)",
         "memory": "n + 2^(d)"
+      }
+    ]
+  },
+  {
+    "category": "Others",
+    "algorithms": [
+      {
+        "active": true,
+        "label": "Bogo Sort",
+        "value": "Bogo",
+        "best": "n",
+        "average": "(n · n!)",
+        "worst": "infinity",
+        "memory": "1"
       }
     ]
   }
