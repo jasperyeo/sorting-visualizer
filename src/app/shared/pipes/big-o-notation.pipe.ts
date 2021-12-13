@@ -8,6 +8,10 @@ export class BigONotationPipe implements PipeTransform {
   transform(value: string, ...args: unknown[]): string {
     if (!value || !value.length) return '';
     let finalString: string = value;
+    // infinity
+    if (value === 'infinity') {
+      finalString = '&#8734;';
+    }
     // superscript at '^(#)'
     if (value.includes('^')) {
       finalString = finalString.replace(/(\^\()/gi, '<sup>');
