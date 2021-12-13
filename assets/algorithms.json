@@ -101,6 +101,16 @@
         "average": "n^(2)",
         "worst": "n^(2)",
         "memory": "1"
+      },
+      {
+        "active": true,
+        "label": "Exchange Sort",
+        "value": "Exchange",
+        "category": "Exchanging",
+        "best": "n^(2)",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
       }
     ]
   },
