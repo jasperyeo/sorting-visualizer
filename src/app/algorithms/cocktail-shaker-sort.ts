@@ -5,7 +5,9 @@ import { compare, swap } from './common';
 export async function cocktailShakerSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
   let isSorted: boolean = true;
   while (isSorted) {
+    if (!visualizer.sorting) return;
     for (let i: number = 0; i < array.length - 1; i++) {
+      if (!visualizer.sorting) return;
       if (compare(visualizer, array[i], array[i + 1])) {
         await swap(visualizer, array, i, i + 1);
         isSorted = true;
@@ -14,6 +16,7 @@ export async function cocktailShakerSort(visualizer: SortingVisualizerComponent,
     if (!isSorted) break;
     isSorted = false;
     for (let j: number = array.length - 1; j > 0; j--) {
+      if (!visualizer.sorting) return;
       if (compare(visualizer, array[j - 1], array[j])) {
         await swap(visualizer, array, j - 1, j);
         isSorted = true;
