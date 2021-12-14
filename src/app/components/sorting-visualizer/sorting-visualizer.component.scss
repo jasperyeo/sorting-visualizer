@@ -112,7 +112,7 @@
     cursor: pointer;
     z-index: 2;
     flex-shrink: 0;
-    animation: info-appear .2s ease-in-out;
+    animation: info-appear .5s ease-in-out;
 
     &--header {
       display: flex;
@@ -179,29 +179,18 @@
 
     &--link {
       cursor: pointer;
-      color: white;
+      color: white !important;
       text-decoration: none;
-      padding-left: 2rem;
+      margin: 0px 2.8rem;
       white-space: nowrap;
 
       &:hover {
-        color: turquoise;
+        color: turquoise !important;
       }
+    }
 
-      &:after {
-        color: white;
-        content: "|";
-        padding-left: 2rem;
-      }
-
-      &:last-child {
-        padding-right: 2rem;
-
-        &:after {
-          content: "";
-          padding-left: 0px;
-        }
-      }
+    &--separator {
+      color: white;
     }
   }
 }
@@ -232,9 +221,11 @@
 @keyframes info-appear {
   from {
     opacity: 0;
+    transform: translateY(-150%);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 

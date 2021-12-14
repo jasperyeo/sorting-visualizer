@@ -39,7 +39,10 @@
         <input type="checkbox" id="enable-audio" [(ngModel)]="enableAudio"/>
         <label for="enable-audio">{{ 'SUBHEADER.SETTINGS.ENABLE_AUDIO' | translate }}</label><br>
         <input type="checkbox" id="show-values" [(ngModel)]="showValues"/>
-        <label for="show-values">{{ 'SUBHEADER.SETTINGS.SHOW_VALUES' | translate }}</label>
+        <label for="show-values">{{ 'SUBHEADER.SETTINGS.SHOW_VALUES' | translate }}</label><br>
+        <br>
+        <label>{{ 'SUBHEADER.SETTINGS.DELAY' | translate }}: {{ sortDelay === 0 ? ('SUBHEADER.SETTINGS.DELAY_FAST' | translate) : sortDelay === 100 ? ('SUBHEADER.SETTINGS.DELAY_SLOW' | translate) : ('SUBHEADER.SETTINGS.DELAY_NORMAL' | translate) }}</label><br>
+        <input type="range" id="sortDelay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay">
         <br><br>
         <hr />
         <br>
@@ -60,9 +63,6 @@
         </div>
         <label *ngIf="minValue <= 0" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MIN_WARNING' | translate }}</label>
         <label *ngIf="maxValue > viewHeight * 0.45" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MAX_WARNING' | translate }}</label>
-        <br>
-        <label>{{ 'SUBHEADER.SETTINGS.DELAY' | translate }}: {{ sortDelay === 0 ? ('SUBHEADER.SETTINGS.DELAY_FAST' | translate) : sortDelay === 100 ? ('SUBHEADER.SETTINGS.DELAY_SLOW' | translate) : ('SUBHEADER.SETTINGS.DELAY_NORMAL' | translate) }}</label><br>
-        <input type="range" id="sortDelay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay">
       </div>
     </div>
     <div *ngIf="showControlPanel" class="sort__info" #statistics>
@@ -127,8 +127,10 @@
     </sort-bar>
   </div>
   <div class="sort__footer">
-    <p class="sort__footer--link" [title]="'FOOTER.ABOUT' | translate" (click)="showIntro = true">{{ 'FOOTER.ABOUT' | translate }}</p>
-    <p class="sort__footer--link" [title]="'FOOTER.COMPARISON' | translate" (click)="showComparison = true">{{ 'FOOTER.COMPARISON' | translate }}</p>
+    <button class="btn__minimal sort__footer--link" [title]="'FOOTER.ABOUT' | translate" (click)="showIntro = true">{{ 'FOOTER.ABOUT' | translate }}</button>
+    <p class="sort__footer--separator">|</p>
+    <button class="btn__minimal sort__footer--link" [title]="'FOOTER.COMPARISON' | translate" (click)="showComparison = true">{{ 'FOOTER.COMPARISON' | translate }}</button>
+    <p class="sort__footer--separator">|</p>
     <a class="sort__footer--link" [title]="'FOOTER.GITHUB' | translate" href="https://github.com/jasperyeo/sorting-visualizer" target="_blank">{{ 'FOOTER.GITHUB' | translate }}</a>
   </div>
 </div>

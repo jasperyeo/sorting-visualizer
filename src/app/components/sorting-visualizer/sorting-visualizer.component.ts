@@ -90,8 +90,8 @@ export class SortingVisualizerComponent implements OnInit {
 
   private _scrapAlgorithmInformation(): void {
     this.sortAlgorithms.forEach(category => {
-      if (category === 'Library') return;
       category.algorithms.forEach((algo: any) => {
+        algo.category = category.category;
         let sortString: string[] = (algo.value as string).split(' ');
         this._sortingVisualizerService.getWikipediaSummary(sortString.pop() + '_sort').then((res: any) => {
           if (res) {
@@ -110,7 +110,7 @@ export class SortingVisualizerComponent implements OnInit {
     const createdGain: GainNode = this.audioContext.createGain();
     oscillator.connect(createdGain);
     oscillator.frequency.value = hertz;
-    oscillator.type = "square";
+    oscillator.type = "sine";
     createdGain.connect(this.audioContext.destination);
     createdGain.gain.value = gain * 0.01;
     oscillator.start(this.audioContext.currentTime);
@@ -134,7 +134,7 @@ export class SortingVisualizerComponent implements OnInit {
       if (this.enableAudio) this.playBeep(3, sortBar.value, 50);
       sortBar.showValue = this.showValues;
       this.sortArray.push(sortBar);
-      await this.sleep(10);
+      await this.sleep(0);
     }
     this.sorting = false;
   }
@@ -201,6 +201,9 @@ export class SortingVisualizerComponent implements OnInit {
         break;
       case 'MSD RADIX':
         algorithms.msdRadixSort(this, array, this.maxValue).then(() => this.sorting = false);
+        break;
+      case 'BOGO':
+        algorithms.bogoSort(this, array).then(() => this.sorting = false);
         break;
     }
   }
