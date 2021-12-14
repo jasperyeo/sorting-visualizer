@@ -14,6 +14,9 @@ export const complexityTime: Map<string, string> = new Map([
 
 export const complexitySpace: Map<string, string> = new Map([
   ['1', ComplexityColorCode.GOOD],
+
   ['logn', ComplexityColorCode.AVERAGE],
-  ['n', ComplexityColorCode.BAD]
+  
+  ['n', ComplexityColorCode.BAD],
+  ['n + 2^(d)', ComplexityColorCode.BAD]
 ]);

@@ -58,6 +58,26 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  &__icons-container {
+    width: fit-content;
+    display: flex;
+    margin: 0px auto;
+    margin-top: 1.2rem;
+  }
+
+  &__icon-url {
+    margin: 0px 1rem;
+  }
+
+  &__icon {
+    width: 4rem;
+    height: 4rem;
+
+    &:hover {
+      filter: brightness(0) saturate(100%) invert(81%) sepia(93%) saturate(356%) hue-rotate(96deg) brightness(90%) contrast(94%);
+    }
+  }
 }
 
 @keyframes dialog-appear {

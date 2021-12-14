@@ -6,7 +6,10 @@
     "DESC": "在计算机科学与数学中，一个排序算法是一种能将一串资料依照特定排序方式进行排列的一种算法。最常用到的排序方式是数值顺序以及字典顺序。有效的排序算法在一些算法（例如搜索算法与合并算法）中是重要的，如此这些算法才能得到正确解答。排序算法也用在处理文字资料以及产生人类可读的输出结果.",
     "CTA": "这可视化器通过用颜色，音频，与时间间隔，展示了常用排序算法如何运作。",
     "CRED": "开发者: Jasper Yeo, 2021.",
-    "CRED_LINK": "https://github.com/jasperyeo",
+    "CRED_LINK_1": "https://github.com/jasperyeo",
+    "CRED_DESC_1": "GitHub",
+    "CRED_LINK_2": "https://www.linkedin.com/in/yeoenghaijasper",
+    "CRED_DESC_2": "LinkedIn",
     "REFERENCE": "参考: ",
     "REFERENCE_LINK": "https://zh.wikipedia.org/wiki/排序算法",
     "CLOSE": "关闭"

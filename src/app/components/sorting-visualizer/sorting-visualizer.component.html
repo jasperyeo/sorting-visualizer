@@ -1,11 +1,13 @@
 <div class="sort__wrapper"  [class.sort__wrapper--msafari]="isMobileSafari">
   <div class="sort__header">
-    <div class="sort__header--button-menu" (click)="showControlPanel = !showControlPanel">
-      <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
-      <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
-      <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+    <div class="sort__header--menu-container">
+      <div class="sort__header--button-menu" (click)="showControlPanel = !showControlPanel">
+        <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+        <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+        <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+      </div>
+      <h1 class="sort__header--menu" (click)="showControlPanel = !showControlPanel">{{ 'HEADER.MENU' | translate }}</h1>
     </div>
-    <h1 class="sort__header--menu" (click)="showControlPanel = !showControlPanel">{{ 'HEADER.MENU' | translate }}</h1>
     <h1 class="sort__header--title">{{ 'TITLE' | translate }}</h1>
     <button (click)="resetArray()" [disabled]="sorting" [title]="'HEADER.RESET' | translate">&#8634;</button>
     <select name="sorts" id="sorts" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod" (change)="selectAlgorithm(sortMethod)" class="sort__header--select">
