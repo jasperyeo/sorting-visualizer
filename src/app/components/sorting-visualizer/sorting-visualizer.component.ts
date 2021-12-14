@@ -110,7 +110,7 @@ export class SortingVisualizerComponent implements OnInit {
     const createdGain: GainNode = this.audioContext.createGain();
     oscillator.connect(createdGain);
     oscillator.frequency.value = hertz;
-    oscillator.type = "square";
+    oscillator.type = "sine";
     createdGain.connect(this.audioContext.destination);
     createdGain.gain.value = gain * 0.01;
     oscillator.start(this.audioContext.currentTime);
@@ -134,7 +134,7 @@ export class SortingVisualizerComponent implements OnInit {
       if (this.enableAudio) this.playBeep(3, sortBar.value, 50);
       sortBar.showValue = this.showValues;
       this.sortArray.push(sortBar);
-      await this.sleep(10);
+      await this.sleep(0);
     }
     this.sorting = false;
   }
