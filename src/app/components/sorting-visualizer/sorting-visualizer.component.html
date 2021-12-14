@@ -127,8 +127,10 @@
     </sort-bar>
   </div>
   <div class="sort__footer">
-    <p class="sort__footer--link" [title]="'FOOTER.ABOUT' | translate" (click)="showIntro = true">{{ 'FOOTER.ABOUT' | translate }}</p>
-    <p class="sort__footer--link" [title]="'FOOTER.COMPARISON' | translate" (click)="showComparison = true">{{ 'FOOTER.COMPARISON' | translate }}</p>
+    <button class="btn__minimal sort__footer--link" [title]="'FOOTER.ABOUT' | translate" (click)="showIntro = true">{{ 'FOOTER.ABOUT' | translate }}</button>
+    <p class="sort__footer--separator">|</p>
+    <button class="btn__minimal sort__footer--link" [title]="'FOOTER.COMPARISON' | translate" (click)="showComparison = true">{{ 'FOOTER.COMPARISON' | translate }}</button>
+    <p class="sort__footer--separator">|</p>
     <a class="sort__footer--link" [title]="'FOOTER.GITHUB' | translate" href="https://github.com/jasperyeo/sorting-visualizer" target="_blank">{{ 'FOOTER.GITHUB' | translate }}</a>
   </div>
 </div>
