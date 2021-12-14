@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class BigONotationPipe implements PipeTransform {
 
-  transform(value: string, ...args: unknown[]): string {
+  public transform(value: string, ...args: unknown[]): string {
     if (!value || !value.length) return '';
     let finalString: string = value;
     // infinity

@@ -6,6 +6,10 @@
     "DESC": "Dalam Ilmu Komputer, Algoritme penyortiran merupakan algoritme yang menempatkan elemen daftar pada urutan tertentu. Urutan yang paling sering digunakan ialah urutan numerik dan urutan leksikografis. Penyortiran yang efisien sangat dibutuhkan untuk mengoptimisasi penggunaan dari algoritme lain seperti algoritme pencarian dan algoritme penggabungan yang membutuhkan data input di dalam daftar terurut, yang juga sering digunakan untuk menganonikalisasi data dan menghasilkan output yang dapat dibaca manusia.",
     "CTA": "Visualisator ini mendemonstrasikan bagaimana algoritma pengurutan umum bekerja melalui penggunaan warna, suara, dan pengaturan waktu.",
     "CRED": "Pengembang: Jasper Yeo, 2021.",
+    "CRED_LINK_1": "https://github.com/jasperyeo",
+    "CRED_DESC_1": "GitHub",
+    "CRED_LINK_2": "https://www.linkedin.com/in/yeoenghaijasper",
+    "CRED_DESC_2": "LinkedIn",
     "REFERENCE": "Referensi: ",
     "REFERENCE_LINK": "https://id.wikipedia.org/wiki/Algoritme_penyortiran",
     "CLOSE": "Menutup"

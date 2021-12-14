@@ -38,5 +38,7 @@ export class AppComponent {
         this.isMobileSafari = true;
       }
     }
+
+    screen.orientation.lock("portrait");
   }
 }
