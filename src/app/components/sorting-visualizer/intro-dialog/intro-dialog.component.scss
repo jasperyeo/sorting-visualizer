@@ -36,6 +36,12 @@
     }
   }
 
+  &__preview {
+    width: 100%;
+    max-width: 30rem;
+    border-radius: .8rem;
+  }
+
   &__title {
     height: 3.8rem;
   }

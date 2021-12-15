@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
 
-  public readonly title: string = 'Sorting Visualizer';
+  public readonly title: string = 'Sorting Visualizer | Jasper Yeo';
   public readonly langs: any[] = [
     { label: 'EN', value: 'en' },
     { label: '中', value: 'zh' },
@@ -19,14 +19,6 @@ export class AppComponent {
   public isMobileSafari: boolean = false;
 
   constructor(private _meta: Meta, private _title: Title, private _translateService: TranslateService) {
-    this._meta.addTags([
-      { name: 'description', content: 'Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and timings.' },
-      { name: 'author', content: 'Jasper Yeo' },
-      { name: 'keywords', content: 'sorting, angular, sort, sorting-algorithms, sorting-visualization, sorting-visualizer' },
-      { name: 'robots', content: 'index, follow' },
-      { name: 'date', content: '2021-12-01', scheme: 'YYYY-MM-DD' },
-      { charset: 'UTF-8' }
-    ]);
     this._title.setTitle(this.title);
 
     this._translateService.addLangs(this.langs.map(lang => lang.value));
@@ -38,7 +30,5 @@ export class AppComponent {
         this.isMobileSafari = true;
       }
     }
-
-    screen.orientation.lock("portrait");
   }
 }
