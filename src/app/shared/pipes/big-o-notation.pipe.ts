@@ -10,7 +10,7 @@ export class BigONotationPipe implements PipeTransform {
     let finalString: string = value;
     // infinity
     if (value === 'infinity') {
-      finalString = '&#8734;';
+      return '&#8734;';
     }
     // superscript at '^(#)'
     if (value.includes('^')) {
@@ -18,7 +18,7 @@ export class BigONotationPipe implements PipeTransform {
       finalString = finalString.replace(/(\))/gi, '</sup>');
     }
     // fractional value
-    if (value.includes('/')) {
+    else if (value.includes('/')) {
       const startIndex: number = finalString.indexOf('(');
       const divisorIndex: number = finalString.indexOf('/');
       const endIndex: number = finalString.indexOf(')');
