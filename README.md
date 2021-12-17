@@ -26,6 +26,7 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 
 ### Insertion
 - Insertion Sort
+- Shell Sort
 
 ### Exchanging
 - Bubble Sort

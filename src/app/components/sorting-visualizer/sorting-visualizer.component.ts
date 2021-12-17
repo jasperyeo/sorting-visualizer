@@ -204,6 +204,9 @@ export class SortingVisualizerComponent implements OnInit {
       case 'INSERTION':
         algorithms.insertionSort(this, array).then(() => this.sorting = false);
         break;
+      case 'SHELL':
+        algorithms.shellSort(this, array).then(() => this.sorting = false);
+        break;
       case 'BUBBLE':
         algorithms.bubbleSort(this, array).then(() => this.sorting = false);
         break;
