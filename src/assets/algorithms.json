@@ -102,6 +102,15 @@
         "average": "n^(2)",
         "worst": "n^(2)",
         "memory": "1"
+      },
+      {
+        "active": true,
+        "label": "Odd-Even Sort",
+        "value": "Odd-even",
+        "best": "n",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
       }
     ]
   },

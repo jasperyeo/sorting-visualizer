@@ -32,6 +32,7 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 - Gnome Sort
 - Cocktail Shaker Sort
 - Exchange Sort
+- Odd-Even Sort
 
 ### Non-Comparison
 - Least Significant Digit (LSD) Radix Sort
