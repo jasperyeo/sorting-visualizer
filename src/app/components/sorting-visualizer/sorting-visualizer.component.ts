@@ -205,6 +205,9 @@ export class SortingVisualizerComponent implements OnInit {
       case 'MSD RADIX':
         algorithms.msdRadixSort(this, array, this.maxValue).then(() => this.sorting = false);
         break;
+      case 'PANCAKE':
+        algorithms.pancakeSort(this, array).then(() => this.sorting = false);
+        break;
       case 'BOGO':
         algorithms.bogoSort(this, array).then(() => this.sorting = false);
         break;
