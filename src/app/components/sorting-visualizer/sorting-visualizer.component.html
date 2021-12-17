@@ -54,7 +54,7 @@
         </select>
         <br><br>
         <label>{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
-        <input type="number" min="2" [(ngModel)]="elementCount" [disabled]="sorting"/>
+        <input type="number" min="2" [(ngModel)]="elementCount" [disabled]="sorting || sortMethod.toUpperCase() === 'BITONIC'"/>
         <label *ngIf="elementCount < 2" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MIN_WARNING' | translate }}</label>
         <label *ngIf="elementCount >= viewWidth / 12" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MAX_WARNING' | translate }}</label>
         <br><br>

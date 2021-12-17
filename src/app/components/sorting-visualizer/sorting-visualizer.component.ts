@@ -6,6 +6,7 @@ import { SortingVisualizerService } from './sorting-visualizer.service';
 
 import * as algorithms from './../../algorithms/index';
 import { complexityTime, complexitySpace } from './../../shared/models/complexity-time-space';
+import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'sorting-visualizer',
@@ -160,6 +161,25 @@ export class SortingVisualizerComponent implements OnInit {
           this.sortDescription = algo.description;
           this.sortLink = algo.link;
           this.selectedAlgorithm = algo;
+          if (mode.toUpperCase() === 'BITONIC') {
+            this.elementCount = Math.floor(this.viewWidth / 14);
+            let maxCount: number = 0;
+            let pow: number = 1;
+            while (maxCount < this.elementCount) {
+              const newCount: number = Math.pow(2, pow);
+              if (newCount <= this.elementCount) {
+                maxCount = newCount;
+                pow++;
+              } else {
+                break;
+              }
+            }
+            this.elementCount = maxCount;
+            this.resetArray();
+          } else {
+            this.elementCount = Math.floor(this.viewWidth / 14);
+            this.resetArray();
+          }
         }
       });
     });
@@ -207,6 +227,9 @@ export class SortingVisualizerComponent implements OnInit {
         break;
       case 'PANCAKE':
         algorithms.pancakeSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'BITONIC':
+        algorithms.bitonicSort(this, array).then(() => this.sorting = false);
         break;
       case 'BOGO':
         algorithms.bogoSort(this, array).then(() => this.sorting = false);

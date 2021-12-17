@@ -151,6 +151,15 @@
       },
       {
         "active": true,
+        "label": "Bitonic Sort",
+        "value": "Bitonic",
+        "best": "log^(2)n",
+        "average": "log^(2)n",
+        "worst": "nlog^(2)n",
+        "memory": "1"
+      },
+      {
+        "active": true,
         "label": "Bogo Sort",
         "value": "Bogo",
         "best": "n",
