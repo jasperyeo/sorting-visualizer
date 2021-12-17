@@ -196,6 +196,9 @@ export class SortingVisualizerComponent implements OnInit {
       case 'EXCHANGE':
         algorithms.exchangeSort(this, array).then(() => this.sorting = false);
         break;
+      case 'ODD-EVEN':
+        algorithms.oddEvenSort(this, array).then(() => this.sorting = false);
+        break;
       case 'LSD RADIX':
         algorithms.lsdRadixSort(this, array).then(() => this.sorting = false);
         break;
