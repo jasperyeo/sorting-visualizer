@@ -11,4 +11,5 @@ export * from './odd-even-sort';
 export * from './lsd-radix-sort';
 export * from './msd-radix-sort';
 export * from './pancake-sort';
+export * from './bitonic-sort';
 export * from './bogo-sort';

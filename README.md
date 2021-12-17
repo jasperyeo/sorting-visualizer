@@ -40,6 +40,7 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 
 ### Others
 - Pancake Sort
+- Bitonic Sort
 - Bogo Sort
 
 ## Development Information
