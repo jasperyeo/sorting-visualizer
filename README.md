@@ -39,6 +39,7 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 - Most Significant Digit (MSD) Radix Sort
 
 ### Others
+- Pancake Sort
 - Bogo Sort
 
 ## Development Information

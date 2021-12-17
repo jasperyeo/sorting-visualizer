@@ -142,6 +142,15 @@
     "algorithms": [
       {
         "active": true,
+        "label": "Pancake Sort",
+        "value": "Pancake",
+        "best": "-",
+        "average": "n",
+        "worst": "n",
+        "memory": "logn"
+      },
+      {
+        "active": true,
         "label": "Bogo Sort",
         "value": "Bogo",
         "best": "n",
