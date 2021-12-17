@@ -26,18 +26,22 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 
 ### Insertion
 - Insertion Sort
+- Shell Sort
 
 ### Exchanging
 - Bubble Sort
 - Gnome Sort
 - Cocktail Shaker Sort
 - Exchange Sort
+- Odd-Even Sort
 
 ### Non-Comparison
 - Least Significant Digit (LSD) Radix Sort
 - Most Significant Digit (MSD) Radix Sort
 
 ### Others
+- Pancake Sort
+- Bitonic Sort
 - Bogo Sort
 
 ## Development Information

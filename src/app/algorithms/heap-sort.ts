@@ -3,12 +3,11 @@ import { SortBarComponent } from './../shared/models/sort-bar/sort-bar.component
 import { compare, swap } from './common';
 
 export async function heapSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
-  const size: number = array.length;
-  for (let i: number = Math.floor(size / 2 - 1); i >= 0; i--) {
+  for (let i: number = Math.floor(array.length / 2 - 1); i >= 0; i--) {
     if (!visualizer.sorting) return;
-    await heapify(visualizer, array, size, i);
+    await heapify(visualizer, array, array.length, i);
   }
-  for (let i: number = size - 1; i >= 0; i--) {
+  for (let i: number = array.length - 1; i >= 0; i--) {
     if (!visualizer.sorting) return;
     await swap(visualizer, array, 0, i);
     await heapify(visualizer, array, i, 0);
