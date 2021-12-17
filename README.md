@@ -6,7 +6,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/jasperyeo/sorting-visualizer)
 ![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fjasperyeo.github.io%2Fsorting-visualizer%2F)
 
-# Sorting Visualizer
+[![Sorting Visualizer](https://jasperyeo.github.io/sorting-visualizer/assets/images/large-image-preview.png)](https://jasperyeo.github.io/sorting-visualizer/)
 
 Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and timings.
 
