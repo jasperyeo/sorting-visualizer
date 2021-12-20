@@ -9,6 +9,7 @@ export * from './gnome-sort';
 export * from './cocktail-shaker-sort';
 export * from './exchange-sort';
 export * from './odd-even-sort';
+export * from './comb-sort';
 export * from './lsd-radix-sort';
 export * from './msd-radix-sort';
 export * from './pancake-sort';
