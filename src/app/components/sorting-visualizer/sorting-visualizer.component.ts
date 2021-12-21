@@ -6,7 +6,6 @@ import { SortingVisualizerService } from './sorting-visualizer.service';
 
 import * as algorithms from './../../algorithms/index';
 import { complexityTime, complexitySpace } from './../../shared/models/complexity-time-space';
-import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'sorting-visualizer',
@@ -207,6 +206,9 @@ export class SortingVisualizerComponent implements OnInit {
       case 'SHELL':
         algorithms.shellSort(this, array).then(() => this.sorting = false);
         break;
+      case 'TREE':
+        algorithms.treeSort(this, array).then(() => this.sorting = false);
+        break;
       case 'BUBBLE':
         algorithms.bubbleSort(this, array).then(() => this.sorting = false);
         break;
@@ -221,6 +223,9 @@ export class SortingVisualizerComponent implements OnInit {
         break;
       case 'ODD-EVEN':
         algorithms.oddEvenSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'COMB':
+        algorithms.combSort(this, array).then(() => this.sorting = false);
         break;
       case 'LSD RADIX':
         algorithms.lsdRadixSort(this, array).then(() => this.sorting = false);

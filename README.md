@@ -27,6 +27,7 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 ### Insertion
 - Insertion Sort
 - Shell Sort
+- Tree Sort
 
 ### Exchanging
 - Bubble Sort
@@ -34,6 +35,7 @@ Sorting visualizer that demonstrates the functionality of common sorting algorit
 - Cocktail Shaker Sort
 - Exchange Sort
 - Odd-Even Sort
+- Comb Sort
 
 ### Non-Comparison
 - Least Significant Digit (LSD) Radix Sort
