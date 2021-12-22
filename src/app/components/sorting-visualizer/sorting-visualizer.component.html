@@ -14,7 +14,7 @@
       <select id="select-algorithm-dropdown" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod"
         (change)="selectAlgorithm(sortMethod); closeDropdown($event)" class="sort__header--select-algo">
         <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
-        <optgroup [label]="filteredAlgorithms?.length + ' results'" [class.sort__header--select-empty]="!filteredAlgorithms?.length"></optgroup>
+        <optgroup [label]="filteredAlgorithms?.length + ('HEADER.RESULTS' | translate)" [class.sort__header--select-empty]="!filteredAlgorithms?.length"></optgroup>
         <optgroup [label]="'-------------------------------'"></optgroup>
         <ng-container *ngFor="let category of sortAlgorithms">
           <optgroup [label]="category?.category + ' (' + category?.count + ')'">
@@ -25,7 +25,7 @@
         </ng-container>
       </select>
       <input type="text" id="select-algorithm-search" class="sort__header--dropdown-search" (keyup)="search()"
-        [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openDropdown($event)" placeholder="Search algorithm"/>
+        [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openDropdown($event)" [placeholder]="'HEADER.CHOOSE_ALGORITHM' | translate"/>
     </div>
     <button *ngIf="!dropdownOpened"
       (click)="!sorting ? sort(sortArray, sortMethod) : stop()"
