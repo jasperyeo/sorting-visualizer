@@ -134,7 +134,6 @@ input[type="range"] {
 }
 
 select {
-  cursor: pointer;
   border: none;
   box-shadow: none;
   border-radius: .8rem;
@@ -144,6 +143,10 @@ select {
 
   option {
     cursor: pointer;
+
+    &:hover {
+      background-color: turquoise;
+    }
   }
 }
 
