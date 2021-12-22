@@ -40,6 +40,7 @@
     width: 100%;
     max-width: 30rem;
     border-radius: .8rem;
+    animation: dialog-appear 2s ease-in-out;
   }
 
   &__title {
