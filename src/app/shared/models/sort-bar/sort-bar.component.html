@@ -5,7 +5,7 @@
     [style.background-color]="style === 'BAR' || style === 'BAMBOO' ? color : 'transparent'">
     <div *ngIf="style === 'BAMBOO'" class="sort__bar--bamboo"></div>
   </div>
-  <div *ngIf="style === 'POINT' || style === 'BALLOON'" class="sort__point"
+  <div *ngIf="style === 'POINT' || style === 'BALLOON' || style === 'LINE'" class="sort__point"
     [class.sort__point--balloon]="style === 'BALLOON'"
     [style.margin-bottom]="(value - 10) + 'px'"
     [style.background-color]="color">

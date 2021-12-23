@@ -140,6 +140,10 @@
     <sort-bar *ngFor="let bar of sortArray; index as i;"
       [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [style]="bar.style" [showValue]="showValues">
     </sort-bar>
+    <svg height="100%" width="100%" class="sort__container--polyline">
+      <polyline id="polyline" points="20,20 40,25 60,40 80,120 120,140 200,180"
+      style="fill:none; stroke:turquoise; stroke-width:1" />
+    </svg>
   </div>
   <div class="sort__footer">
     <button class="btn__minimal sort__footer--link" [title]="'FOOTER.ABOUT' | translate" (click)="showIntro = true">{{ 'FOOTER.ABOUT' | translate }}</button>
