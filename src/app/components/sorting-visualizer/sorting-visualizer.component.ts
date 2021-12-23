@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
@@ -12,7 +12,7 @@ import { complexityTime, complexitySpace } from './../../shared/models/complexit
   templateUrl: './sorting-visualizer.component.html',
   styleUrls: ['./sorting-visualizer.component.scss']
 })
-export class SortingVisualizerComponent implements OnInit {
+export class SortingVisualizerComponent implements OnInit, AfterViewInit {
 
   @Input('langs') public langs: any[] = [];
   @Input('isMobileSafari') public isMobileSafari: boolean = false;
@@ -20,6 +20,8 @@ export class SortingVisualizerComponent implements OnInit {
   public readonly complexitySpace = complexitySpace;
   public readonly audioContext: AudioContext = new AudioContext();
   public sortArray: SortBarComponent[] = [];
+  public listedAlgorithms: any[] = [];
+  public filteredAlgorithms: any[] = [];
   public lang: string = 'en';
   public selectedAlgorithm: any;
   public sortDelay: number = 50;
@@ -27,6 +29,7 @@ export class SortingVisualizerComponent implements OnInit {
   public sortDescription: string = '';
   public sortLink: string = '';
   public sortStyle: string = SortBarStyle.BAR;
+  public selectAlgorithmSearchTerm: string = '';
   public sortAttempts: number = 0;
   public elementCount: number = 400;
   public minValue: number = 5;
@@ -44,8 +47,9 @@ export class SortingVisualizerComponent implements OnInit {
   public enableAudio: boolean = false;
   public showValues: boolean = false;
   public loading: boolean = false;
-  public showIntro: boolean = true;
+  public showIntro: boolean = false;
   public showComparison: boolean = false;
+  public dropdownOpened: boolean = false;
 
   public readonly sortStyles: string[] = [
     SortBarStyle.BAR,
@@ -68,6 +72,17 @@ export class SortingVisualizerComponent implements OnInit {
     this._sortingVisualizerService.getJSON('./assets/algorithms.json').then((res: any) => {
       this.sortAlgorithms = res;
       this._scrapAlgorithmInformation();
+
+      if (this.sortAlgorithms && this.sortAlgorithms.length) {
+        this.sortAlgorithms.forEach((cat: any) => {
+          if (cat.algorithms && cat.algorithms.length) {
+            cat.algorithms.forEach((algo: any) => {
+              this.listedAlgorithms.push(algo);
+            });
+          }
+        });
+      }
+      this.filteredAlgorithms = this.listedAlgorithms;
     });
     if (localStorage.getItem('lang')) {
       this.lang = localStorage.getItem('lang') as string;
@@ -80,6 +95,49 @@ export class SortingVisualizerComponent implements OnInit {
     this.resetArray();
   }
 
+  public ngAfterViewInit(): void {
+    
+  }
+
+  public openDropdown(): void {
+    let dropdownElement: HTMLSelectElement = document.getElementById('select-algorithm-dropdown') as HTMLSelectElement;
+    const left: number = dropdownElement.offsetLeft;
+    dropdownElement.setAttribute('size', '12');
+    dropdownElement.style.position = 'fixed';
+    dropdownElement.style.top = '4rem';
+    dropdownElement.style.height = 'auto';
+    dropdownElement.style.zIndex = '3';
+    dropdownElement.style.borderRadius = '0px';
+    this.dropdownOpened = true;
+  }
+
+  @HostListener('document:click', ['$event'])
+  public closeDropdown(event: any): void {
+    if ((event.target.className as string).includes('sort__header--dropdown-search') || (!this.selectedAlgorithm && this.selectAlgorithmSearchTerm.length)) {
+      return;
+    }
+    let dropdownElement: HTMLSelectElement = document.getElementById('select-algorithm-dropdown') as HTMLSelectElement;
+    dropdownElement.setAttribute('size', '1');
+    dropdownElement.style.position = '';
+    dropdownElement.style.left ='';
+    dropdownElement.style.top = '';
+    dropdownElement.style.height = '';
+    dropdownElement.style.zIndex = '';
+    dropdownElement.style.borderRadius = '.8rem';
+    this.dropdownOpened = false;
+    if (this.selectedAlgorithm) {
+      this.selectAlgorithmSearchTerm = this.selectedAlgorithm.label;
+    }
+  }
+
+  public search(): void {
+    if (!this.selectAlgorithmSearchTerm || !this.selectAlgorithmSearchTerm.length) {
+      this.filteredAlgorithms = this.listedAlgorithms;
+      return;
+    }
+    this.filteredAlgorithms = this.listedAlgorithms.filter(algo => (algo.label as string).toUpperCase().includes(this.selectAlgorithmSearchTerm.toUpperCase()) || (algo.category as string).toUpperCase().includes(this.selectAlgorithmSearchTerm.toUpperCase()));
+  }
+
   @HostListener('window:resize')
   public windowChange(): void {
     this.loading = true;
@@ -90,6 +148,7 @@ export class SortingVisualizerComponent implements OnInit {
 
   private _scrapAlgorithmInformation(): void {
     this.sortAlgorithms.forEach(category => {
+      category.count = category.algorithms.length;
       category.algorithms.forEach((algo: any) => {
         algo.category = category.category;
         let sortString: string[] = (algo.value as string).split(' ');

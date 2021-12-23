@@ -1,22 +1,35 @@
 <div class="sort__wrapper"  [class.sort__wrapper--msafari]="isMobileSafari">
   <div class="sort__header">
-    <div class="sort__header--menu-container">
-      <div class="sort__header--button-menu" (click)="showControlPanel = !showControlPanel">
+    <button class="btn btn__minimal sort__header--menu-container" (click)="showControlPanel = !showControlPanel">
+      <div class="sort__header--button-menu">
         <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
         <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
         <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
       </div>
-      <h1 class="sort__header--menu" (click)="showControlPanel = !showControlPanel">{{ 'HEADER.MENU' | translate }}</h1>
-    </div>
+      <p class="sort__header--menu">{{ 'HEADER.MENU' | translate }}</p>
+    </button>
     <h1 class="sort__header--title">{{ 'TITLE' | translate }}</h1>
     <button (click)="resetArray()" [disabled]="sorting" [title]="'HEADER.RESET' | translate">&#8634;</button>
-    <select name="sorts" id="sorts" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod" (change)="selectAlgorithm(sortMethod)" class="sort__header--select">
-      <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
-      <optgroup *ngFor="let category of sortAlgorithms" [label]="category?.category">
-        <option *ngFor="let algorithm of category?.algorithms" [value]="algorithm?.value">{{ algorithm?.label }}</option>
-      </optgroup>
-    </select>
-    <button (click)="!sorting ? sort(sortArray, sortMethod) : stop()"
+    <div class="sort__header--dropdown-container">
+      <select id="select-algorithm-dropdown" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod"
+        (change)="selectAlgorithm(sortMethod); closeDropdown($event)" class="sort__header--select-algo">
+        <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
+        <optgroup [label]="filteredAlgorithms?.length + ('HEADER.RESULTS' | translate)" [class.sort__header--select-empty]="!filteredAlgorithms?.length"></optgroup>
+        <optgroup [label]="'-------------------------------'"></optgroup>
+        <ng-container *ngFor="let category of sortAlgorithms">
+          <optgroup [label]="category?.category + ' (' + category?.count + ')'">
+            <ng-container *ngFor="let algorithm of filteredAlgorithms">
+              <option *ngIf="algorithm?.category === category?.category" [value]="algorithm?.value">{{ algorithm?.label }}</option>
+            </ng-container>
+          </optgroup>
+        </ng-container>
+      </select>
+      <input type="text" id="select-algorithm-search" class="sort__header--dropdown-search" (keyup)="search()"
+        [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openDropdown()" [placeholder]="'HEADER.CHOOSE_ALGORITHM' | translate"/>
+      <div class="sort__header--dropdown-icon"></div>
+    </div>
+    <button *ngIf="!dropdownOpened"
+      (click)="!sorting ? sort(sortArray, sortMethod) : stop()"
       [disabled]="!sortMethod.length ||
       elementCount < 2 || (elementCount * 4) >= viewWidth ||
       minValue <= 0 || maxValue * 0.8 > viewHeight"
@@ -25,7 +38,7 @@
       <span *ngIf="!sorting">&#8811;</span>
     </button>
     <div class="sort__header--lang">
-      <select name="langs" id="langs" [(ngModel)]="lang" (change)="selectLang(lang)" class="sort__header--select">
+      <select name="langs" id="langs" [(ngModel)]="lang" (change)="selectLang(lang)" class="sort__header--select-lang">
         <option *ngFor="let lang of langs" [value]="lang?.value">{{ lang?.label }}</option>
       </select>
     </div>
@@ -49,7 +62,7 @@
         <hr />
         <br>
         <label>{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
-        <select name="styles" id="styles" [disabled]="sorting" [(ngModel)]="sortStyle">
+        <select name="styles" id="styles" [disabled]="sorting" [(ngModel)]="sortStyle" (change)="resetArray()">
           <option *ngFor="let style of sortStyles" [value]="style">{{ ('SUBHEADER.SETTINGS.' + style) | translate }}</option>
         </select>
         <br><br>
