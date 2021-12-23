@@ -2,7 +2,9 @@
   <div class="comparison-dialog__container">
     <h1 class="comparison-dialog__title">{{ 'COMPARISON.TITLE' | translate }}</h1>
     <div class="sticky-search">
-      <input type="text" [placeholder]="'COMPARISON.SEARCH' | translate" [(ngModel)]="sortSearchTerm" (keyup)="search()">
+      <input type="text" [placeholder]="'COMPARISON.SEARCH' | translate"  class="comparison-dialog__dropdown-search"
+        [(ngModel)]="sortSearchTerm" (keyup)="search()">
+      <div class="comparison-dialog__dropdown-icon"></div>
     </div>
     <div class="comparison-dialog__content">
       <table>

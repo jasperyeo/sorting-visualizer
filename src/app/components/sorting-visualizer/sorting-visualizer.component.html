@@ -26,6 +26,7 @@
       </select>
       <input type="text" id="select-algorithm-search" class="sort__header--dropdown-search" (keyup)="search()"
         [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openDropdown($event)" [placeholder]="'HEADER.CHOOSE_ALGORITHM' | translate"/>
+      <div class="sort__header--dropdown-icon"></div>
     </div>
     <button *ngIf="!dropdownOpened"
       (click)="!sorting ? sort(sortArray, sortMethod) : stop()"

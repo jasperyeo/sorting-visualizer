@@ -39,6 +39,29 @@
       position: absolute;
       left: 0px;
       top: 0px;
+      padding-left: 2.4rem !important;
+    }
+
+    &--dropdown-icon {
+      position: absolute;
+      left: .8rem;
+      top: .8rem;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid gray;
+      border-radius: 50%;
+      background-color: white;
+
+      &:before {
+        content: ' ';
+        width: 0.2rem;
+        height: 0.8rem;
+        position: absolute;
+        left: .5rem;
+        top: .5rem;
+        background-color: gray;
+        transform: rotate(-30deg);
+      }
     }
 
     &--select-algo {
