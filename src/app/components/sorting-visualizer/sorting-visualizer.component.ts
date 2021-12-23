@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, HostListener, Input, IterableDiffers, OnInit, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
@@ -12,7 +12,7 @@ import { complexityTime, complexitySpace } from './../../shared/models/complexit
   templateUrl: './sorting-visualizer.component.html',
   styleUrls: ['./sorting-visualizer.component.scss']
 })
-export class SortingVisualizerComponent implements OnInit, AfterViewInit {
+export class SortingVisualizerComponent implements OnInit, DoCheck {
 
   @Input('langs') public langs: any[] = [];
   @Input('isMobileSafari') public isMobileSafari: boolean = false;
@@ -28,7 +28,7 @@ export class SortingVisualizerComponent implements OnInit, AfterViewInit {
   public sortMethod: string = '';
   public sortDescription: string = '';
   public sortLink: string = '';
-  public sortStyle: string = SortBarStyle.BAR;
+  public sortStyle: string = SortBarStyle.LINE;
   public selectAlgorithmSearchTerm: string = '';
   public sortAttempts: number = 0;
   public elementCount: number = 400;
@@ -54,13 +54,21 @@ export class SortingVisualizerComponent implements OnInit, AfterViewInit {
   public readonly sortStyles: string[] = [
     SortBarStyle.BAR,
     SortBarStyle.POINT,
+    SortBarStyle.LINE,
     SortBarStyle.BALLOON,
     SortBarStyle.BAMBOO
   ];
   
   public sortAlgorithms: any[] = [];
+  public iterableDiffer: any;
 
-  constructor(private _sortingVisualizerService: SortingVisualizerService, private _translateService: TranslateService) { }
+  constructor(
+    private _sortingVisualizerService: SortingVisualizerService,
+    private _translateService: TranslateService,
+    private _iterableDiffers: IterableDiffers
+  ) {
+    this.iterableDiffer = this._iterableDiffers.find([]).create(undefined);
+  }
 
   public sleep(delay: number): Promise<void> {
     return new Promise(resolve => {
@@ -95,8 +103,19 @@ export class SortingVisualizerComponent implements OnInit, AfterViewInit {
     this.resetArray();
   }
 
-  public ngAfterViewInit(): void {
-    
+  public ngDoCheck(): void {
+    if (this.sortStyle !== SortBarStyle.LINE) return;
+    const changes = this.iterableDiffer.diff(this.sortArray);
+    if (changes) {
+      let polyline: HTMLElement = document.getElementById('polyline') as HTMLElement;
+      let coord: string = '';
+      let xOffset: number = 6;
+      this.sortArray.forEach(point => {
+        coord = coord.concat(xOffset.toString(), ',', (point.value - 5).toString(), ' ');
+        xOffset += 12;
+      });
+      polyline.setAttribute('points', coord);
+    }
   }
 
   public openDropdown(): void {

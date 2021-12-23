@@ -39,6 +39,7 @@ export enum SortBarColor {
 export enum SortBarStyle {
   BAR = 'BAR',
   POINT = 'POINT',
+  LINE = 'LINE',
   BALLOON = 'BALLOON',
   BAMBOO = 'BAMBOO'
 }

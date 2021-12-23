@@ -42,6 +42,7 @@
       "VISUALISER_STYLE": "Visualization Style",
       "BAR": "Bar",
       "POINT": "Point",
+      "LINE": "Line",
       "BALLOON": "Balloon",
       "BAMBOO": "Bamboo",
       "ELEMENT_COUNT": "Element Count",
