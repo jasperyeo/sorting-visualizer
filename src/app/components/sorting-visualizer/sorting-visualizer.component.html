@@ -25,7 +25,7 @@
         </ng-container>
       </select>
       <input type="text" id="select-algorithm-search" class="sort__header--dropdown-search" (keyup)="search()"
-        [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openDropdown($event)" [placeholder]="'HEADER.CHOOSE_ALGORITHM' | translate"/>
+        [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openDropdown()" [placeholder]="'HEADER.CHOOSE_ALGORITHM' | translate"/>
       <div class="sort__header--dropdown-icon"></div>
     </div>
     <button *ngIf="!dropdownOpened"
@@ -62,7 +62,7 @@
         <hr />
         <br>
         <label>{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
-        <select name="styles" id="styles" [disabled]="sorting" [(ngModel)]="sortStyle">
+        <select name="styles" id="styles" [disabled]="sorting" [(ngModel)]="sortStyle" (change)="resetArray()">
           <option *ngFor="let style of sortStyles" [value]="style">{{ ('SUBHEADER.SETTINGS.' + style) | translate }}</option>
         </select>
         <br><br>

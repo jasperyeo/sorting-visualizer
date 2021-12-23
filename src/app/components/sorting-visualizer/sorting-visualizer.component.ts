@@ -99,7 +99,7 @@ export class SortingVisualizerComponent implements OnInit, AfterViewInit {
     
   }
 
-  public openDropdown(event: FocusEvent): void {
+  public openDropdown(): void {
     let dropdownElement: HTMLSelectElement = document.getElementById('select-algorithm-dropdown') as HTMLSelectElement;
     const left: number = dropdownElement.offsetLeft;
     dropdownElement.setAttribute('size', '12');
