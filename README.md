@@ -1,16 +1,45 @@
-[![JasperYeo - sorting-visualizer](https://img.shields.io/static/v1?label=JasperYeo&message=sorting-visualizer&color=blue&logo=github)](https://github.com/JasperYeo/sorting-visualizer)
-[![Hosted with GH Pages](https://img.shields.io/badge/Hosted_with-GitHub_Pages-green?logo=github&logoColor=white)](https://pages.github.com/)
-[![License](https://img.shields.io/badge/License-GNU_AGPLv3-yellow)](#license)
-
-![GitHub deployments](https://img.shields.io/github/deployments/jasperyeo/sorting-visualizer/github-pages)
-![GitHub last commit](https://img.shields.io/github/last-commit/jasperyeo/sorting-visualizer)
-![W3C Validation](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fjasperyeo.github.io%2Fsorting-visualizer%2F)
-
-[![Sorting Visualizer](https://jasperyeo.github.io/sorting-visualizer/assets/images/large-image-preview.png)](https://jasperyeo.github.io/sorting-visualizer/)
-
-Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and timings.
-
-[https://jasperyeo.github.io/sorting-visualizer/](https://jasperyeo.github.io/sorting-visualizer/)
+<p align="center">
+  <a href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="Sorting Visualizer">
+    <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/large-image-preview.png" width="50%"/>
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/JasperYeo/sorting-visualizer" target="_blank" title="Jasper Yeo - sorting-visualizer">
+    <img src="https://img.shields.io/static/v1?label=JasperYeo&message=sorting-visualizer&color=blue&logo=github"/>
+  </a>
+  <a href="https://pages.github.com/" target="_blank" title="Hosted with GH Pages">
+    <img src="https://img.shields.io/badge/Hosted_with-GitHub_Pages-green?logo=github&logoColor=white"/>
+  </a>
+  <a href="#license" target="_blank" title="License - GNU_AGPLv3">
+    <img src="https://img.shields.io/badge/License-GNU_AGPLv3-yellow"/>
+  </a>
+</p>
+<p align="center">
+  <a target="_blank" title="GitHub deployments">
+    <img src="https://img.shields.io/github/deployments/jasperyeo/sorting-visualizer/github-pages"/>
+  </a>
+  <a target="_blank" title="GitHub last commit">
+    <img src="https://img.shields.io/github/last-commit/jasperyeo/sorting-visualizer"/>
+  </a>
+  <a target="_blank" title="W3C Validation">
+    <img src="https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fjasperyeo.github.io%2Fsorting-visualizer%2F"/>
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/jasperyeo/sorting-visualizer/blob/main/README_ZH.md" target="_blank" title="中文">中文</a>
+   · 
+  <a href="https://github.com/jasperyeo/sorting-visualizer/blob/main/README.md" target="_blank" title="English">English</a>
+   · 
+  <a href="https://github.com/jasperyeo/sorting-visualizer/blob/main/README_ES.md" target="_blank" title="Español">Español</a>
+   · 
+  <a href="https://github.com/jasperyeo/sorting-visualizer/blob/main/README_ID.md" target="_blank" title="Bahasa Indonesia">Bahasa Indonesia</a>
+</p>
+<p align="center">
+  Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and timings.
+  <a href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
+    https://jasperyeo.github.io/sorting-visualizer/
+  </a>
+</p>
 
 ## Implemented Sorting Algorithms
 
