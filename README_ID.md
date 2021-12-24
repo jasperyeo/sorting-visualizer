@@ -37,7 +37,7 @@
 <p align="center">
   Visualisator ini mendemonstrasikan bagaimana algoritma pengurutan umum bekerja melalui penggunaan warna, suara, dan pengaturan waktu.
 </p>
-<a href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
+<a align="center" href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
   https://jasperyeo.github.io/sorting-visualizer/
 </a>
 
