@@ -37,7 +37,7 @@
 <p align="center">
   Este visualizador demuestra cómo funcionan los algoritmos de clasificación comunes mediante el uso de colores, sonidos y tiempos.
 </p>
-<a href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
+<a align="center" href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
   https://jasperyeo.github.io/sorting-visualizer/
 </a>
 
