@@ -1,6 +1,6 @@
 @import './../../../styles.scss';
 
-* {
+*, *:before, *:after {
   transition: all .2s ease-in-out;
 }
 
@@ -40,6 +40,10 @@
       left: 0px;
       top: 0px;
       padding-left: 2.4rem !important;
+
+      &--disabled {
+        background-color: lightgray;
+      }
     }
 
     &--dropdown-icon {
@@ -50,7 +54,7 @@
       height: 1rem;
       border: 2px solid gray;
       border-radius: 50%;
-      background-color: white;
+      background-color: transparent;
 
       &:before {
         content: ' ';
@@ -167,7 +171,6 @@
     height: fit-content;
     padding: 2rem;
     margin: 1rem;
-    cursor: pointer;
     z-index: 2;
     flex-shrink: 0;
     animation: info-appear .5s ease-in-out;
@@ -175,11 +178,31 @@
     &--header {
       display: flex;
       justify-content: space-between;
+      cursor: pointer;
 
       &:hover {
+        color: turquoise;
+
         .sort__info--title--icon {
           transform: rotate(360deg);
         }
+      }
+    }
+
+    &--link {
+      cursor: pointer;
+      font-size: 1.4rem;
+
+      &:after {
+        display: inline-block;
+        content: '>';
+        margin-left: 0px;
+        opacity: 0;
+      }
+
+      &:hover:after {
+        margin-left: .4rem;
+        opacity: 1;
       }
     }
 
@@ -226,7 +249,12 @@
       z-index: -1;
       transform-origin: center;
       transform: scale(1, -1);
-      //transform: rotate(180deg);
+      
+      polyline {
+        fill: none;
+        stroke: turquoise;
+        stroke-width: 1;
+      }
     }
   }
 

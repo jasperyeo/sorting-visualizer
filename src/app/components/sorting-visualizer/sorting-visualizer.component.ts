@@ -47,16 +47,26 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public enableAudio: boolean = false;
   public showValues: boolean = false;
   public loading: boolean = false;
-  public showIntro: boolean = false;
+  public showIntro: boolean = true;
   public showComparison: boolean = false;
   public dropdownOpened: boolean = false;
 
-  public readonly sortStyles: string[] = [
-    SortBarStyle.BAR,
-    SortBarStyle.POINT,
-    SortBarStyle.LINE,
-    SortBarStyle.BALLOON,
-    SortBarStyle.BAMBOO
+  public readonly sortStyles: any[] = [
+    {
+      category: 'BASIC',
+      styles: [
+        SortBarStyle.BAR,
+        SortBarStyle.POINT,
+        SortBarStyle.LINE
+      ]
+    },
+    {
+      category: 'FANCY',
+      styles: [
+        SortBarStyle.BALLOON,
+        SortBarStyle.BAMBOO
+      ]
+    }
   ];
   
   public sortAlgorithms: any[] = [];
@@ -118,9 +128,9 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     }
   }
 
-  public openDropdown(): void {
+  public openAlgoDropdown(): void {
+    if (this.sorting) return;
     let dropdownElement: HTMLSelectElement = document.getElementById('select-algorithm-dropdown') as HTMLSelectElement;
-    const left: number = dropdownElement.offsetLeft;
     dropdownElement.setAttribute('size', '12');
     dropdownElement.style.position = 'fixed';
     dropdownElement.style.top = '4rem';
@@ -131,7 +141,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   @HostListener('document:click', ['$event'])
-  public closeDropdown(event: any): void {
+  public closeAlgoDropdown(event: any): void {
     if ((event.target.className as string).includes('sort__header--dropdown-search') || (!this.selectedAlgorithm && this.selectAlgorithmSearchTerm.length)) {
       return;
     }
@@ -159,10 +169,10 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
 
   @HostListener('window:resize')
   public windowChange(): void {
-    this.loading = true;
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    // this.loading = true;
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 500);
   }
 
   private _scrapAlgorithmInformation(): void {

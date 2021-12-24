@@ -12,7 +12,7 @@
     <button (click)="resetArray()" [disabled]="sorting" [title]="'HEADER.RESET' | translate">&#8634;</button>
     <div class="sort__header--dropdown-container">
       <select id="select-algorithm-dropdown" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod"
-        (change)="selectAlgorithm(sortMethod); closeDropdown($event)" class="sort__header--select-algo">
+        (change)="selectAlgorithm(sortMethod); closeAlgoDropdown($event)" class="sort__header--select-algo">
         <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
         <optgroup [label]="filteredAlgorithms?.length + ('HEADER.RESULTS' | translate)" [class.sort__header--select-empty]="!filteredAlgorithms?.length"></optgroup>
         <optgroup [label]="'-------------------------------'"></optgroup>
@@ -24,8 +24,9 @@
           </optgroup>
         </ng-container>
       </select>
-      <input type="text" id="select-algorithm-search" class="sort__header--dropdown-search" (keyup)="search()"
-        [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openDropdown()" [placeholder]="'HEADER.CHOOSE_ALGORITHM' | translate"/>
+      <input type="text" id="select-algorithm-search" class="sort__header--dropdown-search" (keyup)="search()" [disabled]="sorting"
+        [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openAlgoDropdown()" [placeholder]="'HEADER.CHOOSE_ALGORITHM' | translate"
+        [class.sort__header--dropdown-search--disabled]="sorting"/>
       <div class="sort__header--dropdown-icon"></div>
     </div>
     <button *ngIf="!dropdownOpened"
@@ -38,7 +39,7 @@
       <span *ngIf="!sorting">&#8811;</span>
     </button>
     <div class="sort__header--lang">
-      <select name="langs" id="langs" [(ngModel)]="lang" (change)="selectLang(lang)" class="sort__header--select-lang">
+      <select id="langs-dropdown" [(ngModel)]="lang" (change)="selectLang(lang)" class="sort__header--select-lang">
         <option *ngFor="let lang of langs" [value]="lang?.value">{{ lang?.label }}</option>
       </select>
     </div>
@@ -62,8 +63,10 @@
         <hr />
         <br>
         <label>{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
-        <select name="styles" id="styles" [disabled]="sorting" [(ngModel)]="sortStyle" (change)="resetArray()">
-          <option *ngFor="let style of sortStyles" [value]="style">{{ ('SUBHEADER.SETTINGS.' + style) | translate }}</option>
+        <select id="styles-dropdown" [disabled]="sorting" [(ngModel)]="sortStyle" (change)="resetArray()">
+          <optgroup *ngFor="let styleCategory of sortStyles" [label]="'SUBHEADER.SETTINGS.' + styleCategory?.category | translate">
+            <option *ngFor="let style of styleCategory?.styles" [value]="style">{{ ('SUBHEADER.SETTINGS.' + style) | translate }}</option>
+          </optgroup>
         </select>
         <br><br>
         <label>{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
@@ -132,7 +135,7 @@
       <label *ngIf="showControlPanel && showInfo">
         <br>
         <span>{{ sortMethod ? sortMethod + ' Sort' : ('SUBHEADER.ALGORITHM_INFORMATION.NONE' | translate) }}</span><br>
-        {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="sortMethod + ' Sort'">{{ 'SUBHEADER.ALGORITHM_INFORMATION.WIKIPEDIA' | translate }}</a>
+        {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="sortMethod + ' Sort'" class="sort__info--link">{{ 'SUBHEADER.ALGORITHM_INFORMATION.WIKIPEDIA' | translate }}</a>
       </label>
     </div>
   </div>
@@ -140,9 +143,8 @@
     <sort-bar *ngFor="let bar of sortArray; index as i;"
       [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [style]="bar.style" [showValue]="showValues">
     </sort-bar>
-    <svg height="100%" width="100%" class="sort__container--polyline">
-      <polyline id="polyline" points="20,20 40,25 60,40 80,120 120,140 200,180"
-      style="fill:none; stroke:turquoise; stroke-width:1" />
+    <svg *ngIf="sortStyle === 'LINE'" height="100%" width="100%" class="sort__container--polyline">
+      <polyline id="polyline" points="" />
     </svg>
   </div>
   <div class="sort__footer">
