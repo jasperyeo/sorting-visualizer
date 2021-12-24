@@ -46,12 +46,16 @@ $xl-breakpoint: 1em;
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html {
   // to define 1rem = 10px
   font-size: 62.5%;
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -88,7 +92,6 @@ label {
 }
 
 button, input[type="button"] {
-  cursor: pointer;
   padding: 1.2rem;
   line-height: .2rem;
   border: none;
@@ -96,8 +99,13 @@ button, input[type="button"] {
   border-radius: .8rem;
   white-space: nowrap;
   height: 3rem;
+  
+  &:hover:not(:disabled) {
+    cursor: pointer;
+    background-color: turquoise;
+  }
 
-  :disabled {
+  &:disabled {
     cursor: not-allowed !important;
   }
 
@@ -108,6 +116,10 @@ button, input[type="button"] {
     padding: 0px;
     height: auto;
     background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 }
 
@@ -127,10 +139,18 @@ input[type="number"] {
   padding: 1.2rem;
   border: 1px solid black;
   border-radius: .8rem;
+
+  &:disabled {
+    cursor: not-allowed !important;
+  }
 }
 
 input[type="range"] {
   cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed !important;
+  }
 }
 
 select {
@@ -140,10 +160,13 @@ select {
   padding: 0px 1rem;
   width: 100%;
   height: 3rem;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed !important;
+  }
 
   option {
-    cursor: pointer;
-
     &:hover {
       background-color: turquoise;
     }
