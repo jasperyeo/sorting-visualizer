@@ -37,9 +37,11 @@
 <p align="center">
   这可视化器通过用颜色，音频，与时间间隔，展示了常用排序算法如何运作。
 </p>
-<a align="center" href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
-  https://jasperyeo.github.io/sorting-visualizer/
-</a>
+<p align="center">
+  <a href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
+    https://jasperyeo.github.io/sorting-visualizer/
+  </a>
+</p>
 
 ## 已实现的排序算法
 
