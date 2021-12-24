@@ -36,10 +36,10 @@
 </p>
 <p align="center">
   Sorting visualizer that demonstrates the functionality of common sorting algorithms visually, through colors, sounds, and timings.
-  <a href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
-    https://jasperyeo.github.io/sorting-visualizer/
-  </a>
 </p>
+<a href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
+  https://jasperyeo.github.io/sorting-visualizer/
+</a>
 
 ## Implemented Sorting Algorithms
 

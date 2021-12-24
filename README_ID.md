@@ -35,11 +35,11 @@
   <a href="https://github.com/jasperyeo/sorting-visualizer/blob/main/README_ID.md" target="_blank" title="Bahasa Indonesia">Bahasa Indonesia</a>
 </p>
 <p align="center">
-  这可视化器通过用颜色，音频，与时间间隔，展示了常用排序算法如何运作。
-  <a href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
-    https://jasperyeo.github.io/sorting-visualizer/
-  </a>
+  Visualisator ini mendemonstrasikan bagaimana algoritma pengurutan umum bekerja melalui penggunaan warna, suara, dan pengaturan waktu.
 </p>
+<a href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
+  https://jasperyeo.github.io/sorting-visualizer/
+</a>
 
 ## Menerapkan Algoritma Penyortiran
 
