@@ -77,6 +77,21 @@
 - 双音排序
 - Bogo 排序
 
+## 可视化风格
+
+### 基本
+<div style="display: flex;">
+  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-bar.PNG" width="40%" alt="Bar" title="Bar"/>
+  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-point.PNG" width="40%" alt="Point" title="Point"/>
+  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-line.PNG" width="40%" alt="Line" title="Line"/>
+</div>
+
+### 花俏
+<div style="display: flex;">
+   <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-balloon.PNG" width="40%" alt="Balloon" title="Balloon"/>
+   <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-bamboo.PNG" width="40%" alt="Bamboo" title="Bamboo"/>
+</div>
+
 ## 开发信息
 
 这个项目是用 [Angular CLI](https://github.com/angular/angular-cli) 版本 12.2.10 生成的。
