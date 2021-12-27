@@ -8,6 +8,7 @@ export function compare(visualizer: SortingVisualizerComponent, i: SortBarCompon
 
 export async function swap(visualizer: SortingVisualizerComponent, array: SortBarComponent[], i: number, j: number): Promise<void> {
   if (visualizer.enableAudio) visualizer.playBeep(3, array[i].value, 50);
+  if (visualizer.enableAudio) visualizer.playBeep(3, array[j].value, 50);
   visualizer.noOfSwaps++;
   array[i].color = array[j].color = SortBarColor.SWAP;
   [array[i], array[j]] = [array[j], array[i]];
