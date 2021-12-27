@@ -77,6 +77,32 @@
 - Bitonic Sort
 - Bogo Sort
 
+## Sorting Visualization Styles
+
+### Basic Styles
+<div width="40%">
+  Bar<br>
+  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-bar.PNG" width="40%" alt="Bar" title="Bar"/>
+</div>
+<div width="40%">
+  Point<br>
+  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-point.PNG" width="40%" alt="Point" title="Point"/>
+</div>
+<div width="40%">
+  Line<br>
+  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-line.PNG" width="40%" alt="Line" title="Line"/>
+</div>
+
+### Fancy Styles
+<div width="40%">
+  Balloon<br>
+  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-balloon.PNG" width="40%" alt="Balloon" title="Balloon"/>
+</div>
+<div width="40%">
+  Bamboo<br>
+  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-bamboo.PNG" width="40%" alt="Bamboo" title="Bamboo"/>
+</div>
+
 ## Development Information
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
