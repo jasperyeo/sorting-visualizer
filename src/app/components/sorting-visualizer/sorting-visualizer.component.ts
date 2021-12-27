@@ -28,7 +28,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public sortMethod: string = '';
   public sortDescription: string = '';
   public sortLink: string = '';
-  public sortStyle: string = SortBarStyle.LINE;
+  public sortStyle: string = SortBarStyle.BAR;
   public selectAlgorithmSearchTerm: string = '';
   public sortAttempts: number = 0;
   public elementCount: number = 400;
@@ -118,13 +118,15 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     const changes = this.iterableDiffer.diff(this.sortArray);
     if (changes) {
       let polyline: HTMLElement = document.getElementById('polyline') as HTMLElement;
-      let coord: string = '';
-      let xOffset: number = 6;
-      this.sortArray.forEach(point => {
-        coord = coord.concat(xOffset.toString(), ',', (point.value - 5).toString(), ' ');
-        xOffset += 12;
-      });
-      polyline.setAttribute('points', coord);
+      if (polyline) {
+        let coord: string = '';
+        let xOffset: number = 6;
+        this.sortArray.forEach(point => {
+          coord = coord.concat(xOffset.toString(), ',', (point.value - 5).toString(), ' ');
+          xOffset += 12;
+        });
+        polyline.setAttribute('points', coord);
+      }
     }
   }
 
@@ -142,7 +144,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
 
   @HostListener('document:click', ['$event'])
   public closeAlgoDropdown(event: any): void {
-    if ((event.target.className as string).includes('sort__header--dropdown-search') || (!this.selectedAlgorithm && this.selectAlgorithmSearchTerm.length)) {
+    if ((event.target.className && typeof event.target.className.includes !== 'undefined' && (event.target.className as string).includes('sort__header--dropdown-search')) || (!this.selectedAlgorithm && this.selectAlgorithmSearchTerm.length)) {
       return;
     }
     let dropdownElement: HTMLSelectElement = document.getElementById('select-algorithm-dropdown') as HTMLSelectElement;
@@ -167,13 +169,13 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.filteredAlgorithms = this.listedAlgorithms.filter(algo => (algo.label as string).toUpperCase().includes(this.selectAlgorithmSearchTerm.toUpperCase()) || (algo.category as string).toUpperCase().includes(this.selectAlgorithmSearchTerm.toUpperCase()));
   }
 
-  @HostListener('window:resize')
-  public windowChange(): void {
-    // this.loading = true;
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 500);
-  }
+  // @HostListener('window:resize')
+  // public windowChange(): void {
+  //   this.loading = true;
+  //   setTimeout(() => {
+  //     window.location.reload();
+  //   }, 500);
+  // }
 
   private _scrapAlgorithmInformation(): void {
     this.sortAlgorithms.forEach(category => {
@@ -181,14 +183,16 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       category.algorithms.forEach((algo: any) => {
         algo.category = category.category;
         let sortString: string[] = (algo.value as string).split(' ');
-        this._sortingVisualizerService.getWikipediaSummary(sortString.pop() + '_sort').then((res: any) => {
-          if (res) {
-            algo.description = res.extract;
-            if (res.content_urls && res.content_urls.desktop) {
-              algo.link = res.content_urls.desktop.page;
+        if (category.category !== 'System') {
+          this._sortingVisualizerService.getWikipediaSummary(sortString.pop() + '_sort').then((res: any) => {
+            if (res) {
+              algo.description = res.extract;
+              if (res.content_urls && res.content_urls.desktop) {
+                algo.link = res.content_urls.desktop.page;
+              }
             }
-          }
-        });
+          });
+        }
       });
     });
   }
@@ -330,6 +334,12 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       case 'BOGO':
         algorithms.bogoSort(this, array).then(() => this.sorting = false);
         break;
+      case 'JAVASCRIPT':
+        array.sort((i: SortBarComponent, j: SortBarComponent) => {
+          this.noOfCompares++;
+          return (i.value > j.value) ? 1 : -1;
+        });
+        this.sorting = false;
     }
   }
 }
