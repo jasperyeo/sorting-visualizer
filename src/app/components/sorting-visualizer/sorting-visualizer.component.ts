@@ -331,6 +331,9 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       case 'BITONIC':
         algorithms.bitonicSort(this, array).then(() => this.sorting = false);
         break;
+      case 'SLOW':
+        algorithms.slowSort(this, array).then(() => this.sorting = false);
+        break;
       case 'BOGO':
         algorithms.bogoSort(this, array).then(() => this.sorting = false);
         break;

@@ -75,7 +75,11 @@
 ### Others
 - Pancake Sort
 - Bitonic Sort
+- Slow Sort
 - Bogo Sort
+
+### System
+- JavaScript Sort
 
 ## Visualization Styles
 

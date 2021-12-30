@@ -68,7 +68,8 @@
     "ALGORITHM_INFORMATION": {
       "TITLE": "算法信息",
       "NONE": "无",
-      "WIKIPEDIA": "维基百科"
+      "WIKIPEDIA": "维基百科",
+      "DOCUMENTATION": "文献资料"
     }
   },
   "FOOTER": {
