@@ -49,7 +49,7 @@
 - Sortir Cepat
 
 ### Penggabungan
-- Gabungkan Sortir
+- Sortir Gabungkan
 
 ### Seleksi
 - Sortir Seleksi
@@ -62,20 +62,24 @@
 
 ### Bertukar
 - Sortir Gelembung
-- Jenis Gnome
-- Jenis Pengocok Koktail
+- Sortir Gnome
+- Sortir Pengocok Koktail
 - Sortir Pertukaran
-- Pengurutan Ganjil-Genap
+- Sortir Ganjil-Genap
 - Sortir Sisir
 
 ### Non-Perbandingan
-- Pengurutan Radix Digit Penting Terkecil (LSD)
-- Pengurutan Radix Digit Paling Signifikan (MSD)
+- Sortir Radix Digit Penting Terkecil (LSD)
+- Sortir Radix Digit Paling Signifikan (MSD)
 
 ### Yang lain
 - Sortir Pancake
 - Sortir Bitonik
+- Sortir Lambat
 - Sortir Bogo
+
+### Sistem
+- Sortir JavaScript
 
 ## Gaya Visualisasi
 

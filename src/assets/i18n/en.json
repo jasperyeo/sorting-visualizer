@@ -68,7 +68,8 @@
     "ALGORITHM_INFORMATION": {
       "TITLE": "Algorithm Information",
       "NONE": "None",
-      "WIKIPEDIA": "Wikipedia"
+      "WIKIPEDIA": "Wikipedia",
+      "DOCUMENTATION": "Documentation"
     }
   },
   "FOOTER": {
