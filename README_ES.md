@@ -46,36 +46,40 @@
 ## Algoritmos de Clasificación Implementados
 
 ### Fraccionamiento
-- Ordenación rápida
+- Ordenación Rápida
 
 ### Fusionando
-- Combinar clasificación
+- Combinar CSlasificación
 
 ### Selección
-- Orden de selección
-- Ordenar montón
+- Orden de Selección
+- Ordenar Montón
 
 ### Inserción
-- Tipo de inserción
-- Tipo de concha
-- Clasificación de árboles
+- Tipo de Inserción
+- Tipo de Concha
+- Clasificación de Árboles
 
 ### Intercambio
-- Ordenamiento de burbuja
-- Tipo de gnomo
-- Tipo de coctelera
-- Tipo de intercambio
-- Tipo impar-par
-- Tipo de peine
+- Ordenamiento de Burbuja
+- Tipo de Gnomo
+- Tipo de Coctelera
+- Tipo de Intercambio
+- Tipo Impar-par
+- Tipo de Peine
 
 ### Sin comparación
-- Orden de base de dígitos menos significativos (LSD)
-- Orden de base de dígitos más significativos (MSD)
+- Orden de Base de Dígitos Menos Significativos (LSD)
+- Orden de Base de Dígitos Más Significativos (MSD)
 
 ### Otros
-- Tipo de panqueques
-- Tipo bitónico
+- Tipo de Panqueques
+- Tipo Bitónico
+- Tipo Lenta
 - Tipo Bogo
+
+### Sistema
+- Ordenar JavaScript
 
 ## Estilo de Visualización
 

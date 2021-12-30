@@ -187,6 +187,15 @@
       },
       {
         "active": true,
+        "label": "Slow Sort",
+        "value": "Slow",
+        "best": "nlog^(n)",
+        "average": "nlog^(n)",
+        "worst": "nlog^(n)",
+        "memory": "n"
+      },
+      {
+        "active": true,
         "label": "Bogo Sort",
         "value": "Bogo",
         "best": "n",
