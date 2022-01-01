@@ -223,6 +223,8 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       sortBar.sortDelay = this.sortDelay;
       sortBar.value = this._randomNumberFromRange(this.minValue, this.maxValue);
       sortBar.valueString = sortBar.value.toString();
+      const hueValue: string = ((sortBar.value / this.maxValue) * 360).toString();
+      sortBar.defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
       if (this.enableAudio) this.playBeep(3, sortBar.value, 50);
       sortBar.showValue = this.showValues;
       this.sortArray.push(sortBar);
