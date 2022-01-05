@@ -2,7 +2,11 @@ import { SortingVisualizerComponent } from '../components/sorting-visualizer/sor
 import { SortBarColor, SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
 import { compare, swap } from './common';
 
-export async function quickSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[], left: number, right: number): Promise<void> {
+export async function quickSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+  await quickSortRecursive(visualizer, array, 0, array.length - 1);
+}
+
+async function quickSortRecursive(visualizer: SortingVisualizerComponent, array: SortBarComponent[], left: number, right: number): Promise<void> {
   if (left < right) {
     const pivot: number = left;
     //array[pivot].color = SortBarColor.PIVOT;
@@ -30,7 +34,7 @@ export async function quickSort(visualizer: SortingVisualizerComponent, array: S
     array[i].color = SortBarColor.NORMAL;
     array[j].color = SortBarColor.NORMAL;
     array[pivot].color = SortBarColor.NORMAL;
-    await quickSort(visualizer, array, left, j - 1);
-    await quickSort(visualizer, array, j + 1, right);
+    await quickSortRecursive(visualizer, array, left, j - 1);
+    await quickSortRecursive(visualizer, array, j + 1, right);
   }
 }

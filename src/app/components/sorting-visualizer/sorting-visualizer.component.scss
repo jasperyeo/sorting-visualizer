@@ -31,7 +31,7 @@
 
     &--dropdown-container {
       position: relative;
-      width: 17.4rem;
+      width: 22rem;
       height: 20rem;
     }
 
@@ -69,7 +69,7 @@
     }
 
     &--select-algo {
-      width: 17.4rem;
+      width: 22rem;
     }
 
     &--select-lang {
@@ -220,6 +220,10 @@
 
     &--value {
       float: right;
+    }
+
+    &--input-half-container {
+      display: flex;
     }
 
     &--input-half {

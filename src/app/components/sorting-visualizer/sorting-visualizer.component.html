@@ -11,7 +11,7 @@
     <h1 class="sort__header--title">{{ 'TITLE' | translate }}</h1>
     <button (click)="resetArray()" [disabled]="sorting" [title]="'HEADER.RESET' | translate">&#8634;</button>
     <div class="sort__header--dropdown-container">
-      <select id="select-algorithm-dropdown" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod"
+      <select *ngIf="!sorting && sortAlgorithms.length" id="select-algorithm-dropdown" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod"
         (change)="selectAlgorithm(sortMethod); closeAlgoDropdown($event)" class="sort__header--select-algo">
         <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
         <optgroup [label]="filteredAlgorithms?.length + ('HEADER.RESULTS' | translate)" [class.sort__header--select-empty]="!filteredAlgorithms?.length"></optgroup>
@@ -75,7 +75,7 @@
         <label *ngIf="elementCount >= viewWidth / 12" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MAX_WARNING' | translate }}</label>
         <br><br>
         <label>{{ 'SUBHEADER.SETTINGS.MIN_MAX' | translate }}:</label>
-        <div>
+        <div class="sort__info--input-half-container">
           <input type="number" class="sort__info--input-half" min="0" [(ngModel)]="minValue" [disabled]="sorting"/>
           <input type="number" class="sort__info--input-half" [min]="minValue" [(ngModel)]="maxValue" [disabled]="sorting"/>
         </div>

@@ -1,4 +1,4 @@
-<div class="sort__container">
+<div class="sort__container" [class.sort__container--swap]="color === 'red'" [class.sort__container--pivot]="color === 'green'">
   <label *ngIf="hoverValue || showValue" class="sort__label">{{ value }}</label>
   <div *ngIf="style === 'BAR' || style === 'BAMBOO'" class="sort__bar"
     [style.height]="value + 'px'"

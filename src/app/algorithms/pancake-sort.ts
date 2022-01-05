@@ -5,6 +5,7 @@ import { compare, swap } from './common';
 export async function pancakeSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
   let pancakes: number = array.length;
   while (pancakes > 1) {
+    if (!visualizer.sorting) return;
     let maxIndex: number = maxHeight(visualizer, array, pancakes);
     if (maxIndex !== pancakes) {
       await flip(visualizer, array, maxIndex);

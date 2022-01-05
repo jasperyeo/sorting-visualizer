@@ -2,11 +2,15 @@ import { SortingVisualizerComponent } from '../components/sorting-visualizer/sor
 import { SortBarColor, SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
 import { compare } from './common';
 
-export async function mergeSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[], start: number, end: number): Promise<void> {
+export async function mergeSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+  await mergeSortRecursive(visualizer, array, 0, array.length);
+}
+
+async function mergeSortRecursive(visualizer: SortingVisualizerComponent, array: SortBarComponent[], start: number, end: number): Promise<void> {
   if (start >= end - 1) return;
   const mid: number = start + Math.trunc((end - start) / 2);
-  await mergeSort(visualizer, array, start, mid);
-  await mergeSort(visualizer, array, mid, end);
+  await mergeSortRecursive(visualizer, array, start, mid);
+  await mergeSortRecursive(visualizer, array, mid, end);
   const cloned: SortBarComponent[] = Array(end - start).fill(array[0]);
   let k: number = mid;
 
