@@ -69,6 +69,7 @@
 - Tipo de Peine
 
 ### Sin comparación
+- Orden de Cubo de Llaves Uniformes
 - Orden de Base de Dígitos Menos Significativos (LSD)
 - Orden de Base de Dígitos Más Significativos (MSD)
 

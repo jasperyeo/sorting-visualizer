@@ -146,6 +146,15 @@
     "algorithms": [
       {
         "active": true,
+        "label": "Uniform Keys Bucket Sort",
+        "value": "Uniform Keys Bucket",
+        "best": "-",
+        "average": "n + k",
+        "worst": "n^(2) · k",
+        "memory": "n · k"
+      },
+      {
+        "active": true,
         "label": "LSD Radix Sort",
         "value": "LSD Radix",
         "best": "n",

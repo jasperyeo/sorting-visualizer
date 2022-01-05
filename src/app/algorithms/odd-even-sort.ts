@@ -8,12 +8,14 @@ export async function oddEvenSort(visualizer: SortingVisualizerComponent, array:
     if (!visualizer.sorting) return;
     sorted = true;
     for (let i: number = 1; i < array.length - 1; i += 2) {
+      if (!visualizer.sorting) return;
       if (compare(visualizer, array[i], array[i + 1])) {
         await swap(visualizer, array, i, i + 1);
         sorted = false;
       }
     }
     for (let i: number = 0; i < array.length - 1; i += 2) {
+      if (!visualizer.sorting) return;
       if (compare(visualizer, array[i], array[i + 1])) {
         await swap(visualizer, array, i, i + 1);
         sorted = false;

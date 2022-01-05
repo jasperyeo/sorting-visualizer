@@ -7,7 +7,7 @@ export async function slowSort(visualizer: SortingVisualizerComponent, array: So
 }
 
 async function slowSortRecursive(visualizer: SortingVisualizerComponent, array: SortBarComponent[], i: number, j: number): Promise<void> {
-  if (i >= j) return;
+  if (i >= j || !visualizer.sorting) return;
   const m: number = Math.floor((i + j) / 2);
   await slowSortRecursive(visualizer, array, i, m);
   await slowSortRecursive(visualizer, array, m + 1, j);

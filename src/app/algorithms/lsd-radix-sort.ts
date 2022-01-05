@@ -27,6 +27,8 @@ export async function lsdRadixSort(visualizer: SortingVisualizerComponent, array
         popped.color = SortBarColor.SWAP;
         if (visualizer.enableAudio) visualizer.playBeep(3, popped.value, 50);
         array.push(popped);
+        visualizer.noOfCompares++;
+        visualizer.noOfSwaps++;
         await visualizer.sleep(visualizer.sortDelay);
         popped.color = i % 2 ? SortBarColor.PIVOT : SortBarColor.NORMAL;
       }

@@ -15,3 +15,7 @@ export async function swap(visualizer: SortingVisualizerComponent, array: SortBa
   await visualizer.sleep(visualizer.sortDelay);
   array[i].color = array[j].color = SortBarColor.NORMAL;
 }
+
+export function flatten(array: any[]): any {
+  return Array.isArray(array) ? [].concat(...array.map(flatten)) : array;
+}
