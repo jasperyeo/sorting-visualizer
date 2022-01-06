@@ -28,6 +28,7 @@
         [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openAlgoDropdown()" [placeholder]="'HEADER.CHOOSE_ALGORITHM' | translate"
         [class.sort__header--dropdown-search--disabled]="sorting"/>
       <div class="sort__header--dropdown-icon"></div>
+      <div *ngIf="selectedAlgorithm" class="sort__header--close-icon" (click)="resetSearchTerm()">X</div>
     </div>
     <button *ngIf="!dropdownOpened"
       (click)="!sorting ? sort(sortArray, sortMethod) : stop()"
