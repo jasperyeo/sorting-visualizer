@@ -44,7 +44,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public showStatistics: boolean = true;
   public showInfo: boolean = true;
   public showCredits: boolean = true;
-  public enableAudio: boolean = false;
+  public enableAudio: boolean = true;
   public showValues: boolean = false;
   public loading: boolean = false;
   public showIntro: boolean = true;
@@ -133,6 +133,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public openAlgoDropdown(): void {
     if (this.sorting) return;
     let dropdownElement: HTMLSelectElement = document.getElementById('select-algorithm-dropdown') as HTMLSelectElement;
+    if (!dropdownElement) return;
     dropdownElement.setAttribute('size', '12');
     dropdownElement.style.position = 'fixed';
     dropdownElement.style.top = '4rem';
@@ -148,6 +149,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       return;
     }
     let dropdownElement: HTMLSelectElement = document.getElementById('select-algorithm-dropdown') as HTMLSelectElement;
+    if (!dropdownElement) return;
     dropdownElement.setAttribute('size', '1');
     dropdownElement.style.position = '';
     dropdownElement.style.left ='';
@@ -278,15 +280,24 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     });
   }
 
+  public resetSearchTerm(): void {
+    this.selectAlgorithmSearchTerm = '';
+    this.sortMethod = '';
+    this.sortDescription = '';
+    this.sortLink = '';
+    this.selectedAlgorithm = null;
+    this.resetArray();
+  }
+
   public sort(array: SortBarComponent[], mode: string): void {
     this.sortAttempts++;
     this.sorting = true;
     switch (mode.toUpperCase()) {
-      case 'QUICK':
-        algorithms.quickSort(this, array, 0, array.length - 1).then(() => this.sorting = false);
+      case 'QUICK': 
+        algorithms.quickSort(this, array).then(() => this.sorting = false);
         break;
       case 'MERGE':
-        algorithms.mergeSort(this, array, 0, array.length).then(() => this.sorting = false);
+        algorithms.mergeSort(this, array).then(() => this.sorting = false);
         break;
       case 'SELECTION':
         algorithms.selectionSort(this, array).then(() => this.sorting = false);
@@ -321,11 +332,14 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       case 'COMB':
         algorithms.combSort(this, array).then(() => this.sorting = false);
         break;
+      case 'UNIFORM KEYS BUCKET':
+        algorithms.uniformKeysBucketSort(this, array).then(() => this.sorting = false);
+        break;
       case 'LSD RADIX':
         algorithms.lsdRadixSort(this, array).then(() => this.sorting = false);
         break;
       case 'MSD RADIX':
-        algorithms.msdRadixSort(this, array, this.maxValue).then(() => this.sorting = false);
+        algorithms.msdRadixSort(this, array).then(() => this.sorting = false);
         break;
       case 'PANCAKE':
         algorithms.pancakeSort(this, array).then(() => this.sorting = false);
