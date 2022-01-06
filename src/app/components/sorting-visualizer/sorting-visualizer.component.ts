@@ -280,6 +280,15 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     });
   }
 
+  public resetSearchTerm(): void {
+    this.selectAlgorithmSearchTerm = '';
+    this.sortMethod = '';
+    this.sortDescription = '';
+    this.sortLink = '';
+    this.selectedAlgorithm = null;
+    this.resetArray();
+  }
+
   public sort(array: SortBarComponent[], mode: string): void {
     this.sortAttempts++;
     this.sorting = true;

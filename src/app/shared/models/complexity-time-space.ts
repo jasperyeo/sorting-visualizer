@@ -4,6 +4,7 @@ export const complexityTime: Map<string, string> = new Map([
   ['n', ComplexityColorCode.GOOD],
   ['nlogn', ComplexityColorCode.GOOD],
   ['n · (k/d)', ComplexityColorCode.GOOD],
+  ['n + k', ComplexityColorCode.GOOD],
   
   ['log^(2)n', ComplexityColorCode.AVERAGE],
   ['nlog^(2)n', ComplexityColorCode.AVERAGE],
@@ -12,6 +13,7 @@ export const complexityTime: Map<string, string> = new Map([
 
   ['nlog^(n)', ComplexityColorCode.BAD],
   ['n^(2)', ComplexityColorCode.BAD],
+  ['n^(2) · k', ComplexityColorCode.BAD],
   ['(n · n!)', ComplexityColorCode.BAD],
   ['infinity', ComplexityColorCode.BAD],
 ]);
