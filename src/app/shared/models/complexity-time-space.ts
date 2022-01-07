@@ -1,4 +1,9 @@
-import { ComplexityColorCode } from './complexity-color-code';
+enum ComplexityColorCode {
+  NORMAL = 'white',
+  GOOD = '#D5ECC2',
+  AVERAGE = '#FFD3B4',
+  BAD = '#FFAAA7'
+}
 
 export const complexityTime: Map<string, string> = new Map([
   ['n', ComplexityColorCode.GOOD],
