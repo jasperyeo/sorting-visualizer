@@ -19,6 +19,8 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public readonly complexityTime = complexityTime;
   public readonly complexitySpace = complexitySpace;
   public readonly audioContext: AudioContext = new AudioContext();
+  public readonly audioGain: number = 6;
+  public readonly audioMs: number = 50;
   public sortArray: SortBarComponent[] = [];
   public listedAlgorithms: any[] = [];
   public filteredAlgorithms: any[] = [];
@@ -199,20 +201,20 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     });
   }
  
-  public playBeep(gain: number, hertz: number, ms: number): void {
+  public playBeep(hertz: number): void {
     const oscillator: OscillatorNode = this.audioContext.createOscillator();
     const createdGain: GainNode = this.audioContext.createGain();
     oscillator.connect(createdGain);
     oscillator.frequency.value = hertz;
-    oscillator.type = "sine";
+    oscillator.type = "triangle"; // "sine" < "triangle" < "square" < "sawtooth"
     createdGain.connect(this.audioContext.destination);
-    createdGain.gain.value = gain * 0.01;
+    createdGain.gain.value = this.audioGain * 0.02;
     oscillator.start(this.audioContext.currentTime);
-    oscillator.stop(this.audioContext.currentTime + ms * 0.001);
+    oscillator.stop(this.audioContext.currentTime + this.audioMs * 0.001);
   }
 
   public async resetArray(): Promise<void> {
-    if (this.enableAudio) this.playBeep(3, 10, 200);
+    if (this.enableAudio) this.playBeep(10);
     this.sortAttempts = 0;
     this.noOfCompares = 0;
     this.noOfSwaps = 0;
@@ -227,7 +229,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       sortBar.valueString = sortBar.value.toString();
       const hueValue: string = ((sortBar.value / this.maxValue) * 360).toString();
       sortBar.defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
-      if (this.enableAudio) this.playBeep(3, sortBar.value, 50);
+      if (this.enableAudio) this.playBeep(sortBar.value);
       sortBar.showValue = this.showValues;
       this.sortArray.push(sortBar);
       await this.sleep(0);
@@ -293,8 +295,14 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sortAttempts++;
     this.sorting = true;
     switch (mode.toUpperCase()) {
-      case 'QUICK': 
-        algorithms.quickSort(this, array).then(() => this.sorting = false);
+      case 'LEFT PIVOT QUICK': 
+        algorithms.leftPivotQuickSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'MIDDLE PIVOT QUICK': 
+        algorithms.middlePivotQuickSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'MEDIAN PIVOT QUICK': 
+        algorithms.medianPivotQuickSort(this, array).then(() => this.sorting = false);
         break;
       case 'MERGE':
         algorithms.mergeSort(this, array).then(() => this.sorting = false);
