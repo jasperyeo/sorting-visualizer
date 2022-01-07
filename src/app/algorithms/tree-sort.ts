@@ -13,7 +13,7 @@ async function insert(visualizer: SortingVisualizerComponent, searchTree: Binary
   if (!searchTree.node) {
     searchTree.node = node;
     array.push(searchTree.node);
-    if (visualizer.enableAudio) visualizer.playBeep(3, searchTree.node.value, 50);
+    if (visualizer.enableAudio) visualizer.playBeep(searchTree.node.value);
     visualizer.noOfSwaps++;
     searchTree.node.color = SortBarColor.SWAP;
     await visualizer.sleep(visualizer.sortDelay);
@@ -35,7 +35,7 @@ async function inOrder(visualizer: SortingVisualizerComponent, searchTree: Binar
     return;
   } else {
     await inOrder(visualizer, searchTree.leftSubTree, array);
-    if (visualizer.enableAudio) visualizer.playBeep(3, searchTree.node.value, 50);
+    if (visualizer.enableAudio) visualizer.playBeep(searchTree.node.value);
     searchTree.node.color = SortBarColor.SWAP;
     array.push(searchTree.node);
     await visualizer.sleep(visualizer.sortDelay);

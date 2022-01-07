@@ -4,8 +4,26 @@
     "algorithms": [
       {
         "active": true,
-        "label": "Quick Sort",
-        "value": "Quick",
+        "label": "Left Pivot Quick Sort",
+        "value": "Left Pivot Quick",
+        "best": "nlogn",
+        "average": "nlogn",
+        "worst": "n^(2)",
+        "memory": "logn"
+      },
+      {
+        "active": true,
+        "label": "Middle Pivot Quick Sort",
+        "value": "Middle Pivot Quick",
+        "best": "nlogn",
+        "average": "nlogn",
+        "worst": "n^(2)",
+        "memory": "logn"
+      },
+      {
+        "active": true,
+        "label": "Median Pivot Quick Sort",
+        "value": "Median Pivot Quick",
         "best": "nlogn",
         "average": "nlogn",
         "worst": "n^(2)",

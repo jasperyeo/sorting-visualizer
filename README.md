@@ -46,7 +46,9 @@
 ## Implemented Sorting Algorithms
 
 ### Partitioning
-- Quick Sort
+- Left Pivot Quick Sort
+- Middle Pivot Quick Sort
+- Median Pivot Quick Sort
 
 ### Merging
 - Merge Sort

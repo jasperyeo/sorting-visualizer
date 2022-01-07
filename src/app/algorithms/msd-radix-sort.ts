@@ -3,11 +3,7 @@ import { SortBarColor, SortBarComponent } from './../shared/models/sort-bar/sort
 import { flatten } from './common';
 
 export async function msdRadixSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
-  let max: number = 0;
-  array.forEach(elem  => {
-    if (elem.value > max) max = elem.value;
-  });
-  const maxCount: number = max.toString().length;
+  const maxCount: number = Math.max(...array.map(elem => elem.value)).toString().length;
   array.forEach(elem => {
     elem.valueString = elem.valueString.padStart(maxCount, "0");
   });
@@ -27,7 +23,7 @@ async function bucketSortByDigit(visualizer: SortingVisualizerComponent, origina
     if (!visualizer.sorting) break;
     array[j] = proxyArray[j];
     array[j].color = SortBarColor.SWAP;
-    if (visualizer.enableAudio) visualizer.playBeep(3, array[j].value, 50);
+    if (visualizer.enableAudio) visualizer.playBeep(array[j].value);
     visualizer.noOfCompares++;
     visualizer.noOfSwaps++;
     await visualizer.sleep(visualizer.sortDelay);
@@ -46,8 +42,7 @@ async function bucketSortByDigit(visualizer: SortingVisualizerComponent, origina
         if (!visualizer.sorting) break;
         array[j] = proxyArray[j];
         array[j].color = SortBarColor.SWAP;
-        if (visualizer.enableAudio) visualizer.playBeep(3, array[j].value, 50);
-        
+        if (visualizer.enableAudio) visualizer.playBeep(array[j].value);
         await visualizer.sleep(visualizer.sortDelay);
         array[j].color = i % 2 ? SortBarColor.PIVOT : SortBarColor.NORMAL;
       }

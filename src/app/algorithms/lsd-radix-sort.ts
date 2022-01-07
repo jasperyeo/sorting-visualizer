@@ -25,7 +25,7 @@ export async function lsdRadixSort(visualizer: SortingVisualizerComponent, array
         let popped: SortBarComponent = buckets[i].pop() as SortBarComponent;
         if (!visualizer.sorting) return;
         popped.color = SortBarColor.SWAP;
-        if (visualizer.enableAudio) visualizer.playBeep(3, popped.value, 50);
+        if (visualizer.enableAudio) visualizer.playBeep(popped.value);
         array.push(popped);
         visualizer.noOfCompares++;
         visualizer.noOfSwaps++;

@@ -29,7 +29,7 @@ async function mergeSortRecursive(visualizer: SortingVisualizerComponent, array:
     array[i + start] = cloned[i];
     array[i + start].color = SortBarColor.SWAP;
     visualizer.noOfSwaps++;
-    if (visualizer.enableAudio) visualizer.playBeep(3, array[i + start].value, 50);
+    if (visualizer.enableAudio) visualizer.playBeep(array[i + start].value);
     await visualizer.sleep(visualizer.sortDelay);
     array[i + start].color = SortBarColor.NORMAL;
   }

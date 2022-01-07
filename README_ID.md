@@ -46,7 +46,9 @@
 ## Menerapkan Algoritma Penyortiran
 
 ### Mempartisi
-- Sortir Cepat
+- Sortir Cepat Pivot Kiri
+- Sortir Cepat Pivot Tengah
+- Sortir Cepat Pivot Median
 
 ### Penggabungan
 - Sortir Gabungkan
