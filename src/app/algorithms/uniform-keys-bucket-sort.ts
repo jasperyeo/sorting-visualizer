@@ -5,10 +5,7 @@ import { insertionSort } from './insertion-sort';
 
 export async function uniformKeysBucketSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
   const n: number = array.length;
-  let max: number = 0;
-  array.forEach(element  => {
-    if (element.value > max) max = element.value;
-  });
+  const max: number = Math.max(...array.map(elem => elem.value));
   let buckets: Array<SortBarComponent[]> = [];
   for (let i: number = 0; i < n; i++) {
     buckets.push([]);
@@ -21,7 +18,7 @@ export async function uniformKeysBucketSort(visualizer: SortingVisualizerCompone
     for (let j: number = 0; j < buckets[i].length; j++) {
       array[totalCount] = buckets[i][j];
       array[totalCount].color = SortBarColor.SWAP;
-      if (visualizer.enableAudio) visualizer.playBeep(3, array[totalCount].value, 50);
+      if (visualizer.enableAudio) visualizer.playBeep(array[totalCount].value);
       visualizer.noOfCompares++;
       visualizer.noOfSwaps++;
       await visualizer.sleep(visualizer.sortDelay);
@@ -37,7 +34,7 @@ export async function uniformKeysBucketSort(visualizer: SortingVisualizerCompone
     if (!visualizer.sorting) break;
     array[i] = finalArray[i];
     array[i].color = SortBarColor.SWAP;
-    if (visualizer.enableAudio) visualizer.playBeep(3, array[i].value, 50);
+    if (visualizer.enableAudio) visualizer.playBeep(array[i].value);
     await visualizer.sleep(visualizer.sortDelay);
     array[i].color = SortBarColor.NORMAL;
   }

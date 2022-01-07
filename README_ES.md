@@ -46,10 +46,12 @@
 ## Algoritmos de Clasificación Implementados
 
 ### Fraccionamiento
-- Ordenación Rápida
+- Ordenación Rápida con Pivote Izquierdo
+- Ordenación Rápida de Pivote Medio
+- Ordenación Rápida de Pivote Mediano
 
 ### Fusionando
-- Combinar CSlasificación
+- Combinar Clasificación
 
 ### Selección
 - Orden de Selección
