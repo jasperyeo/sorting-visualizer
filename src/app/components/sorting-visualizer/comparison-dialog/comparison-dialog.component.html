@@ -21,7 +21,7 @@
         <tbody class="comparison-dialog__table">
           <tr *ngFor="let algo of filteredAlgorithms">
             <td>
-              <a [href]="algo?.link" [title]="algo?.label" target="_blank" class="comparison-dialog__link">
+              <a [href]="algo?.link" [title]="algo?.label" target="_blank" class="comparison-dialog__link" rel="noopener noreferrer">
                 {{ algo?.label }}
               </a>
             </td>
