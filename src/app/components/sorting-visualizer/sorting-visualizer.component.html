@@ -141,7 +141,7 @@
       <label *ngIf="showControlPanel && showInfo">
         <br>
         <span>{{ sortMethod ? sortMethod + ' Sort' : ('SUBHEADER.ALGORITHM_INFORMATION.NONE' | translate) }}</span><br>
-        {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="sortMethod + ' Sort'" class="sort__info--link">
+        {{ sortDescription }} <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="sortMethod + ' Sort'" class="sort__info--link" rel="noopener noreferrer">
           {{ selectedAlgorithm?.category !== 'System' ? ('SUBHEADER.ALGORITHM_INFORMATION.WIKIPEDIA' | translate) : ('SUBHEADER.ALGORITHM_INFORMATION.DOCUMENTATION' | translate) }}
         </a>
       </label>
@@ -160,7 +160,10 @@
     <p class="sort__footer--separator">|</p>
     <button class="btn__minimal sort__footer--link" [title]="'FOOTER.COMPARISON' | translate" (click)="showComparison = true">{{ 'FOOTER.COMPARISON' | translate }}</button>
     <p class="sort__footer--separator">|</p>
-    <a class="sort__footer--link" [title]="'FOOTER.GITHUB' | translate" href="https://github.com/jasperyeo/sorting-visualizer" target="_blank">{{ 'FOOTER.GITHUB' | translate }}</a>
+    <a class="sort__footer--link" [title]="'FOOTER.GITHUB' | translate" rel="noopener noreferrer"
+      href="https://github.com/jasperyeo/sorting-visualizer" target="_blank">
+      {{ 'FOOTER.GITHUB' | translate }}
+    </a>
   </div>
 </div>
 
