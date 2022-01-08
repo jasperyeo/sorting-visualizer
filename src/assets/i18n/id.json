@@ -51,6 +51,8 @@
       "ELEMENT_COUNT_MIN_WARNING": "Silakan masukkan jumlah minimal 2.",
       "ELEMENT_COUNT_MAX_WARNING": "Jumlah yang dihasilkan melebihi lebar jendela.",
       "MIN_MAX": "Min / Maks",
+      "MIN": "Min",
+      "MAX": "Maks",
       "MIN_MAX_MIN_WARNING": "Silakan masukkan nilai minimal 1.",
       "MIN_MAX_MAX_WARNING": "Nilai maksimum melebihi tinggi jendela.",
       "DELAY": "Tunda",

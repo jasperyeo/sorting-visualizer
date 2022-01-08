@@ -27,17 +27,17 @@ async function partition(pivotCode: PivotCode, visualizer: SortingVisualizerComp
   } else if (pivotCode === PivotCode.MIDDLE) {
     pivot = Math.floor((right + left) / 2);
   } else {
-   const mid: number = Math.floor((right + left) / 2);
-   if (compare(visualizer, array[left], array[mid])) {
-    await swap(visualizer, array, left, mid);
-   }
-   if (compare(visualizer, array[left], array[right])) {
-    await swap(visualizer, array, left, right);
-   }
-   if (compare(visualizer, array[right], array[mid])) {
-    await swap(visualizer, array, right, mid);
-   }
-   pivot = right;
+    const mid: number = Math.floor((right + left) / 2);
+    if (compare(visualizer, array[left], array[mid])) {
+      await swap(visualizer, array, left, mid);
+    }
+    if (compare(visualizer, array[left], array[right])) {
+      await swap(visualizer, array, left, right);
+    }
+    if (compare(visualizer, array[right], array[mid])) {
+      await swap(visualizer, array, right, mid);
+    }
+    pivot = right;
   }
   const pivotValue: number = array[pivot].value;
   let i: number = left, j: number = right;

@@ -51,6 +51,8 @@
       "ELEMENT_COUNT_MIN_WARNING": "请输入最小数量2。",
       "ELEMENT_COUNT_MAX_WARNING": "生成的数量超过窗口宽度。",
       "MIN_MAX": "最小/最大值数",
+      "MIN": "最小值数",
+      "MAX": "最大值数",
       "MIN_MAX_MIN_WARNING": "请输入最小值数1。",
       "MIN_MAX_MAX_WARNING": "最大值数超过窗口高度。",
       "DELAY": "延迟间隔",
