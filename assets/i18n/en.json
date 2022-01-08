@@ -51,6 +51,8 @@
       "ELEMENT_COUNT_MIN_WARNING": "Please enter a min amount of 2.",
       "ELEMENT_COUNT_MAX_WARNING": "Generated count exceed window width.",
       "MIN_MAX": "Min / Max",
+      "MIN": "Min",
+      "MAX": "Max",
       "MIN_MAX_MIN_WARNING": "Please enter a min value of 1.",
       "MIN_MAX_MAX_WARNING": "Max value exceed window height.",
       "DELAY": "Delay",
