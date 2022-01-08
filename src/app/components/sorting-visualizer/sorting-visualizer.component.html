@@ -58,27 +58,32 @@
         <input type="checkbox" id="show-values" [(ngModel)]="showValues"/>
         <label for="show-values">{{ 'SUBHEADER.SETTINGS.SHOW_VALUES' | translate }}</label><br>
         <br>
-        <label>{{ 'SUBHEADER.SETTINGS.DELAY' | translate }}: {{ sortDelay === 0 ? ('SUBHEADER.SETTINGS.DELAY_FAST' | translate) : sortDelay === 100 ? ('SUBHEADER.SETTINGS.DELAY_SLOW' | translate) : ('SUBHEADER.SETTINGS.DELAY_NORMAL' | translate) }}</label><br>
-        <input type="range" id="sortDelay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay">
+        <label for="sort-delay">{{ 'SUBHEADER.SETTINGS.DELAY' | translate }}: {{ sortDelay === 0 ? ('SUBHEADER.SETTINGS.DELAY_FAST' | translate) : sortDelay === 100 ? ('SUBHEADER.SETTINGS.DELAY_SLOW' | translate) : ('SUBHEADER.SETTINGS.DELAY_NORMAL' | translate) }}</label><br>
+        <input type="range" id="sort-delay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay">
         <br><br>
         <hr />
         <br>
-        <label>{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
+        <label for="styles-dropdown">{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
         <select id="styles-dropdown" [disabled]="sorting" [(ngModel)]="sortStyle" (change)="resetArray()">
           <optgroup *ngFor="let styleCategory of sortStyles" [label]="'SUBHEADER.SETTINGS.' + styleCategory?.category | translate">
             <option *ngFor="let style of styleCategory?.styles" [value]="style">{{ ('SUBHEADER.SETTINGS.' + style) | translate }}</option>
           </optgroup>
         </select>
         <br><br>
-        <label>{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
-        <input type="number" min="2" [(ngModel)]="elementCount" [disabled]="sorting || sortMethod.toUpperCase() === 'BITONIC'"/>
+        <label for="element-count">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
+        <input type="number" id="element-count" min="2" [(ngModel)]="elementCount" [disabled]="sorting || sortMethod.toUpperCase() === 'BITONIC'"/>
         <label *ngIf="elementCount < 2" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MIN_WARNING' | translate }}</label>
         <label *ngIf="elementCount >= viewWidth / 12" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MAX_WARNING' | translate }}</label>
         <br><br>
-        <label>{{ 'SUBHEADER.SETTINGS.MIN_MAX' | translate }}:</label>
         <div class="sort__info--input-half-container">
-          <input type="number" class="sort__info--input-half" min="0" [(ngModel)]="minValue" [disabled]="sorting"/>
-          <input type="number" class="sort__info--input-half" [min]="minValue" [(ngModel)]="maxValue" [disabled]="sorting"/>
+          <div class="sort__info--input-half">
+            <label for="min">{{ 'SUBHEADER.SETTINGS.MIN' | translate }}:</label>
+            <input type="number" id="min" min="0" [(ngModel)]="minValue" [disabled]="sorting"/>
+          </div>
+          <div class="sort__info--input-half">
+            <label for="max">{{ 'SUBHEADER.SETTINGS.MAX' | translate }}:</label>
+            <input type="number" id="max" class="sort__info--input-half" [min]="minValue" [(ngModel)]="maxValue" [disabled]="sorting"/>
+          </div>
         </div>
         <label *ngIf="minValue <= 0" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MIN_WARNING' | translate }}</label>
         <label *ngIf="maxValue > viewHeight * 0.45" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MAX_WARNING' | translate }}</label>
