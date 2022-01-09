@@ -78,6 +78,7 @@
 ### Yang lain
 - Sortir Pancake
 - Sortir Bitonik
+- Sortir Stooge
 - Sortir Lambat
 - Sortir Bogo
 

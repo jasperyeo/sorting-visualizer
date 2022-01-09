@@ -78,6 +78,7 @@
 ### Otros
 - Tipo de Panqueques
 - Tipo Bitónico
+- Tipo Títere
 - Tipo Lenta
 - Tipo Bogo
 

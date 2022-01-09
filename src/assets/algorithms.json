@@ -214,6 +214,15 @@
       },
       {
         "active": true,
+        "label": "Stooge Sort",
+        "value": "Stooge",
+        "best": "n^(log3/log1.5)",
+        "average": "n^(log3/log1.5)",
+        "worst": "n^(log3/log1.5)",
+        "memory": "n"
+      },
+      {
+        "active": true,
         "label": "Slow Sort",
         "value": "Slow",
         "best": "nlog^(n)",
