@@ -78,6 +78,7 @@
 ### Others
 - Pancake Sort
 - Bitonic Sort
+- Stooge Sort
 - Slow Sort
 - Bogo Sort
 

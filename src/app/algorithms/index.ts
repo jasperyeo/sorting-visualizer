@@ -18,5 +18,6 @@ export * from './lsd-radix-sort';
 export * from './msd-radix-sort';
 export * from './pancake-sort';
 export * from './bitonic-sort';
+export * from './stooge-sort';
 export * from './slow-sort';
 export * from './bogo-sort';
