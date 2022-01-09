@@ -1,0 +1,111 @@
+{
+  "configVersion": 1,
+  "timestamp": 1641713901165,
+  "index": "/sorting-visualizer/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/sorting-visualizer/favicon.ico",
+        "/sorting-visualizer/index.html",
+        "/sorting-visualizer/main.3dac8ca64e1df46fa213.js",
+        "/sorting-visualizer/manifest.webmanifest",
+        "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js",
+        "/sorting-visualizer/runtime.d7571288e124e7050898.js",
+        "/sorting-visualizer/styles.173466115341ec775426.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/sorting-visualizer/assets/algorithms.json",
+        "/sorting-visualizer/assets/i18n/en.json",
+        "/sorting-visualizer/assets/i18n/es.json",
+        "/sorting-visualizer/assets/i18n/id.json",
+        "/sorting-visualizer/assets/i18n/zh.json",
+        "/sorting-visualizer/assets/icons/icon-128x128.png",
+        "/sorting-visualizer/assets/icons/icon-144x144.png",
+        "/sorting-visualizer/assets/icons/icon-152x152.png",
+        "/sorting-visualizer/assets/icons/icon-192x192.png",
+        "/sorting-visualizer/assets/icons/icon-384x384.png",
+        "/sorting-visualizer/assets/icons/icon-512x512.png",
+        "/sorting-visualizer/assets/icons/icon-72x72.png",
+        "/sorting-visualizer/assets/icons/icon-96x96.png",
+        "/sorting-visualizer/assets/images/large-image-preview.png",
+        "/sorting-visualizer/assets/images/logo-github.png",
+        "/sorting-visualizer/assets/images/logo-linkedin.png",
+        "/sorting-visualizer/assets/images/site-icon-apple.png",
+        "/sorting-visualizer/assets/images/site-icon.png",
+        "/sorting-visualizer/assets/images/sortstyle-balloon.PNG",
+        "/sorting-visualizer/assets/images/sortstyle-bamboo.PNG",
+        "/sorting-visualizer/assets/images/sortstyle-bar.PNG",
+        "/sorting-visualizer/assets/images/sortstyle-line.PNG",
+        "/sorting-visualizer/assets/images/sortstyle-point.PNG"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/sorting-visualizer/assets/algorithms.json": "7f8cb604ea15dd78c01bffa2601116c4ea7e1cc8",
+    "/sorting-visualizer/assets/i18n/en.json": "78dea3d0fc6abe2ea54721cfde18e2252418616e",
+    "/sorting-visualizer/assets/i18n/es.json": "14a0d0a1c61201ce8b5c9c7c57a6335031066581",
+    "/sorting-visualizer/assets/i18n/id.json": "abca0fa89483589a1b87513e21d74abd959cca25",
+    "/sorting-visualizer/assets/i18n/zh.json": "bfdf48522a509fb158e76077074b0c768f490b44",
+    "/sorting-visualizer/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/sorting-visualizer/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/sorting-visualizer/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/sorting-visualizer/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/sorting-visualizer/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/sorting-visualizer/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/sorting-visualizer/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/sorting-visualizer/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/sorting-visualizer/assets/images/large-image-preview.png": "cdfe783dab58db3bfc11482500d794aebf8d2a6a",
+    "/sorting-visualizer/assets/images/logo-github.png": "a897bfa37a683b8d622fdf93f5535654350d83a1",
+    "/sorting-visualizer/assets/images/logo-linkedin.png": "fe8b12c99581dfac5ce410a18a97467c17817496",
+    "/sorting-visualizer/assets/images/site-icon-apple.png": "15ac4025ce8ddf9999ea63101202749aaf1b9226",
+    "/sorting-visualizer/assets/images/site-icon.png": "d60e74a49b7c3b0e13bb31b63b2fb2a2c4522823",
+    "/sorting-visualizer/assets/images/sortstyle-balloon.PNG": "edbe8f46101b7864dffe3b69335a908978f5df96",
+    "/sorting-visualizer/assets/images/sortstyle-bamboo.PNG": "c676f595d4bafd041bab5509af8290d9d7f620b9",
+    "/sorting-visualizer/assets/images/sortstyle-bar.PNG": "78c3731b5dac41121568501d39f42c9121e813a2",
+    "/sorting-visualizer/assets/images/sortstyle-line.PNG": "d49cca3ee25df8f495752c8cb260add27ad4910a",
+    "/sorting-visualizer/assets/images/sortstyle-point.PNG": "7ec5a971aae12bc4a7c4c13ba3cca671ec4406f5",
+    "/sorting-visualizer/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/sorting-visualizer/index.html": "a54e953ef1f8a5f7d106b52495015f50e1b8adf9",
+    "/sorting-visualizer/main.3dac8ca64e1df46fa213.js": "d4b6b9838e73fd7ef5608861403eb4fb707e87f3",
+    "/sorting-visualizer/manifest.webmanifest": "58f5c4e8abc2a94774e22997fbffedc2c8dc61ce",
+    "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js": "3a221b368b0bd1f9bc0b11b2af998ac616aaa790",
+    "/sorting-visualizer/runtime.d7571288e124e7050898.js": "5c013e364cb2d418b8d75d00e105ec04b4d83a66",
+    "/sorting-visualizer/styles.173466115341ec775426.css": "e1f5d34fce10d14db554415c95914fdc3eccc379"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
