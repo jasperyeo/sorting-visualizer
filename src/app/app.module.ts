@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
 import { SortingVisualizerModule } from './components/sorting-visualizer/sorting-visualizer.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,7 +36,13 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     AppRoutingModule,
     SharedModule,
-    SortingVisualizerModule
+    SortingVisualizerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
