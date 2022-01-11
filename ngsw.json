@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1641768372413,
+  "timestamp": 1641877581571,
   "index": "/sorting-visualizer/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/sorting-visualizer/favicon.ico",
         "/sorting-visualizer/index.html",
-        "/sorting-visualizer/main.7791d2797d9bac12708e.js",
+        "/sorting-visualizer/main.85511ba3becbce05d4c1.js",
         "/sorting-visualizer/manifest.webmanifest",
         "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js",
         "/sorting-visualizer/runtime.d7571288e124e7050898.js",
@@ -58,7 +58,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/sorting-visualizer/assets/algorithms.json": "ddf8f61e30441695157c1a2d73c63c1dbccdb6bf",
+    "/sorting-visualizer/assets/algorithms.json": "b30fcccc8b677f028b307bd30295899904411b6d",
     "/sorting-visualizer/assets/i18n/en.json": "78dea3d0fc6abe2ea54721cfde18e2252418616e",
     "/sorting-visualizer/assets/i18n/es.json": "14a0d0a1c61201ce8b5c9c7c57a6335031066581",
     "/sorting-visualizer/assets/i18n/id.json": "abca0fa89483589a1b87513e21d74abd959cca25",
@@ -82,9 +82,9 @@
     "/sorting-visualizer/assets/images/sortstyle-line.PNG": "d49cca3ee25df8f495752c8cb260add27ad4910a",
     "/sorting-visualizer/assets/images/sortstyle-point.PNG": "7ec5a971aae12bc4a7c4c13ba3cca671ec4406f5",
     "/sorting-visualizer/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/sorting-visualizer/index.html": "d4d398b1a8fffee6af6cd4dd40e382e383d991cf",
-    "/sorting-visualizer/main.7791d2797d9bac12708e.js": "230e0131c977f131d75ddedf6eafd1cb9547b900",
-    "/sorting-visualizer/manifest.webmanifest": "eddbf248736d23d61f4a28347f227ee66b28b4b9",
+    "/sorting-visualizer/index.html": "7bf82da67ca881645113d2dc0ea43b00a91688d9",
+    "/sorting-visualizer/main.85511ba3becbce05d4c1.js": "1a4d74647438a73fd9f68dcae5d58d5a080ba0e3",
+    "/sorting-visualizer/manifest.webmanifest": "96daa87232ca70728ed7776f0e2a2a3ce35e7f4f",
     "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js": "3a221b368b0bd1f9bc0b11b2af998ac616aaa790",
     "/sorting-visualizer/runtime.d7571288e124e7050898.js": "5c013e364cb2d418b8d75d00e105ec04b4d83a66",
     "/sorting-visualizer/styles.173466115341ec775426.css": "e1f5d34fce10d14db554415c95914fdc3eccc379"
