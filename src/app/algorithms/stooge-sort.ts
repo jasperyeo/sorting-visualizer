@@ -7,6 +7,7 @@ export async function stoogeSort(visualizer: SortingVisualizerComponent, array: 
 }
 
 async function stoogeSortRecursive(visualizer: SortingVisualizerComponent, array: SortBarComponent[], i: number, j: number): Promise<void> {
+  if (!visualizer.sorting) return;
   if (compare(visualizer, array[i], array[j])) {
     await swap(visualizer, array, i, j);
   }
