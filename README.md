@@ -56,6 +56,7 @@
 ### Selection
 - Selection Sort
 - Heap Sort
+- Cycle Sort
 
 ### Insertion
 - Insertion Sort

@@ -65,6 +65,15 @@
         "average": "nlogn",
         "worst": "nlogn",
         "memory": "1"
+      },
+      {
+        "active": true,
+        "label": "Cycle Sort",
+        "value": "Cycle",
+        "best": "n^(2)",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
       }
     ]
   },
