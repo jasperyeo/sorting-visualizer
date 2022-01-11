@@ -1,4 +1,4 @@
-import { Component, DoCheck, HostListener, Input, IterableDiffers, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, DoCheck, HostListener, Input, IterableDiffers, OnInit, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
@@ -75,6 +75,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public iterableDiffer: any;
 
   constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
     private _sortingVisualizerService: SortingVisualizerService,
     private _translateService: TranslateService,
     private _iterableDiffers: IterableDiffers
@@ -288,7 +289,8 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sortDescription = '';
     this.sortLink = '';
     this.selectedAlgorithm = null;
-    this.resetArray();
+    this.search();
+    //this.resetArray();
   }
 
   public sort(array: SortBarComponent[], mode: string): void {
@@ -312,6 +314,9 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
         break;
       case 'HEAP':
         algorithms.heapSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'CYCLE':
+        algorithms.cycleSort(this, array).then(() => this.sorting = false);
         break;
       case 'INSERTION':
         algorithms.insertionSort(this, array).then(() => this.sorting = false);

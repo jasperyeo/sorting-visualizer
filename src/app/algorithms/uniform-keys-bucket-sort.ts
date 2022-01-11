@@ -16,6 +16,7 @@ export async function uniformKeysBucketSort(visualizer: SortingVisualizerCompone
   let totalCount: number = 0;
   for (let i: number = 0; i < buckets.length; i++) {
     for (let j: number = 0; j < buckets[i].length; j++) {
+      if (!visualizer.sorting) break;
       array[totalCount] = buckets[i][j];
       array[totalCount].color = SortBarColor.SWAP;
       if (visualizer.enableAudio) visualizer.playBeep(array[totalCount].value);

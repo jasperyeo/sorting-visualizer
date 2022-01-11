@@ -42,12 +42,15 @@ async function partition(pivotCode: PivotCode, visualizer: SortingVisualizerComp
   const pivotValue: number = array[pivot].value;
   let i: number = left, j: number = right;
   while (i <= j) {
+    if (!visualizer.sorting) break;
     array[pivot].color = SortBarColor.PIVOT;
     while (array[i].value < pivotValue) {
+      if (!visualizer.sorting) break;
       visualizer.noOfCompares++;
       i++;
     }
     while (array[j].value > pivotValue) {
+      if (!visualizer.sorting) break;
       visualizer.noOfCompares++;
       j--;
     }

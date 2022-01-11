@@ -56,6 +56,7 @@
 ### Seleksi
 - Sortir Seleksi
 - Sortir Tumpukan
+- Sortir Siklus
 
 ### Penyisipan
 - Sortir Penyisipan

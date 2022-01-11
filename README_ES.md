@@ -56,6 +56,7 @@
 ### Selección
 - Orden de Selección
 - Ordenar Montón
+- Ordenar Ciclo
 
 ### Inserción
 - Tipo de Inserción

@@ -4,6 +4,7 @@ export * from './quick-sort';
 export * from './merge-sort';
 export * from './selection-sort';
 export * from './heap-sort';
+export * from './cycle-sort';
 export * from './insertion-sort';
 export * from './shell-sort';
 export * from './tree-sort';
