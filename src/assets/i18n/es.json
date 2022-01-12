@@ -47,7 +47,7 @@
       "FANCY": "Lujoso",
       "BALLOON": "Globo",
       "BAMBOO": "Bambú",
-      "ELEMENT_COUNT": "Recuento de Elementos",
+      "ELEMENT_COUNT": "Número de Elementos",
       "ELEMENT_COUNT_MIN_WARNING": "Ingrese una cantidad mínima de 2.",
       "ELEMENT_COUNT_MAX_WARNING": "El recuento generado supera el ancho de la ventana.",
       "MIN_MAX": "Mínimo / Máximo",
@@ -64,6 +64,7 @@
       "TITLE": "Estadísticas",
       "SORT_ATTEMPTS": "Intentos de Ordenación",
       "ELEMENTS": "Elementos",
+      "UNIQUE": "Sólo",
       "COMPARES": "Compara",
       "SWAPS": "Intercambios"
     },

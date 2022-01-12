@@ -34,6 +34,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public selectAlgorithmSearchTerm: string = '';
   public sortAttempts: number = 0;
   public elementCount: number = 400;
+  public uniqueCount: number = 400;
   public minValue: number = 5;
   public maxValue: number = 600;
   public noOfCompares: number = 0;
@@ -233,6 +234,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       if (this.enableAudio) this.playBeep(sortBar.value);
       sortBar.showValue = this.showValues;
       this.sortArray.push(sortBar);
+      this.uniqueCount = [...new Set(this.sortArray.map(bar => bar.value))].length;
       await this.sleep(0);
     }
     this.sorting = false;

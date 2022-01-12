@@ -63,7 +63,8 @@
     "STATISTICS": {
       "TITLE": "Statistik",
       "SORT_ATTEMPTS": "Urutan Percobaan",
-      "ELEMENTS": "Elemen",
+      "ELEMENTS": "Jumlah Elemen",
+      "UNIQUE": "Jumlah Unik",
       "COMPARES": "Bandingkan",
       "SWAPS": "Swap"
     },
