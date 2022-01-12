@@ -64,6 +64,7 @@
       "TITLE": "统计数据",
       "SORT_ATTEMPTS": "排序次数",
       "ELEMENTS": "生成数量",
+      "UNIQUE": "独特数量",
       "COMPARES": "比较次数",
       "SWAPS": "交换次数"
     },
