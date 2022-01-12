@@ -63,7 +63,8 @@
     "STATISTICS": {
       "TITLE": "Statistics",
       "SORT_ATTEMPTS": "Sort Attempts",
-      "ELEMENTS": "Elements",
+      "ELEMENTS": "Element Count",
+      "UNIQUE": "Unique Count",
       "COMPARES": "Compares",
       "SWAPS": "Swaps"
     },

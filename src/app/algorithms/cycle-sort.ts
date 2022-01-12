@@ -1,6 +1,6 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
 import { SortBarColor, SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
-import { compare, swap } from './common';
+import { compare } from './common';
 
 export async function cycleSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<number> {
   let writes: number = 0, n: number = array.length;
