@@ -73,6 +73,7 @@
 
 ### Non-Comparison
 - Uniform Keys Bucket Sort
+- Integer Keys Bucket Sort
 - Least Significant Digit (LSD) Radix Sort
 - Most Significant Digit (MSD) Radix Sort
 

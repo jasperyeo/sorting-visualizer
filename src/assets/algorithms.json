@@ -182,6 +182,15 @@
       },
       {
         "active": true,
+        "label": "Integer Keys Bucket Sort",
+        "value": "Integer Keys Bucket",
+        "best": "-",
+        "average": "n + r",
+        "worst": "n + r",
+        "memory": "n + r"
+      },
+      {
+        "active": true,
         "label": "LSD Radix Sort",
         "value": "LSD Radix",
         "best": "n",

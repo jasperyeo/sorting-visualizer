@@ -350,6 +350,9 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       case 'UNIFORM KEYS BUCKET':
         algorithms.uniformKeysBucketSort(this, array).then(() => this.sorting = false);
         break;
+      case 'INTEGER KEYS BUCKET':
+        algorithms.integerKeysBucketSort(this, array).then(() => this.sorting = false);
+        break;
       case 'LSD RADIX':
         algorithms.lsdRadixSort(this, array).then(() => this.sorting = false);
         break;
