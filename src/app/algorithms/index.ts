@@ -15,6 +15,7 @@ export * from './exchange-sort';
 export * from './odd-even-sort';
 export * from './comb-sort';
 export * from './uniform-keys-bucket-sort';
+export * from './integer-keys-bucket-sort';
 export * from './lsd-radix-sort';
 export * from './msd-radix-sort';
 export * from './pancake-sort';
