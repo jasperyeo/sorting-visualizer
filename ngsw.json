@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1642391006057,
+  "timestamp": 1642919161164,
   "index": "/sorting-visualizer/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/sorting-visualizer/favicon.ico",
         "/sorting-visualizer/index.html",
-        "/sorting-visualizer/main.e240043b100a236e858d.js",
+        "/sorting-visualizer/main.c933bbf1c07dd26b8790.js",
         "/sorting-visualizer/manifest.webmanifest",
         "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js",
         "/sorting-visualizer/runtime.d7571288e124e7050898.js",
@@ -58,7 +58,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/sorting-visualizer/assets/algorithms.json": "c98e569f951b052dbc245a32b6258cfea91e29be",
+    "/sorting-visualizer/assets/algorithms.json": "1e3fb38ca70db18d06117aa2cdb890adbcefbb82",
     "/sorting-visualizer/assets/i18n/en.json": "1d7213f46082aad777b5eb952bc18ad0c150979e",
     "/sorting-visualizer/assets/i18n/es.json": "9e8cedb9c22dfc6237b1095b53fd728b21f96268",
     "/sorting-visualizer/assets/i18n/id.json": "fe1ffd4e3dc549394f41f75de3985e1026906e32",
@@ -82,8 +82,8 @@
     "/sorting-visualizer/assets/images/sortstyle-line.PNG": "d49cca3ee25df8f495752c8cb260add27ad4910a",
     "/sorting-visualizer/assets/images/sortstyle-point.PNG": "7ec5a971aae12bc4a7c4c13ba3cca671ec4406f5",
     "/sorting-visualizer/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/sorting-visualizer/index.html": "d8339d5f2fe48b2819e0ef401ddd75d34fba95e3",
-    "/sorting-visualizer/main.e240043b100a236e858d.js": "d338276fe773606182b8856c94c9421475735033",
+    "/sorting-visualizer/index.html": "b55c2d42cf50ae2baf4cf2f67d352125cd0a322e",
+    "/sorting-visualizer/main.c933bbf1c07dd26b8790.js": "3c336c930c2b9b722e4ba27df6aaf4cbb5223b0f",
     "/sorting-visualizer/manifest.webmanifest": "96daa87232ca70728ed7776f0e2a2a3ce35e7f4f",
     "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js": "3a221b368b0bd1f9bc0b11b2af998ac616aaa790",
     "/sorting-visualizer/runtime.d7571288e124e7050898.js": "5c013e364cb2d418b8d75d00e105ec04b4d83a66",
