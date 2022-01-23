@@ -42,6 +42,15 @@
         "average": "nlogn",
         "worst": "nlogn",
         "memory": "n"
+      },
+      {
+        "active": true,
+        "label": "Tim Sort",
+        "value": "Tim",
+        "best": "n",
+        "average": "nlogn",
+        "worst": "nlogn",
+        "memory": "n"
       }
     ]
   },

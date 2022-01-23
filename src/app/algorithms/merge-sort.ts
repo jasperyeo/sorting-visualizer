@@ -6,7 +6,7 @@ export async function mergeSort(visualizer: SortingVisualizerComponent, array: S
   await mergeSortRecursive(visualizer, array, 0, array.length);
 }
 
-async function mergeSortRecursive(visualizer: SortingVisualizerComponent, array: SortBarComponent[], start: number, end: number): Promise<void> {
+export async function mergeSortRecursive(visualizer: SortingVisualizerComponent, array: SortBarComponent[], start: number, end: number): Promise<void> {
   if (start >= end - 1) return;
   const mid: number = start + Math.trunc((end - start) / 2);
   await mergeSortRecursive(visualizer, array, start, mid);
