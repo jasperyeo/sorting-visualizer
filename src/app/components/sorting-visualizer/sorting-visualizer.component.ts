@@ -311,6 +311,9 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       case 'MERGE':
         algorithms.mergeSort(this, array).then(() => this.sorting = false);
         break;
+      case 'TIM':
+        algorithms.timSort(this, array).then(() => this.sorting = false);
+        break;
       case 'SELECTION':
         algorithms.selectionSort(this, array).then(() => this.sorting = false);
         break;

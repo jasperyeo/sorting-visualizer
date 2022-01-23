@@ -2,6 +2,7 @@ export * from './common';
 
 export * from './quick-sort';
 export * from './merge-sort';
+export * from './tim-sort';
 export * from './selection-sort';
 export * from './heap-sort';
 export * from './cycle-sort';

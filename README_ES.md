@@ -52,6 +52,7 @@
 
 ### Fusionando
 - Combinar Clasificación
+- Tim Clasificación
 
 ### Selección
 - Orden de Selección
