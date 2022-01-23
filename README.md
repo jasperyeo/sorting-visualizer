@@ -52,6 +52,7 @@
 
 ### Merging
 - Merge Sort
+- Tim Sort
 
 ### Selection
 - Selection Sort

@@ -52,6 +52,7 @@
 
 ### Penggabungan
 - Sortir Gabungkan
+- - Sortir Tim
 
 ### Seleksi
 - Sortir Seleksi
