@@ -31,6 +31,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public sortDescription: string = '';
   public sortLink: string = '';
   public sortStyle: string = SortBarStyle.BAR;
+  public randomMethod: string = 'RANDOM';
   public selectAlgorithmSearchTerm: string = '';
   public sortAttempts: number = 0;
   public elementCount: number = 400;
@@ -70,6 +71,14 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
         SortBarStyle.BAMBOO
       ]
     }
+  ];
+
+  public readonly randomMethods: string[] = [
+    'RANDOM',
+    'ASCENDING',
+    'DESCENDING',
+    'ASCENDING_ALMOST',
+    'DESCENDING_ALMOST'
   ];
   
   public sortAlgorithms: any[] = [];
@@ -222,12 +231,40 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.noOfSwaps = 0;
     this.sortArray.splice(0);
     this.sorting = true;
+    let tempArray: number[] = [];
+    for (let i: number = 0; i < this.elementCount; i++) {
+      tempArray.push(this._randomNumberFromRange(this.minValue, this.maxValue));
+    }
+    switch (this.randomMethod) {
+      case 'ASCENDING': tempArray.sort((a: number, b: number): number => { return a - b }); break;
+      case 'DESCENDING': tempArray.sort((a: number, b: number): number => { return b - a }); break;
+      case 'ASCENDING_ALMOST':
+        { 
+          tempArray.sort((a: number, b: number): number => { return a - b });
+          const interval: number = Math.floor(tempArray.length / 5);
+          for (let i: number = tempArray.length - 1; i > 0; i -= interval) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
+          }
+        }
+        break;
+      case 'DESCENDING_ALMOST':
+        {
+          tempArray.sort((a: number, b: number): number => { return b - a });
+          const interval: number = Math.floor(tempArray.length / 5);
+          for (let i: number = tempArray.length - 1; i > 0; i -= interval) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
+          }
+        }
+        break;
+    }
     for (let i: number = 0; i < this.elementCount; i++) {
       let sortBar: SortBarComponent = new SortBarComponent;
       sortBar.id = 'bar' + i.toString();
       sortBar.style = this.sortStyle;
       sortBar.sortDelay = this.sortDelay;
-      sortBar.value = this._randomNumberFromRange(this.minValue, this.maxValue);
+      sortBar.value = tempArray[i];
       sortBar.valueString = sortBar.value.toString();
       const hueValue: string = ((sortBar.value / this.maxValue) * 360).toString();
       sortBar.defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
