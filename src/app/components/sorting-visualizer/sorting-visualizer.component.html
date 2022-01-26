@@ -70,6 +70,11 @@
           </optgroup>
         </select>
         <br><br>
+        <label for="styles-dropdown">{{ 'SUBHEADER.SETTINGS.RANDOM_METHOD' | translate }}:</label>
+        <select id="styles-dropdown" [disabled]="sorting" [(ngModel)]="randomMethod" (change)="resetArray()">
+          <option *ngFor="let method of randomMethods" [value]="method">{{ ('SUBHEADER.SETTINGS.' + method) | translate }}</option>
+        </select>
+        <br><br>
         <label for="element-count">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
         <input type="number" id="element-count" min="2" [(ngModel)]="elementCount" [disabled]="sorting || sortMethod.toUpperCase() === 'BITONIC'"/>
         <label *ngIf="elementCount < 2" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MIN_WARNING' | translate }}</label>
