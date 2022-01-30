@@ -64,6 +64,8 @@
 - 希尔排序
 - Frank & Lazarus 希尔排序
 - Hibbard 希尔排序
+- Tokuda 希尔排序
+- Ciura 希尔排序
 - 树排序
 
 ### 交换

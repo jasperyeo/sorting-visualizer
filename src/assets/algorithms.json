@@ -127,6 +127,24 @@
       },
       {
         "active": true,
+        "label": "Tokuda Shell Sort",
+        "value": "Tokuda Shell",
+        "best": "nlogn",
+        "average": "n^(4/3)",
+        "worst": "n^(3/2)",
+        "memory": "1"
+      },
+      {
+        "active": true,
+        "label": "Ciura Shell Sort",
+        "value": "Ciura Shell",
+        "best": "nlogn",
+        "average": "n^(4/3)",
+        "worst": "n^(3/2)",
+        "memory": "1"
+      },
+      {
+        "active": true,
         "label": "Tree Sort",
         "value": "Tree",
         "best": "nlogn",

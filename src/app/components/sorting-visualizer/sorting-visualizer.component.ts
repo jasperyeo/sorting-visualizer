@@ -372,6 +372,12 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       case 'HIBBARD SHELL':
         algorithms.shellSort(this, array).then(() => this.sorting = false);
         break;
+      case 'TOKUDA SHELL':
+        algorithms.shellSort(this, array).then(() => this.sorting = false);
+        break;
+      case 'CIURA SHELL':
+        algorithms.shellSort(this, array).then(() => this.sorting = false);
+        break;
       case 'TREE':
         algorithms.treeSort(this, array).then(() => this.sorting = false);
         break;

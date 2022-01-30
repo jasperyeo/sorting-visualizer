@@ -64,6 +64,8 @@
 - Shell Sort
 - Frank & Lazarus Shell Sort
 - Hibbard Shell Sort
+- Tokuda Shell Sort
+- Ciura Shell Sort
 - Tree Sort
 
 ### Exchanging
