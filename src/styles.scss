@@ -170,6 +170,10 @@ select {
     &:hover {
       background-color: turquoise;
     }
+
+    &::before {
+      content: '- ';
+    }
   }
 }
 
