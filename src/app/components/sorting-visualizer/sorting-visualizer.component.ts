@@ -366,6 +366,9 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       case 'SHELL':
         algorithms.shellSort(this, array).then(() => this.sorting = false);
         break;
+      case 'FRANK & LAZARUS SHELL':
+        algorithms.shellSort(this, array).then(() => this.sorting = false);
+        break;
       case 'TREE':
         algorithms.treeSort(this, array).then(() => this.sorting = false);
         break;

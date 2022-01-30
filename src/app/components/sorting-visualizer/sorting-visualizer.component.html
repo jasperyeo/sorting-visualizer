@@ -146,7 +146,7 @@
       </p>
       <label *ngIf="showControlPanel && showInfo">
         <br>
-        <span>{{ sortMethod ? sortMethod + ' Sort' : ('SUBHEADER.ALGORITHM_INFORMATION.NONE' | translate) }}</span><br>
+        <span *ngIf="!sortMethod">{{ 'SUBHEADER.ALGORITHM_INFORMATION.NONE' | translate }}<br></span>
         {{ sortDescription }}<br>
           <a *ngIf="sortLink" href="{{ sortLink }}" target="_blank" [title]="sortMethod + ' Sort'" class="sort__info--link" rel="noopener noreferrer">
           {{ selectedAlgorithm?.category !== 'System' ? ('SUBHEADER.ALGORITHM_INFORMATION.WIKIPEDIA' | translate) : ('SUBHEADER.ALGORITHM_INFORMATION.DOCUMENTATION' | translate) }}

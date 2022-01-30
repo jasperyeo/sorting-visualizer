@@ -62,6 +62,7 @@
 ### Penyisipan
 - Sortir Penyisipan
 - Sortir Kulit
+- Sortir Kulit Frank & Lazarus
 - Sortir Pohon
 
 ### Bertukar

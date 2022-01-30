@@ -62,6 +62,7 @@
 ### Inserción
 - Tipo de Inserción
 - Tipo de Concha
+- Tipo de Concha Frank & Lazarus
 - Clasificación de Árboles
 
 ### Intercambio
