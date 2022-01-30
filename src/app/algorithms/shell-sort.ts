@@ -18,6 +18,14 @@ export async function frankLazarusShellSort(visualizer: SortingVisualizerCompone
   }
 }
 
+export async function hibbardShellSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+  // 2^k - 1
+  for (let k: number = 1, gap: number = Math.floor(Math.pow(2, k) - 1); gap > 0; k++) {
+    if (!visualizer.sorting) return;
+    await shellSortConcrete(visualizer, array, gap);
+  }
+}
+
 async function shellSortConcrete(visualizer: SortingVisualizerComponent, array: SortBarComponent[], gap: number): Promise<void> {
   for (let i: number = gap; i < array.length; i += 1) {
     if (!visualizer.sorting) return;

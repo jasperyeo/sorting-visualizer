@@ -61,8 +61,9 @@
 
 ### 插入
 - 插入排序
-- 壳排序
-- Frank & Lazarus 壳排序
+- 希尔排序
+- Frank & Lazarus 希尔排序
+- Hibbard 希尔排序
 - 树排序
 
 ### 交换
