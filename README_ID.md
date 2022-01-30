@@ -61,8 +61,9 @@
 
 ### Penyisipan
 - Sortir Penyisipan
-- Sortir Kulit
-- Sortir Kulit Frank & Lazarus
+- Sortir Shell
+- Sortir Shell Frank & Lazarus
+- Sortir Shell Hibbard
 - Sortir Pohon
 
 ### Bertukar

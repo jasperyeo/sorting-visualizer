@@ -61,8 +61,9 @@
 
 ### Inserción
 - Tipo de Inserción
-- Tipo de Concha
-- Tipo de Concha Frank & Lazarus
+- Tipo de Shell
+- Tipo de Shell Frank & Lazarus
+- Tipo de Shell Hibbard
 - Clasificación de Árboles
 
 ### Intercambio

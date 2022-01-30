@@ -63,6 +63,7 @@
 - Insertion Sort
 - Shell Sort
 - Frank & Lazarus Shell Sort
+- Hibbard Shell Sort
 - Tree Sort
 
 ### Exchanging
