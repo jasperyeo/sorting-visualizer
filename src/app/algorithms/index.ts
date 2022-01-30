@@ -1,26 +1,62 @@
+import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
+import { SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
+
 export * from './common';
 
-export * from './quick-sort';
-export * from './merge-sort';
-export * from './tim-sort';
-export * from './selection-sort';
-export * from './heap-sort';
-export * from './cycle-sort';
-export * from './insertion-sort';
-export * from './shell-sort';
-export * from './tree-sort';
-export * from './bubble-sort';
-export * from './gnome-sort';
-export * from './cocktail-shaker-sort';
-export * from './exchange-sort';
-export * from './odd-even-sort';
-export * from './comb-sort';
-export * from './uniform-keys-bucket-sort';
-export * from './integer-keys-bucket-sort';
-export * from './lsd-radix-sort';
-export * from './msd-radix-sort';
-export * from './pancake-sort';
-export * from './bitonic-sort';
-export * from './stooge-sort';
-export * from './slow-sort';
-export * from './bogo-sort';
+import { leftPivotQuickSort, middlePivotQuickSort, medianPivotQuickSort } from './quick-sort';
+import { mergeSort } from './merge-sort';
+import { timSort } from './tim-sort';
+import { selectionSort } from './selection-sort';
+import { heapSort } from './heap-sort';
+import { cycleSort } from './cycle-sort';
+import { insertionSort } from './insertion-sort';
+import { shellSort, frankLazarusShellSort, hibbardShellSort, tokudaShellSort, ciuraShellSort } from './shell-sort';
+import { treeSort } from './tree-sort';
+import { bubbleSort } from './bubble-sort';
+import { gnomeSort } from './gnome-sort';
+import { cocktailShakerSort } from './cocktail-shaker-sort';
+import { exchangeSort } from './exchange-sort';
+import { oddEvenSort } from './odd-even-sort';
+import { combSort } from './comb-sort';
+import { uniformKeysBucketSort } from './uniform-keys-bucket-sort';
+import { integerKeysBucketSort } from './integer-keys-bucket-sort';
+import { lsdRadixSort } from './lsd-radix-sort';
+import { msdRadixSort } from './msd-radix-sort';
+import { pancakeSort } from './pancake-sort';
+import { bitonicSort } from './bitonic-sort';
+import { stoogeSort } from './stooge-sort';
+import { slowSort } from './slow-sort';
+import { bogoSort } from './bogo-sort';
+
+export const algorithms: Map<string, (visualizer: SortingVisualizerComponent, array: SortBarComponent[]) => Promise<void>> = new Map([
+  ['leftPivotQuickSort', leftPivotQuickSort],
+  ['middlePivotQuickSort', middlePivotQuickSort],
+  ['medianPivotQuickSort', medianPivotQuickSort],
+  ['mergeSort', mergeSort],
+  ['timSort', timSort],
+  ['selectionSort', selectionSort],
+  ['heapSort', heapSort],
+  ['cycleSort', cycleSort],
+  ['insertionSort', insertionSort],
+  ['shellSort', shellSort],
+  ['frankLazarusShellSort', frankLazarusShellSort],
+  ['hibbardShellSort', hibbardShellSort],
+  ['tokudaShellSort', tokudaShellSort],
+  ['ciuraShellSort', ciuraShellSort],
+  ['treeSort', treeSort],
+  ['bubbleSort', bubbleSort],
+  ['gnomeSort', gnomeSort],
+  ['cocktailShakerSort', cocktailShakerSort],
+  ['exchangeSort', exchangeSort],
+  ['oddEvenSort', oddEvenSort],
+  ['combSort', combSort],
+  ['uniformKeysBucketSort', uniformKeysBucketSort],
+  ['integerKeysBucketSort', integerKeysBucketSort],
+  ['lsdRadixSort', lsdRadixSort],
+  ['msdRadixSort', msdRadixSort],
+  ['pancakeSort', pancakeSort],
+  ['bitonicSort', bitonicSort],
+  ['stoogeSort', stoogeSort],
+  ['slowSort', slowSort],
+  ['bogoSort', bogoSort]
+]);
