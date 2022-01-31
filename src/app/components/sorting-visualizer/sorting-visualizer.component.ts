@@ -24,6 +24,8 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public sortArray: SortBarComponent[] = [];
   public listedAlgorithms: any[] = [];
   public filteredAlgorithms: any[] = [];
+  public sortAlgorithms: any[] = [];
+  public iterableDiffer: any;
   public lang: string = 'en';
   public selectedAlgorithm: any;
   public sortDelay: number = 50;
@@ -80,9 +82,6 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     'ASCENDING_ALMOST',
     'DESCENDING_ALMOST'
   ];
-  
-  public sortAlgorithms: any[] = [];
-  public iterableDiffer: any;
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
@@ -332,94 +331,14 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     //this.resetArray();
   }
 
+  private _camelize(str: string): string {
+    return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+  }
+
   public sort(array: SortBarComponent[], mode: string): void {
     this.sortAttempts++;
     this.sorting = true;
-    switch (mode.toUpperCase()) {
-      case 'LEFT PIVOT QUICK': 
-        algorithms.leftPivotQuickSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'MIDDLE PIVOT QUICK': 
-        algorithms.middlePivotQuickSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'MEDIAN PIVOT QUICK': 
-        algorithms.medianPivotQuickSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'MERGE':
-        algorithms.mergeSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'TIM':
-        algorithms.timSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'SELECTION':
-        algorithms.selectionSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'HEAP':
-        algorithms.heapSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'CYCLE':
-        algorithms.cycleSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'INSERTION':
-        algorithms.insertionSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'SHELL':
-        algorithms.shellSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'TREE':
-        algorithms.treeSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'BUBBLE':
-        algorithms.bubbleSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'GNOME':
-        algorithms.gnomeSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'COCKTAIL SHAKER':
-        algorithms.cocktailShakerSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'EXCHANGE':
-        algorithms.exchangeSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'ODD-EVEN':
-        algorithms.oddEvenSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'COMB':
-        algorithms.combSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'UNIFORM KEYS BUCKET':
-        algorithms.uniformKeysBucketSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'INTEGER KEYS BUCKET':
-        algorithms.integerKeysBucketSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'LSD RADIX':
-        algorithms.lsdRadixSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'MSD RADIX':
-        algorithms.msdRadixSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'PANCAKE':
-        algorithms.pancakeSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'BITONIC':
-        algorithms.bitonicSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'STOOGE':
-        algorithms.stoogeSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'SLOW':
-        algorithms.slowSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'BOGO':
-        algorithms.bogoSort(this, array).then(() => this.sorting = false);
-        break;
-      case 'JAVASCRIPT':
-        array.sort((i: SortBarComponent, j: SortBarComponent) => {
-          this.noOfCompares++;
-          return (i.value > j.value) ? 1 : -1;
-        });
-        this.sorting = false;
-    }
+    const fnName: string = this._camelize(mode) + 'Sort';
+    (algorithms.algorithms.get(fnName) as Function)(this, array).then(() => this.sorting = false);
   }
 }
