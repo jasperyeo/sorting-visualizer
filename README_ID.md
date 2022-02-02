@@ -64,6 +64,7 @@
 - Sortir Shell
 - Sortir Shell Frank & Lazarus
 - Sortir Shell Hibbard
+- Sortir Shell Papernov & Stasevich
 - Sortir Shell Tokuda
 - Sortir Shell Ciura
 - Sortir Pohon

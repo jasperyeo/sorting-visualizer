@@ -10,7 +10,7 @@ import { selectionSort } from './selection-sort';
 import { heapSort } from './heap-sort';
 import { cycleSort } from './cycle-sort';
 import { insertionSort } from './insertion-sort';
-import { shellSort, frankLazarusShellSort, hibbardShellSort, tokudaShellSort, ciuraShellSort } from './shell-sort';
+import { shellSort, frankLazarusShellSort, hibbardShellSort, papernovStasevichShellSort, tokudaShellSort, ciuraShellSort } from './shell-sort';
 import { treeSort } from './tree-sort';
 import { bubbleSort } from './bubble-sort';
 import { gnomeSort } from './gnome-sort';
@@ -41,6 +41,7 @@ export const algorithms: Map<string, (visualizer: SortingVisualizerComponent, ar
   ['shellSort', shellSort],
   ['frankLazarusShellSort', frankLazarusShellSort],
   ['hibbardShellSort', hibbardShellSort],
+  ['papernovStasevichShellSort', papernovStasevichShellSort],
   ['tokudaShellSort', tokudaShellSort],
   ['ciuraShellSort', ciuraShellSort],
   ['treeSort', treeSort],

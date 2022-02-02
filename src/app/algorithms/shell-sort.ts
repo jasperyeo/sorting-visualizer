@@ -26,9 +26,24 @@ export async function hibbardShellSort(visualizer: SortingVisualizerComponent, a
     maxK = Math.pow(2, initK);
     initK++;
   }
-  for (let k: number = initK, gap: number = Math.pow(2, k) - 1; gap > 0; k--, gap = Math.pow(2, k) - 1) {
+  for (let k: number = initK, gap: number = Math.floor(Math.pow(2, k) - 1); gap > 0; k--, gap = Math.floor(Math.pow(2, k) - 1)) {
     if (!visualizer.sorting) return;
     await shellSortConcrete(visualizer, array, gap);
+  }
+}
+
+export async function papernovStasevichShellSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+  // 2^k + 1
+  let maxK: number = 1, initK: number = 1;
+  while (maxK < array.length) {
+    maxK = Math.pow(2, initK);
+    initK++;
+  }
+  for (let k: number = initK, gap: number = Math.floor(Math.pow(2, k) + 1); gap > 0; k--, gap = Math.floor(Math.pow(2, k) + 1)) {
+    if (!visualizer.sorting) return;
+    console.log(gap)
+    await shellSortConcrete(visualizer, array, gap);
+    if (gap <= 1) break;
   }
 }
 
