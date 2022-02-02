@@ -64,6 +64,7 @@
 - Shell Sort
 - Frank & Lazarus Shell Sort
 - Hibbard Shell Sort
+- Papernov & Stasevich Shell Sort
 - Tokuda Shell Sort
 - Ciura Shell Sort
 - Tree Sort
