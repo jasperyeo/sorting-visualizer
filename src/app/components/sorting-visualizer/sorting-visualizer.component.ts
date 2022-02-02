@@ -339,6 +339,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sortAttempts++;
     this.sorting = true;
     const fnName: string = this._camelize(mode) + 'Sort';
+    console.log(fnName);
     (algorithms.algorithms.get(fnName) as Function)(this, array).then(() => this.sorting = false);
   }
 }
