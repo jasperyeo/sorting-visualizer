@@ -8,12 +8,14 @@ import { SharedModule } from './../../shared/shared.module';
 import { SortingVisualizerComponent } from './sorting-visualizer.component';
 import { IntroDialogComponent } from './intro-dialog/intro-dialog.component';
 import { ComparisonDialogComponent } from './comparison-dialog/comparison-dialog.component';
+import { StopwatchComponent } from './stopwatch/stopwatch.component';
 
 @NgModule({
   declarations: [
     SortingVisualizerComponent,
     IntroDialogComponent,
-    ComparisonDialogComponent
+    ComparisonDialogComponent,
+    StopwatchComponent
   ],
   imports: [
     CommonModule,
