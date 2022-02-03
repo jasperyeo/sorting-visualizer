@@ -6,6 +6,7 @@ import { SortingVisualizerService } from './sorting-visualizer.service';
 
 import * as algorithms from './../../algorithms/index';
 import { complexityTime, complexitySpace } from './../../shared/models/complexity-time-space';
+import { StopwatchComponent } from './stopwatch/stopwatch.component';
 
 @Component({
   selector: 'sorting-visualizer',
@@ -19,6 +20,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public readonly complexityTime = complexityTime;
   public readonly complexitySpace = complexitySpace;
   public readonly audioContext: AudioContext = new AudioContext();
+  public stopwatch: StopwatchComponent = new StopwatchComponent();
   public readonly audioGain: number = 6;
   public readonly audioMs: number = 50;
   public sortArray: SortBarComponent[] = [];
@@ -35,6 +37,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public sortStyle: string = SortBarStyle.BAR;
   public randomMethod: string = 'RANDOM';
   public selectAlgorithmSearchTerm: string = '';
+  public visualTime: string = '';
   public sortAttempts: number = 0;
   public elementCount: number = 400;
   public uniqueCount: number = 400;
@@ -224,6 +227,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   public async resetArray(): Promise<void> {
+    this.stopwatch.reset();
     if (this.enableAudio) this.playBeep(10);
     this.sortAttempts = 0;
     this.noOfCompares = 0;
@@ -281,6 +285,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   public stop(): void {
+    this.stopwatch.stop();
     this.sorting = false;
   }
 
@@ -328,7 +333,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sortLink = '';
     this.selectedAlgorithm = null;
     this.search();
-    //this.resetArray();
+    this.resetArray();
   }
 
   private _camelize(str: string): string {
@@ -339,6 +344,10 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sortAttempts++;
     this.sorting = true;
     const fnName: string = this._camelize(mode) + 'Sort';
-    (algorithms.algorithms.get(fnName) as Function)(this, array).then(() => this.sorting = false);
+    this.stopwatch.start();
+    (algorithms.algorithms.get(fnName) as Function)(this, array).then(() => {
+      this.stopwatch.stop();
+      this.sorting = false;
+    });
   }
 }

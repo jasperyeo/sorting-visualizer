@@ -64,6 +64,7 @@
 - Tipo de Shell
 - Tipo de Shell Frank & Lazarus
 - Tipo de Shell Hibbard
+- Tipo de Shell Papernov & Stasevich
 - Tipo de Shell Tokuda
 - Tipo de Shell Ciura
 - Clasificación de Árboles

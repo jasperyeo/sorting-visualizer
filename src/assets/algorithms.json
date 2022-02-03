@@ -109,8 +109,8 @@
       },
       {
         "active": true,
-        "label": "Frank & Lazarus Shell Sort",
-        "value": "Frank & Lazarus Shell",
+        "label": "Frank Lazarus Shell Sort",
+        "value": "Frank Lazarus Shell",
         "best": "nlogn",
         "average": "n^(4/3)",
         "worst": "n^(3/2)",
@@ -120,6 +120,15 @@
         "active": true,
         "label": "Hibbard Shell Sort",
         "value": "Hibbard Shell",
+        "best": "nlogn",
+        "average": "n^(4/3)",
+        "worst": "n^(3/2)",
+        "memory": "1"
+      },
+      {
+        "active": true,
+        "label": "Papernov Stasevich Shell Sort",
+        "value": "Papernov Stasevich Shell",
         "best": "nlogn",
         "average": "n^(4/3)",
         "worst": "n^(3/2)",
