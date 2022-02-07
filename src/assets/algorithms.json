@@ -195,6 +195,15 @@
       },
       {
         "active": true,
+        "label": "Bounded Cocktail Shaker Sort",
+        "value": "Bounded Cocktail Shaker",
+        "best": "n",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
+      },
+      {
+        "active": true,
         "label": "Exchange Sort",
         "value": "Exchange",
         "best": "n^(2)",

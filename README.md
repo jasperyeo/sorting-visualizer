@@ -73,6 +73,7 @@
 - Bubble Sort
 - Gnome Sort
 - Cocktail Shaker Sort
+- Bounded Cocktail Shaker Sort
 - Exchange Sort
 - Odd-Even Sort
 - Comb Sort

@@ -73,6 +73,7 @@
 - Sortir Gelembung
 - Sortir Gnome
 - Sortir Pengocok Koktail
+- Sortir Pengocok Koktail Terbatas
 - Sortir Pertukaran
 - Sortir Ganjil-Genap
 - Sortir Sisir
