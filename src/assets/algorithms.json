@@ -254,6 +254,15 @@
       },
       {
         "active": true,
+        "label": "Counting Sort",
+        "value": "Counting",
+        "best": "-",
+        "average": "n + r",
+        "worst": "n + r",
+        "memory": "n + r"
+      },
+      {
+        "active": true,
         "label": "LSD Radix Sort",
         "value": "LSD Radix",
         "best": "n",
