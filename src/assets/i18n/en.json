@@ -68,11 +68,13 @@
     },
     "STATISTICS": {
       "TITLE": "Statistics",
+      "VISUAL_TIME": "Visual Time",
       "SORT_ATTEMPTS": "Sort Attempts",
       "ELEMENTS": "Element Count",
       "UNIQUE": "Unique Count",
       "COMPARES": "Compares",
-      "SWAPS": "Swaps"
+      "SWAPS": "Swaps",
+      "GAPS": "Gaps"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Algorithm Information",
