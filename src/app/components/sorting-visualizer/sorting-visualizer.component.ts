@@ -27,6 +27,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public listedAlgorithms: any[] = [];
   public filteredAlgorithms: any[] = [];
   public sortAlgorithms: any[] = [];
+  public gaps: number[] = [];
   public iterableDiffer: any;
   public lang: string = 'en';
   public selectedAlgorithm: any;
@@ -232,6 +233,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sortAttempts = 0;
     this.noOfCompares = 0;
     this.noOfSwaps = 0;
+    this.gaps.splice(0);
     this.sortArray.splice(0);
     this.sorting = true;
     let tempArray: number[] = [];
@@ -345,9 +347,19 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sorting = true;
     const fnName: string = this._camelize(mode) + 'Sort';
     this.stopwatch.start();
-    (algorithms.algorithms.get(fnName) as Function)(this, array).then(() => {
+    if (fnName !== 'javascriptSort') {
+      (algorithms.algorithms.get(fnName) as Function)(this, array).then(() => {
+        this.stopwatch.stop();
+        this.sorting = false;
+      });
+    } else {
+      array.sort((a: SortBarComponent, b: SortBarComponent) => {
+        this.noOfCompares++;
+        return a.value - b.value;
+      });
       this.stopwatch.stop();
       this.sorting = false;
-    });
+    }
+    
   }
 }

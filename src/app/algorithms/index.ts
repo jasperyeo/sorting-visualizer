@@ -14,12 +14,13 @@ import { shellSort, frankLazarusShellSort, hibbardShellSort, papernovStasevichSh
 import { treeSort } from './tree-sort';
 import { bubbleSort } from './bubble-sort';
 import { gnomeSort } from './gnome-sort';
-import { cocktailShakerSort } from './cocktail-shaker-sort';
+import { cocktailShakerSort, boundedCocktailShakerSort } from './cocktail-shaker-sort';
 import { exchangeSort } from './exchange-sort';
 import { oddEvenSort } from './odd-even-sort';
 import { combSort } from './comb-sort';
 import { uniformKeysBucketSort } from './uniform-keys-bucket-sort';
 import { integerKeysBucketSort } from './integer-keys-bucket-sort';
+import { countingSort } from './counting-sort';
 import { lsdRadixSort } from './lsd-radix-sort';
 import { msdRadixSort } from './msd-radix-sort';
 import { pancakeSort } from './pancake-sort';
@@ -48,11 +49,13 @@ export const algorithms: Map<string, (visualizer: SortingVisualizerComponent, ar
   ['bubbleSort', bubbleSort],
   ['gnomeSort', gnomeSort],
   ['cocktailShakerSort', cocktailShakerSort],
+  ['boundedCocktailShakerSort', boundedCocktailShakerSort],
   ['exchangeSort', exchangeSort],
   ['oddEvenSort', oddEvenSort],
   ['combSort', combSort],
   ['uniformKeysBucketSort', uniformKeysBucketSort],
   ['integerKeysBucketSort', integerKeysBucketSort],
+  ['countingSort', countingSort],
   ['lsdRadixSort', lsdRadixSort],
   ['msdRadixSort', msdRadixSort],
   ['pancakeSort', pancakeSort],

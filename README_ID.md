@@ -73,6 +73,7 @@
 - Sortir Gelembung
 - Sortir Gnome
 - Sortir Pengocok Koktail
+- Sortir Pengocok Koktail Terbatas
 - Sortir Pertukaran
 - Sortir Ganjil-Genap
 - Sortir Sisir
@@ -80,6 +81,7 @@
 ### Non-Perbandingan
 - Sortir Bucket Kunci Seragam
 - Sortir Bucket Kunci Integer
+- Sortir Menghitung
 - Sortir Radix Digit Penting Terkecil (LSD)
 - Sortir Radix Digit Paling Signifikan (MSD)
 

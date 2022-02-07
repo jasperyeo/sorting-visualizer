@@ -6,6 +6,7 @@ export async function shellSort(visualizer: SortingVisualizerComponent, array: S
   // (N / 2^k)
   for (let gap: number = Math.floor(array.length / 2); gap > 0; gap = Math.floor(gap / 2)) {
     if (!visualizer.sorting) return;
+    visualizer.gaps.push(gap);
     await shellSortConcrete(visualizer, array, gap);
   }
 }
@@ -14,6 +15,7 @@ export async function frankLazarusShellSort(visualizer: SortingVisualizerCompone
   // 2(N / 2^(k+1)) + 1
   for (let k: number = 1, gap: number = Math.floor(2 * (array.length / Math.pow(2, k + 1)) + 1); gap > 0; k++, gap = Math.floor(2 * (array.length / Math.pow(2, k + 1)) + 1)) {
     if (!visualizer.sorting) return;
+    visualizer.gaps.push(gap);
     await shellSortConcrete(visualizer, array, gap);
     if (gap <= 1) break;
   }
@@ -23,11 +25,12 @@ export async function hibbardShellSort(visualizer: SortingVisualizerComponent, a
   // 2^k - 1
   let maxK: number = 1, initK: number = 1;
   while (maxK < array.length) {
-    maxK = Math.pow(2, initK);
+    maxK = Math.floor(Math.pow(2, initK) - 1)
     initK++;
   }
-  for (let k: number = initK, gap: number = Math.floor(Math.pow(2, k) - 1); gap > 0; k--, gap = Math.floor(Math.pow(2, k) - 1)) {
+  for (let k: number = --initK, gap: number = Math.floor(Math.pow(2, k) - 1); gap > 0; k--, gap = Math.floor(Math.pow(2, k) - 1)) {
     if (!visualizer.sorting) return;
+    visualizer.gaps.push(gap);
     await shellSortConcrete(visualizer, array, gap);
   }
 }
@@ -36,12 +39,12 @@ export async function papernovStasevichShellSort(visualizer: SortingVisualizerCo
   // 2^k + 1
   let maxK: number = 1, initK: number = 1;
   while (maxK < array.length) {
-    maxK = Math.pow(2, initK);
+    maxK = Math.floor(Math.pow(2, initK) + 1);
     initK++;
   }
-  for (let k: number = initK, gap: number = Math.floor(Math.pow(2, k) + 1); gap > 0; k--, gap = Math.floor(Math.pow(2, k) + 1)) {
+  for (let k: number = --initK, gap: number = Math.floor(Math.pow(2, k) + 1); gap > 0; k--, gap = Math.floor(Math.pow(2, k) + 1)) {
     if (!visualizer.sorting) return;
-    console.log(gap)
+    visualizer.gaps.push(gap);
     await shellSortConcrete(visualizer, array, gap);
     if (gap <= 1) break;
   }
@@ -51,11 +54,12 @@ export async function tokudaShellSort(visualizer: SortingVisualizerComponent, ar
   // a(n) = ceiling( (9 * (9/4)^n - 4) / 5)
   let maxK: number = 1, initK: number = 1;
   while (maxK < array.length) {
-    maxK = Math.pow(2, initK);
+    maxK = Math.ceil((9 * Math.pow(9 / 4, initK) - 4) / 5);
     initK++;
   }
-  for (let k: number = initK, gap: number = Math.ceil((9 * Math.pow(9 / 4, k) - 4) / 5); gap > 0; k--, gap = Math.ceil((9 * Math.pow(9 / 4, k) - 4) / 5)) {
+  for (let k: number = --initK, gap: number = Math.ceil((9 * Math.pow(9 / 4, k) - 4) / 5); gap > 0; k--, gap = Math.ceil((9 * Math.pow(9 / 4, k) - 4) / 5)) {
     if (!visualizer.sorting) return;
+    visualizer.gaps.push(gap);
     await shellSortConcrete(visualizer, array, gap);
   }
 }
@@ -63,8 +67,11 @@ export async function tokudaShellSort(visualizer: SortingVisualizerComponent, ar
 export async function ciuraShellSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
   // 1, 4, 10, 23, 57, 132, 301, 701, 1750 (experimental integer sequence)
   const ciuraSequence: number[] = [1750, 701, 301, 132, 57, 23, 10, 4, 1];
-  for (let n: number = 0, gap: number = ciuraSequence[n]; gap > 0; n++, gap = ciuraSequence[n]) {
+  let initN: number = 0;
+  while (ciuraSequence[initN] > array.length) initN++;
+  for (let n: number = --initN, gap: number = ciuraSequence[n]; gap > 0; n++, gap = ciuraSequence[n]) {
     if (!visualizer.sorting) return;
+    visualizer.gaps.push(gap);
     await shellSortConcrete(visualizer, array, gap);
   }
 }
