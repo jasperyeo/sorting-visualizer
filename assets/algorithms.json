@@ -195,6 +195,15 @@
       },
       {
         "active": true,
+        "label": "Bounded Cocktail Shaker Sort",
+        "value": "Bounded Cocktail Shaker",
+        "best": "n",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
+      },
+      {
+        "active": true,
         "label": "Exchange Sort",
         "value": "Exchange",
         "best": "n^(2)",
@@ -238,6 +247,15 @@
         "active": true,
         "label": "Integer Keys Bucket Sort",
         "value": "Integer Keys Bucket",
+        "best": "-",
+        "average": "n + r",
+        "worst": "n + r",
+        "memory": "n + r"
+      },
+      {
+        "active": true,
+        "label": "Counting Sort",
+        "value": "Counting",
         "best": "-",
         "average": "n + r",
         "worst": "n + r",

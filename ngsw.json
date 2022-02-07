@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1643867232403,
+  "timestamp": 1644263780027,
   "index": "/sorting-visualizer/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/sorting-visualizer/favicon.ico",
         "/sorting-visualizer/index.html",
-        "/sorting-visualizer/main.066038557ae8e11d8aaa.js",
+        "/sorting-visualizer/main.d5e737741d7863d62554.js",
         "/sorting-visualizer/manifest.webmanifest",
         "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js",
         "/sorting-visualizer/runtime.d7571288e124e7050898.js",
@@ -58,11 +58,11 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/sorting-visualizer/assets/algorithms.json": "8fd309ac12bb015c18532e5cd5b46b9dad47846f",
-    "/sorting-visualizer/assets/i18n/en.json": "bfc245c80c67ca383b0609ffe5fd54f66d80bad3",
-    "/sorting-visualizer/assets/i18n/es.json": "01b5915073485eca1ebc9acc997bb4603acaf1a9",
-    "/sorting-visualizer/assets/i18n/id.json": "a1afd88f3df0c672bec4ce277057c0bd951199a4",
-    "/sorting-visualizer/assets/i18n/zh.json": "0a6323af4482557589e9a346f216f4379cdd62a3",
+    "/sorting-visualizer/assets/algorithms.json": "4321473b757159c56f1a21a12432095099826b88",
+    "/sorting-visualizer/assets/i18n/en.json": "b0e6486e97db01499e5d4c47983acf7d5f5385f9",
+    "/sorting-visualizer/assets/i18n/es.json": "80cc1f0a1241ba7a65ae48cce6b6819a5b2c6d12",
+    "/sorting-visualizer/assets/i18n/id.json": "2ef423a32862662e1297fde20a6ad09ae10c5d01",
+    "/sorting-visualizer/assets/i18n/zh.json": "86fbbc78111fe53dfd7c305075a8a972812660c7",
     "/sorting-visualizer/assets/icons/site-icon-128.png": "f0931ca48d04d4acec7649cd82987aa97a610820",
     "/sorting-visualizer/assets/icons/site-icon-144.png": "9088b930eecfee04ecaf4af74c943d518caeab2b",
     "/sorting-visualizer/assets/icons/site-icon-152.png": "679ccc6119e2dbf1cc90509de411d09cfa726a0b",
@@ -82,8 +82,8 @@
     "/sorting-visualizer/assets/images/sortstyle-line.PNG": "d49cca3ee25df8f495752c8cb260add27ad4910a",
     "/sorting-visualizer/assets/images/sortstyle-point.PNG": "7ec5a971aae12bc4a7c4c13ba3cca671ec4406f5",
     "/sorting-visualizer/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/sorting-visualizer/index.html": "112acc0e65d688c2deb0b5cf1e6c48bcff21ffbe",
-    "/sorting-visualizer/main.066038557ae8e11d8aaa.js": "cdc5da9792403dc6204b885a2776d17527479a07",
+    "/sorting-visualizer/index.html": "aabbe9a13809874247bd9308624b6c60dd49edc0",
+    "/sorting-visualizer/main.d5e737741d7863d62554.js": "b4b2b04e3422722dee6868b35d6b7c01144ac30a",
     "/sorting-visualizer/manifest.webmanifest": "96daa87232ca70728ed7776f0e2a2a3ce35e7f4f",
     "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js": "3a221b368b0bd1f9bc0b11b2af998ac616aaa790",
     "/sorting-visualizer/runtime.d7571288e124e7050898.js": "5c013e364cb2d418b8d75d00e105ec04b4d83a66",
