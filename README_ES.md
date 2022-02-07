@@ -73,6 +73,7 @@
 - Ordenamiento de Burbuja
 - Tipo de Gnomo
 - Tipo de Coctelera
+- Tipo de Coctelera Limitada
 - Tipo de Intercambio
 - Tipo Impar-par
 - Tipo de Peine

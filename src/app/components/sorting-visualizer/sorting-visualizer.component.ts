@@ -347,9 +347,19 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sorting = true;
     const fnName: string = this._camelize(mode) + 'Sort';
     this.stopwatch.start();
-    (algorithms.algorithms.get(fnName) as Function)(this, array).then(() => {
+    if (fnName !== 'javascriptSort') {
+      (algorithms.algorithms.get(fnName) as Function)(this, array).then(() => {
+        this.stopwatch.stop();
+        this.sorting = false;
+      });
+    } else {
+      array.sort((a: SortBarComponent, b: SortBarComponent) => {
+        this.noOfCompares++;
+        return a.value - b.value;
+      });
       this.stopwatch.stop();
       this.sorting = false;
-    });
+    }
+    
   }
 }
