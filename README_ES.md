@@ -81,6 +81,7 @@
 ### Sin comparación
 - Orden de Cubo de Llaves Uniformes
 - Ordenación de Cubeta de Claves Enteras
+- Tipo de Conteo
 - Orden de Base de Dígitos Menos Significativos (LSD)
 - Orden de Base de Dígitos Más Significativos (MSD)
 

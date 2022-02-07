@@ -32,7 +32,7 @@ export async function boundedCocktailShakerSort(visualizer: SortingVisualizerCom
     if (!visualizer.sorting) return;
     let newStartIndex: number = endIndex;
     let newEndIndex: number = startIndex;
-    for (let i: number = startIndex; i < endIndex; ++i) {
+    for (let i: number = startIndex; i < endIndex; i++) {
       if (!visualizer.sorting) return;
       if (compare(visualizer, array[i], array[i + 1])) {
         await swap(visualizer, array, i, i + 1);
@@ -40,7 +40,7 @@ export async function boundedCocktailShakerSort(visualizer: SortingVisualizerCom
       }
     }
     endIndex = newEndIndex;
-    for (let i: number = endIndex; i > startIndex; --i) {
+    for (let i: number = endIndex; i > startIndex; i--) {
       if (!visualizer.sorting) return;
       if (compare(visualizer, array[i - 1], array[i])) {
         await swap(visualizer, array, i - 1, i);
