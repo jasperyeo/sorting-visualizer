@@ -68,11 +68,13 @@
     },
     "STATISTICS": {
       "TITLE": "Estadísticas",
+      "VISUAL_TIME": "Tiempo Visual",
       "SORT_ATTEMPTS": "Intentos de Ordenación",
       "ELEMENTS": "Elementos",
       "UNIQUE": "Sólo",
       "COMPARES": "Compara",
-      "SWAPS": "Intercambios"
+      "SWAPS": "Intercambios",
+      "GAPS": "Brechas"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Información del Algoritmo",

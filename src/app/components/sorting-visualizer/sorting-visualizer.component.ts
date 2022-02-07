@@ -27,6 +27,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public listedAlgorithms: any[] = [];
   public filteredAlgorithms: any[] = [];
   public sortAlgorithms: any[] = [];
+  public gaps: number[] = [];
   public iterableDiffer: any;
   public lang: string = 'en';
   public selectedAlgorithm: any;
@@ -232,6 +233,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sortAttempts = 0;
     this.noOfCompares = 0;
     this.noOfSwaps = 0;
+    this.gaps.splice(0);
     this.sortArray.splice(0);
     this.sorting = true;
     let tempArray: number[] = [];

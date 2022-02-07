@@ -68,11 +68,13 @@
     },
     "STATISTICS": {
       "TITLE": "Statistik",
+      "VISUAL_TIME": "Waktu Visual",
       "SORT_ATTEMPTS": "Urutan Percobaan",
       "ELEMENTS": "Jumlah Elemen",
       "UNIQUE": "Jumlah Unik",
       "COMPARES": "Bandingkan",
-      "SWAPS": "Swap"
+      "SWAPS": "Swap",
+      "GAPS": "Celah"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Informasi Algoritma",
