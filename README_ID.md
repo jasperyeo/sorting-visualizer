@@ -33,6 +33,8 @@
   <a href="https://github.com/jasperyeo/sorting-visualizer/blob/main/README_ES.md" target="_blank" title="Español">Español</a>
    · 
   <a href="https://github.com/jasperyeo/sorting-visualizer/blob/main/README_ID.md" target="_blank" title="Bahasa Indonesia">Bahasa Indonesia</a>
+   · 
+  <a href="https://github.com/jasperyeo/sorting-visualizer/blob/main/README_FR.md" target="_blank" title="Français">Français</a>
 </p>
 <p align="center">
   Visualisator ini mendemonstrasikan bagaimana algoritma pengurutan umum bekerja melalui penggunaan warna, suara, dan pengaturan waktu.

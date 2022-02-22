@@ -1,0 +1,91 @@
+{
+  "TITLE": "Visualiseur de Tri",
+  "LOADING": "Chargement...",
+  "INTRO": {
+    "TITLE": "Bienvenue",
+    "DESC": "En informatique, un algorithme de tri est un algorithme qui ordonne les éléments d'une liste. Les ordres les plus fréquemment utilisés sont l'ordre numérique et l'ordre lexicographique, et soit croissant, soit décroissant. Un tri efficace est important pour optimiser le l'efficacité d'autres algorithmes (tels que les algorithmes de recherche et de fusion) qui nécessitent que les données d'entrée se trouvent dans des listes triées. Le tri est également souvent utile pour canoniser les données et produire une sortie lisible par l'homme.",
+    "CTA": "Ce visualiseur montre comment les algorithmes de tri courants fonctionnent grâce à l'utilisation de couleurs, de sons et de minutages.",
+    "CRED": "Développeur : Jasper Yeo, 2021.",
+    "CRED_LINK_1": "https://github.com/jasperyeo",
+    "CRED_DESC_1": "GitHub",
+    "CRED_LINK_2": "https://www.linkedin.com/in/yeoenghaijasper",
+    "CRED_DESC_2": "LinkedIn",
+    "REFERENCE": "Référence: ",
+    "REFERENCE_LINK": "https://en.wikipedia.org/wiki/Sorting_algorithm",
+    "CLOSE": "Fermer"
+  },
+  "COMPARISON": {
+    "TITLE": "Tableau Comparatif",
+    "SEARCH": "Recherche par Nom ou Méthode",
+    "TOTAL_RESULTS": "Résultats totaux: ",
+    "NAME": "Nom",
+    "BEST": "Meilleur",
+    "AVERAGE": "Moyenne",
+    "WORST": "Pire",
+    "MEMORY": "Mémoire",
+    "METHOD": "Méthode",
+    "CLOSE": "Fermer"
+  },
+  "HEADER": {
+    "MENU": "Menu",
+    "RESET": "Réinitialiser",
+    "CHOOSE_ALGORITHM": "Choisir l'algorithme",
+    "RESULTS": " résultats",
+    "START": "Démarrer",
+    "STOP": "Stop"
+  },
+  "SUBHEADER": {
+    "SETTINGS": {
+      "TITLE": "Paramètres",
+      "ENABLE_AUDIO": "Activer l'Audio",
+      "SHOW_VALUES": "Afficher les Valeurs",
+      "VISUALISER_STYLE": "Style de Visualisation",
+      "BASIC": "Basique",
+      "BAR": "Bar",
+      "POINT": "Point",
+      "LINE": "Ligne",
+      "FANCY": "Fantaisie",
+      "BALLOON": "Ballon",
+      "BAMBOO": "Bambou",
+      "RANDOM_METHOD": "Méthode Aléatoire",
+      "RANDOM": "Aléatoire",
+      "ASCENDING": "Croissant",
+      "DESCENDING": "Descendant",
+      "ASCENDING_ALMOST": "Aléatoire Croissant",
+      "DESCENDING_ALMOST": "Aléatoire Descendant",
+      "ELEMENT_COUNT": "Nombre d'Éléments",
+      "ELEMENT_COUNT_MIN_WARNING": "Veuillez entrer un montant minimum de 2.",
+      "ELEMENT_COUNT_MAX_WARNING": "Le nombre généré dépasse la largeur de la fenêtre.",
+      "MIN_MAX": "Min / Max",
+      "MIN": "Min",
+      "MAX": "Max",
+      "MIN_MAX_MIN_WARNING": "Veuillez saisir une valeur minimale de 1.",
+      "MIN_MAX_MAX_WARNING": "La valeur maximale dépasse la hauteur de la fenêtre.",
+      "DELAY": "Retard",
+      "DELAY_NORMAL": "Normal",
+      "DELAY_FAST": "Rapide",
+      "DELAY_SLOW": "Lent"
+    },
+    "STATISTICS": {
+      "TITLE": "Statistiques",
+      "VISUAL_TIME": "Temps Visuel",
+      "SORT_ATTEMPTS": "Tentatives de Tri",
+      "ELEMENTS": "Nombre d'Éléments",
+      "UNIQUE": "Compte Unique",
+      "COMPARES": "Comparer",
+      "SWAPS": "Échanges",
+      "GAPS": "Lacunes"
+    },
+    "ALGORITHM_INFORMATION": {
+      "TITLE": "Informations sur l'Algorithme",
+      "NONE": "Aucun",
+      "WIKIPEDIA": "Wikipedia",
+      "DOCUMENTATION": "Documentation"
+    }
+  },
+  "FOOTER": {
+    "ABOUT": "À Propos",
+    "COMPARISON": "Comparaison",
+    "GITHUB": "GitHub"
+  }
+}
