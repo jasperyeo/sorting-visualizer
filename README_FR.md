@@ -37,7 +37,7 @@
   <a href="https://github.com/jasperyeo/sorting-visualizer/blob/main/README_FR.md" target="_blank" title="Français">Français</a>
 </p>
 <p align="center">
-  Este visualizador demuestra cómo funcionan los algoritmos de clasificación comunes mediante el uso de colores, sonidos y tiempos.
+  Ce visualiseur montre comment les algorithmes de tri courants fonctionnent grâce à l'utilisation de couleurs, de sons et de minutages.
 </p>
 <p align="center">
   <a href="https://jasperyeo.github.io/sorting-visualizer/" target="_blank" title="https://jasperyeo.github.io/sorting-visualizer/">
@@ -45,79 +45,79 @@
   </a>
 </p>
 
-## Algoritmos de Clasificación Implementados
+## Algorithmes de Tri Implémentés
 
-### Fraccionamiento
-- Ordenación Rápida con Pivote Izquierdo
-- Ordenación Rápida de Pivote Medio
-- Ordenación Rápida de Pivote Mediano
+### Partitionnement
+- Tri Rapide du Pivot Gauche
+- Tri Rapide du Pivot Central
+- Tri Rapide du Pivot Médian
 
-### Fusionando
-- Combinar Clasificación
-- Tim Clasificación
+### Fusion
+- Tri par Fusion
+- Tri Tim
 
-### Selección
-- Orden de Selección
-- Ordenar Montón
-- Ordenar Ciclo
+### Sélection
+- Tri de Sélection
+- Tri de Tas
+- Tri de Cycle
 
-### Inserción
-- Tipo de Inserción
-- Tipo de Shell
-- Tipo de Shell Frank & Lazarus
-- Tipo de Shell Hibbard
-- Tipo de Shell Papernov & Stasevich
-- Tipo de Shell Tokuda
-- Tipo de Shell Ciura
-- Clasificación de Árboles
+### Insertion
+- Tri par Insertion
+- Tri de Coquille
+- Tri de Coquillages Frank & Lazarus
+- Tri de Coquillages Hibbard
+- Tri de Coquillages Papernov & Stasevich
+- Tri de Coquillages Tokuda
+- Tri de Coquillages Ciura
+- Trier par Arbre
 
-### Intercambio
-- Ordenamiento de Burbuja
-- Tipo de Gnomo
-- Tipo de Coctelera
-- Tipo de Coctelera Limitada
-- Tipo de Intercambio
-- Tipo Impar-par
-- Tipo de Peine
+### Échange
+- Tri à Bulles
+- Tri Gnome
+- Tri de Shaker à Cocktail
+- Tri de Dhaker à Cocktail Délimité
+- Tri d'Échange
+- Tri Pair-Impair
+- Peigne Trier
 
-### Sin comparación
-- Orden de Cubo de Llaves Uniformes
-- Ordenación de Cubeta de Claves Enteras
-- Tipo de Conteo
-- Orden de Base de Dígitos Menos Significativos (LSD)
-- Orden de Base de Dígitos Más Significativos (MSD)
+### Non-Comparaison
+- Tri de Seau de Clés Uniformes
+- Tri par Compartiment de Clés Entières
+- Comptage Tri
+- Tri par Base du Chiffre le Moins Significatif (LSD)
+- Tri par Base du Chiffre le Plus Significatif (MSD)
 
-### Otros
-- Tipo de Panqueques
-- Tipo Bitónico
-- Tipo Títere
-- Tipo Lenta
-- Tipo Bogo
+### Les Autres
+- Trier les Crêpes
+- Tri Bitonique
+- Tri Stooge
+- Tri Lent
+- Tri Bogo
 
-### Sistema
-- Ordenar JavaScript
+### Système
+- Tri JavaScript
 
-## Estilo de Visualización
+## Styles de Visualisation
 
-### Básico
+### Basique
 <div style="display: flex;">
   <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-bar.PNG" width="40%" alt="Bar" title="Bar"/>
   <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-point.PNG" width="40%" alt="Point" title="Point"/>
   <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-line.PNG" width="40%" alt="Line" title="Line"/>
 </div>
 
-### Lujoso
+### Fantaisie
 <div style="display: flex;">
    <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-balloon.PNG" width="40%" alt="Balloon" title="Balloon"/>
    <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-bamboo.PNG" width="40%" alt="Bamboo" title="Bamboo"/>
 </div>
 
-## Información de desarrollo
+## Informations Sur le Développement
 
-Este proyecto se generó con [Angular CLI] (https://github.com/angular/angular-cli) versión 12.2.10.
+Ce projet a été généré avec [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
 
-Utiliza [API de resumen de Wikipedia] (https://en.wikipedia.org/api/rest_v1/#/) para obtener resúmenes de algoritmos de clasificación y enlaces a los artículos.
+Utilise [Wikipedia Summary API](https://en.wikipedia.org/api/rest_v1/#/) pour récupérer les résumés des algorithmes de tri et les liens vers les articles.
 
-## Licencia
+## Licence
 
-Publicado bajo [GNU AGPLv3] (/ LICENSE) por [@JasperYeo] (https://github.com/JasperYeo).
+Publié sous [GNU AGPLv3](/LICENSE) par [@JasperYeo](https://github.com/JasperYeo).

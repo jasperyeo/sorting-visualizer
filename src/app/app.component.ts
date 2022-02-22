@@ -15,6 +15,7 @@ export class AppComponent {
     { label: '中', value: 'zh' },
     { label: 'ES', value: 'es' },
     { label: 'ID', value: 'id' },
+    { label: 'FR', value: 'fr' }
   ];
   public isMobileSafari: boolean = false;
 
