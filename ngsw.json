@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1644263780027,
+  "timestamp": 1645563740479,
   "index": "/sorting-visualizer/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/sorting-visualizer/favicon.ico",
         "/sorting-visualizer/index.html",
-        "/sorting-visualizer/main.d5e737741d7863d62554.js",
+        "/sorting-visualizer/main.efc8feffaa8cfd4af5b9.js",
         "/sorting-visualizer/manifest.webmanifest",
         "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js",
         "/sorting-visualizer/runtime.d7571288e124e7050898.js",
@@ -32,6 +32,7 @@
         "/sorting-visualizer/assets/algorithms.json",
         "/sorting-visualizer/assets/i18n/en.json",
         "/sorting-visualizer/assets/i18n/es.json",
+        "/sorting-visualizer/assets/i18n/fr.json",
         "/sorting-visualizer/assets/i18n/id.json",
         "/sorting-visualizer/assets/i18n/zh.json",
         "/sorting-visualizer/assets/icons/site-icon-128.png",
@@ -61,6 +62,7 @@
     "/sorting-visualizer/assets/algorithms.json": "4321473b757159c56f1a21a12432095099826b88",
     "/sorting-visualizer/assets/i18n/en.json": "b0e6486e97db01499e5d4c47983acf7d5f5385f9",
     "/sorting-visualizer/assets/i18n/es.json": "80cc1f0a1241ba7a65ae48cce6b6819a5b2c6d12",
+    "/sorting-visualizer/assets/i18n/fr.json": "53b8f9a564e2e5f813011ca66d5d1062770555b6",
     "/sorting-visualizer/assets/i18n/id.json": "2ef423a32862662e1297fde20a6ad09ae10c5d01",
     "/sorting-visualizer/assets/i18n/zh.json": "86fbbc78111fe53dfd7c305075a8a972812660c7",
     "/sorting-visualizer/assets/icons/site-icon-128.png": "f0931ca48d04d4acec7649cd82987aa97a610820",
@@ -82,8 +84,8 @@
     "/sorting-visualizer/assets/images/sortstyle-line.PNG": "d49cca3ee25df8f495752c8cb260add27ad4910a",
     "/sorting-visualizer/assets/images/sortstyle-point.PNG": "7ec5a971aae12bc4a7c4c13ba3cca671ec4406f5",
     "/sorting-visualizer/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/sorting-visualizer/index.html": "aabbe9a13809874247bd9308624b6c60dd49edc0",
-    "/sorting-visualizer/main.d5e737741d7863d62554.js": "b4b2b04e3422722dee6868b35d6b7c01144ac30a",
+    "/sorting-visualizer/index.html": "48ab0821a376ffe79a56c9288a930dd05d8b6abb",
+    "/sorting-visualizer/main.efc8feffaa8cfd4af5b9.js": "9c385f904a7d442923552fa419dfb1f1d8270b6e",
     "/sorting-visualizer/manifest.webmanifest": "96daa87232ca70728ed7776f0e2a2a3ce35e7f4f",
     "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js": "3a221b368b0bd1f9bc0b11b2af998ac616aaa790",
     "/sorting-visualizer/runtime.d7571288e124e7050898.js": "5c013e364cb2d418b8d75d00e105ec04b4d83a66",
