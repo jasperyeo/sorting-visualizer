@@ -9,7 +9,10 @@
       <p class="sort__header--menu">{{ 'HEADER.MENU' | translate }}</p>
     </button>
     <h1 class="sort__header--title">{{ 'TITLE' | translate }}</h1>
-    <button (click)="resetArray()" [disabled]="sorting" [title]="'HEADER.RESET' | translate">&#8634;</button>
+    <button (click)="resetArray()" [disabled]="sorting" [title]="'HEADER.RESET' | translate" class="sort__header--button-normal">
+      {{ 'HEADER.RESET' | translate }}
+    </button>
+    <button (click)="resetArray()" [disabled]="sorting" [title]="'HEADER.RESET' | translate" class="sort__header--button-mobile">&#8634;</button>
     <div class="sort__header--dropdown-container">
       <select *ngIf="!sorting && sortAlgorithms.length" id="select-algorithm-dropdown" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod"
         (change)="selectAlgorithm(sortMethod); closeAlgoDropdown($event)" class="sort__header--select-algo">
@@ -36,8 +39,10 @@
       elementCount < 2 || (elementCount * 4) >= viewWidth ||
       minValue <= 0 || maxValue * 0.8 > viewHeight"
       [title]="sorting ? ('HEADER.STOP' | translate) : ('HEADER.START' | translate)">
-      <span *ngIf="sorting">&#8718;</span>
-      <span *ngIf="!sorting">&#8811;</span>
+      <span *ngIf="sorting" class="sort__header--button-normal">{{ 'HEADER.STOP' | translate }}</span>
+      <span *ngIf="!sorting" class="sort__header--button-normal">{{ 'HEADER.START' | translate }}</span>
+      <span *ngIf="sorting" class="sort__header--button-mobile">&#8718;</span>
+      <span *ngIf="!sorting" class="sort__header--button-mobile">&#8811;</span>
     </button>
     <div class="sort__header--lang">
       <select id="langs-dropdown" [(ngModel)]="lang" (change)="selectLang(lang)" class="sort__header--select-lang">

@@ -152,6 +152,20 @@
       }
     }
 
+    &--button-normal {
+      @include respond(md) {
+        display: none;
+      }
+    }
+
+    &--button-mobile {
+      display: none;
+      
+      @include respond(md) {
+        display: block;
+      }
+    }
+
     &--menu-container {
       display: flex;
 
