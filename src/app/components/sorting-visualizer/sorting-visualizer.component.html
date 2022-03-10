@@ -50,8 +50,13 @@
       </select>
     </div>
   </div>
-  <div class="sort__subheader">
-    <div *ngIf="showControlPanel" class="sort__info" #settings>
+  <div *ngIf="showControlPanel" class="sort__subheader-paginator">
+    <div class="sort__subheader-page" [class.highlighted]="sortInfoPaginator[0]" (click)="jumpToSortInfoPage(0)"></div>
+    <div class="sort__subheader-page" [class.highlighted]="sortInfoPaginator[1]" (click)="jumpToSortInfoPage(1)"></div>
+    <div class="sort__subheader-page" [class.highlighted]="sortInfoPaginator[2]" (click)="jumpToSortInfoPage(2)"></div>
+  </div>
+  <div *ngIf="showControlPanel" class="sort__subheader" id="sort__subheader">
+    <div class="sort__info" id="settings" #settings>
       <p class="sort__info--header" (click)="showSettings = !showSettings">
         <span class="sort__info--title"><span class="sort__info--title--icon">&#9881;</span> {{ 'SUBHEADER.SETTINGS.TITLE' | translate }}:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showSettings }">&#x25B2;</span>
@@ -99,7 +104,7 @@
         <label *ngIf="maxValue > viewHeight * 0.45" class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MAX_WARNING' | translate }}</label>
       </div>
     </div>
-    <div *ngIf="showControlPanel" class="sort__info" #statistics>
+    <div class="sort__info" id="statistics" #statistics>
       <p class="sort__info--header" (click)="showStatistics = !showStatistics">
         <span class="sort__info--title"><span class="sort__info--title--icon">&#9871;</span> {{ 'SUBHEADER.STATISTICS.TITLE' | translate }}:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showStatistics }">&#x25B2;</span>
@@ -154,7 +159,7 @@
         </label>
       </div>
     </div>
-    <div *ngIf="showControlPanel" class="sort__info sort__info--info" #information>
+    <div class="sort__info sort__info--info" id="information" #information>
       <p class="sort__info--header" (click)="showInfo = !showInfo">
         <span class="sort__info--title"><span class="sort__info--title--icon">?</span> {{ 'SUBHEADER.ALGORITHM_INFORMATION.TITLE' | translate }}:</span>
         <span [ngClass]="{ 'sort__info--collapsed': !showInfo }">&#x25B2;</span>
