@@ -21,7 +21,10 @@
     background-color: rgba(.8, .8, .8, .8);
     border-radius: .8rem;
     width: 80%;
-    height: fit-content;
+    height: intrinsic;           /* Safari/WebKit uses a non-standard name */
+    height: -moz-max-content;    /* Firefox/Gecko */
+    height: -webkit-max-content; /* Chrome */
+    height: max-content;
     max-width: 100rem;
     top: 50%;
     left: 50%;
@@ -32,7 +35,10 @@
     animation: dialog-appear .2s ease-in-out;
 
     @include respond(md) {
-      height: fit-content;
+      height: intrinsic;           /* Safari/WebKit uses a non-standard name */
+      height: -moz-max-content;    /* Firefox/Gecko */
+      height: -webkit-max-content; /* Chrome */
+      height: max-content;
     }
   }
 
