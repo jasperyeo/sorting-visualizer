@@ -33,6 +33,10 @@
       position: relative;
       width: 22rem;
       height: 20rem;
+
+      #select-algorithm-dropdown {
+        width: 22rem;
+      }
     }
 
     &--dropdown-search {
@@ -40,6 +44,7 @@
       left: 0px;
       top: 0px;
       padding-left: 2.4rem !important;
+      width: 22rem;
 
       &--disabled {
         background-color: lightgray;
@@ -89,6 +94,10 @@
 
     &--select-algo {
       width: 22rem;
+
+      @include respond(md) {
+        width: 12rem;
+      }
     }
 
     &--select-lang {
@@ -194,19 +203,58 @@
   &__subheader {
     display: flex;
     overflow-x: auto;
+
+    @include respond(md) {
+      scroll-snap-type: x mandatory;
+      //overflow-x: hidden;
+    }
+  }
+
+  &__subheader-paginator {
+    display: none;
+
+    @include respond(md) {
+      animation: info-appear .5s ease-in-out;
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      height: 1rem;
+      margin-top: 1rem;
+    }
+  }
+
+  &__subheader-page {
+    background-color: rgba(1, 1, 1, 0.5);
+    width: 30%;
+    height: 1rem;
+
+    &.highlighted {
+      background-color: white;
+    }
   }
 
   &__info {
     background-color: rgba(1, 1, 1, 0.5);
     color: white;
     border-radius: 1rem;
-    width: 20rem;
+    width: 30rem;
     height: fit-content;
     padding: 2rem;
     margin: 1rem;
     z-index: 2;
     flex-shrink: 0;
     animation: info-appear .5s ease-in-out;
+
+    &#settings {
+      #sort-delay {
+        width: 100%;
+      }
+    }
+
+    @include respond(md) {
+      width: calc(100% - 2rem);
+      scroll-snap-align: center;
+    }
 
     &--header {
       display: flex;
@@ -265,6 +313,10 @@
 
     &--info {
       width: 30rem;
+
+      @include respond(md) {
+        width: calc(100% - 2rem);
+      }
     }
 
     &--warning {

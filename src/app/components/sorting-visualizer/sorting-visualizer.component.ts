@@ -28,6 +28,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public filteredAlgorithms: any[] = [];
   public sortAlgorithms: any[] = [];
   public gaps: number[] = [];
+  public sortInfoPaginator: boolean[] = [true, false, false];
   public iterableDiffer: any;
   public lang: string = 'en';
   public selectedAlgorithm: any;
@@ -360,6 +361,50 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       this.stopwatch.stop();
       this.sorting = false;
     }
-    
+  }
+
+  public jumpToSortInfoPage(index: number): void {
+    this.sortInfoPaginator = [false, false, false];
+    this.sortInfoPaginator[index] = true;
+    let element: HTMLElement | null = null;
+    switch (index) {
+      case 0: element = document.getElementById('settings'); break;
+      case 1: element = document.getElementById('statistics'); break;
+      case 2: element = document.getElementById('information'); break;
+    }
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  @HostListener('touchend')
+  public onSwipeSortInfoPage(): void {
+    setTimeout(() => {
+      if (this.isElementInViewport(document.getElementById('settings'))) {
+        this.sortInfoPaginator = [false, false, false];
+        this.sortInfoPaginator[0] = true;
+      } else if (this.isElementInViewport(document.getElementById('statistics'))) {
+        this.sortInfoPaginator = [false, false, false];
+        this.sortInfoPaginator[1] = true;
+      } else if (this.isElementInViewport(document.getElementById('information'))) {
+        this.sortInfoPaginator = [false, false, false];
+        this.sortInfoPaginator[2] = true;
+      }
+    }, 1000);
+  }
+
+  public isElementInViewport(element: HTMLElement | null) : boolean {
+    if (element === null) {
+      return false;
+    }
+    const rect: DOMRect = element.getBoundingClientRect();
+    const windowHeight: number = (window.innerHeight || document.documentElement.clientHeight);
+    const windowWidth: number = (window.innerWidth || document.documentElement.clientWidth);
+    return (
+        (rect.left >= 0)
+      && (rect.top >= 0)
+      && ((rect.left + rect.width) <= windowWidth)
+      && ((rect.top + rect.height) <= windowHeight)
+    );
   }
 }
