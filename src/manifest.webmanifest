@@ -4,6 +4,7 @@
   "theme_color": "darkgray",
   "background_color": "black",
   "display": "standalone",
+  "orientation": "portrait",
   "scope": "./",
   "start_url": "./",
   "icons": [
