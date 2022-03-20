@@ -290,6 +290,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public stop(): void {
     this.stopwatch.stop();
     this.sorting = false;
+    this.resetArray();
   }
 
   public selectLang(lang: string): void {
