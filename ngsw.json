@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1649999269031,
+  "timestamp": 1649999524754,
   "index": "/sorting-visualizer/index.html",
   "assetGroups": [
     {
@@ -84,7 +84,7 @@
     "/sorting-visualizer/assets/images/sortstyle-line.PNG": "d49cca3ee25df8f495752c8cb260add27ad4910a",
     "/sorting-visualizer/assets/images/sortstyle-point.PNG": "7ec5a971aae12bc4a7c4c13ba3cca671ec4406f5",
     "/sorting-visualizer/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/sorting-visualizer/index.html": "f493ba00eae80181dd8a1be6680f489623b91146",
+    "/sorting-visualizer/index.html": "af04566ad4aea8473becdba1078aa297a9a267d4",
     "/sorting-visualizer/main.fce6bcbd72e9da997bec.js": "f282a8a258aae892ead9453ede450d0ea20d2183",
     "/sorting-visualizer/manifest.webmanifest": "5425416de319501303b153d25c3d068c83f6120a",
     "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js": "3a221b368b0bd1f9bc0b11b2af998ac616aaa790",
