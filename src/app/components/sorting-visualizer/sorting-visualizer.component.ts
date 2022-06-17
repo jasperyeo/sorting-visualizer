@@ -188,14 +188,6 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.filteredAlgorithms = this.listedAlgorithms.filter(algo => (algo.label as string).toUpperCase().includes(this.selectAlgorithmSearchTerm.toUpperCase()) || (algo.category as string).toUpperCase().includes(this.selectAlgorithmSearchTerm.toUpperCase()));
   }
 
-  // @HostListener('window:resize')
-  // public windowChange(): void {
-  //   this.loading = true;
-  //   setTimeout(() => {
-  //     window.location.reload();
-  //   }, 500);
-  // }
-
   private _scrapAlgorithmInformation(): void {
     this.sortAlgorithms.forEach(category => {
       category.count = category.algorithms.length;
