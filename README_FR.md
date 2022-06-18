@@ -100,17 +100,10 @@
 ## Styles de Visualisation
 
 ### Basique
-<div style="display: flex;">
-  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-bar.PNG" width="40%" alt="Bar" title="Bar"/>
-  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-point.PNG" width="40%" alt="Point" title="Point"/>
-  <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-line.PNG" width="40%" alt="Line" title="Line"/>
-</div>
+Bar, Point, Ligne
 
 ### Fantaisie
-<div style="display: flex;">
-   <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-balloon.PNG" width="40%" alt="Balloon" title="Balloon"/>
-   <img src="https://jasperyeo.github.io/sorting-visualizer/assets/images/sortstyle-bamboo.PNG" width="40%" alt="Bamboo" title="Bamboo"/>
-</div>
+Ballon, Bambou
 
 ## Informations Sur le Développement
 
