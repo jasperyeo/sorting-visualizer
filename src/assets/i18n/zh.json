@@ -40,6 +40,7 @@
       "SHOW_GRADIENT_COLOR": "显示渐变色",
       "ENABLE_AUDIO": "启用音频",
       "SHOW_VALUES": "显示值数",
+      "SHOW_SWAP_CURVE": "显示交换曲线",
       "VISUALISER_STYLE": "可视化风格",
       "BASIC": "基本",
       "BAR": "棍",

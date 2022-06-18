@@ -58,7 +58,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public showGradientColor: boolean = true;
   public enableAudio: boolean = true;
   public showValues: boolean = false;
-  public showSwapCurve: boolean = false;
+  public showSwapCurve: boolean = true;
   public loading: boolean = false;
   public showIntro: boolean = true;
   public showComparison: boolean = false;
