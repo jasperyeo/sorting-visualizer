@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1649999524754,
+  "timestamp": 1655532240300,
   "index": "/sorting-visualizer/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/sorting-visualizer/favicon.ico",
         "/sorting-visualizer/index.html",
-        "/sorting-visualizer/main.fce6bcbd72e9da997bec.js",
+        "/sorting-visualizer/main.ea15e8033a5c3a67.js",
         "/sorting-visualizer/manifest.webmanifest",
-        "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js",
-        "/sorting-visualizer/runtime.d7571288e124e7050898.js",
-        "/sorting-visualizer/styles.3645a8baf66734fb5c26.css"
+        "/sorting-visualizer/polyfills.4410d100f0776e33.js",
+        "/sorting-visualizer/runtime.b66f313fe097e6d1.js",
+        "/sorting-visualizer/styles.5ea9fca29eb46055.css"
       ],
       "patterns": []
     },
@@ -60,11 +60,11 @@
   "dataGroups": [],
   "hashTable": {
     "/sorting-visualizer/assets/algorithms.json": "4321473b757159c56f1a21a12432095099826b88",
-    "/sorting-visualizer/assets/i18n/en.json": "b0e6486e97db01499e5d4c47983acf7d5f5385f9",
-    "/sorting-visualizer/assets/i18n/es.json": "80cc1f0a1241ba7a65ae48cce6b6819a5b2c6d12",
-    "/sorting-visualizer/assets/i18n/fr.json": "53b8f9a564e2e5f813011ca66d5d1062770555b6",
-    "/sorting-visualizer/assets/i18n/id.json": "2ef423a32862662e1297fde20a6ad09ae10c5d01",
-    "/sorting-visualizer/assets/i18n/zh.json": "86fbbc78111fe53dfd7c305075a8a972812660c7",
+    "/sorting-visualizer/assets/i18n/en.json": "6104819a632cd27a44d74fba460a7e3bcc1de195",
+    "/sorting-visualizer/assets/i18n/es.json": "e43e84504e3201de2d031c5d410e3db910840da1",
+    "/sorting-visualizer/assets/i18n/fr.json": "572f724ea88c35cf9ba033946064b5e6e06f02be",
+    "/sorting-visualizer/assets/i18n/id.json": "dc02c80f7a7f620251e47823cb1876d43828eb76",
+    "/sorting-visualizer/assets/i18n/zh.json": "74c63344a20272ece5c95e529dbadaa84ee477aa",
     "/sorting-visualizer/assets/icons/site-icon-128.png": "f0931ca48d04d4acec7649cd82987aa97a610820",
     "/sorting-visualizer/assets/icons/site-icon-144.png": "9088b930eecfee04ecaf4af74c943d518caeab2b",
     "/sorting-visualizer/assets/icons/site-icon-152.png": "679ccc6119e2dbf1cc90509de411d09cfa726a0b",
@@ -84,12 +84,12 @@
     "/sorting-visualizer/assets/images/sortstyle-line.PNG": "d49cca3ee25df8f495752c8cb260add27ad4910a",
     "/sorting-visualizer/assets/images/sortstyle-point.PNG": "7ec5a971aae12bc4a7c4c13ba3cca671ec4406f5",
     "/sorting-visualizer/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/sorting-visualizer/index.html": "af04566ad4aea8473becdba1078aa297a9a267d4",
-    "/sorting-visualizer/main.fce6bcbd72e9da997bec.js": "f282a8a258aae892ead9453ede450d0ea20d2183",
+    "/sorting-visualizer/index.html": "1bc7bb381f1b8b60de3c12e9e255f7c429e07de7",
+    "/sorting-visualizer/main.ea15e8033a5c3a67.js": "df749e0e4d6ceefb3f236ed8ba61d5488df4bd8e",
     "/sorting-visualizer/manifest.webmanifest": "5425416de319501303b153d25c3d068c83f6120a",
-    "/sorting-visualizer/polyfills.0a9647d64bb5ecd42670.js": "3a221b368b0bd1f9bc0b11b2af998ac616aaa790",
-    "/sorting-visualizer/runtime.d7571288e124e7050898.js": "5c013e364cb2d418b8d75d00e105ec04b4d83a66",
-    "/sorting-visualizer/styles.3645a8baf66734fb5c26.css": "28a57996c16177b16521de9a16b5a9546193e5b6"
+    "/sorting-visualizer/polyfills.4410d100f0776e33.js": "05247a91fdd541ca38aa1bf186e324cadfb4bf00",
+    "/sorting-visualizer/runtime.b66f313fe097e6d1.js": "984358fec28edde0fa2dd2e5019f4c1b851e8acb",
+    "/sorting-visualizer/styles.5ea9fca29eb46055.css": "38f7b2f794e388138d6e01e388034a5a12d2cd9f"
   },
   "navigationUrls": [
     {
