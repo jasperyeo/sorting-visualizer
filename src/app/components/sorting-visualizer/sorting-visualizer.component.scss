@@ -203,6 +203,7 @@
   &__subheader {
     display: flex;
     overflow-x: auto;
+    max-height: 75%;
 
     @include respond(md) {
       scroll-snap-type: x mandatory;
@@ -349,6 +350,8 @@
         fill: none;
         stroke: red;
         stroke-width: .5rem;
+        transition: none;
+        box-shadow: 0px 0px 2rem .2rem red;
       }
     }
   }

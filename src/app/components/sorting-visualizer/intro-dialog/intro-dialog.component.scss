@@ -22,6 +22,7 @@
     border-radius: .8rem;
     width: 80%;
     height: fit-content;
+    max-height: 85%;
     max-width: 100rem;
     top: 50%;
     left: 50%;
@@ -30,6 +31,7 @@
     text-align: center;
     padding: 4rem;
     animation: dialog-appear .2s ease-in-out;
+    overflow-y: auto;
 
     @include respond(md) {
       height: 85%;

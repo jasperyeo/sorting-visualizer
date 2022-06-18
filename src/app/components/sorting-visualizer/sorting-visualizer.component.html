@@ -69,6 +69,8 @@
         <label for="enable-audio">{{ 'SUBHEADER.SETTINGS.ENABLE_AUDIO' | translate }}</label><br>
         <input type="checkbox" id="show-values" [(ngModel)]="showValues"/>
         <label for="show-values">{{ 'SUBHEADER.SETTINGS.SHOW_VALUES' | translate }}</label><br>
+        <input type="checkbox" id="show-swap-curve" [(ngModel)]="showSwapCurve"/>
+        <label for="show-swap-curve">{{ 'SUBHEADER.SETTINGS.SHOW_SWAP_CURVE' | translate }}</label><br>
         <br>
         <label for="sort-delay">{{ 'SUBHEADER.SETTINGS.DELAY' | translate }}: {{ sortDelay === 0 ? ('SUBHEADER.SETTINGS.DELAY_FAST' | translate) : sortDelay === 100 ? ('SUBHEADER.SETTINGS.DELAY_SLOW' | translate) : ('SUBHEADER.SETTINGS.DELAY_NORMAL' | translate) }}</label><br>
         <input type="range" id="sort-delay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay">
@@ -180,9 +182,12 @@
     <sort-bar *ngFor="let bar of sortArray; index as i;"
       [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [defaultColor]="bar.defaultColor" [style]="bar.style" [showValue]="showValues" [showGradientColor]="showGradientColor">
     </sort-bar>
-    <svg height="100%" width="100%" class="sort__container--polyline">
+    <svg height="150%" width="100%" class="sort__container--polyline">
+      <filter id="blurMe">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+      </filter>
       <polyline *ngIf="sortStyle === 'LINE'" id="polyline" points="" />
-      <path *ngIf="sorting && showSwapCurve && sortArray.length === elementCount" id="swapline" points="" />
+      <path *ngIf="sorting && showSwapCurve && sortArray.length === elementCount" id="swapline"  filter="url(#blurMe)" points="" />
     </svg>
   </div>
   <div class="sort__footer">
