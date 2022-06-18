@@ -12,10 +12,13 @@ import { SortingVisualizerService } from '../sorting-visualizer.service';
 export class IntroDialogComponent implements OnInit {
 
   @Output('onDialogClose') public onDialogClose: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public currentYear: number = 2022;
 
   constructor(private _sortingVisualizerService: SortingVisualizerService, private _translateService: TranslateService) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.currentYear = new Date().getFullYear();
+  }
 
   public closeDialog(): void {
     this.onDialogClose.emit(true);

@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, DoCheck, HostListener, Input, IterableDiffers, OnInit, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
-import { SortBarStyle, SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
+import { SortBarStyle, SortBarComponent, SortBarColor } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
 
 import * as algorithms from './../../algorithms/index';
@@ -55,8 +55,10 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public showStatistics: boolean = true;
   public showInfo: boolean = true;
   public showCredits: boolean = true;
+  public showGradientColor: boolean = true;
   public enableAudio: boolean = true;
   public showValues: boolean = false;
+  public showSwapCurve: boolean = false;
   public loading: boolean = false;
   public showIntro: boolean = true;
   public showComparison: boolean = false;
@@ -131,18 +133,52 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   public ngDoCheck(): void {
-    if (this.sortStyle !== SortBarStyle.LINE) return;
     const changes = this.iterableDiffer.diff(this.sortArray);
     if (changes) {
-      let polyline: HTMLElement = document.getElementById('polyline') as HTMLElement;
-      if (polyline) {
-        let coord: string = '';
-        let xOffset: number = 6;
-        this.sortArray.forEach(point => {
-          coord = coord.concat(xOffset.toString(), ',', (point.value - 5).toString(), ' ');
-          xOffset += 12;
-        });
-        polyline.setAttribute('points', coord);
+      if (this.sortStyle === SortBarStyle.LINE) {
+        let polyline: HTMLElement = document.getElementById('polyline') as HTMLElement;
+        if (polyline) {
+          let coord: string = '';
+          let xOffset: number = 6;
+          this.sortArray.forEach(point => {
+            coord = coord.concat(xOffset.toString(), ',', (point.value - 5).toString(), ' ');
+            xOffset += 12;
+          });
+          polyline.setAttribute('points', coord);
+        }
+      }
+      if (this.sorting && this.showSwapCurve && this.sortArray.length === this.elementCount) {
+        let swapline: HTMLElement = document.getElementById('swapline') as HTMLElement;
+        if (swapline) {
+          let coord: string = '', x1: number = -1, y1: number = -1, x2: number = -1, y2: number = -1;
+          let swapCoords: any[] = [];
+          this.sortArray.forEach((point: SortBarComponent, index: number) => {
+            if (point.color === SortBarColor.SWAP) {
+              if (x1 === -1 && x2 === -1) {
+                x1 = 12 * (index + 1);
+                y1 = point.value + 30;
+                swapCoords.push({ x: x1, y: y1 });
+                swapCoords.push({ x: -1, y: -1 });
+              } else {
+                x2 = 12 * (index + 1);
+                y2 = point.value + 30;
+                swapCoords.push({ x: x2, y: y2 });
+              }
+            }
+          });
+          swapCoords[1].x = (swapCoords[2].x - swapCoords[0].x) / 2 + swapCoords[0].x;
+          swapCoords[1].y = (swapCoords[0].y > swapCoords[2].y) ? swapCoords[0].y + 100 : swapCoords[2].y + 100;
+          swapCoords.forEach((swapCoord: any, index: number) => {
+            let finalX: string = swapCoord.x.toString();
+            if (index === 0) {
+              finalX = 'M' + finalX;
+            } else if (index === 1) {
+              finalX = 'Q' + finalX;
+            }
+            coord = coord.concat(finalX, ',', swapCoord.y.toString(), ' ');
+          });
+          swapline.setAttribute('d', coord);
+        }
       }
     }
   }
@@ -188,14 +224,6 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.filteredAlgorithms = this.listedAlgorithms.filter(algo => (algo.label as string).toUpperCase().includes(this.selectAlgorithmSearchTerm.toUpperCase()) || (algo.category as string).toUpperCase().includes(this.selectAlgorithmSearchTerm.toUpperCase()));
   }
 
-  // @HostListener('window:resize')
-  // public windowChange(): void {
-  //   this.loading = true;
-  //   setTimeout(() => {
-  //     window.location.reload();
-  //   }, 500);
-  // }
-
   private _scrapAlgorithmInformation(): void {
     this.sortAlgorithms.forEach(category => {
       category.count = category.algorithms.length;
@@ -229,6 +257,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   public async resetArray(): Promise<void> {
+    await this.sleep(0);
     this.stopwatch.reset();
     if (this.enableAudio) this.playBeep(10);
     this.sortAttempts = 0;
@@ -272,10 +301,15 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       sortBar.sortDelay = this.sortDelay;
       sortBar.value = tempArray[i];
       sortBar.valueString = sortBar.value.toString();
-      const hueValue: string = ((sortBar.value / this.maxValue) * 360).toString();
-      sortBar.defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
+      if (this.showGradientColor) {
+        const hueValue: string = ((sortBar.value / this.maxValue) * 360).toString();
+        sortBar.defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
+      } else {
+        sortBar.defaultColor = 'turquoise';
+      }
       if (this.enableAudio) this.playBeep(sortBar.value);
       sortBar.showValue = this.showValues;
+      sortBar.showGradientColor = this.showGradientColor;
       this.sortArray.push(sortBar);
       this.uniqueCount = [...new Set(this.sortArray.map(bar => bar.value))].length;
       await this.sleep(0);
@@ -290,6 +324,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public stop(): void {
     this.stopwatch.stop();
     this.sorting = false;
+    this.resetArray();
   }
 
   public selectLang(lang: string): void {

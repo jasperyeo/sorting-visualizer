@@ -342,7 +342,13 @@
       polyline {
         fill: none;
         stroke: turquoise;
-        stroke-width: 1;
+        stroke-width: .1rem;
+      }
+
+      path {
+        fill: none;
+        stroke: red;
+        stroke-width: .5rem;
       }
     }
   }

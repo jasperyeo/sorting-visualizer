@@ -63,6 +63,8 @@
       </p>
       <div *ngIf="showControlPanel && showSettings">
         <br>
+        <input type="checkbox" id="show-gradient-color" [(ngModel)]="showGradientColor" (click)="resetArray()" [disabled]="sorting"/>
+        <label for="show-gradient-color">{{ 'SUBHEADER.SETTINGS.SHOW_GRADIENT_COLOR' | translate }}</label><br>
         <input type="checkbox" id="enable-audio" [(ngModel)]="enableAudio"/>
         <label for="enable-audio">{{ 'SUBHEADER.SETTINGS.ENABLE_AUDIO' | translate }}</label><br>
         <input type="checkbox" id="show-values" [(ngModel)]="showValues"/>
@@ -113,7 +115,7 @@
         <br>
         <label>
           {{ 'SUBHEADER.STATISTICS.VISUAL_TIME' | translate }}:&nbsp;<span id="stopwatch" class="sort__info--value">00:00.0</span><br>
-          {{ 'SUBHEADER.STATISTICS.SORT_ATTEMPTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortAttempts }}</span><br>
+          <!-- {{ 'SUBHEADER.STATISTICS.SORT_ATTEMPTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortAttempts }}</span><br> -->
           {{ 'SUBHEADER.STATISTICS.ELEMENTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortArray?.length }}</span><br>
           {{ 'SUBHEADER.STATISTICS.UNIQUE' | translate }}:&nbsp;<span class="sort__info--value">{{ uniqueCount }}</span><br>
           {{ 'SUBHEADER.STATISTICS.COMPARES' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfCompares }}</span><br>
@@ -176,10 +178,11 @@
   </div>
   <div class="sort__container">
     <sort-bar *ngFor="let bar of sortArray; index as i;"
-      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [defaultColor]="bar.defaultColor" [style]="bar.style" [showValue]="showValues">
+      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [defaultColor]="bar.defaultColor" [style]="bar.style" [showValue]="showValues" [showGradientColor]="showGradientColor">
     </sort-bar>
-    <svg *ngIf="sortStyle === 'LINE'" height="100%" width="100%" class="sort__container--polyline">
-      <polyline id="polyline" points="" />
+    <svg height="100%" width="100%" class="sort__container--polyline">
+      <polyline *ngIf="sortStyle === 'LINE'" id="polyline" points="" />
+      <path *ngIf="sorting && showSwapCurve && sortArray.length === elementCount" id="swapline" points="" />
     </svg>
   </div>
   <div class="sort__footer">

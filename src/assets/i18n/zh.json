@@ -37,6 +37,7 @@
   "SUBHEADER": {
     "SETTINGS": {
       "TITLE": "设置",
+      "SHOW_GRADIENT_COLOR": "显示渐变色",
       "ENABLE_AUDIO": "启用音频",
       "SHOW_VALUES": "显示值数",
       "VISUALISER_STYLE": "可视化风格",

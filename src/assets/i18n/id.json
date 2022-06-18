@@ -37,6 +37,7 @@
   "SUBHEADER": {
     "SETTINGS": {
       "TITLE": "Pengaturan",
+      "SHOW_GRADIENT_COLOR": "Tampilkan Warna Gradien",
       "ENABLE_AUDIO": "Aktifkan Audio",
       "SHOW_VALUES": "Tampilkan Nilai",
       "VISUALISER_STYLE": "Gaya Visualisasi",
