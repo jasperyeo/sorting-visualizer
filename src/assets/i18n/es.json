@@ -37,6 +37,7 @@
   "SUBHEADER": {
     "SETTINGS": {
       "TITLE": "Ajustes",
+      "SHOW_GRADIENT_COLOR": "Mostrar Color Degradado",
       "ENABLE_AUDIO": "Habilitar Audio",
       "SHOW_VALUES": "Mostrar Valores",
       "VISUALISER_STYLE": "Estilo de Visualización",

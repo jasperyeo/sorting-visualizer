@@ -15,6 +15,7 @@ export class SortBarComponent  {
   @Input('value') public value: number = 100;
   @Input('valueString') public valueString: string = '100';
   @Input('showValue') public showValue: boolean = true;
+  @Input('showGradientColor') public showGradientColor: boolean = true;
   public hoverValue: boolean = false;
 
   constructor() {}

@@ -37,6 +37,7 @@
   "SUBHEADER": {
     "SETTINGS": {
       "TITLE": "Paramètres",
+      "SHOW_GRADIENT_COLOR": "Afficher la Couleur du Dégradé",
       "ENABLE_AUDIO": "Activer l'Audio",
       "SHOW_VALUES": "Afficher les Valeurs",
       "VISUALISER_STYLE": "Style de Visualisation",

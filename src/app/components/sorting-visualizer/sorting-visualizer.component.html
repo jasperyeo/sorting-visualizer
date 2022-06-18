@@ -63,6 +63,8 @@
       </p>
       <div *ngIf="showControlPanel && showSettings">
         <br>
+        <input type="checkbox" id="show-gradient-color" [(ngModel)]="showGradientColor" (click)="resetArray()" [disabled]="sorting"/>
+        <label for="show-gradient-color">{{ 'SUBHEADER.SETTINGS.SHOW_GRADIENT_COLOR' | translate }}</label><br>
         <input type="checkbox" id="enable-audio" [(ngModel)]="enableAudio"/>
         <label for="enable-audio">{{ 'SUBHEADER.SETTINGS.ENABLE_AUDIO' | translate }}</label><br>
         <input type="checkbox" id="show-values" [(ngModel)]="showValues"/>
@@ -176,7 +178,7 @@
   </div>
   <div class="sort__container">
     <sort-bar *ngFor="let bar of sortArray; index as i;"
-      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [defaultColor]="bar.defaultColor" [style]="bar.style" [showValue]="showValues">
+      [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [defaultColor]="bar.defaultColor" [style]="bar.style" [showValue]="showValues" [showGradientColor]="showGradientColor">
     </sort-bar>
     <svg *ngIf="sortStyle === 'LINE'" height="100%" width="100%" class="sort__container--polyline">
       <polyline id="polyline" points="" />
