@@ -55,6 +55,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public showStatistics: boolean = true;
   public showInfo: boolean = true;
   public showCredits: boolean = true;
+  public showGradientColor: boolean = true;
   public enableAudio: boolean = true;
   public showValues: boolean = false;
   public loading: boolean = false;
@@ -221,6 +222,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   public async resetArray(): Promise<void> {
+    await this.sleep(0);
     this.stopwatch.reset();
     if (this.enableAudio) this.playBeep(10);
     this.sortAttempts = 0;
@@ -264,10 +266,15 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       sortBar.sortDelay = this.sortDelay;
       sortBar.value = tempArray[i];
       sortBar.valueString = sortBar.value.toString();
-      const hueValue: string = ((sortBar.value / this.maxValue) * 360).toString();
-      sortBar.defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
+      if (this.showGradientColor) {
+        const hueValue: string = ((sortBar.value / this.maxValue) * 360).toString();
+        sortBar.defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
+      } else {
+        sortBar.defaultColor = 'turquoise';
+      }
       if (this.enableAudio) this.playBeep(sortBar.value);
       sortBar.showValue = this.showValues;
+      sortBar.showGradientColor = this.showGradientColor;
       this.sortArray.push(sortBar);
       this.uniqueCount = [...new Set(this.sortArray.map(bar => bar.value))].length;
       await this.sleep(0);
