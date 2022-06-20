@@ -63,6 +63,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public showIntro: boolean = true;
   public showComparison: boolean = false;
   public dropdownOpened: boolean = false;
+  public touchStart: number = 0;
 
   public readonly sortStyles: any[] = [
     {
@@ -101,7 +102,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
 
   public sleep(delay: number): Promise<void> {
     return new Promise(resolve => {
-        setTimeout(resolve, delay);
+      setTimeout(resolve, delay);
     });
   }
 
@@ -412,20 +413,33 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     }
   }
 
-  @HostListener('touchend')
-  public onSwipeSortInfoPage(): void {
-    setTimeout(() => {
-      if (this.isElementInViewport(document.getElementById('settings'))) {
-        this.sortInfoPaginator = [false, false, false];
-        this.sortInfoPaginator[0] = true;
-      } else if (this.isElementInViewport(document.getElementById('statistics'))) {
-        this.sortInfoPaginator = [false, false, false];
-        this.sortInfoPaginator[1] = true;
-      } else if (this.isElementInViewport(document.getElementById('information'))) {
-        this.sortInfoPaginator = [false, false, false];
-        this.sortInfoPaginator[2] = true;
+  @HostListener('touchstart', ['$event'])
+  public onSwipeSortInfoPageStart(event: any): void {
+    if (event && event.touches) {
+      this.touchStart = event.touches[0].clientX;
+    }
+  }
+
+  @HostListener('touchend', ['$event'])
+  public onSwipeSortInfoPageEnd(event: any): void {
+    if (event && event.touches) {
+      const touchEnd: number = event.changedTouches[0].clientX;
+      if (this.touchStart > touchEnd + 5) {
+        // slide right
+        if (this.sortInfoPaginator[0] === true) {
+          this.sortInfoPaginator = [false, true, false];
+        } else if (this.sortInfoPaginator[1] === true) {
+          this.sortInfoPaginator = [false, false, true];
+        }
+      } else if (this.touchStart < touchEnd - 5) {
+        // slide left
+        if (this.sortInfoPaginator[1] === true) {
+          this.sortInfoPaginator = [true, false, false];
+        } else if (this.sortInfoPaginator[2] === true) {
+          this.sortInfoPaginator = [false, true, false];
+        }
       }
-    }, 1000);
+    }
   }
 
   public isElementInViewport(element: HTMLElement | null) : boolean {
