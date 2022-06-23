@@ -36,6 +36,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public sortMethod: string = '';
   public sortDescription: string = '';
   public sortLink: string = '';
+  public sortStats: any[] = [];
   public sortStyle: string = SortBarStyle.BAR;
   public randomMethod: string = 'RANDOM';
   public selectAlgorithmSearchTerm: string = '';
@@ -341,6 +342,8 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
           this.sortDescription = algo.description;
           this.sortLink = algo.link;
           this.selectedAlgorithm = algo;
+          this.sortStats = algo.stats;
+          console.log(this.sortStats);
           if (mode.toUpperCase() === 'BITONIC') {
             this.elementCount = Math.floor(this.viewWidth / 14);
             let maxCount: number = 0;
@@ -422,16 +425,17 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
 
   @HostListener('touchend', ['$event'])
   public onSwipeSortInfoPageEnd(event: any): void {
+    const swipeThreshold: number = 10;
     if (event && event.touches) {
       const touchEnd: number = event.changedTouches[0].clientX;
-      if (this.touchStart > touchEnd + 5) {
+      if (this.touchStart > touchEnd + swipeThreshold) {
         // slide right
         if (this.sortInfoPaginator[0] === true) {
           this.sortInfoPaginator = [false, true, false];
         } else if (this.sortInfoPaginator[1] === true) {
           this.sortInfoPaginator = [false, false, true];
         }
-      } else if (this.touchStart < touchEnd - 5) {
+      } else if (this.touchStart < touchEnd - swipeThreshold) {
         // slide left
         if (this.sortInfoPaginator[1] === true) {
           this.sortInfoPaginator = [true, false, false];

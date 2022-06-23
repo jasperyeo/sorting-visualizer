@@ -157,9 +157,10 @@
         <br>
         <hr />
         <br>
-        <label *ngIf="sortMethod.includes('Shell')">
-          {{ 'SUBHEADER.STATISTICS.GAPS' | translate }}:<br>
-          <span>{{ gaps.toString() }}</span><br>
+        <label *ngFor="let stat of sortStats">
+          {{ ('SUBHEADER.STATISTICS.' + stat?.label) | translate }}:<br>
+          <span *ngIf="stat?.type === 'string'">{{ stat?.value }}<br></span>
+          <span *ngIf="stat?.type === 'array'">{{ stat?.value?.toString() }}<br></span>
         </label>
       </div>
     </div>
