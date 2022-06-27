@@ -37,6 +37,8 @@ export async function cycleSort(visualizer: SortingVisualizerComponent, array: S
       if (visualizer.enableAudio) visualizer.playBeep(array[pos].value);
       visualizer.noOfSwaps++;
       writes++;
+      let currentWrites: number = parseInt(visualizer.sortStats[0].value);
+      visualizer.sortStats[0].value = (++currentWrites).toString();
       await visualizer.sleep(visualizer.sortDelay);
       array[pos].color = SortBarColor.NORMAL;
     }
@@ -69,6 +71,8 @@ export async function cycleSort(visualizer: SortingVisualizerComponent, array: S
         if (visualizer.enableAudio) visualizer.playBeep(array[pos].value);
         visualizer.noOfSwaps++;
         writes++;
+        let currentWrites: number = parseInt(visualizer.sortStats[0].value);
+        visualizer.sortStats[0].value = (++currentWrites).toString();
         await visualizer.sleep(visualizer.sortDelay);
         array[pos].color = SortBarColor.NORMAL;
       }

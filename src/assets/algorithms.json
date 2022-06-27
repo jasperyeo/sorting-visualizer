@@ -82,7 +82,14 @@
         "best": "n^(2)",
         "average": "n^(2)",
         "worst": "n^(2)",
-        "memory": "1"
+        "memory": "1",
+        "stats": [
+          {
+            "label": "WRITES",
+            "type": "string",
+            "value": "0"
+          }
+        ]
       }
     ]
   },

@@ -76,7 +76,8 @@
       "UNIQUE": "Compte Unique",
       "COMPARES": "Comparer",
       "SWAPS": "Échanges",
-      "GAPS": "Lacunes"
+      "GAPS": "Lacunes",
+      "WRITES": "Compte d'Écriture"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Informations sur l'Algorithme",
