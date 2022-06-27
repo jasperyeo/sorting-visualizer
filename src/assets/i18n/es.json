@@ -76,7 +76,8 @@
       "UNIQUE": "Sólo",
       "COMPARES": "Compara",
       "SWAPS": "Intercambios",
-      "GAPS": "Brechas"
+      "GAPS": "Brechas",
+      "WRITES": "Escribir Cuenta"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Información del Algoritmo",

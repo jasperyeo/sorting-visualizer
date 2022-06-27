@@ -76,7 +76,8 @@
       "UNIQUE": "Unique Count",
       "COMPARES": "Compares",
       "SWAPS": "Swaps",
-      "GAPS": "Gaps"
+      "GAPS": "Gaps",
+      "WRITES": "Write Count"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Algorithm Information",
