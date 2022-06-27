@@ -76,7 +76,8 @@
       "UNIQUE": "Jumlah Unik",
       "COMPARES": "Bandingkan",
       "SWAPS": "Swap",
-      "GAPS": "Celah"
+      "GAPS": "Celah",
+      "WRITES": "Tulis Hitungan"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Informasi Algoritma",
