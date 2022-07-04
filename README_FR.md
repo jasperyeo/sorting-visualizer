@@ -100,7 +100,7 @@
 ## Styles de Visualisation
 
 ### Basique
-Bar, Point, Ligne
+Bar, Point, Ligne, Numéro
 
 ### Fantaisie
 Ballon, Bambou

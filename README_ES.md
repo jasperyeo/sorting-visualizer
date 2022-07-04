@@ -100,7 +100,7 @@
 ## Estilo de Visualización
 
 ### Básico
-Barra, Punto, Línea
+Barra, Punto, Línea, Número
 
 ### Lujoso
 Globo, Bambú
