@@ -100,7 +100,7 @@
 ## Gaya Visualisasi
 
 ### Dasar
-Batang, Titik, Garis
+Batang, Titik, Garis, Nomor
 
 ### Mewah
 Balon, Bambu
