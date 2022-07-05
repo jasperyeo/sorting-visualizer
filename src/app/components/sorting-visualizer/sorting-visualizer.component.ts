@@ -37,7 +37,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public sortDescription: string = '';
   public sortLink: string = '';
   public sortStats: any[] = [];
-  public sortStyle: string = SortBarStyle.NUMBER;
+  public sortStyle: string = SortBarStyle.BAR;
   public randomMethod: string = 'RANDOM';
   public selectAlgorithmSearchTerm: string = '';
   public visualTime: string = '';

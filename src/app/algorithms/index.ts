@@ -6,7 +6,7 @@ export * from './common';
 import { leftPivotQuickSort, middlePivotQuickSort, medianPivotQuickSort } from './quick-sort';
 import { mergeSort } from './merge-sort';
 import { timSort } from './tim-sort';
-import { selectionSort } from './selection-sort';
+import { selectionSort, doubleSelectionSort } from './selection-sort';
 import { heapSort } from './heap-sort';
 import { cycleSort } from './cycle-sort';
 import { insertionSort } from './insertion-sort';
@@ -36,6 +36,7 @@ export const algorithms: Map<string, (visualizer: SortingVisualizerComponent, ar
   ['mergeSort', mergeSort],
   ['timSort', timSort],
   ['selectionSort', selectionSort],
+  ['doubleSelectionSort', doubleSelectionSort],
   ['heapSort', heapSort],
   ['cycleSort', cycleSort],
   ['insertionSort', insertionSort],
