@@ -58,6 +58,7 @@
 
 ### Seleksi
 - Sortir Seleksi
+- Sortir Seleksi Ganda
 - Sortir Tumpukan
 - Sortir Siklus
 

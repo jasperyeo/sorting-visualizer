@@ -57,7 +57,8 @@
 - Tim Clasificación
 
 ### Selección
-- Orden de Selección
+- Clasificación de Selección
+- Clasificación de Selección Doble
 - Ordenar Montón
 - Ordenar Ciclo
 

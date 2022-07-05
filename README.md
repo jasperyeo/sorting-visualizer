@@ -58,6 +58,7 @@
 
 ### Selection
 - Selection Sort
+- Double Selection Sort
 - Heap Sort
 - Cycle Sort
 

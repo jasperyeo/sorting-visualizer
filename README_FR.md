@@ -58,6 +58,7 @@
 
 ### Sélection
 - Tri de Sélection
+- Tri à Double Sélection
 - Tri de Tas
 - Tri de Cycle
 
