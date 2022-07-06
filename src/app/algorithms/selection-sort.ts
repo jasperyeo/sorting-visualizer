@@ -18,22 +18,6 @@ export async function selectionSort(visualizer: SortingVisualizerComponent, arra
   }
 }
 
-async function reverseSelectionSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
-  for (let i = array.length - 1; i >= 0; i--) {
-    if (!visualizer.sorting) return;
-    let max: number = i;
-    for (let j = i - 1; j >= 0; j--) {
-      if (!visualizer.sorting) return;
-      if (compare(visualizer, array[j], array[max])) {
-        max = j;
-      }
-    }
-    if (i !== max) {
-      await swap(visualizer, array, max, i);
-    }
-  }
-}
-
 export async function doubleSelectionSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
   for (let i: number = 0, j: number = array.length - 1; i < j; i++, j--) {
     let min: number = array[i].value, max: number = array[i].value;
