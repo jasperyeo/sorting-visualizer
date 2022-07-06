@@ -40,11 +40,13 @@
       "SHOW_GRADIENT_COLOR": "Mostrar Color Degradado",
       "ENABLE_AUDIO": "Habilitar Audio",
       "SHOW_VALUES": "Mostrar Valores",
+      "SHOW_SWAP_CURVE": "Mostrar la Curva de Intercambio",
       "VISUALISER_STYLE": "Estilo de Visualización",
       "BASIC": "Básico",
       "BAR": "Barra",
       "POINT": "Punto",
       "LINE": "Línea",
+      "NUMBER": "Número",
       "FANCY": "Lujoso",
       "BALLOON": "Globo",
       "BAMBOO": "Bambú",
@@ -75,7 +77,8 @@
       "UNIQUE": "Sólo",
       "COMPARES": "Compara",
       "SWAPS": "Intercambios",
-      "GAPS": "Brechas"
+      "GAPS": "Brechas",
+      "WRITES": "Escribir Cuenta"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Información del Algoritmo",

@@ -40,11 +40,13 @@
       "SHOW_GRADIENT_COLOR": "Tampilkan Warna Gradien",
       "ENABLE_AUDIO": "Aktifkan Audio",
       "SHOW_VALUES": "Tampilkan Nilai",
+      "SHOW_SWAP_CURVE": "Tunjukkan Kurva Swap",
       "VISUALISER_STYLE": "Gaya Visualisasi",
       "BASIC": "Dasar",
       "BAR": "Batang",
       "POINT": "Titik",
       "LINE": "Garis",
+      "NUMBER": "Nomor",
       "FANCY": "Mewah",
       "BALLOON": "Balon",
       "BAMBOO": "Bambu",
@@ -75,7 +77,8 @@
       "UNIQUE": "Jumlah Unik",
       "COMPARES": "Bandingkan",
       "SWAPS": "Swap",
-      "GAPS": "Celah"
+      "GAPS": "Celah",
+      "WRITES": "Tulis Hitungan"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Informasi Algoritma",

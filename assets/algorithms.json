@@ -68,6 +68,15 @@
       },
       {
         "active": true,
+        "label": "Double Selection Sort",
+        "value": "Double Selection",
+        "best": "n^(2)",
+        "average": "n^(2)",
+        "worst": "n^(2)",
+        "memory": "1"
+      },
+      {
+        "active": true,
         "label": "Heap Sort",
         "value": "Heap",
         "best": "nlogn",
@@ -82,7 +91,14 @@
         "best": "n^(2)",
         "average": "n^(2)",
         "worst": "n^(2)",
-        "memory": "1"
+        "memory": "1",
+        "stats": [
+          {
+            "label": "WRITES",
+            "type": "string",
+            "value": "0"
+          }
+        ]
       }
     ]
   },
@@ -105,7 +121,14 @@
         "best": "nlogn",
         "average": "n^(4/3)",
         "worst": "n^(3/2)",
-        "memory": "1"
+        "memory": "1",
+        "stats": [
+          {
+            "label": "GAPS",
+            "type": "array",
+            "value": []
+          }
+        ]
       },
       {
         "active": true,
@@ -114,7 +137,14 @@
         "best": "nlogn",
         "average": "n^(4/3)",
         "worst": "n^(3/2)",
-        "memory": "1"
+        "memory": "1",
+        "stats": [
+          {
+            "label": "GAPS",
+            "type": "array",
+            "value": []
+          }
+        ]
       },
       {
         "active": true,
@@ -123,7 +153,14 @@
         "best": "nlogn",
         "average": "n^(4/3)",
         "worst": "n^(3/2)",
-        "memory": "1"
+        "memory": "1",
+        "stats": [
+          {
+            "label": "GAPS",
+            "type": "array",
+            "value": []
+          }
+        ]
       },
       {
         "active": true,
@@ -132,7 +169,14 @@
         "best": "nlogn",
         "average": "n^(4/3)",
         "worst": "n^(3/2)",
-        "memory": "1"
+        "memory": "1",
+        "stats": [
+          {
+            "label": "GAPS",
+            "type": "array",
+            "value": []
+          }
+        ]
       },
       {
         "active": true,
@@ -141,7 +185,14 @@
         "best": "nlogn",
         "average": "n^(4/3)",
         "worst": "n^(3/2)",
-        "memory": "1"
+        "memory": "1",
+        "stats": [
+          {
+            "label": "GAPS",
+            "type": "array",
+            "value": []
+          }
+        ]
       },
       {
         "active": true,
@@ -150,7 +201,14 @@
         "best": "nlogn",
         "average": "n^(4/3)",
         "worst": "n^(3/2)",
-        "memory": "1"
+        "memory": "1",
+        "stats": [
+          {
+            "label": "GAPS",
+            "type": "array",
+            "value": []
+          }
+        ]
       },
       {
         "active": true,

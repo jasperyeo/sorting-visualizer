@@ -40,11 +40,13 @@
       "SHOW_GRADIENT_COLOR": "Afficher la Couleur du Dégradé",
       "ENABLE_AUDIO": "Activer l'Audio",
       "SHOW_VALUES": "Afficher les Valeurs",
+      "SHOW_SWAP_CURVE": "Afficher la Courbe D'échange",
       "VISUALISER_STYLE": "Style de Visualisation",
       "BASIC": "Basique",
       "BAR": "Bar",
       "POINT": "Point",
       "LINE": "Ligne",
+      "NUMBER": "Numéro",
       "FANCY": "Fantaisie",
       "BALLOON": "Ballon",
       "BAMBOO": "Bambou",
@@ -75,7 +77,8 @@
       "UNIQUE": "Compte Unique",
       "COMPARES": "Comparer",
       "SWAPS": "Échanges",
-      "GAPS": "Lacunes"
+      "GAPS": "Lacunes",
+      "WRITES": "Compte d'Écriture"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Informations sur l'Algorithme",
