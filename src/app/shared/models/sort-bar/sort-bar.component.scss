@@ -55,6 +55,17 @@
     }
   }
 
+  &__number {
+    width: 1rem;
+    height: 1rem;
+    margin: 0 .1rem;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    cursor: default;
+  }
+
   &__label {
     position: absolute;
     color: white;

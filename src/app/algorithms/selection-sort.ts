@@ -17,3 +17,28 @@ export async function selectionSort(visualizer: SortingVisualizerComponent, arra
     }
   }
 }
+
+export async function doubleSelectionSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+  for (let i: number = 0, j: number = array.length - 1; i < j; i++, j--) {
+    let min: number = array[i].value, max: number = array[i].value;
+    let minI: number = i, maxI: number = i;
+    for (let k: number = i; k <= j; k++) {
+      if (array[k].value > max) {
+        visualizer.noOfCompares++;
+        max = array[k].value;
+        maxI = k;
+      } else if (array[k].value < min) {
+        visualizer.noOfCompares += 2;
+        min = array[k].value;
+        minI = k;
+      }
+    }
+    await swap(visualizer, array, i, minI);
+    visualizer.noOfCompares++;
+    if (array[minI].value === max) {
+      await swap(visualizer, array, j, minI);
+    } else {
+      await swap(visualizer, array, j, maxI);
+    }
+  }
+}

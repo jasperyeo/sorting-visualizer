@@ -58,6 +58,7 @@
 
 ### Sélection
 - Tri de Sélection
+- Tri à Double Sélection
 - Tri de Tas
 - Tri de Cycle
 
@@ -100,7 +101,7 @@
 ## Styles de Visualisation
 
 ### Basique
-Bar, Point, Ligne
+Bar, Point, Ligne, Numéro
 
 ### Fantaisie
 Ballon, Bambou

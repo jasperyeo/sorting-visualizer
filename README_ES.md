@@ -57,7 +57,8 @@
 - Tim Clasificación
 
 ### Selección
-- Orden de Selección
+- Clasificación de Selección
+- Clasificación de Selección Doble
 - Ordenar Montón
 - Ordenar Ciclo
 
@@ -100,7 +101,7 @@
 ## Estilo de Visualización
 
 ### Básico
-Barra, Punto, Línea
+Barra, Punto, Línea, Número
 
 ### Lujoso
 Globo, Bambú

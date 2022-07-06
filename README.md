@@ -58,6 +58,7 @@
 
 ### Selection
 - Selection Sort
+- Double Selection Sort
 - Heap Sort
 - Cycle Sort
 
@@ -100,7 +101,7 @@
 ## Visualization Styles
 
 ### Basic
-Bar, Point, Line
+Bar, Point, Line, Number
 
 ### Fancy
 Balloon, Bamboo

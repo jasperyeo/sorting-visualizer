@@ -10,4 +10,9 @@
     [style.margin-bottom]="(value - 10) + 'px'"
     [style.background-color]="color === 'null' ? defaultColor : color">
   </div>
+  <div *ngIf="style === 'NUMBER'" class="sort__number"
+    [style.margin-bottom]="(value - 10) + 'px'"
+    [style.color]="color === 'null' ? defaultColor : color">
+    {{ value }}
+  </div>
 </div>

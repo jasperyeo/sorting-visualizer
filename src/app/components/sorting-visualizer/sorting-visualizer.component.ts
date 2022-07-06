@@ -72,7 +72,8 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       styles: [
         SortBarStyle.BAR,
         SortBarStyle.POINT,
-        SortBarStyle.LINE
+        SortBarStyle.LINE,
+        SortBarStyle.NUMBER
       ]
     },
     {
