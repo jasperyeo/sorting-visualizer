@@ -343,10 +343,12 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
           this.sortDescription = algo.description;
           this.sortLink = algo.link;
           this.selectedAlgorithm = algo;
-          algo.stats.forEach((stat: any) => {
-            if (stat.type === 'array') stat.value = [];
-            else if (stat.type === 'string') stat.value = '0';
-          });
+          if (algo.stats) {
+            algo.stats.forEach((stat: any) => {
+              if (stat.type === 'array') stat.value = [];
+              else if (stat.type === 'string') stat.value = '0';
+            });
+          }
           this.sortStats = algo.stats;
           if (mode.toUpperCase() === 'BITONIC') {
             this.elementCount = Math.floor(this.viewWidth / 14);
