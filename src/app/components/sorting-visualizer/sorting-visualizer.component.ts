@@ -343,8 +343,11 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
           this.sortDescription = algo.description;
           this.sortLink = algo.link;
           this.selectedAlgorithm = algo;
+          algo.stats.forEach((stat: any) => {
+            if (stat.type === 'array') stat.value = [];
+            else if (stat.type === 'string') stat.value = '0';
+          });
           this.sortStats = algo.stats;
-          console.log(this.sortStats);
           if (mode.toUpperCase() === 'BITONIC') {
             this.elementCount = Math.floor(this.viewWidth / 14);
             let maxCount: number = 0;
@@ -384,6 +387,10 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   public sort(array: SortBarComponent[], mode: string): void {
+    this.sortStats.forEach((stat: any) => {
+      if (stat.type === 'array') stat.value = [];
+      else if (stat.type === 'string') stat.value = '0';
+    });
     this.sortAttempts++;
     this.sorting = true;
     const fnName: string = this._camelize(mode) + 'Sort';
