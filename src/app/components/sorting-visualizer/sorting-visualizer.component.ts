@@ -389,10 +389,12 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   public sort(array: SortBarComponent[], mode: string): void {
-    this.sortStats.forEach((stat: any) => {
-      if (stat.type === 'array') stat.value = [];
-      else if (stat.type === 'string') stat.value = '0';
-    });
+    if (this.sortStats) {
+      this.sortStats.forEach((stat: any) => {
+        if (stat.type === 'array') stat.value = [];
+        else if (stat.type === 'string') stat.value = '0';
+      });
+    }
     this.sortAttempts++;
     this.sorting = true;
     const fnName: string = this._camelize(mode) + 'Sort';

@@ -78,7 +78,8 @@
       "COMPARES": "Compares",
       "SWAPS": "Swaps",
       "GAPS": "Gaps",
-      "WRITES": "Write Count"
+      "WRITES": "Write Count",
+      "FLIPS": "Flip Count"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Algorithm Information",

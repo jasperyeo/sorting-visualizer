@@ -78,7 +78,8 @@
       "COMPARES": "Compara",
       "SWAPS": "Intercambios",
       "GAPS": "Brechas",
-      "WRITES": "Escribir Cuenta"
+      "WRITES": "Escribir Cuenta",
+      "FLIPS": "Conteo de Voltear"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Información del Algoritmo",

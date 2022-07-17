@@ -14,7 +14,7 @@ export async function cycleSort(visualizer: SortingVisualizerComponent, array: S
       if (compare(visualizer, item, array[i])) {
         pos++;
         array[pos].color = SortBarColor.PIVOT;
-        //await visualizer.sleep(0);
+        await visualizer.sleep(0);
         array[pos].color = SortBarColor.NORMAL;
       }
     }
@@ -25,7 +25,7 @@ export async function cycleSort(visualizer: SortingVisualizerComponent, array: S
       if (!visualizer.sorting) return;
       pos++;
       array[pos].color = SortBarColor.PIVOT;
-      //await visualizer.sleep(0);
+      await visualizer.sleep(0);
       array[pos].color = SortBarColor.NORMAL;
     }
     if (pos !== start) {
@@ -51,7 +51,7 @@ export async function cycleSort(visualizer: SortingVisualizerComponent, array: S
         if (compare(visualizer, item, array[i])) {
           pos++;
           array[pos].color = SortBarColor.PIVOT;
-          //await visualizer.sleep(0);
+          await visualizer.sleep(0);
           array[pos].color = SortBarColor.NORMAL;
         }
       }
@@ -59,7 +59,7 @@ export async function cycleSort(visualizer: SortingVisualizerComponent, array: S
         if (!visualizer.sorting) return;
         pos++;
         array[pos].color = SortBarColor.PIVOT;
-        //await visualizer.sleep(0);
+        await visualizer.sleep(0);
         array[pos].color = SortBarColor.NORMAL;
       }
       if (item !== array[pos]) {
