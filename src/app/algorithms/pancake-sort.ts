@@ -10,6 +10,8 @@ export async function pancakeSort(visualizer: SortingVisualizerComponent, array:
     if (maxIndex !== pancakes) {
       await flip(visualizer, array, maxIndex);
       await flip(visualizer, array, pancakes - 1);
+      let currentFlips: number = parseInt(visualizer.sortStats[0].value);
+      visualizer.sortStats[0].value = (currentFlips + 2).toString();
     }
     pancakes--;
   }

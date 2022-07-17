@@ -349,7 +349,14 @@
         "best": "-",
         "average": "n",
         "worst": "n",
-        "memory": "logn"
+        "memory": "logn",
+        "stats": [
+          {
+            "label": "FLIPS",
+            "type": "string",
+            "value": "0"
+          }
+        ]
       },
       {
         "active": true,
