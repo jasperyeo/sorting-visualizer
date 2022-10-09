@@ -18,6 +18,7 @@ import { cocktailShakerSort, boundedCocktailShakerSort } from './cocktail-shaker
 import { exchangeSort } from './exchange-sort';
 import { oddEvenSort } from './odd-even-sort';
 import { combSort } from './comb-sort';
+import { pigeonholeSort } from './pigeonhole-sort';
 import { uniformKeysBucketSort } from './uniform-keys-bucket-sort';
 import { integerKeysBucketSort } from './integer-keys-bucket-sort';
 import { countingSort } from './counting-sort';
@@ -54,6 +55,7 @@ export const algorithms: Map<string, (visualizer: SortingVisualizerComponent, ar
   ['exchangeSort', exchangeSort],
   ['oddEvenSort', oddEvenSort],
   ['combSort', combSort],
+  ['pigeonholeSort', pigeonholeSort],
   ['uniformKeysBucketSort', uniformKeysBucketSort],
   ['integerKeysBucketSort', integerKeysBucketSort],
   ['countingSort', countingSort],
