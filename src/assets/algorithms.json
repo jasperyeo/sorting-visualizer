@@ -294,6 +294,15 @@
     "algorithms": [
       {
         "active": true,
+        "label": "Pigeonhole Sort",
+        "value": "Pigeonhole",
+        "best": "-",
+        "average": "n + 2^(k)",
+        "worst": "n + 2^(k)",
+        "memory": "2^(k)"
+      },
+      {
+        "active": true,
         "label": "Uniform Keys Bucket Sort",
         "value": "Uniform Keys Bucket",
         "best": "-",
@@ -349,7 +358,14 @@
         "best": "-",
         "average": "n",
         "worst": "n",
-        "memory": "logn"
+        "memory": "logn",
+        "stats": [
+          {
+            "label": "FLIPS",
+            "type": "string",
+            "value": "0"
+          }
+        ]
       },
       {
         "active": true,

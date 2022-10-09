@@ -78,7 +78,8 @@
       "COMPARES": "Bandingkan",
       "SWAPS": "Swap",
       "GAPS": "Celah",
-      "WRITES": "Tulis Hitungan"
+      "WRITES": "Tulis Hitungan",
+      "FLIPS": "Hitungan Terbalik"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Informasi Algoritma",
