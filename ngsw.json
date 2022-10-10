@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1657068328953,
+  "timestamp": 1665425513130,
   "index": "/sorting-visualizer/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/sorting-visualizer/favicon.ico",
         "/sorting-visualizer/index.html",
-        "/sorting-visualizer/main.e2dfe64391bcda8a.js",
+        "/sorting-visualizer/main.ebcd96828665919b.js",
         "/sorting-visualizer/manifest.webmanifest",
         "/sorting-visualizer/polyfills.28191de4e6482733.js",
         "/sorting-visualizer/runtime.b66f313fe097e6d1.js",
@@ -59,12 +59,12 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/sorting-visualizer/assets/algorithms.json": "3ec4a9971e888dfad795c6e3c4c78a5f25bf6439",
-    "/sorting-visualizer/assets/i18n/en.json": "eaceedb6291dbdcd09df069ab2afaec73ba7ef17",
-    "/sorting-visualizer/assets/i18n/es.json": "b61cc01e11ff7cea623cda735766c4a0a637ba75",
-    "/sorting-visualizer/assets/i18n/fr.json": "7bef3e1bf86e3544fc29a6d9412eab9e7e3e11a4",
-    "/sorting-visualizer/assets/i18n/id.json": "a45397e6003282d7c3528f9831c8b7ed24a93200",
-    "/sorting-visualizer/assets/i18n/zh.json": "6a3a4590dcdf700d49bf11edea796e93edbbe835",
+    "/sorting-visualizer/assets/algorithms.json": "ab8074c433aa3c880b738b55656ea67f81a29672",
+    "/sorting-visualizer/assets/i18n/en.json": "37ae99f42931fcf4c24c3d26dcc9303fe7d9f8e3",
+    "/sorting-visualizer/assets/i18n/es.json": "ac73ac989ea557b244851dd64be3d66cf4a4bceb",
+    "/sorting-visualizer/assets/i18n/fr.json": "b0e70a23b7055de6727288207f8a8267a7ec88bb",
+    "/sorting-visualizer/assets/i18n/id.json": "c7eebda6d95b4f1f7ef277897ad2b5726ceb1e60",
+    "/sorting-visualizer/assets/i18n/zh.json": "13382d5be9b6221bdb77abb080e853e0a85856f1",
     "/sorting-visualizer/assets/icons/site-icon-128.png": "f0931ca48d04d4acec7649cd82987aa97a610820",
     "/sorting-visualizer/assets/icons/site-icon-144.png": "9088b930eecfee04ecaf4af74c943d518caeab2b",
     "/sorting-visualizer/assets/icons/site-icon-152.png": "679ccc6119e2dbf1cc90509de411d09cfa726a0b",
@@ -84,8 +84,8 @@
     "/sorting-visualizer/assets/images/sortstyle-line.PNG": "d49cca3ee25df8f495752c8cb260add27ad4910a",
     "/sorting-visualizer/assets/images/sortstyle-point.PNG": "7ec5a971aae12bc4a7c4c13ba3cca671ec4406f5",
     "/sorting-visualizer/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/sorting-visualizer/index.html": "48222a71bce933d2805d81572e5c51876febf9f4",
-    "/sorting-visualizer/main.e2dfe64391bcda8a.js": "a9690f7f96f3e154d04d5ae099b7b59c637ef73d",
+    "/sorting-visualizer/index.html": "024a39dfbc50ffe4e3337261fcfd5a1be6c4d81a",
+    "/sorting-visualizer/main.ebcd96828665919b.js": "7b2eefcecd1be181351d7c75afde00a95d0f9017",
     "/sorting-visualizer/manifest.webmanifest": "5425416de319501303b153d25c3d068c83f6120a",
     "/sorting-visualizer/polyfills.28191de4e6482733.js": "4cb724dfe7cea5e52f0af1200d95979c654edd5c",
     "/sorting-visualizer/runtime.b66f313fe097e6d1.js": "984358fec28edde0fa2dd2e5019f4c1b851e8acb",

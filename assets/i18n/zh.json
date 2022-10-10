@@ -78,7 +78,8 @@
       "COMPARES": "比较次数",
       "SWAPS": "交换次数",
       "GAPS": "间隔",
-      "WRITES": "写计数"
+      "WRITES": "写计数",
+      "FLIPS": "翻转计数"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "算法信息",

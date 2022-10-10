@@ -294,6 +294,15 @@
     "algorithms": [
       {
         "active": true,
+        "label": "Pigeonhole Sort",
+        "value": "Pigeonhole",
+        "best": "-",
+        "average": "n + 2^(k)",
+        "worst": "n + 2^(k)",
+        "memory": "2^(k)"
+      },
+      {
+        "active": true,
         "label": "Uniform Keys Bucket Sort",
         "value": "Uniform Keys Bucket",
         "best": "-",
@@ -344,12 +353,28 @@
     "algorithms": [
       {
         "active": true,
+        "label": "Bead Sort",
+        "value": "Bead",
+        "best": "n",
+        "average": "S",
+        "worst": "S",
+        "memory": "n^(2)"
+      },
+      {
+        "active": true,
         "label": "Pancake Sort",
         "value": "Pancake",
         "best": "-",
         "average": "n",
         "worst": "n",
-        "memory": "logn"
+        "memory": "logn",
+        "stats": [
+          {
+            "label": "FLIPS",
+            "type": "string",
+            "value": "0"
+          }
+        ]
       },
       {
         "active": true,
