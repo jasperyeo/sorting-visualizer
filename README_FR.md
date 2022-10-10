@@ -82,6 +82,7 @@
 - Peigne Trier
 
 ### Non-Comparaison
+- Tri de Casier
 - Tri de Seau de Clés Uniformes
 - Tri par Compartiment de Clés Entières
 - Comptage Tri
@@ -89,6 +90,7 @@
 - Tri par Base du Chiffre le Plus Significatif (MSD)
 
 ### Les Autres
+- Tri de Perles
 - Trier les Crêpes
 - Tri Bitonique
 - Tri Stooge

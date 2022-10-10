@@ -82,6 +82,7 @@
 - Comb Sort
 
 ### Non-Comparison
+- Pigeonhole Sort
 - Uniform Keys Bucket Sort
 - Integer Keys Bucket Sort
 - Counting Sort
@@ -89,6 +90,7 @@
 - Most Significant Digit (MSD) Radix Sort
 
 ### Others
+- Bead Sort
 - Pancake Sort
 - Bitonic Sort
 - Stooge Sort

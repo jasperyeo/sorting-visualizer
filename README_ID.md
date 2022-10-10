@@ -82,6 +82,7 @@
 - Sortir Sisir
 
 ### Non-Perbandingan
+- Sortir Lubang Merpati
 - Sortir Bucket Kunci Seragam
 - Sortir Bucket Kunci Integer
 - Sortir Menghitung
@@ -89,6 +90,7 @@
 - Sortir Radix Digit Paling Signifikan (MSD)
 
 ### Yang lain
+- Sortir Manik-Manik
 - Sortir Pancake
 - Sortir Bitonik
 - Sortir Stooge
