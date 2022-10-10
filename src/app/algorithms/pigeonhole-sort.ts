@@ -1,7 +1,6 @@
-import { ConvertPropertyBindingResult } from '@angular/compiler/src/compiler_util/expression_converter';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
 import { SortBarColor, SortBarComponent } from '../shared/models/sort-bar/sort-bar.component';
-import { compare, swap, flatten } from './common';
+import { flatten } from './common';
 
 export async function pigeonholeSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
   let pigeonhole: any[] = [];
@@ -17,7 +16,7 @@ export async function pigeonholeSort(visualizer: SortingVisualizerComponent, arr
     }
     const finalArray: any[] = flatten(pigeonhole);
     for (let i: number = 0; i < array.length; i++) {
-      if (!visualizer.sorting) break;
+      if (!visualizer.sorting) return;
       if (finalArray[i] === undefined) {
         continue;
       }
