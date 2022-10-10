@@ -24,6 +24,7 @@ import { integerKeysBucketSort } from './integer-keys-bucket-sort';
 import { countingSort } from './counting-sort';
 import { lsdRadixSort } from './lsd-radix-sort';
 import { msdRadixSort } from './msd-radix-sort';
+import { beadSort } from './bead-sort';
 import { pancakeSort } from './pancake-sort';
 import { bitonicSort } from './bitonic-sort';
 import { stoogeSort } from './stooge-sort';
@@ -61,6 +62,7 @@ export const algorithms: Map<string, (visualizer: SortingVisualizerComponent, ar
   ['countingSort', countingSort],
   ['lsdRadixSort', lsdRadixSort],
   ['msdRadixSort', msdRadixSort],
+  ['beadSort', beadSort],
   ['pancakeSort', pancakeSort],
   ['bitonicSort', bitonicSort],
   ['stoogeSort', stoogeSort],
