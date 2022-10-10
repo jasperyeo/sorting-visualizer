@@ -82,6 +82,7 @@
 - Tipo de Peine
 
 ### Sin comparación
+- Tipo de Casillero
 - Orden de Cubo de Llaves Uniformes
 - Ordenación de Cubeta de Claves Enteras
 - Tipo de Conteo
@@ -89,6 +90,7 @@
 - Orden de Base de Dígitos Más Significativos (MSD)
 
 ### Otros
+- Clasificación de Cuentas
 - Tipo de Panqueques
 - Tipo Bitónico
 - Tipo Títere

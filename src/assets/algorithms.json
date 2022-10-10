@@ -353,6 +353,15 @@
     "algorithms": [
       {
         "active": true,
+        "label": "Bead Sort",
+        "value": "Bead",
+        "best": "n",
+        "average": "S",
+        "worst": "S",
+        "memory": "n^(2)"
+      },
+      {
+        "active": true,
         "label": "Pancake Sort",
         "value": "Pancake",
         "best": "-",
