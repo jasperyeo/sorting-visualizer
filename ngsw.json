@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1665425513130,
+  "timestamp": 1666551485963,
   "index": "/sorting-visualizer/index.html",
   "assetGroups": [
     {
@@ -47,12 +47,7 @@
         "/sorting-visualizer/assets/images/logo-github.png",
         "/sorting-visualizer/assets/images/logo-linkedin.png",
         "/sorting-visualizer/assets/images/site-icon-apple.png",
-        "/sorting-visualizer/assets/images/site-icon.png",
-        "/sorting-visualizer/assets/images/sortstyle-balloon.PNG",
-        "/sorting-visualizer/assets/images/sortstyle-bamboo.PNG",
-        "/sorting-visualizer/assets/images/sortstyle-bar.PNG",
-        "/sorting-visualizer/assets/images/sortstyle-line.PNG",
-        "/sorting-visualizer/assets/images/sortstyle-point.PNG"
+        "/sorting-visualizer/assets/images/site-icon.png"
       ],
       "patterns": []
     }
@@ -78,11 +73,6 @@
     "/sorting-visualizer/assets/images/logo-linkedin.png": "fe8b12c99581dfac5ce410a18a97467c17817496",
     "/sorting-visualizer/assets/images/site-icon-apple.png": "15ac4025ce8ddf9999ea63101202749aaf1b9226",
     "/sorting-visualizer/assets/images/site-icon.png": "402043bed351cadfec50101600b251726fe7b6a5",
-    "/sorting-visualizer/assets/images/sortstyle-balloon.PNG": "edbe8f46101b7864dffe3b69335a908978f5df96",
-    "/sorting-visualizer/assets/images/sortstyle-bamboo.PNG": "c676f595d4bafd041bab5509af8290d9d7f620b9",
-    "/sorting-visualizer/assets/images/sortstyle-bar.PNG": "78c3731b5dac41121568501d39f42c9121e813a2",
-    "/sorting-visualizer/assets/images/sortstyle-line.PNG": "d49cca3ee25df8f495752c8cb260add27ad4910a",
-    "/sorting-visualizer/assets/images/sortstyle-point.PNG": "7ec5a971aae12bc4a7c4c13ba3cca671ec4406f5",
     "/sorting-visualizer/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/sorting-visualizer/index.html": "024a39dfbc50ffe4e3337261fcfd5a1be6c4d81a",
     "/sorting-visualizer/main.ebcd96828665919b.js": "7b2eefcecd1be181351d7c75afde00a95d0f9017",
