@@ -112,8 +112,6 @@ Balloon, Bamboo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
 
-Uses [Wikipedia Summary API](https://en.wikipedia.org/api/rest_v1/#/) for fetching sorting algorithms summaries and the links to the articles.
-
 ## License
 
 Released under [GNU AGPLv3](/LICENSE) by [@JasperYeo](https://github.com/JasperYeo).
