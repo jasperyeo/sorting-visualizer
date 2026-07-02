@@ -19,18 +19,20 @@
           </tr>
         </thead>
         <tbody class="comparison-dialog__table">
-          <tr *ngFor="let algo of filteredAlgorithms">
-            <td>
-              <a [href]="algo?.link" [title]="algo?.label" target="_blank" class="comparison-dialog__link" rel="noopener noreferrer">
-                {{ algo?.label }}
-              </a>
-            </td>
-            <td>{{ algo?.category }}</td>
-            <td class="no-wrap" [innerHTML]="algo?.best | bigONotation" [style.background-color]="complexityTime?.get(algo?.best)"></td>
-            <td class="no-wrap" [innerHTML]="algo?.average | bigONotation" [style.background-color]="complexityTime?.get(algo?.average)"></td>
-            <td class="no-wrap" [innerHTML]="algo?.worst | bigONotation" [style.background-color]="complexityTime?.get(algo?.worst)"></td>
-            <td class="no-wrap" [innerHTML]="algo?.memory | bigONotation" [style.background-color]="complexitySpace?.get(algo?.memory)"></td>
-          </tr>
+          @for (algo of filteredAlgorithms; track algo) {
+            <tr>
+              <td>
+                <a [href]="algo?.link" [title]="algo?.label" target="_blank" class="comparison-dialog__link" rel="noopener noreferrer">
+                  {{ algo?.label }}
+                </a>
+              </td>
+              <td>{{ algo?.category }}</td>
+              <td class="no-wrap" [innerHTML]="algo?.best | bigONotation" [style.background-color]="complexityTime?.get(algo?.best)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.average | bigONotation" [style.background-color]="complexityTime?.get(algo?.average)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.worst | bigONotation" [style.background-color]="complexityTime?.get(algo?.worst)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.memory | bigONotation" [style.background-color]="complexitySpace?.get(algo?.memory)"></td>
+            </tr>
+          }
         </tbody>
       </table>
       <!-- <label class="sticky-search__results">{{ 'COMPARISON.TOTAL_RESULTS' | translate }}{{ filteredAlgorithms?.length }}</label> -->
