@@ -9,9 +9,10 @@ import { complexityTime, complexitySpace } from './../../shared/models/complexit
 import { StopwatchComponent } from './stopwatch/stopwatch.component';
 
 @Component({
-  selector: 'sorting-visualizer',
-  templateUrl: './sorting-visualizer.component.html',
-  styleUrls: ['./sorting-visualizer.component.scss']
+    selector: 'sorting-visualizer',
+    templateUrl: './sorting-visualizer.component.html',
+    styleUrls: ['./sorting-visualizer.component.scss'],
+    standalone: false
 })
 export class SortingVisualizerComponent implements OnInit, DoCheck {
 

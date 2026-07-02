@@ -1,9 +1,10 @@
 import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
-  selector: 'sort-bar',
-  templateUrl: './sort-bar.component.html',
-  styleUrls: ['./sort-bar.component.scss']
+    selector: 'sort-bar',
+    templateUrl: './sort-bar.component.html',
+    styleUrls: ['./sort-bar.component.scss'],
+    standalone: false
 })
 export class SortBarComponent  {
 

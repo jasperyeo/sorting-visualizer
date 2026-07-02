@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'stopwatch',
-  templateUrl: './stopwatch.component.html',
-  styleUrls: ['./stopwatch.component.scss']
+    selector: 'stopwatch',
+    templateUrl: './stopwatch.component.html',
+    styleUrls: ['./stopwatch.component.scss'],
+    standalone: false
 })
 export class StopwatchComponent implements OnInit {
 

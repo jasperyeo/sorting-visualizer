@@ -6,9 +6,10 @@ import { SortingVisualizerService } from '../sorting-visualizer.service';
 import { complexityTime, complexitySpace } from './../../../shared/models/complexity-time-space';
 
 @Component({
-  selector: 'comparison-dialog',
-  templateUrl: './comparison-dialog.component.html',
-  styleUrls: ['./comparison-dialog.component.scss']
+    selector: 'comparison-dialog',
+    templateUrl: './comparison-dialog.component.html',
+    styleUrls: ['./comparison-dialog.component.scss'],
+    standalone: false
 })
 export class ComparisonDialogComponent implements OnInit {
 

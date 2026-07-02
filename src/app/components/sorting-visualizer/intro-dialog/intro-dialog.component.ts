@@ -5,9 +5,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { SortingVisualizerService } from '../sorting-visualizer.service';
 
 @Component({
-  selector: 'intro-dialog',
-  templateUrl: './intro-dialog.component.html',
-  styleUrls: ['./intro-dialog.component.scss']
+    selector: 'intro-dialog',
+    templateUrl: './intro-dialog.component.html',
+    styleUrls: ['./intro-dialog.component.scss'],
+    standalone: false
 })
 export class IntroDialogComponent implements OnInit {
 
