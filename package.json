@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy:github-page": "ng deploy --base-href=/sorting-visualizer/"
+    "build:gh-pages": "ng build --base-href /sorting-visualizer/"
   },
   "private": true,
   "dependencies": {
