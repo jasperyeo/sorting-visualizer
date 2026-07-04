@@ -1,0 +1,96 @@
+{
+  "TITLE": "Penyortir Visualizer",
+  "LOADING": "Memuat...",
+  "INTRO": {
+    "TITLE": "Selamat datang",
+    "DESC": "Dalam Ilmu Komputer, Algoritme penyortiran merupakan algoritme yang menempatkan elemen daftar pada urutan tertentu. Urutan yang paling sering digunakan ialah urutan numerik dan urutan leksikografis. Penyortiran yang efisien sangat dibutuhkan untuk mengoptimisasi penggunaan dari algoritme lain seperti algoritme pencarian dan algoritme penggabungan yang membutuhkan data input di dalam daftar terurut, yang juga sering digunakan untuk menganonikalisasi data dan menghasilkan output yang dapat dibaca manusia.",
+    "CTA": "Visualisator ini mendemonstrasikan bagaimana algoritma pengurutan umum bekerja melalui penggunaan warna, suara, dan pengaturan waktu.",
+    "CRED": "Pengembang: Jasper Yeo, 2021.",
+    "CRED_LINK_1": "https://github.com/jasperyeo",
+    "CRED_DESC_1": "GitHub",
+    "CRED_LINK_2": "https://www.linkedin.com/in/yeoenghaijasper",
+    "CRED_DESC_2": "LinkedIn",
+    "REFERENCE": "Referensi: ",
+    "REFERENCE_LINK": "https://id.wikipedia.org/wiki/Algoritme_penyortiran",
+    "CLOSE": "Menutup"
+  },
+  "COMPARISON": {
+    "TITLE": "Tabel Perbandingan",
+    "SEARCH": "Cari berdasarkan Nama atau Metode",
+    "TOTAL_RESULTS": "Hasil total: ",
+    "NAME": "Nama",
+    "BEST": "Terbaik",
+    "AVERAGE": "Rata-rata",
+    "WORST": "Terburuk",
+    "MEMORY": "Penyimpanan",
+    "METHOD": "Metode",
+    "CLOSE": "Menutup"
+  },
+  "HEADER": {
+    "MENU": "Menu",
+    "RESET": "Setel Ulang",
+    "CHOOSE_ALGORITHM": "Pilih algoritme",
+    "RESULTS": " hasil",
+    "START": "Mulai",
+    "STOP": "Berhenti"
+  },
+  "SUBHEADER": {
+    "SETTINGS": {
+      "TITLE": "Pengaturan",
+      "SHOW_GRADIENT_COLOR": "Tampilkan Warna Gradien",
+      "ENABLE_AUDIO": "Aktifkan Audio",
+      "SHOW_VALUES": "Tampilkan Nilai",
+      "SHOW_SWAP_CURVE": "Tunjukkan Kurva Swap",
+      "VISUALISER_STYLE": "Gaya Visualisasi",
+      "BASIC": "Dasar",
+      "BAR": "Batang",
+      "POINT": "Titik",
+      "LINE": "Garis",
+      "NUMBER": "Nomor",
+      "FANCY": "Mewah",
+      "BALLOON": "Balon",
+      "BAMBOO": "Bambu",
+      "RANDOM_METHOD": "Metode Acak",
+      "RANDOM": "Acak",
+      "ASCENDING": "Meningkat",
+      "DESCENDING": "Menurun",
+      "ASCENDING_ALMOST": "Meningkat Acak",
+      "DESCENDING_ALMOST": "Menurun Acak",
+      "ELEMENT_COUNT": "Jumlah Elemen",
+      "ELEMENT_COUNT_MIN_WARNING": "Silakan masukkan jumlah minimal 2.",
+      "ELEMENT_COUNT_MAX_WARNING": "Jumlah yang dihasilkan melebihi lebar jendela.",
+      "MIN_MAX": "Min / Maks",
+      "MIN": "Min",
+      "MAX": "Maks",
+      "MIN_MAX_MIN_WARNING": "Silakan masukkan nilai minimal 1.",
+      "MIN_MAX_MAX_WARNING": "Nilai maksimum melebihi tinggi jendela.",
+      "DELAY": "Tunda",
+      "DELAY_NORMAL": "Normal",
+      "DELAY_FAST": "Cepat",
+      "DELAY_SLOW": "Lambat"
+    },
+    "STATISTICS": {
+      "TITLE": "Statistik",
+      "VISUAL_TIME": "Waktu Visual",
+      "SORT_ATTEMPTS": "Urutan Percobaan",
+      "ELEMENTS": "Jumlah Elemen",
+      "UNIQUE": "Jumlah Unik",
+      "COMPARES": "Bandingkan",
+      "SWAPS": "Swap",
+      "GAPS": "Celah",
+      "WRITES": "Tulis Hitungan",
+      "FLIPS": "Hitungan Terbalik"
+    },
+    "ALGORITHM_INFORMATION": {
+      "TITLE": "Informasi Algoritma",
+      "NONE": "Tidak ada",
+      "WIKIPEDIA": "Wikipedia",
+      "DOCUMENTATION": "Dokumentasi"
+    }
+  },
+  "FOOTER": {
+    "ABOUT": "Tentang",
+    "COMPARISON": "Perbandingan",
+    "GITHUB": "GitHub"
+  }
+}

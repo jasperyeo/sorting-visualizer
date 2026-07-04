@@ -1,24 +1,18 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
+    standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     selector: 'stopwatch',
     templateUrl: './stopwatch.component.html',
-    styleUrls: ['./stopwatch.component.scss'],
-    standalone: false
 })
-export class StopwatchComponent implements OnInit {
+export class StopwatchComponent {
 
   @Input('display') public display: HTMLElement | null = document.getElementById('stopwatch');
   @Input('delay') public delay: number = 100;
   public value: number = 0;
   public interval: any;
   public isRunning: boolean = false;
-
-  constructor() {}
-
-  public ngOnInit(): void {
-
-  }
 
   public formatTime(ms: number): string {
     let hours: number | string   = Math.floor(ms / 3600000);

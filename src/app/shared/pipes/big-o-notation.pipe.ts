@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'bigONotation',
-    standalone: false
+  standalone: true,
+  name: 'bigONotation'
 })
 export class BigONotationPipe implements PipeTransform {
 

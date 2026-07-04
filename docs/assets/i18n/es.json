@@ -1,0 +1,96 @@
+{
+  "TITLE": "Visualizador Ordenado",
+  "LOADING": "Cargando...",
+  "INTRO": {
+    "TITLE": "Bienvenido",
+    "DESC": "En computación y matemáticas un algoritmo de ordenamiento es un algoritmo que pone elementos de una lista o un vector en una secuencia dada por una relación de orden, es decir, el resultado de salida ha de ser una permutación —o reordenamiento— de la entrada que satisfaga la relación de orden dada. Las relaciones de orden más usadas son el orden numérico y el orden lexicográfico. Ordenamientos eficientes son importantes para optimizar el uso de otros algoritmos (como los de búsqueda y fusión) que requieren listas ordenadas para una ejecución rápida. También es útil para poner datos en forma canónica y para generar resultados legibles por humanos.",
+    "CTA": "Este visualizador demuestra cómo funcionan los algoritmos de clasificación comunes mediante el uso de colores, sonidos y tiempos.",
+    "CRED": "Desarrollador: Jasper Yeo, 2021.",
+    "CRED_LINK_1": "https://github.com/jasperyeo",
+    "CRED_DESC_1": "GitHub",
+    "CRED_LINK_2": "https://www.linkedin.com/in/yeoenghaijasper",
+    "CRED_DESC_2": "LinkedIn",
+    "REFERENCE": "Referencia: ",
+    "REFERENCE_LINK": "https://es.wikipedia.org/wiki/Algoritmo_de_ordenamiento",
+    "CLOSE": "Cerca"
+  },
+  "COMPARISON": {
+    "TITLE": "Tabla de Comparación",
+    "SEARCH": "Buscar por Nombre o Método",
+    "TOTAL_RESULTS": "Resultados totales: ",
+    "NAME": "Nombre",
+    "BEST": "Mejor",
+    "AVERAGE": "Promedio",
+    "WORST": "Peor",
+    "MEMORY": "Memoria",
+    "METHOD": "Método",
+    "CLOSE": "Cerca"
+  },
+  "HEADER": {
+    "MENU": "Menú",
+    "RESET": "Reiniciar",
+    "CHOOSE_ALGORITHM": "Elija algoritmo",
+    "RESULTS": " resultados",
+    "START": "Comienzo",
+    "STOP": "Parada"
+  },
+  "SUBHEADER": {
+    "SETTINGS": {
+      "TITLE": "Ajustes",
+      "SHOW_GRADIENT_COLOR": "Mostrar Color Degradado",
+      "ENABLE_AUDIO": "Habilitar Audio",
+      "SHOW_VALUES": "Mostrar Valores",
+      "SHOW_SWAP_CURVE": "Mostrar la Curva de Intercambio",
+      "VISUALISER_STYLE": "Estilo de Visualización",
+      "BASIC": "Básico",
+      "BAR": "Barra",
+      "POINT": "Punto",
+      "LINE": "Línea",
+      "NUMBER": "Número",
+      "FANCY": "Lujoso",
+      "BALLOON": "Globo",
+      "BAMBOO": "Bambú",
+      "RANDOM_METHOD": "Método Aleatorio",
+      "RANDOM": "Aleatorio",
+      "ASCENDING": "Ascendente",
+      "DESCENDING": "Descendiendo",
+      "ASCENDING_ALMOST": "Ascendente Aleatorio",
+      "DESCENDING_ALMOST": "Descendiendo Aleatorio",
+      "ELEMENT_COUNT": "Número de Elementos",
+      "ELEMENT_COUNT_MIN_WARNING": "Ingrese una cantidad mínima de 2.",
+      "ELEMENT_COUNT_MAX_WARNING": "El recuento generado supera el ancho de la ventana.",
+      "MIN_MAX": "Mínimo / Máximo",
+      "MIN": "Mínimo",
+      "MAX": "Máximo",
+      "MIN_MAX_MIN_WARNING": "Introduzca un valor mínimo de 1.",
+      "MIN_MAX_MAX_WARNING": "El valor máximo excede la altura de la ventana.",
+      "DELAY": "Demora",
+      "DELAY_NORMAL": "Normal",
+      "DELAY_FAST": "Rápido",
+      "DELAY_SLOW": "Lento"
+    },
+    "STATISTICS": {
+      "TITLE": "Estadísticas",
+      "VISUAL_TIME": "Tiempo Visual",
+      "SORT_ATTEMPTS": "Intentos de Ordenación",
+      "ELEMENTS": "Elementos",
+      "UNIQUE": "Sólo",
+      "COMPARES": "Compara",
+      "SWAPS": "Intercambios",
+      "GAPS": "Brechas",
+      "WRITES": "Escribir Cuenta",
+      "FLIPS": "Conteo de Voltear"
+    },
+    "ALGORITHM_INFORMATION": {
+      "TITLE": "Información del Algoritmo",
+      "NONE": "Ninguno",
+      "WIKIPEDIA": "Wikipedia",
+      "DOCUMENTATION": "Documentación"
+    }
+  },
+  "FOOTER": {
+    "ABOUT": "Sobre",
+    "COMPARISON": "Comparación",
+    "GITHUB": "GitHub"
+  }
+}

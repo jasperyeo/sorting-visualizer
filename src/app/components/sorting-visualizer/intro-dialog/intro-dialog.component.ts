@@ -1,24 +1,23 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
-import { TranslateService } from '@ngx-translate/core';
-
-import { SortingVisualizerService } from '../sorting-visualizer.service';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, WritableSignal, signal } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
+    standalone: true,
+    imports: [
+      TranslatePipe
+    ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     selector: 'intro-dialog',
     templateUrl: './intro-dialog.component.html',
     styleUrls: ['./intro-dialog.component.scss'],
-    standalone: false
 })
 export class IntroDialogComponent implements OnInit {
 
   @Output('onDialogClose') public onDialogClose: EventEmitter<boolean> = new EventEmitter<boolean>();
-  public currentYear: number = 2022;
-
-  constructor(private _sortingVisualizerService: SortingVisualizerService, private _translateService: TranslateService) {}
+  public currentYear: WritableSignal<number> = signal<number>(2022);
 
   public ngOnInit(): void {
-    this.currentYear = new Date().getFullYear();
+    this.currentYear.update(() => new Date().getFullYear());
   }
 
   public closeDialog(): void {

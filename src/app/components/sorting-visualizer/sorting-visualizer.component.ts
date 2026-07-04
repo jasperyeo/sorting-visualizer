@@ -1,5 +1,7 @@
-import { ChangeDetectorRef, Component, DoCheck, HostListener, Input, IterableDiffers, OnInit, SimpleChanges } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { ChangeDetectorRef, Component, DoCheck, HostListener, Input, IterableDiffers, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 import { SortBarStyle, SortBarComponent, SortBarColor } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
@@ -7,12 +9,24 @@ import { SortingVisualizerService } from './sorting-visualizer.service';
 import * as algorithms from './../../algorithms/index';
 import { complexityTime, complexitySpace } from './../../shared/models/complexity-time-space';
 import { StopwatchComponent } from './stopwatch/stopwatch.component';
+import { IntroDialogComponent } from './intro-dialog/intro-dialog.component';
+import { ComparisonDialogComponent } from './comparison-dialog/comparison-dialog.component';
+import { BigONotationPipe } from '../../shared/pipes/big-o-notation.pipe';
 
 @Component({
-    selector: 'sorting-visualizer',
-    templateUrl: './sorting-visualizer.component.html',
-    styleUrls: ['./sorting-visualizer.component.scss'],
-    standalone: false
+  selector: 'sorting-visualizer',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    TranslatePipe,
+    IntroDialogComponent,
+    ComparisonDialogComponent,
+    SortBarComponent,
+    BigONotationPipe
+  ],
+  templateUrl: './sorting-visualizer.component.html',
+  styleUrls: ['./sorting-visualizer.component.scss'],
 })
 export class SortingVisualizerComponent implements OnInit, DoCheck {
 

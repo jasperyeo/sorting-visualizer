@@ -1,10 +1,10 @@
 import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
-    selector: 'sort-bar',
-    templateUrl: './sort-bar.component.html',
-    styleUrls: ['./sort-bar.component.scss'],
-    standalone: false
+  standalone: true,
+  selector: 'sort-bar',
+  templateUrl: './sort-bar.component.html',
+  styleUrls: ['./sort-bar.component.scss']
 })
 export class SortBarComponent  {
 
@@ -18,8 +18,6 @@ export class SortBarComponent  {
   @Input('showValue') public showValue: boolean = true;
   @Input('showGradientColor') public showGradientColor: boolean = true;
   public hoverValue: boolean = false;
-
-  constructor() {}
 
   @HostListener('mouseover')
   public hoverShowValue(): void {

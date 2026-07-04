@@ -2,9 +2,9 @@
   <div class="sort__header">
     <button class="btn btn__minimal sort__header--menu-container" (click)="showControlPanel = !showControlPanel">
       <div class="sort__header--button-menu">
-        <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
-        <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
-        <div class="sort__header--button-menu-bar" [ngClass]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+        <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+        <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+        <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
       </div>
       <p class="sort__header--menu">{{ 'HEADER.MENU' | translate }}</p>
     </button>
@@ -18,7 +18,7 @@
         <select id="select-algorithm-dropdown" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod"
           (change)="selectAlgorithm(sortMethod); closeAlgoDropdown($event)" class="sort__header--select-algo">
           <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
-          <optgroup [label]="filteredAlgorithms?.length + ('HEADER.RESULTS' | translate)" [class.sort__header--select-empty]="!filteredAlgorithms?.length"></optgroup>
+          <optgroup [label]="filteredAlgorithms.length + ('HEADER.RESULTS' | translate)" [class.sort__header--select-empty]="!filteredAlgorithms.length"></optgroup>
           <optgroup [label]="'-------------------------------'"></optgroup>
           @for (category of sortAlgorithms; track category) {
             <optgroup [label]="category?.category + ' (' + category?.count + ')'">
@@ -156,7 +156,7 @@
                     <label>
                       {{ 'SUBHEADER.STATISTICS.VISUAL_TIME' | translate }}:&nbsp;<span id="stopwatch" class="sort__info--value">00:00.0</span><br>
                       <!-- {{ 'SUBHEADER.STATISTICS.SORT_ATTEMPTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortAttempts }}</span><br> -->
-                      {{ 'SUBHEADER.STATISTICS.ELEMENTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortArray?.length }}</span><br>
+                      {{ 'SUBHEADER.STATISTICS.ELEMENTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortArray.length }}</span><br>
                       {{ 'SUBHEADER.STATISTICS.UNIQUE' | translate }}:&nbsp;<span class="sort__info--value">{{ uniqueCount }}</span><br>
                       {{ 'SUBHEADER.STATISTICS.COMPARES' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfCompares }}</span><br>
                       {{ 'SUBHEADER.STATISTICS.SWAPS' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfSwaps }}</span><br>
@@ -168,25 +168,25 @@
                           <tbody>
                             <tr>
                               <td>{{ 'COMPARISON.BEST' | translate }}</td>
-                              <td [style.background-color]="complexityTime?.get(selectedAlgorithm?.best)">
+                              <td [style.background-color]="complexityTime.get(selectedAlgorithm?.best)">
                                 <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.best | bigONotation"></span>
                               </td>
                             </tr>
                             <tr>
                               <td>{{ 'COMPARISON.AVERAGE' | translate }}</td>
-                              <td [style.background-color]="complexityTime?.get(selectedAlgorithm?.average)">
+                              <td [style.background-color]="complexityTime.get(selectedAlgorithm?.average)">
                                 <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.average | bigONotation"></span>
                               </td>
                             </tr>
                             <tr>
                               <td>{{ 'COMPARISON.WORST' | translate }}</td>
-                              <td [style.background-color]="complexityTime?.get(selectedAlgorithm?.worst)">
+                              <td [style.background-color]="complexityTime.get(selectedAlgorithm?.worst)">
                                 <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.worst | bigONotation"></span>
                               </td>
                             </tr>
                             <tr>
                               <td>{{ 'COMPARISON.MEMORY' | translate }}</td>
-                              <td [style.background-color]="complexitySpace?.get(selectedAlgorithm?.memory)">
+                              <td [style.background-color]="complexitySpace.get(selectedAlgorithm?.memory)">
                                 <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.memory | bigONotation"></span>
                               </td>
                             </tr>

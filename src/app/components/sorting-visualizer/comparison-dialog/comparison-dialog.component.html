@@ -27,10 +27,10 @@
                 </a>
               </td>
               <td>{{ algo?.category }}</td>
-              <td class="no-wrap" [innerHTML]="algo?.best | bigONotation" [style.background-color]="complexityTime?.get(algo?.best)"></td>
-              <td class="no-wrap" [innerHTML]="algo?.average | bigONotation" [style.background-color]="complexityTime?.get(algo?.average)"></td>
-              <td class="no-wrap" [innerHTML]="algo?.worst | bigONotation" [style.background-color]="complexityTime?.get(algo?.worst)"></td>
-              <td class="no-wrap" [innerHTML]="algo?.memory | bigONotation" [style.background-color]="complexitySpace?.get(algo?.memory)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.best | bigONotation" [style.background-color]="complexityTime.get(algo?.best)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.average | bigONotation" [style.background-color]="complexityTime.get(algo?.average)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.worst | bigONotation" [style.background-color]="complexityTime.get(algo?.worst)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.memory | bigONotation" [style.background-color]="complexitySpace.get(algo?.memory)"></td>
             </tr>
           }
         </tbody>

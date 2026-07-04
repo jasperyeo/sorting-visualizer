@@ -1,15 +1,20 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-
-import { TranslateService } from '@ngx-translate/core';
-
-import { SortingVisualizerService } from '../sorting-visualizer.service';
+import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy, ModelSignal, model } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { complexityTime, complexitySpace } from './../../../shared/models/complexity-time-space';
+import { BigONotationPipe } from '../../../shared/pipes/big-o-notation.pipe';
 
 @Component({
-    selector: 'comparison-dialog',
-    templateUrl: './comparison-dialog.component.html',
-    styleUrls: ['./comparison-dialog.component.scss'],
-    standalone: false
+  standalone: true,
+  imports: [
+    FormsModule,
+    TranslatePipe,
+    BigONotationPipe
+  ],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  selector: 'comparison-dialog',
+  templateUrl: './comparison-dialog.component.html',
+  styleUrls: ['./comparison-dialog.component.scss']
 })
 export class ComparisonDialogComponent implements OnInit {
 
@@ -19,9 +24,7 @@ export class ComparisonDialogComponent implements OnInit {
   public readonly complexitySpace = complexitySpace;
   public listedAlgorithms: any[] = [];
   public filteredAlgorithms: any[] = [];
-  public sortSearchTerm: string = '';
-
-  constructor(private _sortingVisualizerService: SortingVisualizerService, private _translateService: TranslateService) {}
+  public sortSearchTerm: ModelSignal<string> = model<string>('');
 
   public ngOnInit(): void {
     if (this.algorithms && this.algorithms.length) {
@@ -41,10 +44,10 @@ export class ComparisonDialogComponent implements OnInit {
   }
 
   public search(): void {
-    if (!this.sortSearchTerm || !this.sortSearchTerm.length) {
+    if (!this.sortSearchTerm() || !this.sortSearchTerm().length) {
       this.filteredAlgorithms = this.listedAlgorithms;
       return;
     }
-    this.filteredAlgorithms = this.listedAlgorithms.filter(algo => (algo.label as string).toUpperCase().includes(this.sortSearchTerm.toUpperCase()) || (algo.category as string).toUpperCase().includes(this.sortSearchTerm.toUpperCase()));
+    this.filteredAlgorithms = this.listedAlgorithms.filter(algo => (algo.label as string).toUpperCase().includes(this.sortSearchTerm().toUpperCase()) || (algo.category as string).toUpperCase().includes(this.sortSearchTerm().toUpperCase()));
   }
 }
