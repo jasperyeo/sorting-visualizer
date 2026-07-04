@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, DoCheck, HostListener, Input, IterableDiffers, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, HostListener, Input, IterableDiffers, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
@@ -16,6 +16,7 @@ import { BigONotationPipe } from '../../shared/pipes/big-o-notation.pipe';
 @Component({
   selector: 'sorting-visualizer',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
     FormsModule,

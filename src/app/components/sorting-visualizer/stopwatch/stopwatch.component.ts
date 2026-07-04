@@ -28,7 +28,6 @@ export class StopwatchComponent {
     if (seconds < 10) {
       seconds = "0" + seconds;
     }
-    //return hours + ':' + minutes + ':' + seconds + '.' + ds;
     return minutes + ':' + seconds + '.' + ds;
   }
   

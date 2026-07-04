@@ -3,12 +3,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { SortingVisualizerComponent } from './components/sorting-visualizer/sorting-visualizer.component';
 
 @Component({
-  selector: 'app-root',
+  standalone: true,
   imports: [
     SortingVisualizerComponent
   ],
-  templateUrl: './app.html',
   changeDetection: ChangeDetectionStrategy.Eager,
+  selector: 'app-root',
+  templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
