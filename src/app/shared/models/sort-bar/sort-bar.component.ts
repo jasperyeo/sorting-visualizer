@@ -1,35 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
-
-@Component({
-  standalone: true,
-  selector: 'sort-bar',
-  templateUrl: './sort-bar.component.html',
-  styleUrls: ['./sort-bar.component.scss']
-})
-export class SortBarComponent  {
-
-  @Input('id') public id: string = '';
-  @Input('defaultColor') public defaultColor: string = 'turquoise';
-  @Input('color') public color: string = SortBarColor.NORMAL;
-  @Input('style') public style: string = SortBarStyle.BAR;
-  @Input('sortDelay') public sortDelay: number = 20;
-  @Input('value') public value: number = 100;
-  @Input('valueString') public valueString: string = '100';
-  @Input('showValue') public showValue: boolean = true;
-  @Input('showGradientColor') public showGradientColor: boolean = true;
-  public hoverValue: boolean = false;
-
-  @HostListener('mouseover')
-  public hoverShowValue(): void {
-    this.hoverValue = true;
-  }
-
-  @HostListener('mouseout')
-  public hoverHideValue(): void {
-    this.hoverValue = false;
-  }
-
-}
+import { Component, HostListener, input, InputSignal, model, ModelSignal, signal, WritableSignal } from '@angular/core';
 
 export enum SortBarColor {
   NORMAL = 'null',
@@ -44,4 +13,34 @@ export enum SortBarStyle {
   NUMBER = 'NUMBER',
   BALLOON = 'BALLOON',
   BAMBOO = 'BAMBOO'
+}
+@Component({
+  standalone: true,
+  selector: 'sort-bar',
+  templateUrl: './sort-bar.component.html',
+  styleUrls: ['./sort-bar.component.scss']
+})
+export class SortBarComponent  {
+
+  public id: ModelSignal<string> = model<string>('');
+  public defaultColor: ModelSignal<string> = model<string>('turquoise');
+  public color: ModelSignal<string> = model<string>(SortBarColor.NORMAL);
+  public style: ModelSignal<string> = model<string>(SortBarStyle.BAR);
+  public sortDelay: ModelSignal<number> = model<number>(20);
+  public value: ModelSignal<number> = model<number>(100);
+  public valueString: ModelSignal<string> = model<string>('100');
+  public showValue: ModelSignal<boolean> = model<boolean>(true);
+  public showGradientColor: ModelSignal<boolean> = model<boolean>(true);
+  public hoverValue: WritableSignal<boolean> = signal<boolean>(false);
+
+  @HostListener('mouseover')
+  public hoverShowValue(): void {
+    this.hoverValue.update(() => true);
+  }
+
+  @HostListener('mouseout')
+  public hoverHideValue(): void {
+    this.hoverValue.update(() => false);
+  }
+
 }

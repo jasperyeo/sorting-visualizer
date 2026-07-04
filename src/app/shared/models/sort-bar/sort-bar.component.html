@@ -1,28 +1,28 @@
-<div class="sort__container" [class.sort__container--swap]="color === 'red'" [class.sort__container--pivot]="color === 'green'">
-  @if (hoverValue || showValue) {
-    <label class="sort__label">{{ value }}</label>
+<div class="sort__container" [class.sort__container--swap]="color() === 'red'" [class.sort__container--pivot]="color() === 'green'">
+  @if (hoverValue() || showValue()) {
+    <label class="sort__label">{{ value() }}</label>
   }
-  @if (style === 'BAR' || style === 'BAMBOO') {
+  @if (style() === 'BAR' || style() === 'BAMBOO') {
     <div class="sort__bar"
-      [style.height]="value + 'px'"
-      [style.background-color]="style === 'BAR' || style === 'BAMBOO' ? (color === 'null' ? defaultColor : color) : 'transparent'">
-      @if (style === 'BAMBOO') {
+      [style.height]="value() + 'px'"
+      [style.background-color]="style() === 'BAR' || style() === 'BAMBOO' ? (color() === 'null' ? defaultColor() : color()) : 'transparent'">
+      @if (style() === 'BAMBOO') {
         <div class="sort__bar--bamboo"></div>
       }
     </div>
   }
-  @if (style === 'POINT' || style === 'BALLOON' || style === 'LINE') {
+  @if (style() === 'POINT' || style() === 'BALLOON' || style() === 'LINE') {
     <div class="sort__point"
-      [class.sort__point--balloon]="style === 'BALLOON'"
-      [style.margin-bottom]="(value - 10) + 'px'"
-      [style.background-color]="color === 'null' ? defaultColor : color">
+      [class.sort__point--balloon]="style() === 'BALLOON'"
+      [style.margin-bottom]="(value() - 10) + 'px'"
+      [style.background-color]="color() === 'null' ? defaultColor() : color()">
     </div>
   }
-  @if (style === 'NUMBER') {
+  @if (style() === 'NUMBER') {
     <div class="sort__number"
-      [style.margin-bottom]="(value - 10) + 'px'"
-      [style.color]="color === 'null' ? defaultColor : color">
-      {{ value }}
+      [style.margin-bottom]="(value() - 10) + 'px'"
+      [style.color]="color() === 'null' ? defaultColor() : color()">
+      {{ value() }}
     </div>
   }
 </div>

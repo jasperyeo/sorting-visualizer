@@ -39,17 +39,17 @@ async function partition(pivotCode: PivotCode, visualizer: SortingVisualizerComp
     }
     pivot = right;
   }
-  const pivotValue: number = array[pivot].value;
+  const pivotValue: number = array[pivot].value();
   let i: number = left, j: number = right;
   while (i <= j) {
     if (!visualizer.sorting) break;
-    array[pivot].color = SortBarColor.PIVOT;
-    while (array[i].value < pivotValue) {
+    array[pivot].color.update(() => SortBarColor.PIVOT);
+    while (array[i].value() < pivotValue) {
       if (!visualizer.sorting) break;
       visualizer.noOfCompares++;
       i++;
     }
-    while (array[j].value > pivotValue) {
+    while (array[j].value() > pivotValue) {
       if (!visualizer.sorting) break;
       visualizer.noOfCompares++;
       j--;
@@ -59,7 +59,7 @@ async function partition(pivotCode: PivotCode, visualizer: SortingVisualizerComp
       i++; j--;
     }
   }
-  array[pivot].color = SortBarColor.NORMAL;
+  array[pivot].color.update(() => SortBarColor.NORMAL);
   return i;
 }
 

@@ -232,9 +232,9 @@
                       </div>
                     }
                     <div class="sort__container">
-                      @for (bar of sortArray; track bar.id; let i = $index) {
+                      @for (bar of sortArray; track bar.id(); let i = $index) {
                         <sort-bar
-                          [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color" [defaultColor]="bar.defaultColor" [style]="bar.style" [showValue]="showValues" [showGradientColor]="showGradientColor">
+                          [id]="bar.id()" [sortDelay]="bar.sortDelay()" [value]="bar.value()" [valueString]="bar.valueString()" [color]="bar.color()" [defaultColor]="bar.defaultColor()" [style]="bar.style()" [showValue]="showValues" [showGradientColor]="showGradientColor">
                         </sort-bar>
                       }
                       <svg height="150%" width="100%" class="sort__container--polyline">

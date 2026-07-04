@@ -83,13 +83,13 @@ async function shellSortConcrete(visualizer: SortingVisualizerComponent, array: 
     let j: number;
     for (j = i; j >= gap && compare(visualizer, array[j - gap], temp); j -= gap)  {
       if (!visualizer.sorting) return;
-      array[j - gap].color = SortBarColor.SWAP;
-      if (visualizer.enableAudio) visualizer.playBeep(array[j].value);
-      if (visualizer.enableAudio) visualizer.playBeep(array[j - gap].value);
+      array[j - gap].color.update(() => SortBarColor.SWAP);
+      if (visualizer.enableAudio) visualizer.playBeep(array[j].value());
+      if (visualizer.enableAudio) visualizer.playBeep(array[j - gap].value());
       visualizer.noOfSwaps++;
       array[j] = array[j - gap];
       await visualizer.sleep(visualizer.sortDelay);
-      array[j].color = SortBarColor.NORMAL;
+      array[j].color.update(() => SortBarColor.NORMAL);
     }
     array[j] = temp;
   }

@@ -160,7 +160,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
           let coord: string = '';
           let xOffset: number = 6;
           this.sortArray.forEach(point => {
-            coord = coord.concat(xOffset.toString(), ',', (point.value - 5).toString(), ' ');
+            coord = coord.concat(xOffset.toString(), ',', (point.value() - 5).toString(), ' ');
             xOffset += 12;
           });
           polyline.setAttribute('points', coord);
@@ -172,15 +172,15 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
           let coord: string = '', x1: number = -1, y1: number = -1, x2: number = -1, y2: number = -1;
           let swapCoords: any[] = [];
           this.sortArray.forEach((point: SortBarComponent, index: number) => {
-            if (point.color === SortBarColor.SWAP) {
+            if (point.color() === SortBarColor.SWAP) {
               if (x1 === -1 && x2 === -1) {
                 x1 = 12 * (index + 1);
-                y1 = point.value + 30;
+                y1 = point.value() + 30;
                 swapCoords.push({ x: x1, y: y1 });
                 swapCoords.push({ x: -1, y: -1 });
               } else {
                 x2 = 12 * (index + 1);
-                y2 = point.value + 30;
+                y2 = point.value() + 30;
                 swapCoords.push({ x: x2, y: y2 });
               }
             }
@@ -315,20 +315,20 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     }
     for (let i: number = 0; i < this.elementCount; i++) {
       let sortBar: SortBarComponent = new SortBarComponent;
-      sortBar.id = 'bar' + i.toString();
-      sortBar.style = this.sortStyle;
-      sortBar.sortDelay = this.sortDelay;
-      sortBar.value = tempArray[i];
-      sortBar.valueString = sortBar.value.toString();
+      sortBar.id.set('bar' + i.toString());
+      sortBar.style.set(this.sortStyle);
+      sortBar.sortDelay.set(this.sortDelay);
+      sortBar.value.set(tempArray[i]);
+      sortBar.valueString.set(sortBar.value().toString());
       if (this.showGradientColor) {
-        const hueValue: string = ((sortBar.value / this.maxValue) * 360).toString();
-        sortBar.defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
+        const hueValue: string = ((sortBar.value() / this.maxValue) * 360).toString();
+        sortBar.defaultColor.set('hsl(' + hueValue + ', 100%, 77%)');
       } else {
-        sortBar.defaultColor = 'turquoise';
+        sortBar.defaultColor.set('turquoise');
       }
-      if (this.enableAudio) this.playBeep(sortBar.value);
-      sortBar.showValue = this.showValues;
-      sortBar.showGradientColor = this.showGradientColor;
+      if (this.enableAudio) this.playBeep(sortBar.value());
+      sortBar.showValue.set(this.showValues);
+      sortBar.showGradientColor.set(this.showGradientColor);
       this.sortArray.push(sortBar);
       this.uniqueCount = [...new Set(this.sortArray.map(bar => bar.value))].length;
       await this.sleep(0);
@@ -423,7 +423,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     } else {
       array.sort((a: SortBarComponent, b: SortBarComponent) => {
         this.noOfCompares++;
-        return a.value - b.value;
+        return a.value() - b.value();
       });
       this.stopwatch.stop();
       this.sorting = false;

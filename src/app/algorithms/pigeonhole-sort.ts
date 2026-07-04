@@ -4,7 +4,7 @@ import { flatten } from './common';
 
 export async function pigeonholeSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
   let pigeonhole: any[] = [];
-  const arrayValues: number[] = array.map(element => element.value);
+  const arrayValues: number[] = array.map(element => element.value());
   for (let i: number = 0; i < arrayValues.length; i++) {
     if (!visualizer.sorting) return;
     visualizer.noOfCompares++;
@@ -22,7 +22,7 @@ export async function pigeonholeSort(visualizer: SortingVisualizerComponent, arr
       }
       array[i].value = finalArray[i];
       array[i].color = SortBarColor.SWAP;
-      if (visualizer.enableAudio) visualizer.playBeep(array[i].value);
+      if (visualizer.enableAudio) visualizer.playBeep(array[i].value());
       await visualizer.sleep(visualizer.sortDelay);
       array[i].color = SortBarColor.NORMAL;
     }
@@ -33,7 +33,7 @@ export async function pigeonholeSort(visualizer: SortingVisualizerComponent, arr
     visualizer.noOfSwaps++;
     array[i].color = SortBarColor.SWAP;
     array[i].value = pigeonhole[i];
-    if (visualizer.enableAudio) visualizer.playBeep(array[i].value);
+    if (visualizer.enableAudio) visualizer.playBeep(array[i].value());
     await visualizer.sleep(visualizer.sortDelay);
     array[i].color = SortBarColor.NORMAL;
   };
