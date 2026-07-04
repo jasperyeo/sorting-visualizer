@@ -1,14 +1,14 @@
 import { signal, WritableSignal } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 import { compare, swap } from './common';
 
 export async function selectionSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   for (let i = 0; i < array.length; i++) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     let min: WritableSignal<number> = signal<number>(i);
     for (let j = i + 1; j < array.length; j++) {
-      if (!visualizer.sorting) return;
+      if (!visualizer.isSorting()) return;
       if (compare(visualizer, array[min()], array[j])) {
         min.update(() => j);
       }
@@ -27,17 +27,17 @@ export async function doubleSelectionSort(visualizer: SortingVisualizerComponent
     let maxI: WritableSignal<number> = signal<number>(i);
     for (let k: number = i; k <= j; k++) {
       if (array[k].value > max()) {
-        visualizer.noOfCompares++;
+        visualizer.noOfCompares.update((value) => value + 1);
         max.update(() => array[k].value);
         maxI.update(() => k);
       } else if (array[k].value < min()) {
-        visualizer.noOfCompares += 2;
+        visualizer.noOfCompares.update((value) => value + 2);
         min.update(() => array[k].value);
         minI.update(() => k);
       }
     }
     await swap(visualizer, array, i, minI());
-    visualizer.noOfCompares++;
+    visualizer.noOfCompares.update((value) => value + 1);
     if (array[minI()].value === max()) {
       await swap(visualizer, array, j, minI());
     } else {

@@ -1,12 +1,15 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 import { compare } from './common';
 
 export async function shellSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   // (N / 2^k)
   for (let gap: number = Math.floor(array.length / 2); gap > 0; gap = Math.floor(gap / 2)) {
-    if (!visualizer.sorting) return;
-    visualizer.sortStats[0].value.push(gap);
+    if (!visualizer.isSorting()) return;
+    visualizer.sortStats.update((stats) => {
+      stats[0].value.push(gap);
+      return stats;
+    });
     await shellSortConcrete(visualizer, array, gap);
   }
 }
@@ -14,8 +17,11 @@ export async function shellSort(visualizer: SortingVisualizerComponent, array: S
 export async function frankLazarusShellSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   // 2(N / 2^(k+1)) + 1
   for (let k: number = 1, gap: number = Math.floor(2 * (array.length / Math.pow(2, k + 1)) + 1); gap > 0; k++, gap = Math.floor(2 * (array.length / Math.pow(2, k + 1)) + 1)) {
-    if (!visualizer.sorting) return;
-    visualizer.sortStats[0].value.push(gap);
+    if (!visualizer.isSorting()) return;
+    visualizer.sortStats.update((stats) => {
+      stats[0].value.push(gap);
+      return stats;
+    });
     await shellSortConcrete(visualizer, array, gap);
     if (gap <= 1) break;
   }
@@ -29,8 +35,11 @@ export async function hibbardShellSort(visualizer: SortingVisualizerComponent, a
     initK++;
   }
   for (let k: number = --initK, gap: number = Math.floor(Math.pow(2, k) - 1); gap > 0; k--, gap = Math.floor(Math.pow(2, k) - 1)) {
-    if (!visualizer.sorting) return;
-    visualizer.sortStats[0].value.push(gap);
+    if (!visualizer.isSorting()) return;
+    visualizer.sortStats.update((stats) => {
+      stats[0].value.push(gap);
+      return stats;
+    });
     await shellSortConcrete(visualizer, array, gap);
   }
 }
@@ -43,8 +52,11 @@ export async function papernovStasevichShellSort(visualizer: SortingVisualizerCo
     initK++;
   }
   for (let k: number = --initK, gap: number = Math.floor(Math.pow(2, k) + 1); gap > 0; k--, gap = Math.floor(Math.pow(2, k) + 1)) {
-    if (!visualizer.sorting) return;
-    visualizer.sortStats[0].value.push(gap);
+    if (!visualizer.isSorting()) return;
+    visualizer.sortStats.update((stats) => {
+      stats[0].value.push(gap);
+      return stats;
+    });
     await shellSortConcrete(visualizer, array, gap);
     if (gap <= 1) break;
   }
@@ -58,8 +70,11 @@ export async function tokudaShellSort(visualizer: SortingVisualizerComponent, ar
     initK++;
   }
   for (let k: number = --initK, gap: number = Math.ceil((9 * Math.pow(9 / 4, k) - 4) / 5); gap > 0; k--, gap = Math.ceil((9 * Math.pow(9 / 4, k) - 4) / 5)) {
-    if (!visualizer.sorting) return;
-    visualizer.sortStats[0].value.push(gap);
+    if (!visualizer.isSorting()) return;
+    visualizer.sortStats.update((stats) => {
+      stats[0].value.push(gap);
+      return stats;
+    });
     await shellSortConcrete(visualizer, array, gap);
   }
 }
@@ -70,23 +85,26 @@ export async function ciuraShellSort(visualizer: SortingVisualizerComponent, arr
   let initN: number = 0;
   while (ciuraSequence[initN] > array.length) initN++;
   for (let n: number = --initN, gap: number = ciuraSequence[n]; gap > 0; n++, gap = ciuraSequence[n]) {
-    if (!visualizer.sorting) return;
-    visualizer.sortStats[0].value.push(gap);
+    if (!visualizer.isSorting()) return;
+    visualizer.sortStats.update((stats) => {
+      stats[0].value.push(gap);
+      return stats;
+    });
     await shellSortConcrete(visualizer, array, gap);
   }
 }
 
 async function shellSortConcrete(visualizer: SortingVisualizerComponent, array: SortBarInterface[], gap: number): Promise<void> {
   for (let i: number = gap; i < array.length; i += 1) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     let temp = array[i];
     let j: number;
     for (j = i; j >= gap && compare(visualizer, array[j - gap], temp); j -= gap)  {
-      if (!visualizer.sorting) return;
+      if (!visualizer.isSorting()) return;
       array[j - gap].color = SortBarColor.SWAP;
-      if (visualizer.enableAudio) visualizer.playBeep(array[j].value);
-      if (visualizer.enableAudio) visualizer.playBeep(array[j - gap].value);
-      visualizer.noOfSwaps++;
+      if (visualizer.isAudioEnabled()) visualizer.playBeep(array[j].value);
+      if (visualizer.isAudioEnabled()) visualizer.playBeep(array[j - gap].value);
+      visualizer.noOfSwaps.update((value) => value + 1);
       array[j] = array[j - gap];
       await visualizer.sleep(visualizer.sortDelay);
       array[j].color = SortBarColor.NORMAL;

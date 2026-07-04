@@ -1,4 +1,4 @@
-@import './../../../../styles.scss';
+@use '../../../../styles.scss';
 
 :host {
   position: fixed;
@@ -31,7 +31,7 @@
     padding: 4rem;
     animation: dialog-appear .2s ease-in-out;
 
-    @include respond(md) {
+    @include styles.respond(md) {
       height: 85%;
     }
 

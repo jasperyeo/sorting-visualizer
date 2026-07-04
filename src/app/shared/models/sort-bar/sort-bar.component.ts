@@ -1,57 +1,34 @@
-import { Component, HostListener, model, ModelSignal, signal, WritableSignal } from '@angular/core';
-
-export enum SortBarColor {
-  NORMAL = 'null',
-  SWAP = 'red',
-  PIVOT = 'green'
-};
-
-export enum SortBarStyle {
-  BAR = 'BAR',
-  POINT = 'POINT',
-  LINE = 'LINE',
-  NUMBER = 'NUMBER',
-  BALLOON = 'BALLOON',
-  BAMBOO = 'BAMBOO'
-};
-
-export interface SortBarInterface {
-  id: string;
-  defaultColor: string; 
-  color: string;
-  style: string;
-  sortDelay: number;
-  value: number;
-  valueString: string;
-  showValue: boolean;
-  showGradientColor: boolean;
-};
+import { ChangeDetectionStrategy, Component, model, ModelSignal, signal, WritableSignal } from '@angular/core';
+import { SORT_BAR_DEFAULTS, SortBarColor, SortBarStyle } from './sort-bar.constants';
 
 @Component({
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'sort-bar',
   templateUrl: './sort-bar.component.html',
-  styleUrls: ['./sort-bar.component.scss']
+  styleUrls: ['./sort-bar.component.scss'],
+  host: {
+    '(mouseover)': 'hoverShowValue()',
+    '(mouseout)': 'hoverHideValue()'
+  }
 })
 export class SortBarComponent  {
 
   public id: ModelSignal<string> = model<string>('');
-  public defaultColor: ModelSignal<string> = model<string>('turquoise');
-  public color: ModelSignal<string> = model<string>(SortBarColor.NORMAL);
-  public style: ModelSignal<string> = model<string>(SortBarStyle.BAR);
-  public sortDelay: ModelSignal<number> = model<number>(20);
-  public value: ModelSignal<number> = model<number>(100);
-  public valueString: ModelSignal<string> = model<string>('100');
-  public showValue: ModelSignal<boolean> = model<boolean>(true);
-  public showGradientColor: ModelSignal<boolean> = model<boolean>(true);
+  public defaultColor: ModelSignal<string> = model<string>(SORT_BAR_DEFAULTS.DEFAULT_COLOR);
+  public color: ModelSignal<string> = model<string>(SORT_BAR_DEFAULTS.COLOR);
+  public style: ModelSignal<string> = model<string>(SORT_BAR_DEFAULTS.STYLE);
+  public sortDelay: ModelSignal<number> = model<number>(SORT_BAR_DEFAULTS.SORT_DELAY);
+  public value: ModelSignal<number> = model<number>(SORT_BAR_DEFAULTS.VALUE);
+  public valueString: ModelSignal<string> = model<string>(SORT_BAR_DEFAULTS.VALUE_STRING);
+  public showValue: ModelSignal<boolean> = model<boolean>(SORT_BAR_DEFAULTS.SHOW_VALUE);
+  public showGradientColor: ModelSignal<boolean> = model<boolean>(SORT_BAR_DEFAULTS.SHOW_GRADIENT_COLOR);
   public hoverValue: WritableSignal<boolean> = signal<boolean>(false);
 
-  @HostListener('mouseover')
   public hoverShowValue(): void {
     this.hoverValue.update(() => true);
   }
 
-  @HostListener('mouseout')
   public hoverHideValue(): void {
     this.hoverValue.update(() => false);
   }

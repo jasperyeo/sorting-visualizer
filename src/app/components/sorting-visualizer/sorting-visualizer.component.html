@@ -1,6 +1,6 @@
 <div class="sort__wrapper"  [class.sort__wrapper--msafari]="isMobileSafari()">
   <div class="sort__header">
-    <button class="btn btn__minimal sort__header--menu-container" (click)="showControlPanel = !showControlPanel">
+    <button class="btn btn__minimal sort__header--menu-container" (click)="showControlPanel.update(() => !showControlPanel())">
       <div class="sort__header--button-menu">
         <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
         <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
@@ -9,13 +9,13 @@
       <p class="sort__header--menu">{{ 'HEADER.MENU' | translate }}</p>
     </button>
     <h1 class="sort__header--title">{{ 'TITLE' | translate }}</h1>
-    <button (click)="resetArray()" [disabled]="sorting" [title]="'HEADER.RESET' | translate" class="sort__header--button-normal">
+    <button (click)="resetArray()" [disabled]="sorting()" [title]="'HEADER.RESET' | translate" class="sort__header--button-normal">
       {{ 'HEADER.RESET' | translate }}
     </button>
-    <button (click)="resetArray()" [disabled]="sorting" [title]="'HEADER.RESET' | translate" class="sort__header--button-mobile">&#8634;</button>
+    <button (click)="resetArray()" [disabled]="sorting()" [title]="'HEADER.RESET' | translate" class="sort__header--button-mobile">&#8634;</button>
     <div class="sort__header--dropdown-container">
-      @if (!sorting && sortAlgorithms.length) {
-        <select id="select-algorithm-dropdown" [disabled]="sorting || !sortAlgorithms.length" [(ngModel)]="sortMethod"
+      @if (!sorting() && sortAlgorithms.length) {
+        <select id="select-algorithm-dropdown" [disabled]="sorting() || !sortAlgorithms.length" [(ngModel)]="sortMethod"
           (change)="selectAlgorithm(sortMethod); closeAlgoDropdown($event)" class="sort__header--select-algo">
           <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
           <optgroup [label]="filteredAlgorithms.length + ('HEADER.RESULTS' | translate)" [class.sort__header--select-empty]="!filteredAlgorithms.length"></optgroup>
@@ -31,31 +31,31 @@
           }
         </select>
       }
-      <input type="text" id="select-algorithm-search" class="sort__header--dropdown-search" (keyup)="search()" [disabled]="sorting"
+      <input type="text" id="select-algorithm-search" class="sort__header--dropdown-search" (keyup)="search()" [disabled]="sorting()"
         [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openAlgoDropdown()" [placeholder]="'HEADER.CHOOSE_ALGORITHM' | translate"
-        [class.sort__header--dropdown-search--disabled]="sorting"/>
+        [class.sort__header--dropdown-search--disabled]="sorting()"/>
       <div class="sort__header--dropdown-icon"></div>
-      @if (selectedAlgorithm && !sorting) {
+      @if (selectedAlgorithm && !sorting()) {
         <div class="sort__header--close-icon" (click)="resetSearchTerm()">X</div>
       }
     </div>
-    @if (!dropdownOpened) {
+    @if (!dropdownOpened()) {
       <button
-        (click)="!sorting ? sort(sortArray, sortMethod) : stop()"
-      [disabled]="!sortMethod.length ||
-      elementCount < 2 || (elementCount * 4) >= viewWidth ||
-      minValue <= 0 || maxValue * 0.8 > viewHeight"
-      [title]="sorting ? ('HEADER.STOP' | translate) : ('HEADER.START' | translate)">
-        @if (sorting) {
+        (click)="!sorting() ? sort(sortArray, sortMethod) : stop()"
+        [disabled]="!sortMethod.length ||
+        elementCount < 2 || (elementCount * 4) >= viewWidth() ||
+        minValue <= 0 || maxValue * 0.8 > viewHeight()"
+        [title]="sorting() ? ('HEADER.STOP' | translate) : ('HEADER.START' | translate)">
+        @if (sorting()) {
           <span class="sort__header--button-normal">{{ 'HEADER.STOP' | translate }}</span>
         }
-        @if (!sorting) {
+        @if (!sorting()) {
           <span class="sort__header--button-normal">{{ 'HEADER.START' | translate }}</span>
         }
-        @if (sorting) {
+        @if (sorting()) {
           <span class="sort__header--button-mobile">&#8718;</span>
         }
-        @if (!sorting) {
+        @if (!sorting()) {
           <span class="sort__header--button-mobile">&#8811;</span>
         }
       </button>
@@ -68,209 +68,206 @@
       </select>
     </div>
   </div>
-  @if (showControlPanel) {
+  @if (showControlPanel()) {
     <div class="sort__subheader-paginator">
       <div class="sort__subheader-page" [class.highlighted]="sortInfoPaginator[0]" (click)="jumpToSortInfoPage(0)"></div>
       <div class="sort__subheader-page" [class.highlighted]="sortInfoPaginator[1]" (click)="jumpToSortInfoPage(1)"></div>
       <div class="sort__subheader-page" [class.highlighted]="sortInfoPaginator[2]" (click)="jumpToSortInfoPage(2)"></div>
     </div>
   }
-  @if (showControlPanel) {
+  @if (showControlPanel()) {
     <div class="sort__subheader" id="sort__subheader">
       <div class="sort__info" id="settings" #settings>
-        <p class="sort__info--header" (click)="showSettings = !showSettings">
+        <p class="sort__info--header" (click)="showSettings.update(() => !showSettings())">
           <span class="sort__info--title"><span class="sort__info--title--icon">&#9881;</span> {{ 'SUBHEADER.SETTINGS.TITLE' | translate }}:</span>
-          <span [class.sort__info--collapsed]="!showSettings">&#x25B2;</span>
+          <span [class.sort__info--collapsed]="!showSettings()">&#x25B2;</span>
         </p>
-        @if (showControlPanel && showSettings) {
+        @if (showControlPanel() && showSettings()) {
           <div>
-            <br>
-              <input type="checkbox" id="show-gradient-color" [(ngModel)]="showGradientColor" (click)="resetArray()" [disabled]="sorting"/>
-              <label for="show-gradient-color">{{ 'SUBHEADER.SETTINGS.SHOW_GRADIENT_COLOR' | translate }}</label><br>
-              <input type="checkbox" id="enable-audio" [(ngModel)]="enableAudio"/>
-              <label for="enable-audio">{{ 'SUBHEADER.SETTINGS.ENABLE_AUDIO' | translate }}</label><br>
-              <input type="checkbox" id="show-values" [(ngModel)]="showValues"/>
-              <label for="show-values">{{ 'SUBHEADER.SETTINGS.SHOW_VALUES' | translate }}</label><br>
-              <input type="checkbox" id="show-swap-curve" [(ngModel)]="showSwapCurve"/>
-              <label for="show-swap-curve">{{ 'SUBHEADER.SETTINGS.SHOW_SWAP_CURVE' | translate }}</label><br>
-              <br>
-                <label for="sort-delay">{{ 'SUBHEADER.SETTINGS.DELAY' | translate }}: {{ sortDelay === 0 ? ('SUBHEADER.SETTINGS.DELAY_FAST' | translate) : sortDelay === 100 ? ('SUBHEADER.SETTINGS.DELAY_SLOW' | translate) : ('SUBHEADER.SETTINGS.DELAY_NORMAL' | translate) }}</label><br>
-                <input type="range" id="sort-delay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay">
-                <br><br>
-                <hr />
-                <br>
-                  <label for="styles-dropdown">{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
-                  <select id="styles-dropdown" [disabled]="sorting" [(ngModel)]="sortStyle" (change)="resetArray()">
-                    @for (styleCategory of sortStyles; track styleCategory) {
-                      <optgroup [label]="'SUBHEADER.SETTINGS.' + styleCategory?.category | translate">
-                        @for (style of styleCategory?.styles; track style) {
-                          <option [value]="style">{{ ('SUBHEADER.SETTINGS.' + style) | translate }}</option>
-                        }
-                      </optgroup>
-                    }
-                  </select>
-                  <br><br>
-                  <label for="styles-dropdown">{{ 'SUBHEADER.SETTINGS.RANDOM_METHOD' | translate }}:</label>
-                  <select id="styles-dropdown" [disabled]="sorting" [(ngModel)]="randomMethod" (change)="resetArray()">
-                    @for (method of randomMethods; track method) {
-                      <option [value]="method">{{ ('SUBHEADER.SETTINGS.' + method) | translate }}</option>
-                    }
-                  </select>
-                  <br><br>
-                  <label for="element-count">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
-                  <input type="number" id="element-count" min="2" [(ngModel)]="elementCount" [disabled]="sorting || sortMethod.toUpperCase() === 'BITONIC'"/>
-                  @if (elementCount < 2) {
-                    <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MIN_WARNING' | translate }}</label>
+            <br />
+            <input type="checkbox" id="show-gradient-color" [(ngModel)]="showGradientColor" (click)="resetArray()" [disabled]="sorting()"/>
+            <label for="show-gradient-color">{{ 'SUBHEADER.SETTINGS.SHOW_GRADIENT_COLOR' | translate }}</label><br />
+            <input type="checkbox" id="enable-audio" [(ngModel)]="enableAudio"/>
+            <label for="enable-audio">{{ 'SUBHEADER.SETTINGS.ENABLE_AUDIO' | translate }}</label><br />
+            <input type="checkbox" id="show-values" [(ngModel)]="showValues"/>
+            <label for="show-values">{{ 'SUBHEADER.SETTINGS.SHOW_VALUES' | translate }}</label><br />
+            <input type="checkbox" id="show-swap-curve" [(ngModel)]="showSwapCurve"/>
+            <label for="show-swap-curve">{{ 'SUBHEADER.SETTINGS.SHOW_SWAP_CURVE' | translate }}</label><br />
+            <br />
+            <label for="sort-delay">{{ 'SUBHEADER.SETTINGS.DELAY' | translate }}: {{ sortDelay === 0 ? ('SUBHEADER.SETTINGS.DELAY_FAST' | translate) : sortDelay === 100 ? ('SUBHEADER.SETTINGS.DELAY_SLOW' | translate) : ('SUBHEADER.SETTINGS.DELAY_NORMAL' | translate) }}</label><br />
+            <input type="range" id="sort-delay" name="sortDelay" min="0" max="100" step="50" value="50" [(ngModel)]="sortDelay">
+            <br /><br />
+            <hr />
+            <br />
+            <label for="styles-dropdown">{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
+            <select id="styles-dropdown" [disabled]="sorting()" [(ngModel)]="sortStyle" (change)="resetArray()">
+              @for (styleCategory of sortStyles; track styleCategory) {
+                <optgroup [label]="'SUBHEADER.SETTINGS.' + styleCategory?.category | translate">
+                  @for (style of styleCategory?.styles; track style) {
+                    <option [value]="style">{{ ('SUBHEADER.SETTINGS.' + style) | translate }}</option>
                   }
-                  @if (elementCount >= viewWidth / 12) {
-                    <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MAX_WARNING' | translate }}</label>
-                  }
-                  <br><br>
-                  <div class="sort__info--input-half-container">
-                    <div class="sort__info--input-half">
-                      <label for="min">{{ 'SUBHEADER.SETTINGS.MIN' | translate }}:</label>
-                      <input type="number" id="min" min="0" [(ngModel)]="minValue" [disabled]="sorting"/>
-                    </div>
-                    <div class="sort__info--input-half">
-                      <label for="max">{{ 'SUBHEADER.SETTINGS.MAX' | translate }}:</label>
-                      <input type="number" id="max" class="sort__info--input-half" [min]="minValue" [(ngModel)]="maxValue" [disabled]="sorting"/>
-                    </div>
-                  </div>
-                  @if (minValue <= 0) {
-                    <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MIN_WARNING' | translate }}</label>
-                  }
-                  @if (maxValue > viewHeight * 0.45) {
-                    <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MAX_WARNING' | translate }}</label>
-                  }
-                </div>
+                </optgroup>
               }
+            </select>
+            <br /><br />
+            <label for="styles-dropdown">{{ 'SUBHEADER.SETTINGS.RANDOM_METHOD' | translate }}:</label>
+            <select id="styles-dropdown" [disabled]="sorting()" [(ngModel)]="randomMethod" (change)="resetArray()">
+              @for (method of randomMethods; track method) {
+                <option [value]="method">{{ ('SUBHEADER.SETTINGS.' + method) | translate }}</option>
+              }
+            </select>
+            <br /><br />
+            <label for="element-count">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
+            <input type="number" id="element-count" min="2" [(ngModel)]="elementCount" [disabled]="sorting() || sortMethod.toUpperCase() === 'BITONIC'"/>
+            @if (elementCount < 2) {
+              <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MIN_WARNING' | translate }}</label>
+            }
+            @if (elementCount >= viewWidth() / 12) {
+              <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MAX_WARNING' | translate }}</label>
+            }
+            <br /><br />
+            <div class="sort__info--input-half-container">
+              <div class="sort__info--input-half">
+                <label for="min">{{ 'SUBHEADER.SETTINGS.MIN' | translate }}:</label>
+                <input type="number" id="min" min="0" [(ngModel)]="minValue" [disabled]="sorting()"/>
+              </div>
+              <div class="sort__info--input-half">
+                <label for="max">{{ 'SUBHEADER.SETTINGS.MAX' | translate }}:</label>
+                <input type="number" id="max" class="sort__info--input-half" [min]="minValue" [(ngModel)]="maxValue" [disabled]="sorting()"/>
+              </div>
             </div>
-            <div class="sort__info" id="statistics" #statistics>
-              <p class="sort__info--header" (click)="showStatistics = !showStatistics">
-                <span class="sort__info--title"><span class="sort__info--title--icon">&#9871;</span> {{ 'SUBHEADER.STATISTICS.TITLE' | translate }}:</span>
-                <span [class.sort__info--collapsed]="!showStatistics">&#x25B2;</span>
-              </p>
-              @if (showControlPanel && showStatistics) {
-                <div>
-                  <br>
-                    <label>
-                      {{ 'SUBHEADER.STATISTICS.VISUAL_TIME' | translate }}:&nbsp;<span id="stopwatch" class="sort__info--value">00:00.0</span><br>
-                      <!-- {{ 'SUBHEADER.STATISTICS.SORT_ATTEMPTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortAttempts }}</span><br> -->
-                      {{ 'SUBHEADER.STATISTICS.ELEMENTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortArray.length }}</span><br>
-                      {{ 'SUBHEADER.STATISTICS.UNIQUE' | translate }}:&nbsp;<span class="sort__info--value">{{ uniqueCount }}</span><br>
-                      {{ 'SUBHEADER.STATISTICS.COMPARES' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfCompares }}</span><br>
-                      {{ 'SUBHEADER.STATISTICS.SWAPS' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfSwaps }}</span><br>
-                    </label>
-                    <br>
-                      <hr />
-                      <br>
-                        <table>
-                          <tbody>
-                            <tr>
-                              <td>{{ 'COMPARISON.BEST' | translate }}</td>
-                              <td [style.background-color]="complexityTime.get(selectedAlgorithm?.best)">
-                                <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.best | bigONotation"></span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>{{ 'COMPARISON.AVERAGE' | translate }}</td>
-                              <td [style.background-color]="complexityTime.get(selectedAlgorithm?.average)">
-                                <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.average | bigONotation"></span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>{{ 'COMPARISON.WORST' | translate }}</td>
-                              <td [style.background-color]="complexityTime.get(selectedAlgorithm?.worst)">
-                                <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.worst | bigONotation"></span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>{{ 'COMPARISON.MEMORY' | translate }}</td>
-                              <td [style.background-color]="complexitySpace.get(selectedAlgorithm?.memory)">
-                                <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.memory | bigONotation"></span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <br>
-                          <hr />
-                          <br>
-                            @for (stat of sortStats; track stat) {
-                              <label>
-                                {{ ('SUBHEADER.STATISTICS.' + stat?.label) | translate }}:<br>
-                                @if (stat?.type === 'string') {
-                                  <span>{{ stat?.value }}<br></span>
-                                }
-                                @if (stat?.type === 'array') {
-                                  <span>{{ stat?.value?.toString() }}<br></span>
-                                }
-                              </label>
-                            }
-                          </div>
-                        }
-                      </div>
-                      <div class="sort__info sort__info--info" id="information" #information>
-                        <p class="sort__info--header" (click)="showInfo = !showInfo">
-                          <span class="sort__info--title"><span class="sort__info--title--icon">?</span> {{ 'SUBHEADER.ALGORITHM_INFORMATION.TITLE' | translate }}:</span>
-                          <span [class.sort__info--collapsed]="!showInfo">&#x25B2;</span>
-                        </p>
-                        @if (showControlPanel && showInfo) {
-                          <label>
-                            <br>
-                              @if (!sortMethod) {
-                                <span>{{ 'SUBHEADER.ALGORITHM_INFORMATION.NONE' | translate }}<br></span>
-                              }
-                              {{ sortDescription }}<br>
-                              @if (sortLink) {
-                                <a href="{{ sortLink }}" target="_blank" [title]="sortMethod + ' Sort'" class="sort__info--link" rel="noopener noreferrer">
-                                  {{ selectedAlgorithm?.category !== 'System' ? ('SUBHEADER.ALGORITHM_INFORMATION.WIKIPEDIA' | translate) : ('SUBHEADER.ALGORITHM_INFORMATION.DOCUMENTATION' | translate) }}
-                                </a>
-                              }
-                            </label>
-                          }
-                        </div>
-                      </div>
-                    }
-                    <div class="sort__container">
-                      @for (bar of sortArray; track bar.id; let i = $index) {
-                        <sort-bar
-                          [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color"
-                          [defaultColor]="bar.defaultColor" [style]="bar.style" [showValue]="showValues" [showGradientColor]="showGradientColor">
-                        </sort-bar>
-                      }
-                      <svg height="150%" width="100%" class="sort__container--polyline">
-                        <filter id="blurMe">
-                          <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
-                        </filter>
-                        @if (sortStyle === 'LINE') {
-                          <polyline id="polyline" points="" />
-                        }
-                        @if (sorting && showSwapCurve && sortArray.length === elementCount) {
-                          <path id="swapline"  filter="url(#blurMe)" points="" />
-                        }
-                      </svg>
-                    </div>
-                    <div class="sort__footer">
-                      <button class="btn__minimal sort__footer--link" [title]="'FOOTER.ABOUT' | translate" (click)="showIntro = true">{{ 'FOOTER.ABOUT' | translate }}</button>
-                      <p class="sort__footer--separator">|</p>
-                      <button class="btn__minimal sort__footer--link" [title]="'FOOTER.COMPARISON' | translate" (click)="showComparison = true">{{ 'FOOTER.COMPARISON' | translate }}</button>
-                      <p class="sort__footer--separator">|</p>
-                      <a class="sort__footer--link" [title]="'FOOTER.GITHUB' | translate" rel="noopener noreferrer"
-                        href="https://github.com/jasperyeo/sorting-visualizer" target="_blank">
-                        {{ 'FOOTER.GITHUB' | translate }}
-                      </a>
-                    </div>
-                  </div>
-
-                  @if (loading) {
-                    <div class="fullscreen-load__overlay">
-                      <p class="fullscreen-load__text">{{ 'LOADING' | translate }}</p>
-                    </div>
+            @if (minValue <= 0) {
+              <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MIN_WARNING' | translate }}</label>
+            }
+            @if (maxValue > viewHeight() * 0.45) {
+              <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MAX_WARNING' | translate }}</label>
+            }
+          </div>
+        }
+      </div>
+      <div class="sort__info" id="statistics" #statistics>
+        <p class="sort__info--header" (click)="showStatistics.update(() => !showStatistics())">
+          <span class="sort__info--title"><span class="sort__info--title--icon">&#9871;</span> {{ 'SUBHEADER.STATISTICS.TITLE' | translate }}:</span>
+          <span [class.sort__info--collapsed]="!showStatistics()">&#x25B2;</span>
+        </p>
+        @if (showControlPanel() && showStatistics()) {
+          <div>
+            <br />
+            <label>
+              {{ 'SUBHEADER.STATISTICS.VISUAL_TIME' | translate }}:&nbsp;<span id="stopwatch" class="sort__info--value">{{ visualTime() }}</span><br />
+              {{ 'SUBHEADER.STATISTICS.ELEMENTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortArray.length }}</span><br />
+              {{ 'SUBHEADER.STATISTICS.UNIQUE' | translate }}:&nbsp;<span class="sort__info--value">{{ uniqueCount }}</span><br />
+              {{ 'SUBHEADER.STATISTICS.COMPARES' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfCompares() }}</span><br />
+              {{ 'SUBHEADER.STATISTICS.SWAPS' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfSwaps() }}</span><br />
+            </label>
+            <br />
+            <hr />
+            <br />
+            <table>
+              <tbody>
+                <tr>
+                  <td>{{ 'COMPARISON.BEST' | translate }}</td>
+                  <td [style.background-color]="COMPLEXITY_TIME.get(selectedAlgorithm?.best)">
+                    <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.best | bigONotation"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>{{ 'COMPARISON.AVERAGE' | translate }}</td>
+                  <td [style.background-color]="COMPLEXITY_TIME.get(selectedAlgorithm?.average)">
+                    <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.average | bigONotation"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>{{ 'COMPARISON.WORST' | translate }}</td>
+                  <td [style.background-color]="COMPLEXITY_TIME.get(selectedAlgorithm?.worst)">
+                    <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.worst | bigONotation"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>{{ 'COMPARISON.MEMORY' | translate }}</td>
+                  <td [style.background-color]="COMPLEXITY_SPACE.get(selectedAlgorithm?.memory)">
+                    <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.memory | bigONotation"></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <hr />
+            <br />
+              @for (stat of sortStats(); track stat) {
+                <label>
+                  {{ ('SUBHEADER.STATISTICS.' + stat?.label) | translate }}:<br />
+                  @if (stat?.type === 'string') {
+                    <span>{{ stat?.value }}<br /></span>
                   }
-
-                  @if (showIntro) {
-                    <intro-dialog (onDialogClose)="showIntro = false"></intro-dialog>
+                  @if (stat?.type === 'array') {
+                    <span>{{ stat?.value?.toString() }}<br /></span>
                   }
-                  @if (showComparison) {
-                    <comparison-dialog [algorithms]="sortAlgorithms" (onDialogClose)="showComparison = false"></comparison-dialog>
-                  }
+                </label>
+              }
+          </div>
+        }
+      </div>
+      <div class="sort__info sort__info--info" id="information" #information>
+        <p class="sort__info--header" (click)="showInfo.update(() => !showInfo())">
+          <span class="sort__info--title"><span class="sort__info--title--icon">?</span> {{ 'SUBHEADER.ALGORITHM_INFORMATION.TITLE' | translate }}:</span>
+          <span [class.sort__info--collapsed]="!showInfo()">&#x25B2;</span>
+        </p>
+        @if (showControlPanel() && showInfo()) {
+          <label>
+            <br />
+            @if (!sortMethod) {
+              <span>{{ 'SUBHEADER.ALGORITHM_INFORMATION.NONE' | translate }}<br /></span>
+            }
+            {{ sortDescription }}<br />
+            @if (sortLink) {
+              <a href="{{ sortLink }}" target="_blank" [title]="sortMethod + ' Sort'" class="sort__info--link" rel="noopener noreferrer">
+                {{ selectedAlgorithm?.category !== 'System' ? ('SUBHEADER.ALGORITHM_INFORMATION.WIKIPEDIA' | translate) : ('SUBHEADER.ALGORITHM_INFORMATION.DOCUMENTATION' | translate) }}
+              </a>
+            }
+          </label>
+          }
+      </div>
+    </div>
+  }
+  <div class="sort__container">
+    @for (bar of sortArray; track bar.id; let i = $index) {
+      <sort-bar
+        [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color"
+        [defaultColor]="bar.defaultColor" [style]="bar.style" [showValue]="showValues()" [showGradientColor]="showGradientColor()">
+      </sort-bar>
+    }
+    <svg height="150%" width="100%" class="sort__container--polyline">
+      <filter id="blurMe">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+      </filter>
+      @if (sortStyle === 'LINE') {
+        <polyline id="polyline" points="" />
+      }
+      @if (sorting() && showSwapCurve() && sortArray.length === elementCount) {
+        <path id="swapline"  filter="url(#blurMe)" points="" />
+      }
+    </svg>
+  </div>
+  <div class="sort__footer">
+    <button class="btn__minimal sort__footer--link" [title]="'FOOTER.ABOUT' | translate" (click)="showIntro.update(() => true)">{{ 'FOOTER.ABOUT' | translate }}</button>
+    <p class="sort__footer--separator">|</p>
+    <button class="btn__minimal sort__footer--link" [title]="'FOOTER.COMPARISON' | translate" (click)="showComparison.update(() => true)">{{ 'FOOTER.COMPARISON' | translate }}</button>
+    <p class="sort__footer--separator">|</p>
+    <a class="sort__footer--link" [title]="'FOOTER.GITHUB' | translate" rel="noopener noreferrer"
+      href="https://github.com/jasperyeo/sorting-visualizer" target="_blank">
+      {{ 'FOOTER.GITHUB' | translate }}
+    </a>
+  </div>
+</div>
+@if (loading()) {
+  <div class="fullscreen-load__overlay">
+    <p class="fullscreen-load__text">{{ 'LOADING' | translate }}</p>
+  </div>
+}
+@if (showIntro()) {
+  <intro-dialog (onDialogClose)="showIntro.update(() => false)"></intro-dialog>
+}
+@if (showComparison()) {
+  <comparison-dialog [algorithms]="sortAlgorithms" (onDialogClose)="showComparison.update(() => false)"></comparison-dialog>
+}

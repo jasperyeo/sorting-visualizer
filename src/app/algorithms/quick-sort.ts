@@ -1,6 +1,6 @@
 import { signal, WritableSignal } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 import { compare, swap } from './common';
 
 enum PivotCode {
@@ -43,16 +43,16 @@ async function partition(pivotCode: PivotCode, visualizer: SortingVisualizerComp
   const pivotValue: number = array[pivot()].value;
   let i: number = left, j: number = right;
   while (i <= j) {
-    if (!visualizer.sorting) break;
+    if (!visualizer.isSorting()) break;
     array[pivot()].color = SortBarColor.PIVOT;
     while (array[i].value < pivotValue) {
-      if (!visualizer.sorting) break;
-      visualizer.noOfCompares++;
+      if (!visualizer.isSorting()) break;
+      visualizer.noOfCompares.update((value) => value + 1);
       i++;
     }
     while (array[j].value > pivotValue) {
-      if (!visualizer.sorting) break;
-      visualizer.noOfCompares++;
+      if (!visualizer.isSorting()) break;
+      visualizer.noOfCompares.update((value) => value + 1);
       j--;
     }
     if (i <= j) {

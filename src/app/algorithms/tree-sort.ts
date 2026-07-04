@@ -1,5 +1,5 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 import { compare } from './common';
 
 class BinaryTree {
@@ -9,12 +9,12 @@ class BinaryTree {
 }
 
 async function insert(visualizer: SortingVisualizerComponent, searchTree: BinaryTree, node: SortBarInterface, array: SortBarInterface[], left: boolean): Promise<void> {
-  if (!visualizer.sorting) return;
+  if (!visualizer.isSorting()) return;
   if (!searchTree.node) {
     searchTree.node = node;
     array.push(searchTree.node);
-    if (visualizer.enableAudio) visualizer.playBeep(searchTree.node.value);
-    visualizer.noOfSwaps++;
+    if (visualizer.isAudioEnabled()) visualizer.playBeep(searchTree.node.value);
+    visualizer.noOfSwaps.update((value) => value + 1);
     searchTree.node.color = SortBarColor.SWAP;
     await visualizer.sleep(visualizer.sortDelay);
     searchTree.node.color = left ? SortBarColor.NORMAL : SortBarColor.PIVOT;
@@ -30,12 +30,12 @@ async function insert(visualizer: SortingVisualizerComponent, searchTree: Binary
 }
 
 async function inOrder(visualizer: SortingVisualizerComponent, searchTree: BinaryTree | null, array: SortBarInterface[]): Promise<void> {
-  if (!visualizer.sorting) return;
+  if (!visualizer.isSorting()) return;
   if (!searchTree || !searchTree.node) {
     return;
   } else {
     await inOrder(visualizer, searchTree.leftSubTree, array);
-    if (visualizer.enableAudio) visualizer.playBeep(searchTree.node.value);
+    if (visualizer.isAudioEnabled()) visualizer.playBeep(searchTree.node.value);
     searchTree.node.color = SortBarColor.SWAP;
     array.push(searchTree.node);
     await visualizer.sleep(visualizer.sortDelay);
@@ -49,7 +49,7 @@ export async function treeSort(visualizer: SortingVisualizerComponent, array: So
   let originalArray: SortBarInterface[] = JSON.parse(JSON.stringify(array));
   array.splice(0, array.length);
   for (let i: number = 0; i < originalArray.length; i++) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     await insert(visualizer, searchTree, originalArray[i], array, false);
   }
   array.splice(0, array.length);

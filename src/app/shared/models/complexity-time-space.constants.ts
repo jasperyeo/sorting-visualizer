@@ -5,7 +5,7 @@ enum ComplexityColorCode {
   BAD = '#FFAAA7'
 }
 
-export const complexityTime: Map<string, string> = new Map([
+export const COMPLEXITY_TIME: Map<string, string> = new Map([
   ['n', ComplexityColorCode.GOOD],
   ['nlogn', ComplexityColorCode.GOOD],
   ['n · (k/d)', ComplexityColorCode.GOOD],
@@ -27,7 +27,7 @@ export const complexityTime: Map<string, string> = new Map([
   ['infinity', ComplexityColorCode.BAD],
 ]);
 
-export const complexitySpace: Map<string, string> = new Map([
+export const COMPLEXITY_SPACE: Map<string, string> = new Map([
   ['1', ComplexityColorCode.GOOD],
 
   ['logn', ComplexityColorCode.AVERAGE],

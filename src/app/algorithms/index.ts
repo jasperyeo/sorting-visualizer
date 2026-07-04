@@ -1,8 +1,6 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
-
+import { SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 export * from './common';
-
 import { leftPivotQuickSort, middlePivotQuickSort, medianPivotQuickSort } from './quick-sort';
 import { mergeSort } from './merge-sort';
 import { timSort } from './tim-sort';

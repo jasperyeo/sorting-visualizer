@@ -1,5 +1,5 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 import { flatten } from './common';
 import { insertionSort } from './insertion-sort';
 
@@ -24,12 +24,12 @@ export async function integerKeysBucketSort(visualizer: SortingVisualizerCompone
   let totalCount: number = 0;
   for (let i: number = 0; i < buckets.length; i++) {
     for (let j: number = 0; j < buckets[i].length; j++) {
-      if (!visualizer.sorting) break;
+      if (!visualizer.isSorting()) break;
       array[totalCount] = buckets[i][j];
       array[totalCount].color = SortBarColor.SWAP;
-      if (visualizer.enableAudio) visualizer.playBeep(array[totalCount].value);
-      visualizer.noOfCompares++;
-      visualizer.noOfSwaps++;
+      if (visualizer.isAudioEnabled()) visualizer.playBeep(array[totalCount].value);
+      visualizer.noOfCompares.update((value) => value + 1);
+      visualizer.noOfSwaps.update((value) => value + 1);
       await visualizer.sleep(visualizer.sortDelay);
       array[totalCount].color = i % 2 ? SortBarColor.PIVOT : SortBarColor.NORMAL;
       totalCount++;
@@ -40,10 +40,10 @@ export async function integerKeysBucketSort(visualizer: SortingVisualizerCompone
   }
   const finalArray: any[] = flatten(buckets);
   for (let i: number = 0; i < n; i++) {
-    if (!visualizer.sorting) break;
+    if (!visualizer.isSorting()) break;
     array[i] = finalArray[i];
     array[i].color = SortBarColor.SWAP;
-    if (visualizer.enableAudio) visualizer.playBeep(array[i].value);
+    if (visualizer.isAudioEnabled()) visualizer.playBeep(array[i].value);
     await visualizer.sleep(visualizer.sortDelay);
     array[i].color = SortBarColor.NORMAL;
   }

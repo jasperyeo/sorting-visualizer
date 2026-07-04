@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody class="comparison-dialog__table">
-          @for (algo of filteredAlgorithms; track algo) {
+          @for (algo of filteredAlgorithms(); track algo) {
             <tr>
               <td>
                 <a [href]="algo?.link" [title]="algo?.label" target="_blank" class="comparison-dialog__link" rel="noopener noreferrer">
@@ -27,15 +27,14 @@
                 </a>
               </td>
               <td>{{ algo?.category }}</td>
-              <td class="no-wrap" [innerHTML]="algo?.best | bigONotation" [style.background-color]="complexityTime.get(algo?.best)"></td>
-              <td class="no-wrap" [innerHTML]="algo?.average | bigONotation" [style.background-color]="complexityTime.get(algo?.average)"></td>
-              <td class="no-wrap" [innerHTML]="algo?.worst | bigONotation" [style.background-color]="complexityTime.get(algo?.worst)"></td>
-              <td class="no-wrap" [innerHTML]="algo?.memory | bigONotation" [style.background-color]="complexitySpace.get(algo?.memory)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.best | bigONotation" [style.background-color]="COMPLEXITY_TIME.get(algo?.best)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.average | bigONotation" [style.background-color]="COMPLEXITY_TIME.get(algo?.average)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.worst | bigONotation" [style.background-color]="COMPLEXITY_TIME.get(algo?.worst)"></td>
+              <td class="no-wrap" [innerHTML]="algo?.memory | bigONotation" [style.background-color]="COMPLEXITY_SPACE.get(algo?.memory)"></td>
             </tr>
           }
         </tbody>
       </table>
-      <!-- <label class="sticky-search__results">{{ 'COMPARISON.TOTAL_RESULTS' | translate }}{{ filteredAlgorithms?.length }}</label> -->
     </div>
     <div class="comparison-dialog__footer">
       <button (click)="closeDialog()" [title]="'INTRO.CLOSE' | translate">

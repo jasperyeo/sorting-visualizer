@@ -1,6 +1,6 @@
 import { signal, WritableSignal } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 import { compare } from './common';
 
 export async function mergeSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
@@ -16,7 +16,7 @@ export async function mergeSortRecursive(visualizer: SortingVisualizerComponent,
   let k: WritableSignal<number> = signal<number>(mid);
 
   for (let i = start, r = 0; i < mid; r++, i++) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     while (k() < end && compare(visualizer, array[i], array[k()])) {
       cloned[r] = array[k()];
       r++;
@@ -26,11 +26,11 @@ export async function mergeSortRecursive(visualizer: SortingVisualizerComponent,
   }
 
   for (let i = 0; i < k() - start; i++) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     array[i + start] = cloned[i];
     array[i + start].color = SortBarColor.SWAP;
-    visualizer.noOfSwaps++;
-    if (visualizer.enableAudio) visualizer.playBeep(array[i + start].value);
+    visualizer.noOfSwaps.update((value) => value + 1);
+    if (visualizer.isAudioEnabled()) visualizer.playBeep(array[i + start].value);
     await visualizer.sleep(visualizer.sortDelay);
     array[i + start].color = SortBarColor.NORMAL;
   }

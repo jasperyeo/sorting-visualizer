@@ -1,4 +1,4 @@
-@import './../../../styles.scss';
+@use '../../../styles.scss';
 
 *, *:before, *:after {
   transition: all .2s ease-in-out;
@@ -95,7 +95,7 @@
     &--select-algo {
       width: 22rem;
 
-      @include respond(md) {
+      @include styles.respond(md) {
         width: 12rem;
       }
     }
@@ -114,7 +114,7 @@
       line-height: 3rem;
       margin-left: 1.2rem;
 
-      @include respond(md) {
+      @include styles.respond(md) {
         display: none;
       }
     }
@@ -135,7 +135,7 @@
       cursor: pointer;
       position: relative;
 
-      @include respond(md) {
+      @include styles.respond(md) {
         display: none;
       }
     }
@@ -162,7 +162,7 @@
     }
 
     &--button-normal {
-      @include respond(md) {
+      @include styles.respond(md) {
         display: none;
       }
     }
@@ -170,7 +170,7 @@
     &--button-mobile {
       display: none;
       
-      @include respond(md) {
+      @include styles.respond(md) {
         display: block;
       }
     }
@@ -178,7 +178,7 @@
     &--menu-container {
       display: flex;
 
-      @include respond(md) {
+      @include styles.respond(md) {
         margin: 0px !important;
       }
 
@@ -205,7 +205,7 @@
     overflow-x: auto;
     max-height: 75%;
 
-    @include respond(md) {
+    @include styles.respond(md) {
       scroll-snap-type: x mandatory;
       //overflow-x: hidden;
     }
@@ -214,7 +214,7 @@
   &__subheader-paginator {
     display: none;
 
-    @include respond(md) {
+    @include styles.respond(md) {
       animation: info-appear .5s ease-in-out;
       display: flex;
       justify-content: space-evenly;
@@ -252,7 +252,7 @@
       }
     }
 
-    @include respond(md) {
+    @include styles.respond(md) {
       width: calc(100% - 2rem);
       scroll-snap-align: center;
     }
@@ -315,7 +315,7 @@
     &--info {
       width: 30rem;
 
-      @include respond(md) {
+      @include styles.respond(md) {
         width: calc(100% - 2rem);
       }
     }

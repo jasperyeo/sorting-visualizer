@@ -1,5 +1,5 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 import { compare, swap } from './common';
 
 export async function slowSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
@@ -7,7 +7,7 @@ export async function slowSort(visualizer: SortingVisualizerComponent, array: So
 }
 
 async function slowSortRecursive(visualizer: SortingVisualizerComponent, array: SortBarInterface[], i: number, j: number): Promise<void> {
-  if (i >= j || !visualizer.sorting) return;
+  if (i >= j || !visualizer.isSorting()) return;
   const m: number = Math.floor((i + j) / 2);
   await slowSortRecursive(visualizer, array, i, m);
   await slowSortRecursive(visualizer, array, m + 1, j);

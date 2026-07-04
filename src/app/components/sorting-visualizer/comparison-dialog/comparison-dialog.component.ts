@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, ModelSignal, model, input, output } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ModelSignal, model, input, output, InputSignal, OutputEmitterRef, WritableSignal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
-import { complexityTime, complexitySpace } from './../../../shared/models/complexity-time-space';
+import { COMPLEXITY_TIME, COMPLEXITY_SPACE } from '../../../shared/models/complexity-time-space.constants';
 import { BigONotationPipe } from '../../../shared/pipes/big-o-notation.pipe';
 
 @Component({
@@ -11,20 +11,20 @@ import { BigONotationPipe } from '../../../shared/pipes/big-o-notation.pipe';
     TranslatePipe,
     BigONotationPipe
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'comparison-dialog',
   templateUrl: './comparison-dialog.component.html',
   styleUrls: ['./comparison-dialog.component.scss']
 })
 export class ComparisonDialogComponent implements OnInit {
 
-  public readonly algorithms = input<any[]>([]);
-  public readonly onDialogClose = output<boolean>({ alias: 'onDialogClose' });
-  public readonly complexityTime = complexityTime;
-  public readonly complexitySpace = complexitySpace;
-  public listedAlgorithms: any[] = [];
-  public filteredAlgorithms: any[] = [];
-  public sortSearchTerm: ModelSignal<string> = model<string>('');
+  public readonly algorithms: InputSignal<any[]> = input<any[]>([]);
+  protected readonly onDialogClose: OutputEmitterRef<boolean> = output<boolean>({ alias: 'onDialogClose' });
+  protected readonly COMPLEXITY_TIME = COMPLEXITY_TIME;
+  protected readonly COMPLEXITY_SPACE = COMPLEXITY_SPACE;
+  protected readonly listedAlgorithms: WritableSignal<any[]> = signal<any[]>([]);
+  protected readonly filteredAlgorithms: WritableSignal<any[]> = signal<any[]>([]);
+  protected readonly sortSearchTerm: ModelSignal<string> = model<string>('');
 
   public ngOnInit(): void {
     const algorithms = this.algorithms();
@@ -32,23 +32,25 @@ export class ComparisonDialogComponent implements OnInit {
       algorithms.forEach((cat: any) => {
         if (cat.algorithms && cat.algorithms.length) {
           cat.algorithms.forEach((algo: any) => {
-            this.listedAlgorithms.push(algo);
+            this.listedAlgorithms.update((algorithms) => [...algorithms, algo]);
           });
         }
       });
     }
-    this.filteredAlgorithms = this.listedAlgorithms;
+    this.filteredAlgorithms.update(() => this.listedAlgorithms());
   }
 
-  public closeDialog(): void {
+  protected closeDialog(): void {
     this.onDialogClose.emit(true);
   }
 
-  public search(): void {
+  protected search(): void {
     if (!this.sortSearchTerm() || !this.sortSearchTerm().length) {
-      this.filteredAlgorithms = this.listedAlgorithms;
+      this.filteredAlgorithms.update(() => this.listedAlgorithms());
       return;
     }
-    this.filteredAlgorithms = this.listedAlgorithms.filter(algo => (algo.label as string).toUpperCase().includes(this.sortSearchTerm().toUpperCase()) || (algo.category as string).toUpperCase().includes(this.sortSearchTerm().toUpperCase()));
+    this.filteredAlgorithms.update(() => this.listedAlgorithms().filter(algo =>
+      (algo.label as string).toUpperCase().includes(this.sortSearchTerm().toUpperCase()) ||
+      (algo.category as string).toUpperCase().includes(this.sortSearchTerm().toUpperCase())));
   }
 }

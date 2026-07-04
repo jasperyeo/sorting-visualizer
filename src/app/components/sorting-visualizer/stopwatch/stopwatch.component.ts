@@ -1,72 +1,64 @@
-import { Component, ChangeDetectionStrategy, input, model, ModelSignal, InputSignal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, model, ModelSignal, InputSignal, signal, WritableSignal, computed } from '@angular/core';
 
 @Component({
-    standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
-    selector: 'stopwatch',
-    templateUrl: './stopwatch.component.html',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'stopwatch',
+  templateUrl: './stopwatch.component.html',
 })
 export class StopwatchComponent {
 
-  public readonly display: ModelSignal<HTMLElement | null> = model<HTMLElement | null>(document.getElementById('stopwatch'));
-  public readonly delay: InputSignal<number> = input<number>(100);
-  public value: number = 0;
-  public interval: any;
-  public isRunning: boolean = false;
+  protected readonly display: ModelSignal<HTMLElement | null> = model<HTMLElement | null>(document.getElementById('stopwatch'));
+  protected readonly delay: InputSignal<number> = input<number>(100);
+  protected value: WritableSignal<number> = signal<number>(0);
+  protected interval: WritableSignal<any> = signal<any>(null);
+  protected isRunning: WritableSignal<boolean> = signal<boolean>(false);
 
   public formatTime(ms: number): string {
-    let hours: number | string   = Math.floor(ms / 3600000);
-    let minutes: number | string = Math.floor((ms - (hours * 3600000)) / 60000);
-    let seconds: number | string = Math.floor((ms - (hours * 3600000) - (minutes * 60000)) / 1000);
-    let ds: number = Math.floor((ms - (hours * 3600000) - (minutes * 60000) - (seconds * 1000)) / 100);
-    if (hours < 10) {
-      hours = "0" + hours;
-    }
-    if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    return minutes + ':' + seconds + '.' + ds;
+    const hours: WritableSignal<number>   = signal<number>(Math.floor(ms / 3600000));
+    const minutes: WritableSignal<number> = signal<number>(Math.floor((ms - (hours() * 3600000)) / 60000));
+    const seconds: WritableSignal<number> = signal<number>(Math.floor((ms - (hours() * 3600000) - (minutes() * 60000)) / 1000));
+    const ds: WritableSignal<number> = signal<number>(Math.floor((ms - (hours() * 3600000) - (minutes() * 60000) - (seconds() * 1000)) / 100));
+    const formattedTime = computed(() => ( minutes() < 10 ? "0" + minutes() : minutes() ) + ':' + ( seconds() < 10 ? "0" + seconds() : seconds() ) + '.' + ( ds() < 10 ? "0" + ds() : ds() ));
+    return formattedTime();
   }
   
   public update(): void {
-    if (this.isRunning) {
-      this.value += this.delay();
+    if (this.isRunning()) {
+      this.value.update((v) => v + this.delay());
     }
     const display = this.display();
     if (display) {
-      display.innerText = this.formatTime(this.value);
+      display.innerText = this.formatTime(this.value());
     }
   }
   
   public start(): void {
-    if (!this.isRunning) {
-      this.isRunning = true;
+    if (!this.isRunning()) {
+      this.isRunning.update(() => true);
       if (!this.display()) {
         this.display.update(() => document.getElementById('stopwatch'));
       }
-      if (!this.interval) {
-        let t = this;
-        this.interval = setInterval(() => { t.update(); }, this.delay());
+      if (!this.interval()) {
+        const t = this;
+        this.interval.update(() => setInterval(() => { t.update(); }, this.delay()));
       }
     }
   }
   
   public stop(): void {
-    if (this.isRunning) {
-      this.isRunning = false;
-      if (this.interval) {
-        clearInterval(this.interval);
-        this.interval = null;
+    if (this.isRunning()) {
+      this.isRunning.update(() => false);
+      if (this.interval()) {
+        clearInterval(this.interval());
+        this.interval.update(() => null);
       }
     }
   }
   
   public reset(): void {
     this.stop();
-    this.value = 0;
+    this.value.update(() => 0);
     this.update();
   }
 }

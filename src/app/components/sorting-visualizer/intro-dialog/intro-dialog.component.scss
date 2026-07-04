@@ -1,4 +1,4 @@
-@import './../../../../styles.scss';
+@use '../../../../styles.scss';
 
 :host {
   position: fixed;
@@ -33,7 +33,7 @@
     animation: dialog-appear .2s ease-in-out;
     overflow-y: auto;
 
-    @include respond(md) {
+    @include styles.respond(md) {
       height: 85%;
       padding: 0px 4rem;
       padding-top: calc(100% / 3);
@@ -53,7 +53,7 @@
   }
 
   &__content {
-    @include respond(md) {
+    @include styles.respond(md) {
       overflow-y: auto;
       max-height: calc(100% - 9rem);
     }

@@ -1,15 +1,15 @@
 import { signal, WritableSignal } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 
 export async function lsdRadixSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   let digitPlacing: WritableSignal<number> = signal<number>(1);
   while (digitPlacing()) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     let buckets: Array<SortBarInterface[]> = [[],[],[],[],[],[],[],[],[],[]];
     let digitTerminalCount: number = 0;
     for (let i: number = array.length - 1; i >= 0; i--) {
-      if (!visualizer.sorting) return;
+      if (!visualizer.isSorting()) return;
       const stringValue: string = array[i].value.toString();
       const digitChar: string = stringValue.charAt(stringValue.length - digitPlacing());
       if (digitChar && digitChar.length) {
@@ -21,15 +21,15 @@ export async function lsdRadixSort(visualizer: SortingVisualizerComponent, array
       }
     }
     for (let i: number = 0; i < buckets.length; i++) {
-      if (!visualizer.sorting) return;
+      if (!visualizer.isSorting()) return;
       while (buckets[i].length) {
         let popped: SortBarInterface = buckets[i].pop() as SortBarInterface;
-        if (!visualizer.sorting) return;
+        if (!visualizer.isSorting()) return;
         popped.color = SortBarColor.SWAP;
-        if (visualizer.enableAudio) visualizer.playBeep(popped.value);
+        if (visualizer.isAudioEnabled()) visualizer.playBeep(popped.value);
         array.push(popped);
-        visualizer.noOfCompares++;
-        visualizer.noOfSwaps++;
+        visualizer.noOfCompares.update((value) => value + 1);
+        visualizer.noOfSwaps.update((value) => value + 1);
         await visualizer.sleep(visualizer.sortDelay);
         popped.color = i % 2 ? SortBarColor.PIVOT : SortBarColor.NORMAL;
       }

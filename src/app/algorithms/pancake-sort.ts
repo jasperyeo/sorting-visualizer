@@ -1,18 +1,21 @@
 import { signal, WritableSignal } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 import { compare, swap } from './common';
 
 export async function pancakeSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   let pancakes: WritableSignal<number> = signal<number>(array.length);
   while (pancakes() > 1) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     let maxIndex: number = maxHeight(visualizer, array, pancakes());
     if (maxIndex !== pancakes()) {
       await flip(visualizer, array, maxIndex);
       await flip(visualizer, array, pancakes() - 1);
-      let currentFlips: number = parseInt(visualizer.sortStats[0].value);
-      visualizer.sortStats[0].value = (currentFlips + 2).toString();
+      visualizer.sortStats.update((stats) => {
+        let currentFlips: number = parseInt(stats[0].value);
+        stats[0].value = (currentFlips + 2).toString();
+        return stats;
+      });
     }
     pancakes.update(() => pancakes() - 1);
   }
@@ -31,7 +34,7 @@ function maxHeight(visualizer: SortingVisualizerComponent, array: SortBarInterfa
 async function flip(visualizer: SortingVisualizerComponent, array: SortBarInterface[], flipIndex: number): Promise<void> {
   let left: WritableSignal<number> = signal<number>(0);
   while (left() < flipIndex) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     await swap(visualizer, array, left(), flipIndex);
     flipIndex--;
     left.update(() => left() + 1);

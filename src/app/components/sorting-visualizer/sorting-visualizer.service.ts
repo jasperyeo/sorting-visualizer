@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SortingVisualizerService {
   
-  constructor(private _httpClient: HttpClient) {}
+  protected readonly _httpClient: HttpClient = inject(HttpClient);
 
-  getWikipediaSummary(searchTerm: string): Promise<Object | undefined> {
+  public getWikipediaSummary(searchTerm: string): Promise<Object | undefined> {
     return this._httpClient.get('https://en.wikipedia.org/api/rest_v1/page/summary/' + searchTerm).toPromise();
   }
 

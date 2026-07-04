@@ -1,6 +1,6 @@
 import { signal, WritableSignal } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 import { insertionSort } from './insertion-sort';
 import { mergeSort } from './merge-sort';
 
@@ -10,7 +10,7 @@ export async function timSort(visualizer: SortingVisualizerComponent, array: Sor
   const minRun: number = minRunLength(MIN_MERGE);
   const n: number = array.length;
   for (let i: number = 0; i < n; i += minRun) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     const right: number = Math.min((i + MIN_MERGE), n);
     await insertionSort(visualizer, array, i, right);
   }

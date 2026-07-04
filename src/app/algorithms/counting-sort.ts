@@ -1,6 +1,6 @@
 import { signal, WritableSignal } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarComponent, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
 
 export async function countingSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   const min: number = Math.min(...array.map(elem => elem.value));
@@ -8,17 +8,17 @@ export async function countingSort(visualizer: SortingVisualizerComponent, array
   const originalLength: number = array.length;
   let count: WritableSignal<number[]> = signal<number[]>([]), counter: WritableSignal<number> = signal<number>(0);
   for (let i: number = 0; i <= max; i++) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     count.update(prev => { prev[i] = 0; return prev; });
   }
   for (let i: number = 0; i < array.length; i++) {
-    if (!visualizer.sorting) return;
-    visualizer.noOfCompares++;
+    if (!visualizer.isSorting()) return;
+    visualizer.noOfCompares.update((value) => value + 1);
     count.update(prev => { prev[array[i].value]++; return prev; });
   }
   array.splice(0);
   for (let i: number = 0; i < count.length; i++) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     if (!count()[i]) continue;
     const hueValue: string = ((count()[i] * 100 / visualizer.maxValue) * 360).toString();
     let sortBar: SortBarInterface = {
@@ -29,18 +29,10 @@ export async function countingSort(visualizer: SortingVisualizerComponent, array
       sortDelay: visualizer.sortDelay, // sortDelay
       value: count()[i] * 100, // value
       valueString: (count()[i] * 100).toString(), // valueString
-      showValue: visualizer.showValues, // showValue
-      showGradientColor: visualizer.showGradientColor // showGradientColor
+      showValue: visualizer.isValuesShowed(), // showValue
+      showGradientColor: visualizer.isGradientColorShowed() // showGradientColor
     };
-    // sortBar.id.set('bar' + i.toString());
-    // sortBar.style.set(visualizer.sortStyle);
-    // sortBar.sortDelay.set(visualizer.sortDelay);
-    // sortBar.value.set(count()[i] * 100);
-    // const hueValue: string = ((sortBar.value() / visualizer.maxValue) * 360).toString();
-    // sortBar.defaultColor.set('hsl(' + hueValue + ', 100%, 77%)');
-    // if (visualizer.enableAudio) visualizer.playBeep(sortBar.value());
-    // sortBar.showValue.set(visualizer.showValues);
-    visualizer.noOfSwaps++;
+    visualizer.noOfSwaps.update((value) => value + 1);
     array.push(sortBar);
     array[array.length - 1].color = SortBarColor.SWAP;
     await visualizer.sleep(visualizer.sortDelay);
@@ -57,22 +49,19 @@ export async function countingSort(visualizer: SortingVisualizerComponent, array
         sortDelay: visualizer.sortDelay, // sortDelay
         value: 0, // value
         valueString: '0', // valueString
-        showValue: visualizer.showValues, // showValue
-        showGradientColor: visualizer.showGradientColor // showGradientColor
+        showValue: visualizer.isValuesShowed(), // showValue
+        showGradientColor: visualizer.isGradientColorShowed() // showGradientColor
       };
-      // sortBar.style.set(visualizer.sortStyle);
-      // sortBar.sortDelay.set(visualizer.sortDelay);
-      // sortBar.value.set(0);
       array.push(sortBar);
     }
   }
   for (let i: number = min; i <= max; i++) {
-    if (!visualizer.sorting) return;
+    if (!visualizer.isSorting()) return;
     while (count()[i]-- > 0) {
-      if (!visualizer.sorting) return;
-      visualizer.noOfSwaps++;
+      if (!visualizer.isSorting()) return;
+      visualizer.noOfSwaps.update((value) => value + 1);
       array[counter()].value = i;
-      if (visualizer.enableAudio) visualizer.playBeep(array[counter()].value);
+      if (visualizer.isAudioEnabled()) visualizer.playBeep(array[counter()].value);
       const hueValue: string = ((array[counter()].value / visualizer.maxValue) * 360).toString();
       array[counter()].defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
       array[counter()].color = SortBarColor.SWAP;
