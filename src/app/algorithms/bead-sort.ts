@@ -1,5 +1,5 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarComponent } from '../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from '../shared/models/sort-bar/sort-bar.component';
 
 async function resize(array: number[], newSize: number, defaultValue: number) {
   while (newSize > array.length) {
@@ -18,8 +18,8 @@ async function distribute(visualizer: SortingVisualizerComponent, dist: number, 
   }
 }
 
-export async function beadSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
-  let beadList: number[] = [], finalList: number[] = [], originalList: number[] = array.map(element => element.value());
+export async function beadSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
+  let beadList: number[] = [], finalList: number[] = [], originalList: number[] = array.map(element => element.value);
   // beads falling down
   for (let i: number = 0; i < originalList.length; i++) {
     if (!visualizer.sorting) return;
@@ -27,12 +27,12 @@ export async function beadSort(visualizer: SortingVisualizerComponent, array: So
     for (let i: number = 0; i < array.length; i++) {
       if (!visualizer.sorting) return;
       if (beadList[i]) {
-        array[i].value.update(() => beadList[i]);
+        array[i].value = beadList[i];
         visualizer.noOfSwaps++;
-        array[i].color.update(() => SortBarColor.SWAP);
-        if (visualizer.enableAudio) visualizer.playBeep(array[i].value());
+        array[i].color = SortBarColor.SWAP;
+        if (visualizer.enableAudio) visualizer.playBeep(array[i].value);
         await visualizer.sleep(visualizer.sortDelay);
-        array[i].color.update(() => SortBarColor.NORMAL);
+        array[i].color = SortBarColor.NORMAL;
       }
     }
   }
@@ -43,11 +43,11 @@ export async function beadSort(visualizer: SortingVisualizerComponent, array: So
   }
   for (let i: number = 0; i < finalList.length; i++) {
     if (!visualizer.sorting) return;
-    array[i].value.update(() => finalList[finalList.length - 1 - i]);
+    array[i].value = finalList[finalList.length - 1 - i];
     visualizer.noOfSwaps++;
-    array[i].color.update(() => SortBarColor.SWAP);
-    if (visualizer.enableAudio) visualizer.playBeep(array[i].value());
+    array[i].color = SortBarColor.SWAP;
+    if (visualizer.enableAudio) visualizer.playBeep(array[i].value);
     await visualizer.sleep(visualizer.sortDelay);
-    array[i].color.update(() => SortBarColor.NORMAL);
+    array[i].color = SortBarColor.NORMAL;
   }
 }

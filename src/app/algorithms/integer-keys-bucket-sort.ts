@@ -1,19 +1,19 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
 import { flatten } from './common';
 import { insertionSort } from './insertion-sort';
 
-export async function integerKeysBucketSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+export async function integerKeysBucketSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   const n: number = array.length;
   const min: number = Math.min(...array.map(elem => elem.value));
   const max: number = Math.max(...array.map(elem => elem.value));
   const noOfBuckets: number = Math.floor(n / 2);
   const range: number = (max - min) / noOfBuckets;
-  let buckets: Array<SortBarComponent[]> = [];
+  let buckets: Array<SortBarInterface[]> = [];
   for (let i: number = 0; i < noOfBuckets; i++) {
     buckets.push([]);
   }
-  array.forEach((element: SortBarComponent) => {
+  array.forEach((element: SortBarInterface) => {
     const diff: number = (element.value - min) / range - Math.floor((element.value - min) / range);
     if (diff === 0 && element.value !== min) {
       buckets[Math.floor((element.value - min) / range) - 1].push(element);

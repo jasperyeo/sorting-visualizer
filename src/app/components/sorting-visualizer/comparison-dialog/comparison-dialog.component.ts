@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy, ModelSignal, model } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ModelSignal, model, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 import { complexityTime, complexitySpace } from './../../../shared/models/complexity-time-space';
@@ -18,8 +18,8 @@ import { BigONotationPipe } from '../../../shared/pipes/big-o-notation.pipe';
 })
 export class ComparisonDialogComponent implements OnInit {
 
-  @Input('algorithms') public algorithms: any[] = [];
-  @Output('onDialogClose') public onDialogClose: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public readonly algorithms = input<any[]>([]);
+  public readonly onDialogClose = output<boolean>({ alias: 'onDialogClose' });
   public readonly complexityTime = complexityTime;
   public readonly complexitySpace = complexitySpace;
   public listedAlgorithms: any[] = [];
@@ -27,8 +27,9 @@ export class ComparisonDialogComponent implements OnInit {
   public sortSearchTerm: ModelSignal<string> = model<string>('');
 
   public ngOnInit(): void {
-    if (this.algorithms && this.algorithms.length) {
-      this.algorithms.forEach((cat: any) => {
+    const algorithms = this.algorithms();
+    if (algorithms && algorithms.length) {
+      algorithms.forEach((cat: any) => {
         if (cat.algorithms && cat.algorithms.length) {
           cat.algorithms.forEach((algo: any) => {
             this.listedAlgorithms.push(algo);

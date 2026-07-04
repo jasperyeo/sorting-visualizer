@@ -1,32 +1,45 @@
+import { signal, WritableSignal } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarComponent, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
 
-export async function countingSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+export async function countingSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   const min: number = Math.min(...array.map(elem => elem.value));
   const max: number = Math.max(...array.map(elem => elem.value));
-  let count: number[] = [], counter: number = 0, originalLength: number = array.length;
+  const originalLength: number = array.length;
+  let count: WritableSignal<number[]> = signal<number[]>([]), counter: WritableSignal<number> = signal<number>(0);
   for (let i: number = 0; i <= max; i++) {
     if (!visualizer.sorting) return;
-    count[i] = 0;
+    count.update(prev => { prev[i] = 0; return prev; });
   }
   for (let i: number = 0; i < array.length; i++) {
     if (!visualizer.sorting) return;
     visualizer.noOfCompares++;
-    count[array[i].value]++;
+    count.update(prev => { prev[array[i].value]++; return prev; });
   }
   array.splice(0);
   for (let i: number = 0; i < count.length; i++) {
     if (!visualizer.sorting) return;
-    if (!count[i]) continue;
-    let sortBar: SortBarComponent = new SortBarComponent;
-    sortBar.id = 'bar' + i.toString();
-    sortBar.style = visualizer.sortStyle;
-    sortBar.sortDelay = visualizer.sortDelay;
-    sortBar.value = count[i] * 100;
-    const hueValue: string = ((sortBar.value / visualizer.maxValue) * 360).toString();
-    sortBar.defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
-    if (visualizer.enableAudio) visualizer.playBeep(sortBar.value);
-    sortBar.showValue = visualizer.showValues;
+    if (!count()[i]) continue;
+    const hueValue: string = ((count()[i] * 100 / visualizer.maxValue) * 360).toString();
+    let sortBar: SortBarInterface = {
+      id: 'bar' + i.toString(), // id
+      defaultColor: 'hsl(' + hueValue + ', 100%, 77%)', // defaultColor
+      color: SortBarColor.NORMAL, // color
+      style: visualizer.sortStyle, // style
+      sortDelay: visualizer.sortDelay, // sortDelay
+      value: count()[i] * 100, // value
+      valueString: (count()[i] * 100).toString(), // valueString
+      showValue: visualizer.showValues, // showValue
+      showGradientColor: visualizer.showGradientColor // showGradientColor
+    };
+    // sortBar.id.set('bar' + i.toString());
+    // sortBar.style.set(visualizer.sortStyle);
+    // sortBar.sortDelay.set(visualizer.sortDelay);
+    // sortBar.value.set(count()[i] * 100);
+    // const hueValue: string = ((sortBar.value() / visualizer.maxValue) * 360).toString();
+    // sortBar.defaultColor.set('hsl(' + hueValue + ', 100%, 77%)');
+    // if (visualizer.enableAudio) visualizer.playBeep(sortBar.value());
+    // sortBar.showValue.set(visualizer.showValues);
     visualizer.noOfSwaps++;
     array.push(sortBar);
     array[array.length - 1].color = SortBarColor.SWAP;
@@ -36,26 +49,36 @@ export async function countingSort(visualizer: SortingVisualizerComponent, array
   if (array.length < originalLength) {
     const diff: number = originalLength - array.length;
     for (let i: number = 0; i < diff; i++) {
-      let sortBar: SortBarComponent = new SortBarComponent;
-      sortBar.style = visualizer.sortStyle;
-      sortBar.sortDelay = visualizer.sortDelay;
-      sortBar.value = 0;
+      let sortBar: SortBarInterface = {
+        id: 'bar' + i.toString(), // id
+        defaultColor: 'turquoise', // defaultColor
+        color: SortBarColor.NORMAL, // color
+        style: visualizer.sortStyle, // style
+        sortDelay: visualizer.sortDelay, // sortDelay
+        value: 0, // value
+        valueString: '0', // valueString
+        showValue: visualizer.showValues, // showValue
+        showGradientColor: visualizer.showGradientColor // showGradientColor
+      };
+      // sortBar.style.set(visualizer.sortStyle);
+      // sortBar.sortDelay.set(visualizer.sortDelay);
+      // sortBar.value.set(0);
       array.push(sortBar);
     }
   }
   for (let i: number = min; i <= max; i++) {
     if (!visualizer.sorting) return;
-    while (count[i]-- > 0) {
+    while (count()[i]-- > 0) {
       if (!visualizer.sorting) return;
       visualizer.noOfSwaps++;
-      array[counter].value = i;
-      if (visualizer.enableAudio) visualizer.playBeep(array[counter].value);
-      const hueValue: string = ((array[counter].value / visualizer.maxValue) * 360).toString();
-      array[counter].defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
-      array[counter].color = SortBarColor.SWAP;
+      array[counter()].value = i;
+      if (visualizer.enableAudio) visualizer.playBeep(array[counter()].value);
+      const hueValue: string = ((array[counter()].value / visualizer.maxValue) * 360).toString();
+      array[counter()].defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
+      array[counter()].color = SortBarColor.SWAP;
       await visualizer.sleep(visualizer.sortDelay);
-      array[counter].color = SortBarColor.NORMAL;
-      counter++;
+      array[counter()].color = SortBarColor.NORMAL;
+      counter.update(() => counter() + 1);
     }
   }
 }

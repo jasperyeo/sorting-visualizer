@@ -1,12 +1,12 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
 import { compare, swap } from './common';
 
-export async function stoogeSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+export async function stoogeSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   await stoogeSortRecursive(visualizer, array, 0, array.length - 1);
 }
 
-async function stoogeSortRecursive(visualizer: SortingVisualizerComponent, array: SortBarComponent[], i: number, j: number): Promise<void> {
+async function stoogeSortRecursive(visualizer: SortingVisualizerComponent, array: SortBarInterface[], i: number, j: number): Promise<void> {
   if (!visualizer.sorting) return;
   if (compare(visualizer, array[i], array[j])) {
     await swap(visualizer, array, i, j);

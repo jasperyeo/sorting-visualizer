@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, WritableSignal, signal } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, WritableSignal, signal, output } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -13,7 +13,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class IntroDialogComponent implements OnInit {
 
-  @Output('onDialogClose') public onDialogClose: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public readonly onDialogClose = output<boolean>({ alias: 'onDialogClose' });
   public currentYear: WritableSignal<number> = signal<number>(2022);
 
   public ngOnInit(): void {

@@ -1,8 +1,9 @@
+import { /* signal, Signal */ } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
 import { compare, swap } from './common';
 
-export async function bitonicSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+export async function bitonicSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   const n: number = array.length;
   let k: number, j: number, l: number, i: number;
   for (k = 2; k <= n; k *= 2) {

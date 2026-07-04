@@ -1,10 +1,10 @@
-import { Component, HostListener, input, InputSignal, model, ModelSignal, signal, WritableSignal } from '@angular/core';
+import { Component, HostListener, model, ModelSignal, signal, WritableSignal } from '@angular/core';
 
 export enum SortBarColor {
   NORMAL = 'null',
   SWAP = 'red',
   PIVOT = 'green'
-}
+};
 
 export enum SortBarStyle {
   BAR = 'BAR',
@@ -13,7 +13,20 @@ export enum SortBarStyle {
   NUMBER = 'NUMBER',
   BALLOON = 'BALLOON',
   BAMBOO = 'BAMBOO'
-}
+};
+
+export interface SortBarInterface {
+  id: string;
+  defaultColor: string; 
+  color: string;
+  style: string;
+  sortDelay: number;
+  value: number;
+  valueString: string;
+  showValue: boolean;
+  showGradientColor: boolean;
+};
+
 @Component({
   standalone: true,
   selector: 'sort-bar',

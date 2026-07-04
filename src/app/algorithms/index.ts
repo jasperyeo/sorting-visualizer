@@ -1,5 +1,5 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
 
 export * from './common';
 
@@ -31,7 +31,7 @@ import { stoogeSort } from './stooge-sort';
 import { slowSort } from './slow-sort';
 import { bogoSort } from './bogo-sort';
 
-export const algorithms: Map<string, (visualizer: SortingVisualizerComponent, array: SortBarComponent[]) => Promise<void>> = new Map([
+export const algorithms: Map<string, (visualizer: SortingVisualizerComponent, array: SortBarInterface[]) => Promise<void>> = new Map([
   ['leftPivotQuickSort', leftPivotQuickSort],
   ['middlePivotQuickSort', middlePivotQuickSort],
   ['medianPivotQuickSort', medianPivotQuickSort],

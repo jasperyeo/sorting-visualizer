@@ -1,8 +1,8 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
 import { flatten } from './common';
 
-export async function msdRadixSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+export async function msdRadixSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   const maxCount: number = Math.max(...array.map(elem => elem.value)).toString().length;
   array.forEach(elem => {
     elem.valueString = elem.valueString.padStart(maxCount, "0");
@@ -11,9 +11,9 @@ export async function msdRadixSort(visualizer: SortingVisualizerComponent, array
   await bucketSortByDigit(visualizer, array, msdArray, 0, maxCount);
 }
 
-async function bucketSortByDigit(visualizer: SortingVisualizerComponent, originalArray: SortBarComponent[], array: any[], digit: number, maxCount: number): Promise<any[]> {
+async function bucketSortByDigit(visualizer: SortingVisualizerComponent, originalArray: SortBarInterface[], array: any[], digit: number, maxCount: number): Promise<any[]> {
   if (digit >= maxCount || array.length <= 1) return array;
-  let buckets: Array<SortBarComponent[]> = [[],[],[],[],[],[],[],[],[],[]];
+  let buckets: Array<SortBarInterface[]> = [[],[],[],[],[],[],[],[],[],[]];
   for (let i: number = array.length - 1; i >= 0; i--) {
     if (!visualizer.sorting) break;
     buckets[parseInt(array[i].valueString.charAt(digit))].push(array.splice(i, 1)[0]);
@@ -23,7 +23,7 @@ async function bucketSortByDigit(visualizer: SortingVisualizerComponent, origina
     if (!visualizer.sorting) break;
     array[j] = proxyArray[j];
     array[j].color = SortBarColor.SWAP;
-    if (visualizer.enableAudio) visualizer.playBeep(array[j].value);
+    if (visualizer.enableAudio) visualizer.playBeep(array[j].value());
     visualizer.noOfCompares++;
     visualizer.noOfSwaps++;
     await visualizer.sleep(visualizer.sortDelay);
@@ -42,7 +42,7 @@ async function bucketSortByDigit(visualizer: SortingVisualizerComponent, origina
         if (!visualizer.sorting) break;
         array[j] = proxyArray[j];
         array[j].color = SortBarColor.SWAP;
-        if (visualizer.enableAudio) visualizer.playBeep(array[j].value);
+        if (visualizer.enableAudio) visualizer.playBeep(array[j].value());
         await visualizer.sleep(visualizer.sortDelay);
         array[j].color = i % 2 ? SortBarColor.PIVOT : SortBarColor.NORMAL;
       }

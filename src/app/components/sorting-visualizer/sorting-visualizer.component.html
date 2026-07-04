@@ -1,4 +1,4 @@
-<div class="sort__wrapper"  [class.sort__wrapper--msafari]="isMobileSafari">
+<div class="sort__wrapper"  [class.sort__wrapper--msafari]="isMobileSafari()">
   <div class="sort__header">
     <button class="btn btn__minimal sort__header--menu-container" (click)="showControlPanel = !showControlPanel">
       <div class="sort__header--button-menu">
@@ -62,7 +62,7 @@
     }
     <div class="sort__header--lang">
       <select id="langs-dropdown" [(ngModel)]="lang" (change)="selectLang(lang)" class="sort__header--select-lang">
-        @for (lang of langs; track lang) {
+        @for (lang of langs(); track lang) {
           <option [value]="lang?.value">{{ lang?.label }}</option>
         }
       </select>
@@ -80,7 +80,7 @@
       <div class="sort__info" id="settings" #settings>
         <p class="sort__info--header" (click)="showSettings = !showSettings">
           <span class="sort__info--title"><span class="sort__info--title--icon">&#9881;</span> {{ 'SUBHEADER.SETTINGS.TITLE' | translate }}:</span>
-          <span [ngClass]="{ 'sort__info--collapsed': !showSettings }">&#x25B2;</span>
+          <span [class.sort__info--collapsed]="!showSettings">&#x25B2;</span>
         </p>
         @if (showControlPanel && showSettings) {
           <div>
@@ -148,7 +148,7 @@
             <div class="sort__info" id="statistics" #statistics>
               <p class="sort__info--header" (click)="showStatistics = !showStatistics">
                 <span class="sort__info--title"><span class="sort__info--title--icon">&#9871;</span> {{ 'SUBHEADER.STATISTICS.TITLE' | translate }}:</span>
-                <span [ngClass]="{ 'sort__info--collapsed': !showStatistics }">&#x25B2;</span>
+                <span [class.sort__info--collapsed]="!showStatistics">&#x25B2;</span>
               </p>
               @if (showControlPanel && showStatistics) {
                 <div>
@@ -212,7 +212,7 @@
                       <div class="sort__info sort__info--info" id="information" #information>
                         <p class="sort__info--header" (click)="showInfo = !showInfo">
                           <span class="sort__info--title"><span class="sort__info--title--icon">?</span> {{ 'SUBHEADER.ALGORITHM_INFORMATION.TITLE' | translate }}:</span>
-                          <span [ngClass]="{ 'sort__info--collapsed': !showInfo }">&#x25B2;</span>
+                          <span [class.sort__info--collapsed]="!showInfo">&#x25B2;</span>
                         </p>
                         @if (showControlPanel && showInfo) {
                           <label>
@@ -232,9 +232,10 @@
                       </div>
                     }
                     <div class="sort__container">
-                      @for (bar of sortArray; track bar.id(); let i = $index) {
+                      @for (bar of sortArray; track bar.id; let i = $index) {
                         <sort-bar
-                          [id]="bar.id()" [sortDelay]="bar.sortDelay()" [value]="bar.value()" [valueString]="bar.valueString()" [color]="bar.color()" [defaultColor]="bar.defaultColor()" [style]="bar.style()" [showValue]="showValues" [showGradientColor]="showGradientColor">
+                          [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color"
+                          [defaultColor]="bar.defaultColor" [style]="bar.style" [showValue]="showValues" [showGradientColor]="showGradientColor">
                         </sort-bar>
                       }
                       <svg height="150%" width="100%" class="sort__container--polyline">

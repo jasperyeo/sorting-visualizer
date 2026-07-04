@@ -1,5 +1,6 @@
+import { signal, WritableSignal } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarColor, SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarColor, SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
 import { compare, swap } from './common';
 
 enum PivotCode {
@@ -8,24 +9,24 @@ enum PivotCode {
   MEDIAN = 2
 }
 
-export async function leftPivotQuickSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+export async function leftPivotQuickSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   await quickSortRecursive(PivotCode.LEFT, visualizer, array, 0, array.length - 1);
 }
 
-export async function middlePivotQuickSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+export async function middlePivotQuickSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   await quickSortRecursive(PivotCode.MIDDLE, visualizer, array, 0, array.length - 1);
 }
 
-export async function medianPivotQuickSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+export async function medianPivotQuickSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   await quickSortRecursive(PivotCode.MEDIAN, visualizer, array, 0, array.length - 1);
 }
 
-async function partition(pivotCode: PivotCode, visualizer: SortingVisualizerComponent, array: SortBarComponent[], left: number, right: number): Promise<number> {
-  let pivot: number;
+async function partition(pivotCode: PivotCode, visualizer: SortingVisualizerComponent, array: SortBarInterface[], left: number, right: number): Promise<number> {
+  let pivot: WritableSignal<number> = signal<number>(0);
   if (pivotCode === PivotCode.LEFT) {
-    pivot = left;
+    pivot.update(() => left);
   } else if (pivotCode === PivotCode.MIDDLE) {
-    pivot = Math.floor((right + left) / 2);
+    pivot.update(() => Math.floor((right + left) / 2));
   } else {
     const mid: number = Math.floor((right + left) / 2);
     if (compare(visualizer, array[left], array[mid])) {
@@ -37,19 +38,19 @@ async function partition(pivotCode: PivotCode, visualizer: SortingVisualizerComp
     if (compare(visualizer, array[right], array[mid])) {
       await swap(visualizer, array, right, mid);
     }
-    pivot = right;
+    pivot.update(() => right);
   }
-  const pivotValue: number = array[pivot].value();
+  const pivotValue: number = array[pivot()].value;
   let i: number = left, j: number = right;
   while (i <= j) {
     if (!visualizer.sorting) break;
-    array[pivot].color.update(() => SortBarColor.PIVOT);
-    while (array[i].value() < pivotValue) {
+    array[pivot()].color = SortBarColor.PIVOT;
+    while (array[i].value < pivotValue) {
       if (!visualizer.sorting) break;
       visualizer.noOfCompares++;
       i++;
     }
-    while (array[j].value() > pivotValue) {
+    while (array[j].value > pivotValue) {
       if (!visualizer.sorting) break;
       visualizer.noOfCompares++;
       j--;
@@ -59,11 +60,11 @@ async function partition(pivotCode: PivotCode, visualizer: SortingVisualizerComp
       i++; j--;
     }
   }
-  array[pivot].color.update(() => SortBarColor.NORMAL);
+  array[pivot()].color = SortBarColor.NORMAL;
   return i;
 }
 
-async function quickSortRecursive(pivotCode: PivotCode, visualizer: SortingVisualizerComponent, array: SortBarComponent[], left: number, right: number): Promise<void> {
+async function quickSortRecursive(pivotCode: PivotCode, visualizer: SortingVisualizerComponent, array: SortBarInterface[], left: number, right: number): Promise<void> {
   if (array.length > 1) {
     const index: number = await partition(pivotCode, visualizer, array, left, right);
     if (left < index - 1) {

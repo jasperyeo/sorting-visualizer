@@ -1,8 +1,8 @@
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
-import { SortBarComponent } from './../shared/models/sort-bar/sort-bar.component';
+import { SortBarInterface } from './../shared/models/sort-bar/sort-bar.component';
 import { compare, swap } from './common';
 
-export async function bubbleSort(visualizer: SortingVisualizerComponent, array: SortBarComponent[]): Promise<void> {
+export async function bubbleSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   for (let i = 0; i < array.length; i++) {
     if (!visualizer.sorting) return;
     for (let j = 0; j < (array.length - i - 1); j++) {

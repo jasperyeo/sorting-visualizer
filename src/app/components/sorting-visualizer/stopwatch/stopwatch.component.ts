@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, model, ModelSignal, InputSignal } from '@angular/core';
 
 @Component({
     standalone: true,
@@ -8,8 +8,8 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 })
 export class StopwatchComponent {
 
-  @Input('display') public display: HTMLElement | null = document.getElementById('stopwatch');
-  @Input('delay') public delay: number = 100;
+  public readonly display: ModelSignal<HTMLElement | null> = model<HTMLElement | null>(document.getElementById('stopwatch'));
+  public readonly delay: InputSignal<number> = input<number>(100);
   public value: number = 0;
   public interval: any;
   public isRunning: boolean = false;
@@ -33,22 +33,23 @@ export class StopwatchComponent {
   
   public update(): void {
     if (this.isRunning) {
-      this.value += this.delay;
+      this.value += this.delay();
     }
-    if (this.display) {
-      this.display.innerText = this.formatTime(this.value);
+    const display = this.display();
+    if (display) {
+      display.innerText = this.formatTime(this.value);
     }
   }
   
   public start(): void {
     if (!this.isRunning) {
       this.isRunning = true;
-      if (!this.display) {
-        this.display = document.getElementById('stopwatch');
+      if (!this.display()) {
+        this.display.update(() => document.getElementById('stopwatch'));
       }
       if (!this.interval) {
         let t = this;
-        this.interval = setInterval(() => { t.update(); }, this.delay);
+        this.interval = setInterval(() => { t.update(); }, this.delay());
       }
     }
   }
