@@ -15,7 +15,7 @@
     <button (click)="resetArray()" [disabled]="sorting()" [title]="'HEADER.RESET' | translate" class="sort__header--button-mobile">&#8634;</button>
     <div class="sort__header--dropdown-container">
       @if (!sorting() && sortAlgorithms.length) {
-        <select id="select-algorithm-dropdown" [disabled]="sorting() || !sortAlgorithms.length" [(ngModel)]="sortMethod"
+        <select id="select-algorithm-dropdown" [disabled]="sorting() || !sortAlgorithms.length" [(ngModel)]="sortMethod" autocomplete="off"
           (change)="selectAlgorithm(sortMethod); closeAlgoDropdown($event)" class="sort__header--select-algo">
           <option value="" disabled selected hidden>{{ 'HEADER.CHOOSE_ALGORITHM' | translate }}</option>
           <optgroup [label]="filteredAlgorithms.length + ('HEADER.RESULTS' | translate)" [class.sort__header--select-empty]="!filteredAlgorithms.length"></optgroup>

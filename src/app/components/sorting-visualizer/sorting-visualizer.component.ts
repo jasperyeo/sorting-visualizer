@@ -105,7 +105,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   public ngOnInit(): void {
-    this._sortingVisualizerService.getJSON('./assets/algorithms.json').then((res: any) => {
+    this._sortingVisualizerService.getJSON('./assets/algorithms.json').subscribe((res: any) => {
       this.sortAlgorithms = res;
       this._scrapAlgorithmInformation();
 
@@ -343,29 +343,32 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
         });
       });
     }
-    this._translateService.use(lang).toPromise().then(res => this.loading.update(() => false));
+    this._translateService.use(lang).subscribe(res => this.loading.update(() => false));
   }
 
   public selectAlgorithm(mode: string): void {
     this.sortAlgorithms.forEach(category => {
       category.algorithms.forEach((algo: any) => {
         if (algo.value === mode) {
-          if (!algo.description && !algo.link) {
-            let sortString: string[] = (algo.value as string).split(' ');
-            this._sortingVisualizerService.getWikipediaSummary(this.lang, sortString.pop() + '_sort').then((res: any) => {
-              if (res) {
-                algo.description = res.extract;
-                this.sortDescription = algo.description;
-                if (res.content_urls && res.content_urls.desktop) {
-                  algo.link = res.content_urls.desktop.page;
-                  this.sortLink = algo.link;
+          let sortString: string[] = (algo.value as string).split(' ');
+          this._sortingVisualizerService.getWikipediaSummary(this.lang, sortString.pop() + '_sort').subscribe(async (res: any) => {
+            if (res) {
+              algo.description = res.extract;
+              this.sortDescription = algo.description;
+              if (this.lang !== 'en') {
+                const lang: string = this.lang === 'zh' ? 'zh-CN' : this.lang;
+                const translatedRes = await translate(algo.description as string, { from: 'en', to: lang });
+                if (translatedRes && translatedRes.text) {
+                  algo.description = translatedRes.text;
+                  this.sortDescription = algo.description;
                 }
               }
-            });
-          } else {
-            this.sortDescription = algo.description;
-            this.sortLink = algo.link;
-          }
+              if (res.content_urls && res.content_urls.desktop) {
+                algo.link = res.content_urls.desktop.page;
+                this.sortLink = algo.link;
+              }
+            }
+          });
           this.selectedAlgorithm = algo;
           if (algo.stats) {
             algo.stats.forEach((stat: any) => {
