@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, DoCheck, HostListener, InputSignal, IterableDiffers, OnInit, Signal, WritableSignal, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import translate from 'google-translate-api-x';
 import { SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
 import * as algorithms from './../../algorithms/index';
@@ -334,6 +335,14 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public selectLang(lang: string): void {
     this.loading.update(() => true);
     localStorage.setItem('lang', lang);
+    if (this.lang !== lang) {
+      this.sortAlgorithms.forEach(category => {
+        category.algorithms.forEach((algo: any) => {
+          algo.description = undefined;
+          algo.link = undefined;
+        });
+      });
+    }
     this._translateService.use(lang).toPromise().then(res => this.loading.update(() => false));
   }
 
@@ -346,16 +355,17 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
             this._sortingVisualizerService.getWikipediaSummary(this.lang, sortString.pop() + '_sort').then((res: any) => {
               if (res) {
                 algo.description = res.extract;
+                this.sortDescription = algo.description;
                 if (res.content_urls && res.content_urls.desktop) {
                   algo.link = res.content_urls.desktop.page;
+                  this.sortLink = algo.link;
                 }
-                console.log(algo.description, algo.link);
               }
             });
+          } else {
+            this.sortDescription = algo.description;
+            this.sortLink = algo.link;
           }
-          
-          // this.sortDescription = algo.description;
-          // this.sortLink = algo.link;
           this.selectedAlgorithm = algo;
           if (algo.stats) {
             algo.stats.forEach((stat: any) => {
