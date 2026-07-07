@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1783415336676,
+  "timestamp": 1783415648461,
   "index": "/sorting-visualizer/index.html",
   "assetGroups": [
     {
@@ -53,10 +53,10 @@
   "hashTable": {
     "/sorting-visualizer/assets/algorithms.json": "f8fb63364173f8ca01d68079310fb5ec731c4be8",
     "/sorting-visualizer/assets/i18n/en.json": "bfa39b39c956a25ead699688eb34b788e77dc3a7",
-    "/sorting-visualizer/assets/i18n/es.json": "f4279c48afd1aec768f93b9121b674feedc7a888",
-    "/sorting-visualizer/assets/i18n/fr.json": "d7bfd49f88d895f0f1a22ea37cf66205256a4b58",
-    "/sorting-visualizer/assets/i18n/id.json": "fa2c4c169ad0bc8bf51e2549d1016202e56f0b68",
-    "/sorting-visualizer/assets/i18n/zh.json": "6b2e16f5de532bc625ccca082ffad350743e402b",
+    "/sorting-visualizer/assets/i18n/es.json": "b2edc7b84a5c4ba5c302973b60c11e21a4fcdc10",
+    "/sorting-visualizer/assets/i18n/fr.json": "274ddf044b3198aaaa7cf342a0e5b3737bd09d1a",
+    "/sorting-visualizer/assets/i18n/id.json": "aedd8c8bcf51c8312a16408019ec631d2f8edb6b",
+    "/sorting-visualizer/assets/i18n/zh.json": "b5edf8ee376cb443bb83ad2be4913536bfa0f844",
     "/sorting-visualizer/assets/icons/site-icon-128.png": "f0931ca48d04d4acec7649cd82987aa97a610820",
     "/sorting-visualizer/assets/icons/site-icon-144.png": "9088b930eecfee04ecaf4af74c943d518caeab2b",
     "/sorting-visualizer/assets/icons/site-icon-152.png": "679ccc6119e2dbf1cc90509de411d09cfa726a0b",

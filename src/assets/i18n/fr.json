@@ -5,7 +5,7 @@
     "TITLE": "Bienvenue",
     "DESC": "En informatique, un algorithme de tri est un algorithme qui ordonne les éléments d'une liste. Les ordres les plus fréquemment utilisés sont l'ordre numérique et l'ordre lexicographique, et soit croissant, soit décroissant. Un tri efficace est important pour optimiser le l'efficacité d'autres algorithmes (tels que les algorithmes de recherche et de fusion) qui nécessitent que les données d'entrée se trouvent dans des listes triées. Le tri est également souvent utile pour canoniser les données et produire une sortie lisible par l'homme.",
     "CTA": "Ce visualiseur montre comment les algorithmes de tri courants fonctionnent grâce à l'utilisation de couleurs, de sons et de minutages.",
-    "CRED": "Développeur : Jasper Yeo, 2021.",
+    "CRED": "Développeur : Jasper Yeo, ",
     "CRED_LINK_1": "https://github.com/jasperyeo",
     "CRED_DESC_1": "GitHub",
     "CRED_LINK_2": "https://www.linkedin.com/in/yeoenghaijasper",
