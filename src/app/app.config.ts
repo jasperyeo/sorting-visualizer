@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
     provideTranslateService({
-      loader: provideTranslateHttpLoader({ prefix: '/assets/i18n/' }),
+      loader: provideTranslateHttpLoader({ prefix: './i18n/', suffix: '.json' }),
       fallbackLang: 'en',
       lang: 'en',
     }),
