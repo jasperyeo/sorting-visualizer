@@ -232,17 +232,17 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       category.count = category.algorithms.length;
       category.algorithms.forEach((algo: any) => {
         algo.category = category.category;
-        let sortString: string[] = (algo.value as string).split(' ');
-        if (category.category !== 'System') {
-          this._sortingVisualizerService.getWikipediaSummary(sortString.pop() + '_sort').then((res: any) => {
-            if (res) {
-              algo.description = res.extract;
-              if (res.content_urls && res.content_urls.desktop) {
-                algo.link = res.content_urls.desktop.page;
-              }
-            }
-          });
-        }
+        // let sortString: string[] = (algo.value as string).split(' ');
+        // if (category.category !== 'System') {
+        //   this._sortingVisualizerService.getWikipediaSummary(this.lang, sortString.pop() + '_sort').then((res: any) => {
+        //     if (res) {
+        //       algo.description = res.extract;
+        //       if (res.content_urls && res.content_urls.desktop) {
+        //         algo.link = res.content_urls.desktop.page;
+        //       }
+        //     }
+        //   });
+        // }
       });
     });
   }
@@ -341,8 +341,21 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sortAlgorithms.forEach(category => {
       category.algorithms.forEach((algo: any) => {
         if (algo.value === mode) {
-          this.sortDescription = algo.description;
-          this.sortLink = algo.link;
+          if (!algo.description && !algo.link) {
+            let sortString: string[] = (algo.value as string).split(' ');
+            this._sortingVisualizerService.getWikipediaSummary(this.lang, sortString.pop() + '_sort').then((res: any) => {
+              if (res) {
+                algo.description = res.extract;
+                if (res.content_urls && res.content_urls.desktop) {
+                  algo.link = res.content_urls.desktop.page;
+                }
+                console.log(algo.description, algo.link);
+              }
+            });
+          }
+          
+          // this.sortDescription = algo.description;
+          // this.sortLink = algo.link;
           this.selectedAlgorithm = algo;
           if (algo.stats) {
             algo.stats.forEach((stat: any) => {

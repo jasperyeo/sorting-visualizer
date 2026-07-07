@@ -83,6 +83,10 @@ body {
 a, p {
   font-size: 1.6rem;
   line-height: 2rem;
+
+  &.label-size {
+    font-size: 1.4rem;
+  }
 }
 
 label {

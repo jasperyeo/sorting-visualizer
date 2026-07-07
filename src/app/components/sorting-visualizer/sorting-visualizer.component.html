@@ -2,9 +2,9 @@
   <div class="sort__header">
     <button class="btn btn__minimal sort__header--menu-container" (click)="showControlPanel.update(() => !showControlPanel())">
       <div class="sort__header--button-menu">
-        <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
-        <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
-        <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel }"></div>
+        <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel() }"></div>
+        <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel() }"></div>
+        <div class="sort__header--button-menu-bar" [class]="{ 'sort__header--button-menu-bar--expanded': showControlPanel() }"></div>
       </div>
       <p class="sort__header--menu">{{ 'HEADER.MENU' | translate }}</p>
     </button>
@@ -110,8 +110,8 @@
               }
             </select>
             <br /><br />
-            <label for="styles-dropdown">{{ 'SUBHEADER.SETTINGS.RANDOM_METHOD' | translate }}:</label>
-            <select id="styles-dropdown" [disabled]="sorting()" [(ngModel)]="randomMethod" (change)="resetArray()">
+            <label for="methods-dropdown">{{ 'SUBHEADER.SETTINGS.RANDOM_METHOD' | translate }}:</label>
+            <select id="methods-dropdown" [disabled]="sorting()" [(ngModel)]="randomMethod" (change)="resetArray()">
               @for (method of randomMethods; track method) {
                 <option [value]="method">{{ ('SUBHEADER.SETTINGS.' + method) | translate }}</option>
               }
@@ -120,10 +120,10 @@
             <label for="element-count">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT' | translate }}:</label>
             <input type="number" id="element-count" min="2" [(ngModel)]="elementCount" [disabled]="sorting() || sortMethod.toUpperCase() === 'BITONIC'"/>
             @if (elementCount < 2) {
-              <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MIN_WARNING' | translate }}</label>
+              <p class="label-size sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MIN_WARNING' | translate }}</p>
             }
             @if (elementCount >= viewWidth() / 12) {
-              <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MAX_WARNING' | translate }}</label>
+              <p class="label-size sort__info--warning">{{ 'SUBHEADER.SETTINGS.ELEMENT_COUNT_MAX_WARNING' | translate }}</p>
             }
             <br /><br />
             <div class="sort__info--input-half-container">
@@ -137,10 +137,10 @@
               </div>
             </div>
             @if (minValue <= 0) {
-              <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MIN_WARNING' | translate }}</label>
+              <p class="label-size sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MIN_WARNING' | translate }}</p>
             }
             @if (maxValue > viewHeight() * 0.45) {
-              <label class="sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MAX_WARNING' | translate }}</label>
+              <p class="label-size sort__info--warning">{{ 'SUBHEADER.SETTINGS.MIN_MAX_MAX_WARNING' | translate }}</p>
             }
           </div>
         }
@@ -153,13 +153,13 @@
         @if (showControlPanel() && showStatistics()) {
           <div>
             <br />
-            <label>
+            <p class="label-size">
               {{ 'SUBHEADER.STATISTICS.VISUAL_TIME' | translate }}:&nbsp;<span id="stopwatch" class="sort__info--value">{{ visualTime() }}</span><br />
               {{ 'SUBHEADER.STATISTICS.ELEMENTS' | translate }}:&nbsp;<span class="sort__info--value">{{ sortArray.length }}</span><br />
               {{ 'SUBHEADER.STATISTICS.UNIQUE' | translate }}:&nbsp;<span class="sort__info--value">{{ uniqueCount }}</span><br />
               {{ 'SUBHEADER.STATISTICS.COMPARES' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfCompares() }}</span><br />
               {{ 'SUBHEADER.STATISTICS.SWAPS' | translate }}:&nbsp;<span class="sort__info--value">{{ noOfSwaps() }}</span><br />
-            </label>
+            </p>
             <br />
             <hr />
             <br />
@@ -195,7 +195,7 @@
             <hr />
             <br />
               @for (stat of sortStats(); track stat) {
-                <label>
+                <p class="label-size">
                   {{ ('SUBHEADER.STATISTICS.' + stat?.label) | translate }}:<br />
                   @if (stat?.type === 'string') {
                     <span>{{ stat?.value }}<br /></span>
@@ -203,7 +203,7 @@
                   @if (stat?.type === 'array') {
                     <span>{{ stat?.value?.toString() }}<br /></span>
                   }
-                </label>
+                </p>
               }
           </div>
         }
@@ -214,7 +214,7 @@
           <span [class.sort__info--collapsed]="!showInfo()">&#x25B2;</span>
         </p>
         @if (showControlPanel() && showInfo()) {
-          <label>
+          <p class="label-size">
             <br />
             @if (!sortMethod) {
               <span>{{ 'SUBHEADER.ALGORITHM_INFORMATION.NONE' | translate }}<br /></span>
@@ -225,7 +225,7 @@
                 {{ selectedAlgorithm?.category !== 'System' ? ('SUBHEADER.ALGORITHM_INFORMATION.WIKIPEDIA' | translate) : ('SUBHEADER.ALGORITHM_INFORMATION.DOCUMENTATION' | translate) }}
               </a>
             }
-          </label>
+          </p>
           }
       </div>
     </div>
