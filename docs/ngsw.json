@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1783416182876,
+  "timestamp": 1783503286946,
   "index": "/sorting-visualizer/index.html",
   "assetGroups": [
     {
@@ -12,7 +12,7 @@
       },
       "urls": [
         "/sorting-visualizer/index.html",
-        "/sorting-visualizer/main-LMOEEV2Y.js",
+        "/sorting-visualizer/main-BADWCNBR.js",
         "/sorting-visualizer/polyfills-5CFQRCPP.js",
         "/sorting-visualizer/styles-5HPWVP2M.css"
       ],
@@ -26,7 +26,6 @@
         "ignoreVary": true
       },
       "urls": [
-        "/sorting-visualizer/assets/algorithms.json",
         "/sorting-visualizer/assets/icons/site-icon-128.png",
         "/sorting-visualizer/assets/icons/site-icon-144.png",
         "/sorting-visualizer/assets/icons/site-icon-152.png",
@@ -46,7 +45,6 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/sorting-visualizer/assets/algorithms.json": "f8fb63364173f8ca01d68079310fb5ec731c4be8",
     "/sorting-visualizer/assets/icons/site-icon-128.png": "f0931ca48d04d4acec7649cd82987aa97a610820",
     "/sorting-visualizer/assets/icons/site-icon-144.png": "9088b930eecfee04ecaf4af74c943d518caeab2b",
     "/sorting-visualizer/assets/icons/site-icon-152.png": "679ccc6119e2dbf1cc90509de411d09cfa726a0b",
@@ -60,8 +58,8 @@
     "/sorting-visualizer/assets/images/logo-linkedin.png": "fe8b12c99581dfac5ce410a18a97467c17817496",
     "/sorting-visualizer/assets/images/site-icon-apple.png": "15ac4025ce8ddf9999ea63101202749aaf1b9226",
     "/sorting-visualizer/assets/images/site-icon.png": "402043bed351cadfec50101600b251726fe7b6a5",
-    "/sorting-visualizer/index.html": "4a128b38cee8e9e76246ac65f41777790163028a",
-    "/sorting-visualizer/main-LMOEEV2Y.js": "a55af429c54aecd76eb62b6183e86eedeeac2fe1",
+    "/sorting-visualizer/index.html": "cc88c59ee0549326246f955e8f227f090ac80dfd",
+    "/sorting-visualizer/main-BADWCNBR.js": "abec7a89ed5d4d1c079a317296082e8d9cab155c",
     "/sorting-visualizer/polyfills-5CFQRCPP.js": "f2241e9a25858f895ce299d15f6f22e849e2fd72",
     "/sorting-visualizer/styles-5HPWVP2M.css": "7eb334d41199bdbd447e99519cf74ee764b5af36"
   },

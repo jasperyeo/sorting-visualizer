@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, DoCheck, HostListener, InputSignal, IterableDiffers, OnInit, Signal, WritableSignal, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import translate from 'google-translate-api-x';
 import { SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
 import { SortingVisualizerService } from './sorting-visualizer.service';
-import * as algorithms from './../../algorithms/index';
+import { ALGORITHMS, ALGORITHMS_INFO } from './../../algorithms/index';
 import { COMPLEXITY_TIME, COMPLEXITY_SPACE } from '../../shared/models/complexity-time-space.constants';
 import { StopwatchComponent } from './stopwatch/stopwatch.component';
 import { IntroDialogComponent } from './intro-dialog/intro-dialog.component';
@@ -105,21 +104,18 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   public ngOnInit(): void {
-    this._sortingVisualizerService.getJSON('./assets/algorithms.json').subscribe((res: any) => {
-      this.sortAlgorithms = res;
-      this._scrapAlgorithmInformation();
-
-      if (this.sortAlgorithms && this.sortAlgorithms.length) {
-        this.sortAlgorithms.forEach((cat: any) => {
-          if (cat.algorithms && cat.algorithms.length) {
-            cat.algorithms.forEach((algo: any) => {
-              this.listedAlgorithms.push(algo);
-            });
-          }
-        });
-      }
-      this.filteredAlgorithms = this.listedAlgorithms;
-    });
+    this.sortAlgorithms = ALGORITHMS_INFO;
+    this._scrapAlgorithmInformation();
+    if (this.sortAlgorithms && this.sortAlgorithms.length) {
+      this.sortAlgorithms.forEach((cat: any) => {
+        if (cat.algorithms && cat.algorithms.length) {
+          cat.algorithms.forEach((algo: any) => {
+            this.listedAlgorithms.push(algo);
+          });
+        }
+      });
+    }
+    this.filteredAlgorithms = this.listedAlgorithms;
     if (localStorage.getItem('lang')) {
       this.lang = localStorage.getItem('lang') as string;
       this.selectLang(this.lang);
@@ -335,14 +331,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public selectLang(lang: string): void {
     this.loading.update(() => true);
     localStorage.setItem('lang', lang);
-    if (this.lang !== lang) {
-      this.sortAlgorithms.forEach(category => {
-        category.algorithms.forEach((algo: any) => {
-          algo.description = undefined;
-          algo.link = undefined;
-        });
-      });
-    }
+    this.selectAlgorithm(this.sortMethod);
     this._translateService.use(lang).subscribe(res => this.loading.update(() => false));
   }
 
@@ -350,25 +339,17 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sortAlgorithms.forEach(category => {
       category.algorithms.forEach((algo: any) => {
         if (algo.value === mode) {
-          let sortString: string[] = (algo.value as string).split(' ');
-          this._sortingVisualizerService.getWikipediaSummary(this.lang, sortString.pop() + '_sort').subscribe(async (res: any) => {
-            if (res) {
-              algo.description = res.extract;
-              this.sortDescription = algo.description;
-              if (this.lang !== 'en') {
-                const lang: string = this.lang === 'zh' ? 'zh-CN' : this.lang;
-                const translatedRes = await translate(algo.description as string, { from: 'en', to: lang });
-                if (translatedRes && translatedRes.text) {
-                  algo.description = translatedRes.text;
-                  this.sortDescription = algo.description;
+          this._sortingVisualizerService.getWikipediaSummary(algo.labels[this.lang] ? this.lang : 'en', algo.labels[this.lang] ?? algo.labels['en'])
+            .subscribe(async (res: any) => {
+              if (res) {
+                algo.description = res.extract;
+                this.sortDescription = algo.description;
+                if (res.content_urls && res.content_urls.desktop) {
+                  algo.link = res.content_urls.desktop.page;
+                  this.sortLink = algo.link;
                 }
               }
-              if (res.content_urls && res.content_urls.desktop) {
-                algo.link = res.content_urls.desktop.page;
-                this.sortLink = algo.link;
-              }
-            }
-          });
+            });
           this.selectedAlgorithm = algo;
           if (algo.stats) {
             algo.stats.forEach((stat: any) => {
@@ -430,7 +411,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     const fnName: string = this._camelize(mode) + 'Sort';
     this._stopwatch.start();
     if (fnName !== 'javascriptSort') {
-      (algorithms.algorithms.get(fnName) as Function)(this, array).then(() => {
+      (ALGORITHMS.get(fnName) as Function)(this, array).then(() => {
         this._stopwatch.stop();
         this.sorting.update(() => false);
       });

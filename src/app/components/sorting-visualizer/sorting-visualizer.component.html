@@ -33,7 +33,7 @@
       }
       <input type="text" id="select-algorithm-search" class="sort__header--dropdown-search" (keyup)="search()" [disabled]="sorting()"
         [(ngModel)]="selectAlgorithmSearchTerm" (focus)="openAlgoDropdown()" [placeholder]="'HEADER.CHOOSE_ALGORITHM' | translate"
-        [class.sort__header--dropdown-search--disabled]="sorting()"/>
+        [class.sort__header--dropdown-search--disabled]="sorting()" autocomplete="off" />
       <div class="sort__header--dropdown-icon"></div>
       @if (selectedAlgorithm && !sorting()) {
         <div class="sort__header--close-icon" (click)="resetSearchTerm()">X</div>

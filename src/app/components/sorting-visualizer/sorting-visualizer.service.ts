@@ -10,7 +10,7 @@ export class SortingVisualizerService {
   protected readonly _httpClient: HttpClient = inject(HttpClient);
 
   public getWikipediaSummary(lang: string, searchTerm: string): Observable<Object | undefined> {
-    return this._httpClient.get(`https://en.wikipedia.org/api/rest_v1/page/summary/${searchTerm}`);
+    return this._httpClient.get(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${searchTerm}`);
   }
 
   public getJSON(filepath: string): Observable<Object | undefined> {
