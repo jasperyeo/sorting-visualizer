@@ -110,7 +110,9 @@ Balloon, Bamboo
 
 ## Development Information
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
+This project was updated to [Angular CLI](https://github.com/angular/angular-cli) version 22.
+
+Using  [Wikipedia Summary API](https://en.wikipedia.org/api/rest_v1/#/) to fetch algorithm summaries on Wikipedia.
 
 ## License
 

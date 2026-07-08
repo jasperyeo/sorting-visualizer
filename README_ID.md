@@ -110,9 +110,9 @@ Balon, Bambu
 
 ## Informasi Pengembangan
 
-Proyek ini dibuat dengan [Angular CLI](https://github.com/angular/angular-cli) versi 12.2.10.
+Proyek ini telah diperbarui ke [Angular CLI](https://github.com/angular/angular-cli) versi 22.
 
-Menggunakan [API Ringkasan Wikipedia](https://en.wikipedia.org/api/rest_v1/#/) untuk mengambil ringkasan algoritme pengurutan dan tautan ke artikel.
+Menggunakan [Wikipedia Summary API](https://en.wikipedia.org/api/rest_v1/#/) untuk mengambil ringkasan algoritma di Wikipedia.
 
 ## Lisensi
 

@@ -110,9 +110,9 @@ Globo, Bambú
 
 ## Información de desarrollo
 
-Este proyecto se generó con [Angular CLI] (https://github.com/angular/angular-cli) versión 12.2.10.
+Este proyecto se actualizó a la versión 22 de [Angular CLI](https://github.com/angular/angular-cli).
 
-Utiliza [API de resumen de Wikipedia] (https://en.wikipedia.org/api/rest_v1/#/) para obtener resúmenes de algoritmos de clasificación y enlaces a los artículos.
+Se utilizó la [API de resumen de Wikipedia](https://en.wikipedia.org/api/rest_v1/#/) para obtener resúmenes de algoritmos en Wikipedia.
 
 ## Licencia
 

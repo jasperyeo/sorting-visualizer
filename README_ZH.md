@@ -110,9 +110,9 @@
 
 ## 开发信息
 
-这个项目是用 [Angular CLI](https://github.com/angular/angular-cli) 版本 12.2.10 生成的。
+本项目已更新至 [Angular CLI](https://github.com/angular/angular-cli) 版本 22。
 
-使用 [维基百科摘要 API](https://en.wikipedia.org/api/rest_v1/#/) 获取排序算法摘要和文章链接。
+使用 [维基百科摘要 API](https://en.wikipedia.org/api/rest_v1/#/) 从维基百科获取算法摘要。
 
 ## 许可执照
 

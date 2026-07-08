@@ -110,9 +110,9 @@ Ballon, Bambou
 
 ## Informations Sur le Développement
 
-Ce projet a été généré avec [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
+Ce projet a été mis à jour vers la version 22 d'Angular CLI (https://github.com/angular/angular-cli).
 
-Utilise [Wikipedia Summary API](https://en.wikipedia.org/api/rest_v1/#/) pour récupérer les résumés des algorithmes de tri et les liens vers les articles.
+Utilisation de l'API de résumé de Wikipédia (https://en.wikipedia.org/api/rest_v1/#/) pour récupérer les résumés d'algorithmes sur Wikipédia.
 
 ## Licence
 
