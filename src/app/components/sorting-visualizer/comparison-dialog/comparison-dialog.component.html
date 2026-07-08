@@ -22,15 +22,15 @@
           @for (algo of filteredAlgorithms(); track algo) {
             <tr>
               <td>
-                <a [href]="algo?.link" [title]="algo?.label" target="_blank" class="comparison-dialog__link" rel="noopener noreferrer">
+                <a [href]="$safeNavigationMigration(algo?.link)" [title]="$safeNavigationMigration(algo?.label)" target="_blank" class="comparison-dialog__link" rel="noopener noreferrer">
                   {{ algo?.label }}
                 </a>
               </td>
               <td>{{ algo?.category }}</td>
-              <td class="no-wrap" [innerHTML]="algo?.best | bigONotation" [style.background-color]="COMPLEXITY_TIME.get(algo?.best)"></td>
-              <td class="no-wrap" [innerHTML]="algo?.average | bigONotation" [style.background-color]="COMPLEXITY_TIME.get(algo?.average)"></td>
-              <td class="no-wrap" [innerHTML]="algo?.worst | bigONotation" [style.background-color]="COMPLEXITY_TIME.get(algo?.worst)"></td>
-              <td class="no-wrap" [innerHTML]="algo?.memory | bigONotation" [style.background-color]="COMPLEXITY_SPACE.get(algo?.memory)"></td>
+              <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.best) | bigONotation" [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(algo?.best))"></td>
+              <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.average) | bigONotation" [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(algo?.average))"></td>
+              <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.worst) | bigONotation" [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(algo?.worst))"></td>
+              <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.memory) | bigONotation" [style.background-color]="COMPLEXITY_SPACE.get($safeNavigationMigration(algo?.memory))"></td>
             </tr>
           }
         </tbody>

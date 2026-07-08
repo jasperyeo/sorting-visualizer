@@ -21,10 +21,10 @@
           <optgroup [label]="filteredAlgorithms.length + ('HEADER.RESULTS' | translate)" [class.sort__header--select-empty]="!filteredAlgorithms.length"></optgroup>
           <optgroup [label]="'-------------------------------'"></optgroup>
           @for (category of sortAlgorithms; track category) {
-            <optgroup [label]="category?.category + ' (' + category?.count + ')'">
+            <optgroup [label]="$safeNavigationMigration(category?.category) + ' (' + $safeNavigationMigration(category?.count) + ')'">
               @for (algorithm of filteredAlgorithms; track algorithm) {
                 @if (algorithm?.category === category?.category) {
-                  <option [value]="algorithm?.value">{{ algorithm?.label }}</option>
+                  <option [value]="$safeNavigationMigration(algorithm?.value)">{{ algorithm?.label }}</option>
                 }
               }
             </optgroup>
@@ -63,7 +63,7 @@
     <div class="sort__header--lang">
       <select id="langs-dropdown" [(ngModel)]="lang" (change)="selectLang(lang)" class="sort__header--select-lang">
         @for (lang of langs(); track lang) {
-          <option [value]="lang?.value">{{ lang?.label }}</option>
+          <option [value]="$safeNavigationMigration(lang?.value)">{{ lang?.label }}</option>
         }
       </select>
     </div>
@@ -102,7 +102,7 @@
             <label for="styles-dropdown">{{ 'SUBHEADER.SETTINGS.VISUALISER_STYLE' | translate }}:</label>
             <select id="styles-dropdown" [disabled]="sorting()" [(ngModel)]="sortStyle" (change)="resetArray()">
               @for (styleCategory of sortStyles; track styleCategory) {
-                <optgroup [label]="'SUBHEADER.SETTINGS.' + styleCategory?.category | translate">
+                <optgroup [label]="'SUBHEADER.SETTINGS.' + $safeNavigationMigration(styleCategory?.category) | translate">
                   @for (style of styleCategory?.styles; track style) {
                     <option [value]="style">{{ ('SUBHEADER.SETTINGS.' + style) | translate }}</option>
                   }
@@ -167,26 +167,26 @@
               <tbody>
                 <tr>
                   <td>{{ 'COMPARISON.BEST' | translate }}</td>
-                  <td [style.background-color]="COMPLEXITY_TIME.get(selectedAlgorithm?.best)">
-                    <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.best | bigONotation"></span>
+                  <td [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(selectedAlgorithm?.best))">
+                    <span class="sort__info--value" [innerHTML]="$safeNavigationMigration(selectedAlgorithm?.best) | bigONotation"></span>
                   </td>
                 </tr>
                 <tr>
                   <td>{{ 'COMPARISON.AVERAGE' | translate }}</td>
-                  <td [style.background-color]="COMPLEXITY_TIME.get(selectedAlgorithm?.average)">
-                    <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.average | bigONotation"></span>
+                  <td [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(selectedAlgorithm?.average))">
+                    <span class="sort__info--value" [innerHTML]="$safeNavigationMigration(selectedAlgorithm?.average) | bigONotation"></span>
                   </td>
                 </tr>
                 <tr>
                   <td>{{ 'COMPARISON.WORST' | translate }}</td>
-                  <td [style.background-color]="COMPLEXITY_TIME.get(selectedAlgorithm?.worst)">
-                    <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.worst | bigONotation"></span>
+                  <td [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(selectedAlgorithm?.worst))">
+                    <span class="sort__info--value" [innerHTML]="$safeNavigationMigration(selectedAlgorithm?.worst) | bigONotation"></span>
                   </td>
                 </tr>
                 <tr>
                   <td>{{ 'COMPARISON.MEMORY' | translate }}</td>
-                  <td [style.background-color]="COMPLEXITY_SPACE.get(selectedAlgorithm?.memory)">
-                    <span class="sort__info--value" [innerHTML]="selectedAlgorithm?.memory | bigONotation"></span>
+                  <td [style.background-color]="COMPLEXITY_SPACE.get($safeNavigationMigration(selectedAlgorithm?.memory))">
+                    <span class="sort__info--value" [innerHTML]="$safeNavigationMigration(selectedAlgorithm?.memory) | bigONotation"></span>
                   </td>
                 </tr>
               </tbody>
@@ -196,7 +196,7 @@
             <br />
               @for (stat of sortStats(); track stat) {
                 <p class="label-size">
-                  {{ ('SUBHEADER.STATISTICS.' + stat?.label) | translate }}:<br />
+                  {{ ('SUBHEADER.STATISTICS.' + $safeNavigationMigration(stat?.label)) | translate }}:<br />
                   @if (stat?.type === 'string') {
                     <span>{{ stat?.value }}<br /></span>
                   }
