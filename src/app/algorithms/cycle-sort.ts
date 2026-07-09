@@ -44,7 +44,7 @@ export async function cycleSort(visualizer: SortingVisualizerComponent, array: S
         stats[0].value = (++currentWrites).toString();
         return stats;
       });
-      await visualizer.sleep(visualizer.sortDelay);
+      await visualizer.sleep();
       array[pos()].color = SortBarColor.NORMAL;
     }
     while (pos() !== start)
@@ -81,7 +81,7 @@ export async function cycleSort(visualizer: SortingVisualizerComponent, array: S
           stats[0].value = (++currentWrites).toString();
           return stats;
         });
-        await visualizer.sleep(visualizer.sortDelay);
+        await visualizer.sleep();
         array[pos()].color = SortBarColor.NORMAL;
       }
     }

@@ -7,6 +7,7 @@ import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/com
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    // provideZonelessChangeDetection(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(withXhr(), withInterceptorsFromDi()),
     [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],

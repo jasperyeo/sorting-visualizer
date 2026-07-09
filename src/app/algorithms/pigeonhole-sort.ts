@@ -30,7 +30,7 @@ export async function pigeonholeSort(visualizer: SortingVisualizerComponent, arr
       array[i].value = finalArray[i];
       array[i].color = SortBarColor.SWAP;
       if (visualizer.isAudioEnabled()) visualizer.playBeep(array[i].value);
-      await visualizer.sleep(visualizer.sortDelay);
+      await visualizer.sleep();
       array[i].color = SortBarColor.NORMAL;
     }
   };
@@ -41,7 +41,7 @@ export async function pigeonholeSort(visualizer: SortingVisualizerComponent, arr
     array[i].color = SortBarColor.SWAP;
     array[i].value = pigeonhole()[i];
     if (visualizer.isAudioEnabled()) visualizer.playBeep(array[i].value);
-    await visualizer.sleep(visualizer.sortDelay);
+    await visualizer.sleep();
     array[i].color = SortBarColor.NORMAL;
   };
 }

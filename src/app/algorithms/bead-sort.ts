@@ -31,7 +31,7 @@ export async function beadSort(visualizer: SortingVisualizerComponent, array: So
         visualizer.noOfSwaps.update((value) => value + 1);
         array[i].color = SortBarColor.SWAP;
         if (visualizer.isAudioEnabled()) visualizer.playBeep(array[i].value);
-        await visualizer.sleep(visualizer.sortDelay);
+        await visualizer.sleep();
         array[i].color = SortBarColor.NORMAL;
       }
     }
@@ -47,7 +47,7 @@ export async function beadSort(visualizer: SortingVisualizerComponent, array: So
     visualizer.noOfSwaps.update((value) => value + 1);
     array[i].color = SortBarColor.SWAP;
     if (visualizer.isAudioEnabled()) visualizer.playBeep(array[i].value);
-    await visualizer.sleep(visualizer.sortDelay);
+    await visualizer.sleep();
     array[i].color = SortBarColor.NORMAL;
   }
 }

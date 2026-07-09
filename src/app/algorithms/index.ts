@@ -28,6 +28,7 @@ import { bitonicSort } from './bitonic-sort';
 import { stoogeSort } from './stooge-sort';
 import { slowSort } from './slow-sort';
 import { bogoSort } from './bogo-sort';
+import { purgeSort } from './purgesort';
 
 export const ALGORITHMS: Map<string, (visualizer: SortingVisualizerComponent, array: SortBarInterface[]) => Promise<void>> = new Map([
   ['leftPivotQuickSort', leftPivotQuickSort], ['middlePivotQuickSort', middlePivotQuickSort], ['medianPivotQuickSort', medianPivotQuickSort],
@@ -54,7 +55,8 @@ export const ALGORITHMS: Map<string, (visualizer: SortingVisualizerComponent, ar
   ['bitonicSort', bitonicSort],
   ['stoogeSort', stoogeSort],
   ['slowSort', slowSort],
-  ['bogoSort', bogoSort]
+  ['bogoSort', bogoSort],
+  ['purgeSort', purgeSort]
 ]);
 
 export const ALGORITHMS_INFO = [
@@ -721,6 +723,27 @@ export const ALGORITHMS_INFO = [
           "fr": "Tri_stupide",
           "id": undefined,
           "zh": "Bogo排序"
+        }
+      }
+    ]
+  },
+  {
+    "category": "Nonsensical",
+    "algorithms": [
+      {
+        "active": true,
+        "label": "Purge Sort",
+        "value": "Purge",
+        "best": "-",
+        "average": "-",
+        "worst": "-",
+        "memory": "",
+        "labels": {
+          "en": "Sorting_algorithm",
+          "es": "Algoritmo_de_ordenamiento",
+          "fr": "Algorithme_de_tri",
+          "id": "Algoritme_penyortiran",
+          "zh": "排序算法"
         }
       }
     ]

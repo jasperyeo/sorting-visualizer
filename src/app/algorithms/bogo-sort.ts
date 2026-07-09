@@ -1,7 +1,7 @@
 import { signal, WritableSignal } from '@angular/core';
 import { SortingVisualizerComponent } from '../components/sorting-visualizer/sorting-visualizer.component';
 import { SortBarInterface } from '../shared/models/sort-bar/sort-bar.constants';
-import { compare, swap } from './common';
+import { swap, isSorted } from './common';
 
 export async function bogoSort(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): Promise<void> {
   let sorted: WritableSignal<boolean> = signal<boolean>(false);
@@ -21,13 +21,4 @@ async function shuffle(visualizer: SortingVisualizerComponent, array: SortBarInt
     count.update(() => count() - 1);
     await swap(visualizer, array, count(), index());
   }
-}
-
-function isSorted(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): boolean {
-  for (let i: number = 1; i < array.length; i++){
-    if (compare(visualizer, array[i - 1], array[i])) {
-      return false;
-    }
-  }
-  return true;
 }

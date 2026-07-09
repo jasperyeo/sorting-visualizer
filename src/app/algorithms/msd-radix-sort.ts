@@ -27,7 +27,7 @@ async function bucketSortByDigit(visualizer: SortingVisualizerComponent, origina
     if (visualizer.isAudioEnabled()) visualizer.playBeep(array[j].value);
     visualizer.noOfCompares.update((value) => value + 1);
     visualizer.noOfSwaps.update((value) => value + 1);
-    await visualizer.sleep(visualizer.sortDelay);
+    await visualizer.sleep();
     array[j].color = SortBarColor.NORMAL;
   }
   for (let i: number = buckets.length - 1; i >= 0; i--) {
@@ -44,7 +44,7 @@ async function bucketSortByDigit(visualizer: SortingVisualizerComponent, origina
         array[j] = proxyArray[j];
         array[j].color = SortBarColor.SWAP;
         if (visualizer.isAudioEnabled()) visualizer.playBeep(array[j].value);
-        await visualizer.sleep(visualizer.sortDelay);
+        await visualizer.sleep();
         array[j].color = i % 2 ? SortBarColor.PIVOT : SortBarColor.NORMAL;
       }
     }

@@ -30,7 +30,7 @@ export async function integerKeysBucketSort(visualizer: SortingVisualizerCompone
       if (visualizer.isAudioEnabled()) visualizer.playBeep(array[totalCount].value);
       visualizer.noOfCompares.update((value) => value + 1);
       visualizer.noOfSwaps.update((value) => value + 1);
-      await visualizer.sleep(visualizer.sortDelay);
+      await visualizer.sleep();
       array[totalCount].color = i % 2 ? SortBarColor.PIVOT : SortBarColor.NORMAL;
       totalCount++;
     }
@@ -44,7 +44,7 @@ export async function integerKeysBucketSort(visualizer: SortingVisualizerCompone
     array[i] = finalArray[i];
     array[i].color = SortBarColor.SWAP;
     if (visualizer.isAudioEnabled()) visualizer.playBeep(array[i].value);
-    await visualizer.sleep(visualizer.sortDelay);
+    await visualizer.sleep();
     array[i].color = SortBarColor.NORMAL;
   }
 }

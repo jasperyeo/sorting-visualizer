@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DoCheck, HostListener, InputSignal, IterableDiffers, OnInit, Signal, WritableSignal, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, HostListener, InputSignal, IterableDiffers, ModelSignal, OnInit, Signal, WritableSignal, computed, inject, input, model, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { SortBarComponent } from './../../shared/models/sort-bar/sort-bar.component';
@@ -14,7 +14,7 @@ import { RANDOM_METHODS, VISUALIZER_DEFAULTS } from './sorting-visualizer.consta
 
 @Component({
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FormsModule,
     TranslatePipe,
@@ -36,6 +36,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   private readonly _sortingVisualizerService: SortingVisualizerService = inject(SortingVisualizerService);
   private readonly _translateService: TranslateService = inject(TranslateService);
   private readonly _iterableDiffers: IterableDiffers = inject(IterableDiffers);
+  private readonly _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
   public readonly langs: InputSignal<any[]> = input<any[]>([]);
   public readonly isMobileSafari: InputSignal<boolean> = input<boolean>(false);
   private readonly _stopwatch: StopwatchComponent = new StopwatchComponent();
@@ -46,29 +47,29 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   protected readonly COMPLEXITY_SPACE = COMPLEXITY_SPACE;
   private readonly AUDIO_GAIN: number = VISUALIZER_DEFAULTS.AUDIO_GAIN;
   private readonly AUDIO_MS: number = VISUALIZER_DEFAULTS.AUDIO_MS;
-  public sortArray: SortBarInterface[] = [];
-  public listedAlgorithms: any[] = [];
-  public filteredAlgorithms: any[] = [];
-  public sortAlgorithms: any[] = [];
-  public gaps: number[] = [];
-  public sortInfoPaginator: boolean[] = [true, false, false];
-  public iterableDiffer: any;
-  protected lang: string = VISUALIZER_DEFAULTS.LANG;
-  public selectedAlgorithm: any;
-  public sortDelay: number = VISUALIZER_DEFAULTS.SORT_DELAY;
-  public sortMethod: string = '';
-  public sortDescription: string = '';
-  public sortLink: string = '';
-  public sortStats: WritableSignal<any[]> = signal<any[]>([]);
-  public sortStyle: string = VISUALIZER_DEFAULTS.SORT_STYLE;
-  protected randomMethod: string = VISUALIZER_DEFAULTS.RANDOM_METHOD;
-  protected readonly selectAlgorithmSearchTerm: WritableSignal<string> = signal<string>('');
+  protected readonly sortArray: WritableSignal<SortBarInterface[]> = signal<SortBarInterface[]>([]);
+  protected readonly listedAlgorithms: WritableSignal<any[]> = signal<any[]>([]);
+  protected readonly filteredAlgorithms: WritableSignal<any[]> = signal<any[]>([]);
+  protected readonly sortAlgorithms: WritableSignal<any[]> = signal<any[]>([]);
+  protected readonly gaps: WritableSignal<number[]> = signal<number[]>([]);
+  protected readonly sortInfoPaginator: WritableSignal<boolean[]> = signal<boolean[]>([true, false, false]);
+  protected readonly iterableDiffer: WritableSignal<any> = signal<any>(undefined);
+  protected readonly lang: WritableSignal<string> = signal<string>(VISUALIZER_DEFAULTS.LANG);
+  protected readonly selectedAlgorithm: WritableSignal<any> = signal<any>(undefined);
+  protected readonly sortDelay: WritableSignal<number> = signal<number>(VISUALIZER_DEFAULTS.SORT_DELAY);
+  protected readonly sortMethod: WritableSignal<string> = signal<string>('');
+  protected readonly sortDescription: WritableSignal<string> = signal<string>('');
+  protected readonly sortLink: WritableSignal<string> = signal<string>('');
+  public readonly sortStats: WritableSignal<any[]> = signal<any[]>([]);
+  public readonly sortStyle: WritableSignal<string> = signal<string>(VISUALIZER_DEFAULTS.SORT_STYLE);
+  protected readonly randomMethod: WritableSignal<string> = signal<string>(VISUALIZER_DEFAULTS.RANDOM_METHOD);
+  protected readonly selectAlgorithmSearchTerm: ModelSignal<string> = model<string>('');
   protected readonly visualTime: WritableSignal<string> = signal<string>('');
   protected readonly sortAttempts: WritableSignal<number> = signal<number>(0);
-  protected elementCount: number = VISUALIZER_DEFAULTS.ELEMENT_COUNT;
-  protected uniqueCount: number = VISUALIZER_DEFAULTS.UNIQUE_COUNT;
-  protected minValue: number = VISUALIZER_DEFAULTS.MIN_VALUE;
-  public maxValue: number = VISUALIZER_DEFAULTS.MAX_VALUE;
+  protected readonly elementCount: WritableSignal<number> = signal<number>(VISUALIZER_DEFAULTS.ELEMENT_COUNT);
+  protected readonly uniqueCount: WritableSignal<number> = signal<number>(VISUALIZER_DEFAULTS.UNIQUE_COUNT);
+  public readonly minValue: WritableSignal<number> = signal<number>(VISUALIZER_DEFAULTS.MIN_VALUE);
+  public readonly maxValue: WritableSignal<number> = signal<number>(VISUALIZER_DEFAULTS.MAX_VALUE);
   public readonly noOfCompares: WritableSignal<number> = signal<number>(0);
   public readonly noOfSwaps: WritableSignal<number> = signal<number>(0);
   protected readonly viewWidth: WritableSignal<number> = signal<number>(0);
@@ -92,91 +93,97 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   protected readonly showComparison: WritableSignal<boolean> = signal<boolean>(false);
   protected readonly dropdownOpened: WritableSignal<boolean> = signal<boolean>(false);
   private readonly _touchStart: WritableSignal<number> = signal<number>(0);
+  protected readonly polylineCoords: WritableSignal<any> = signal<any>(null);
+  protected readonly swaplineCoords: WritableSignal<any> = signal<any>(null);
+  protected readonly lineCompute = computed(() => {
+    this.sortArray();
+  });
 
   constructor() {
-    this.iterableDiffer = this._iterableDiffers.find([]).create(undefined);
+    this.iterableDiffer.update(() => this._iterableDiffers.find([]).create(undefined));
   }
 
-  public sleep(delay: number): Promise<void> {
+  public sleep(delay: number = this.sortDelay()): Promise<void> {
     return new Promise(resolve => {
       setTimeout(resolve, delay);
     });
   }
 
   public ngOnInit(): void {
-    this.sortAlgorithms = ALGORITHMS_INFO;
+    this.sortAlgorithms.update(() => ALGORITHMS_INFO);
     this._scrapAlgorithmInformation();
-    if (this.sortAlgorithms && this.sortAlgorithms.length) {
-      this.sortAlgorithms.forEach((cat: any) => {
-        if (cat.algorithms && cat.algorithms.length) {
-          cat.algorithms.forEach((algo: any) => {
-            this.listedAlgorithms.push(algo);
-          });
-        }
+    if (this.sortAlgorithms() && this.sortAlgorithms().length) {
+      this.sortAlgorithms.update((sortAlgorithms) => {
+        sortAlgorithms.forEach((cat: any) => {
+          if (cat.algorithms && cat.algorithms.length) {
+            cat.algorithms.forEach((algo: any) => {
+              this.listedAlgorithms.update((listedAlgorithms) => {
+                listedAlgorithms.push(algo);
+                return listedAlgorithms;
+              });
+            });
+          }
+        });
+        return sortAlgorithms;
       });
     }
-    this.filteredAlgorithms = this.listedAlgorithms;
+    this.filteredAlgorithms.update(() => this.listedAlgorithms());
     if (localStorage.getItem('lang')) {
-      this.lang = localStorage.getItem('lang') as string;
-      this.selectLang(this.lang);
+      this.lang.update(() => localStorage.getItem('lang') as string);
+      this.selectLang(this.lang());
     }
     this.viewWidth.update(() => window.innerWidth);
     this.viewHeight.update(() => window.innerHeight);
-    this.elementCount = Math.floor(this.viewWidth() / VISUALIZER_DEFAULTS.MAX_ELEMENT_COUNT_DIVISOR);
-    this.maxValue = Math.floor(this.viewHeight() * VISUALIZER_DEFAULTS.MAX_VALUE_OFFSET_MULTIPLIER);
+    this.elementCount.update(() => Math.floor(this.viewWidth() / VISUALIZER_DEFAULTS.MAX_ELEMENT_COUNT_DIVISOR));
+    this.maxValue.update(() => Math.floor(this.viewHeight() * VISUALIZER_DEFAULTS.MAX_VALUE_OFFSET_MULTIPLIER));
     this.resetArray();
   }
 
   public ngDoCheck(): void {
-    const changes = this.iterableDiffer.diff(this.sortArray);
+    const changes = this.iterableDiffer().diff(this.sortArray());
     if (changes) {
-      if (this.sortStyle === SortBarStyle.LINE) {
-        let polyline: HTMLElement = document.getElementById('polyline') as HTMLElement;
-        if (polyline) {
-          let coord: string = '';
-          let xOffset: number = VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_X / 2;
-          this.sortArray.forEach(point => {
-            coord = coord.concat(xOffset.toString(), ',', (point.value - 5).toString(), ' ');
-            xOffset += VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_X;
-          });
-          polyline.setAttribute('points', coord);
-        }
+      if (this.sortStyle() === SortBarStyle.LINE) {
+        let coord: string = '';
+        let xOffset: number = VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_X / 2;
+        this.sortArray().forEach(point => {
+          coord = coord.concat(xOffset.toString(), ',', (point.value - 5).toString(), ' ');
+          xOffset += VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_X;
+        });
+        this.polylineCoords.set(coord);
       }
-      if (this.sorting() && this.showSwapCurve() && this.sortArray.length === this.elementCount) {
-        let swapline: HTMLElement = document.getElementById('swapline') as HTMLElement;
-        if (swapline) {
-          let coord: string = '', x1: number = -1, y1: number = -1, x2: number = -1, y2: number = -1;
-          let swapCoords: any[] = [];
-          this.sortArray.forEach((point: SortBarInterface, index: number) => {
-            if (point.color === SortBarColor.SWAP) {
-              if (x1 === -1 && x2 === -1) {
-                x1 = VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_X * (index + 1);
-                y1 = point.value + VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_Y;
-                swapCoords.push({ x: x1, y: y1 });
-                swapCoords.push({ x: -1, y: -1 });
-              } else {
-                x2 = VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_X * (index + 1);
-                y2 = point.value + VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_Y;
-                swapCoords.push({ x: x2, y: y2 });
-              }
+      if (this.sorting() && this.showSwapCurve() && this.sortArray().length === this.elementCount()) {
+        let coord: string = '', x1: number = -1, y1: number = -1, x2: number = -1, y2: number = -1;
+        let swapCoords: any[] = [];
+        this.sortArray().forEach((point: SortBarInterface, index: number) => {
+          if (point.color === SortBarColor.SWAP) {
+            if (x1 === -1 && x2 === -1) {
+              x1 = VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_X * (index + 1);
+              y1 = point.value + VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_Y;
+              swapCoords.push({ x: x1, y: y1 });
+              swapCoords.push({ x: -1, y: -1 });
+            } else {
+              x2 = VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_X * (index + 1);
+              y2 = point.value + VISUALIZER_DEFAULTS.SWAPLINE_OFFSET_Y;
+              swapCoords.push({ x: x2, y: y2 });
             }
-          });
-          swapCoords[1].x = (swapCoords[2].x - swapCoords[0].x) / 2 + swapCoords[0].x;
-          swapCoords[1].y = (swapCoords[0].y > swapCoords[2].y) ?
-            swapCoords[0].y + VISUALIZER_DEFAULTS.SWAPLINE_CURVE_PEAK :
-            swapCoords[2].y + VISUALIZER_DEFAULTS.SWAPLINE_CURVE_PEAK;
-          swapCoords.forEach((swapCoord: any, index: number) => {
-            let finalX: string = swapCoord.x.toString();
-            if (index === 0) {
-              finalX = 'M' + finalX;
-            } else if (index === 1) {
-              finalX = 'Q' + finalX;
-            }
-            coord = coord.concat(finalX, ',', swapCoord.y.toString(), ' ');
-          });
-          swapline.setAttribute('d', coord);
-        }
+          }
+        });
+        swapCoords[1].x = (swapCoords[2].x - swapCoords[0].x) / 2 + swapCoords[0].x;
+        swapCoords[1].y = (swapCoords[0].y > swapCoords[2].y) ?
+          swapCoords[0].y + VISUALIZER_DEFAULTS.SWAPLINE_CURVE_PEAK :
+          swapCoords[2].y + VISUALIZER_DEFAULTS.SWAPLINE_CURVE_PEAK;
+        swapCoords.forEach((swapCoord: any, index: number) => {
+          let finalX: string = swapCoord.x.toString();
+          if (index === 0) {
+            finalX = 'M' + finalX;
+          } else if (index === 1) {
+            finalX = 'Q' + finalX;
+          }
+          coord = coord.concat(finalX, ',', swapCoord.y.toString(), ' ');
+        });
+        this.swaplineCoords.set(coord);
       }
+      this._changeDetectorRef.markForCheck();
     }
   }
 
@@ -196,7 +203,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   @HostListener('document:click', ['$event'])
   public closeAlgoDropdown(event: any): void {
     if ((event.target.className && typeof event.target.className.includes !== 'undefined' &&
-      (event.target.className as string).includes('sort__header--dropdown-search')) || (!this.selectedAlgorithm && this.selectAlgorithmSearchTerm.length)) {
+      (event.target.className as string).includes('sort__header--dropdown-search')) || (!this.selectedAlgorithm() && this.selectAlgorithmSearchTerm().length)) {
       return;
     }
     let dropdownElement: HTMLSelectElement = document.getElementById('select-algorithm-dropdown') as HTMLSelectElement;
@@ -209,38 +216,30 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     dropdownElement.style.zIndex = '';
     dropdownElement.style.borderRadius = '.8rem';
     this.dropdownOpened.update(() => false);
-    if (this.selectedAlgorithm) {
-      this.selectAlgorithmSearchTerm.update(() => this.selectedAlgorithm.label);
+    if (this.selectedAlgorithm()) {
+      this.selectAlgorithmSearchTerm.update(() => this.selectedAlgorithm().label);
     }
   }
 
   public search(): void {
-    if (!this.selectAlgorithmSearchTerm || !this.selectAlgorithmSearchTerm.length) {
-      this.filteredAlgorithms = this.listedAlgorithms;
+    if (!this.selectAlgorithmSearchTerm() || !this.selectAlgorithmSearchTerm().length) {
+      this.filteredAlgorithms.update(() => this.listedAlgorithms());
       return;
     }
-    this.filteredAlgorithms = this.listedAlgorithms.filter(algo =>
+    this.filteredAlgorithms.update(() => this.listedAlgorithms().filter(algo =>
       (algo.label as string).toUpperCase().includes(this.selectAlgorithmSearchTerm().toUpperCase()) ||
-      (algo.category as string).toUpperCase().includes(this.selectAlgorithmSearchTerm().toUpperCase()));
+      (algo.category as string).toUpperCase().includes(this.selectAlgorithmSearchTerm().toUpperCase())));
   }
 
   private _scrapAlgorithmInformation(): void {
-    this.sortAlgorithms.forEach(category => {
-      category.count = category.algorithms.length;
-      category.algorithms.forEach((algo: any) => {
-        algo.category = category.category;
-        // let sortString: string[] = (algo.value as string).split(' ');
-        // if (category.category !== 'System') {
-        //   this._sortingVisualizerService.getWikipediaSummary(this.lang, sortString.pop() + '_sort').then((res: any) => {
-        //     if (res) {
-        //       algo.description = res.extract;
-        //       if (res.content_urls && res.content_urls.desktop) {
-        //         algo.link = res.content_urls.desktop.page;
-        //       }
-        //     }
-        //   });
-        // }
+    this.sortAlgorithms.update((sortAlgorithms) => {
+      sortAlgorithms.forEach(category => {
+        category.count = category.algorithms.length;
+        category.algorithms.forEach((algo: any) => {
+          algo.category = category.category;
+        });
       });
+      return sortAlgorithms;
     });
   }
  
@@ -263,14 +262,14 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
     this.sortAttempts.update(() => 0);
     this.noOfCompares.update(() => 0);
     this.noOfSwaps.update(() => 0);
-    this.gaps.splice(0);
-    this.sortArray.splice(0);
+    this.gaps.update((gaps) => gaps = []);
+    this.sortArray.update((sortArray) => sortArray = []);
     this.sorting.update(() => true);
     let tempArray: number[] = [];
-    for (let i: number = 0; i < this.elementCount; i++) {
-      tempArray.push(this._randomNumberFromRange(this.minValue, this.maxValue));
+    for (let i: number = 0; i < this.elementCount(); i++) {
+      tempArray.push(this._randomNumberFromRange(this.minValue(), this.maxValue()));
     }
-    switch (this.randomMethod) {
+    switch (this.randomMethod()) {
       case 'ASCENDING': tempArray.sort((a: number, b: number): number => { return a - b }); break;
       case 'DESCENDING': tempArray.sort((a: number, b: number): number => { return b - a }); break;
       case 'ASCENDING_ALMOST':
@@ -294,25 +293,28 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
         }
         break;
     }
-    for (let i: number = 0; i < this.elementCount; i++) {
+    for (let i: number = 0; i < this.elementCount(); i++) {
       let defaultColor: string = SORT_BAR_DEFAULTS.DEFAULT_COLOR;
       if (this.showGradientColor()) {
-        const hueValue: string = ((tempArray[i] / this.maxValue) * 360).toString();
+        const hueValue: string = ((tempArray[i] / this.maxValue()) * 360).toString();
         defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
       }
       let sortBar: SortBarInterface = {
         id: 'bar' + i.toString(), // id
         defaultColor: defaultColor, // defaultColor
         color: SortBarColor.NORMAL, // color
-        style: this.sortStyle, // style
-        sortDelay: this.sortDelay, // sortDelay
+        style: this.sortStyle(), // style
+        sortDelay: this.sortDelay(), // sortDelay
         value: tempArray[i], // value
         valueString: tempArray[i].toString(), // valueString
         showValue: this.showValues(), // showValue
         showGradientColor: this.showGradientColor() // showGradientColor
       };
-      this.sortArray.push(sortBar);
-      this.uniqueCount = [...new Set(this.sortArray.map(bar => bar.value))].length;
+      this.sortArray.update((sortArray) => {
+        sortArray.push(sortBar);
+        return sortArray;
+      });
+      this.uniqueCount.update(() => [...new Set(this.sortArray().map(bar => bar.value))].length);
       await this.sleep(0);
     }
     this.sorting.update(() => false);
@@ -331,63 +333,66 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   public selectLang(lang: string): void {
     this.loading.update(() => true);
     localStorage.setItem('lang', lang);
-    this.selectAlgorithm(this.sortMethod);
+    this.selectAlgorithm(this.sortMethod());
     this._translateService.use(lang).subscribe(res => this.loading.update(() => false));
   }
 
   public selectAlgorithm(mode: string): void {
-    this.sortAlgorithms.forEach(category => {
-      category.algorithms.forEach((algo: any) => {
-        if (algo.value === mode) {
-          this._sortingVisualizerService.getWikipediaSummary(algo.labels[this.lang] ? this.lang : 'en', algo.labels[this.lang] ?? algo.labels['en'])
-            .subscribe(async (res: any) => {
-              if (res) {
-                algo.description = res.extract;
-                this.sortDescription = algo.description;
-                if (res.content_urls && res.content_urls.desktop) {
-                  algo.link = res.content_urls.desktop.page;
-                  this.sortLink = algo.link;
+    this.sortAlgorithms.update((sortAlgorithms) => {
+      sortAlgorithms.forEach(category => {
+        category.algorithms.forEach((algo: any) => {
+          if (algo.value === mode) {
+            this._sortingVisualizerService.getWikipediaSummary(algo.labels[this.lang()] ? this.lang() : 'en', algo.labels[this.lang()] ?? algo.labels['en'])
+              .subscribe(async (res: any) => {
+                if (res) {
+                  algo.description = res.extract;
+                  this.sortDescription.update(() => algo.description);
+                  if (res.content_urls && res.content_urls.desktop) {
+                    algo.link = res.content_urls.desktop.page;
+                    this.sortLink.update(() => algo.link);
+                  }
+                }
+              });
+            this.selectedAlgorithm.update(() => algo);
+            if (algo.stats) {
+              algo.stats.forEach((stat: any) => {
+                if (stat.type === 'array') stat.value = [];
+                else if (stat.type === 'string') stat.value = '0';
+              });
+            }
+            this.sortStats.update(() => algo.stats);
+            if (mode.toUpperCase() === 'BITONIC') {
+              this.elementCount.update(() => Math.floor(this.viewWidth() / VISUALIZER_DEFAULTS.MAX_ELEMENT_COUNT_DIVISOR));
+              let maxCount: number = 0;
+              let pow: number = 1;
+              while (maxCount < this.elementCount()) {
+                const newCount: number = Math.pow(2, pow);
+                if (newCount <= this.elementCount()) {
+                  maxCount = newCount;
+                  pow++;
+                } else {
+                  break;
                 }
               }
-            });
-          this.selectedAlgorithm = algo;
-          if (algo.stats) {
-            algo.stats.forEach((stat: any) => {
-              if (stat.type === 'array') stat.value = [];
-              else if (stat.type === 'string') stat.value = '0';
-            });
-          }
-          this.sortStats.update(() => algo.stats);
-          if (mode.toUpperCase() === 'BITONIC') {
-            this.elementCount = Math.floor(this.viewWidth() / VISUALIZER_DEFAULTS.MAX_ELEMENT_COUNT_DIVISOR);
-            let maxCount: number = 0;
-            let pow: number = 1;
-            while (maxCount < this.elementCount) {
-              const newCount: number = Math.pow(2, pow);
-              if (newCount <= this.elementCount) {
-                maxCount = newCount;
-                pow++;
-              } else {
-                break;
-              }
+              this.elementCount.update(() => maxCount);
+              this.resetArray();
+            } else {
+              this.elementCount.update(() => Math.floor(this.viewWidth() / VISUALIZER_DEFAULTS.MAX_ELEMENT_COUNT_DIVISOR));
+              this.resetArray();
             }
-            this.elementCount = maxCount;
-            this.resetArray();
-          } else {
-            this.elementCount = Math.floor(this.viewWidth() / VISUALIZER_DEFAULTS.MAX_ELEMENT_COUNT_DIVISOR);
-            this.resetArray();
           }
-        }
+        });
       });
+      return sortAlgorithms;
     });
   }
 
   public resetSearchTerm(): void {
     this.selectAlgorithmSearchTerm.update(() => '');
-    this.sortMethod = '';
-    this.sortDescription = '';
-    this.sortLink = '';
-    this.selectedAlgorithm = null;
+    this.sortMethod.update(() => '');
+    this.sortDescription.update(() => '');
+    this.sortLink.update(() => '');
+    this.selectedAlgorithm.update(() => null);
     this.search();
     this.resetArray();
   }
@@ -426,8 +431,8 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   }
 
   public jumpToSortInfoPage(index: number): void {
-    this.sortInfoPaginator = [false, false, false];
-    this.sortInfoPaginator[index] = true;
+    this.sortInfoPaginator.update(() => [false, false, false]);
+    this.sortInfoPaginator()[index] = true;
     let element: HTMLElement | null = null;
     switch (index) {
       case 0: element = document.getElementById('settings'); break;
@@ -451,17 +456,17 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
       const touchEnd: number = event.changedTouches[0].clientX;
       if (this._touchStart() > touchEnd + swipeThreshold) {
         // slide right
-        if (this.sortInfoPaginator[0] === true) {
-          this.sortInfoPaginator = [false, true, false];
-        } else if (this.sortInfoPaginator[1] === true) {
-          this.sortInfoPaginator = [false, false, true];
+        if (this.sortInfoPaginator()[0] === true) {
+          this.sortInfoPaginator.update(() => [false, true, false]);
+        } else if (this.sortInfoPaginator()[1] === true) {
+          this.sortInfoPaginator.update(() => [false, false, true]);
         }
       } else if (this._touchStart() < touchEnd - swipeThreshold) {
         // slide left
-        if (this.sortInfoPaginator[1] === true) {
-          this.sortInfoPaginator = [true, false, false];
-        } else if (this.sortInfoPaginator[2] === true) {
-          this.sortInfoPaginator = [false, true, false];
+        if (this.sortInfoPaginator()[1] === true) {
+          this.sortInfoPaginator.update(() => [true, false, false]);
+        } else if (this.sortInfoPaginator()[2] === true) {
+          this.sortInfoPaginator.update(() => [false, true, false]);
         }
       }
     }

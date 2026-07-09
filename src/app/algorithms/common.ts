@@ -13,11 +13,20 @@ export async function swap(visualizer: SortingVisualizerComponent, array: SortBa
   array[i].color = SortBarColor.SWAP;
   array[j].color = SortBarColor.SWAP;
   [array[i], array[j]] = [array[j], array[i]];
-  await visualizer.sleep(visualizer.sortDelay);
+  await visualizer.sleep();
   array[i].color = SortBarColor.NORMAL;
   array[j].color = SortBarColor.NORMAL;
 }
 
 export function flatten(array: any[]): any {
   return Array.isArray(array) ? [].concat(...array.map(flatten)) : array;
+}
+
+export function isSorted(visualizer: SortingVisualizerComponent, array: SortBarInterface[]): boolean {
+  for (let i: number = 1; i < array.length; i++){
+    if (compare(visualizer, array[i - 1], array[i])) {
+      return false;
+    }
+  }
+  return true;
 }

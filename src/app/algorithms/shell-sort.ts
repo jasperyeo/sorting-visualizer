@@ -106,7 +106,7 @@ async function shellSortConcrete(visualizer: SortingVisualizerComponent, array: 
       if (visualizer.isAudioEnabled()) visualizer.playBeep(array[j - gap].value);
       visualizer.noOfSwaps.update((value) => value + 1);
       array[j] = array[j - gap];
-      await visualizer.sleep(visualizer.sortDelay);
+      await visualizer.sleep();
       array[j].color = SortBarColor.NORMAL;
     }
     array[j] = temp;

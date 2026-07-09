@@ -16,7 +16,7 @@ async function insert(visualizer: SortingVisualizerComponent, searchTree: Binary
     if (visualizer.isAudioEnabled()) visualizer.playBeep(searchTree.node.value);
     visualizer.noOfSwaps.update((value) => value + 1);
     searchTree.node.color = SortBarColor.SWAP;
-    await visualizer.sleep(visualizer.sortDelay);
+    await visualizer.sleep();
     searchTree.node.color = left ? SortBarColor.NORMAL : SortBarColor.PIVOT;
   } else {
     if (compare(visualizer, node, searchTree.node)) {
@@ -38,7 +38,7 @@ async function inOrder(visualizer: SortingVisualizerComponent, searchTree: Binar
     if (visualizer.isAudioEnabled()) visualizer.playBeep(searchTree.node.value);
     searchTree.node.color = SortBarColor.SWAP;
     array.push(searchTree.node);
-    await visualizer.sleep(visualizer.sortDelay);
+    await visualizer.sleep();
     searchTree.node.color = SortBarColor.NORMAL;
     await inOrder(visualizer, searchTree.rightSubTree, array);
   }

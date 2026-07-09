@@ -20,13 +20,13 @@ export async function countingSort(visualizer: SortingVisualizerComponent, array
   for (let i: number = 0; i < count.length; i++) {
     if (!visualizer.isSorting()) return;
     if (!count()[i]) continue;
-    const hueValue: string = ((count()[i] * 100 / visualizer.maxValue) * 360).toString();
+    const hueValue: string = ((count()[i] * 100 / visualizer.maxValue()) * 360).toString();
     let sortBar: SortBarInterface = {
       id: 'bar' + i.toString(), // id
       defaultColor: 'hsl(' + hueValue + ', 100%, 77%)', // defaultColor
       color: SortBarColor.NORMAL, // color
-      style: visualizer.sortStyle, // style
-      sortDelay: visualizer.sortDelay, // sortDelay
+      style: visualizer.sortStyle(), // style
+      sortDelay: 0, // sortDelay
       value: count()[i] * 100, // value
       valueString: (count()[i] * 100).toString(), // valueString
       showValue: visualizer.isValuesShowed(), // showValue
@@ -35,7 +35,7 @@ export async function countingSort(visualizer: SortingVisualizerComponent, array
     visualizer.noOfSwaps.update((value) => value + 1);
     array.push(sortBar);
     array[array.length - 1].color = SortBarColor.SWAP;
-    await visualizer.sleep(visualizer.sortDelay);
+    await visualizer.sleep();
     array[array.length - 1].color = SortBarColor.NORMAL;
   }
   if (array.length < originalLength) {
@@ -45,8 +45,8 @@ export async function countingSort(visualizer: SortingVisualizerComponent, array
         id: 'bar' + i.toString(), // id
         defaultColor: 'turquoise', // defaultColor
         color: SortBarColor.NORMAL, // color
-        style: visualizer.sortStyle, // style
-        sortDelay: visualizer.sortDelay, // sortDelay
+        style: visualizer.sortStyle(), // style
+        sortDelay: 0, // sortDelay
         value: 0, // value
         valueString: '0', // valueString
         showValue: visualizer.isValuesShowed(), // showValue
@@ -62,10 +62,10 @@ export async function countingSort(visualizer: SortingVisualizerComponent, array
       visualizer.noOfSwaps.update((value) => value + 1);
       array[counter()].value = i;
       if (visualizer.isAudioEnabled()) visualizer.playBeep(array[counter()].value);
-      const hueValue: string = ((array[counter()].value / visualizer.maxValue) * 360).toString();
+      const hueValue: string = ((array[counter()].value / visualizer.maxValue()) * 360).toString();
       array[counter()].defaultColor = 'hsl(' + hueValue + ', 100%, 77%)';
       array[counter()].color = SortBarColor.SWAP;
-      await visualizer.sleep(visualizer.sortDelay);
+      await visualizer.sleep();
       array[counter()].color = SortBarColor.NORMAL;
       counter.update(() => counter() + 1);
     }
