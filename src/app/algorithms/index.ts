@@ -738,6 +738,13 @@ export const ALGORITHMS_INFO = [
         "average": "-",
         "worst": "-",
         "memory": "",
+        "stats": [
+          {
+            "label": "PURGES",
+            "type": "string",
+            "value": "0"
+          }
+        ],
         "labels": {
           "en": "Sorting_algorithm",
           "es": "Algoritmo_de_ordenamiento",

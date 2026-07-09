@@ -15,6 +15,11 @@ export async function purgeSort(visualizer: SortingVisualizerComponent, array: S
         if (visualizer.isAudioEnabled()) visualizer.playBeep(array[i].value);
         array[i].color = SortBarColor.SWAP;
         indexForPurge.update(() => i);
+        visualizer.sortStats.update((stats) => {
+          const currentPurges: number = parseInt(stats[0].value);
+          stats[0].value = (currentPurges + 1).toString();
+          return stats;
+        });
         break;
       } else {
         array[i].color = SortBarColor.NORMAL;
