@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, model, ModelSignal, signal, WritableSignal } from '@angular/core';
-import { SORT_BAR_DEFAULTS, SortBarColor, SortBarStyle } from './sort-bar.constants';
+import { SORT_BAR_DEFAULTS } from './sort-bar.constants';
 
 @Component({
   standalone: true,

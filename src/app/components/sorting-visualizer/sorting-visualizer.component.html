@@ -230,7 +230,7 @@
       </div>
     </div>
   }
-  <div class="sort__container">
+  <div class="sort__container" id="sort__container">
     @for (bar of sortArray(); track bar.id; let i = $index) {
       <sort-bar
         [id]="bar.id" [sortDelay]="bar.sortDelay" [value]="bar.value" [valueString]="bar.valueString" [color]="bar.color"

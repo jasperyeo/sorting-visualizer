@@ -79,7 +79,8 @@
       "SWAPS": "Swap",
       "GAPS": "Celah",
       "WRITES": "Tulis Hitungan",
-      "FLIPS": "Hitungan Terbalik"
+      "FLIPS": "Hitungan Terbalik",
+      "PURGES": "Jumlah Pembersihan"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Informasi Algoritma",

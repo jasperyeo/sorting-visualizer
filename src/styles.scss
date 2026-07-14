@@ -1,13 +1,3 @@
-// * {
-//   -webkit-touch-callout: none; /* iOS Safari */
-//     -webkit-user-select: none; /* Safari */
-//      -khtml-user-select: none; /* Konqueror HTML */
-//        -moz-user-select: none; /* Old versions of Firefox */
-//         -ms-user-select: none; /* Internet Explorer/Edge */
-//             user-select: none; /* Non-prefixed version, currently
-//                                   supported by Chrome, Edge, Opera and Firefox */
-// }
-
 input, textarea {
   -webkit-touch-callout: text;
   -webkit-user-select: text;
@@ -214,4 +204,13 @@ th, td {
 .whole {
   display: inline;
   vertical-align: super;
+}
+
+particle {
+  border-radius: 50%;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  opacity: 0;
 }

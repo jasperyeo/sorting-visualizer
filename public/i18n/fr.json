@@ -79,7 +79,8 @@
       "SWAPS": "Échanges",
       "GAPS": "Lacunes",
       "WRITES": "Compte d'Écriture",
-      "FLIPS": "Nombre de Retournements"
+      "FLIPS": "Nombre de Retournements",
+      "PURGES": "Nombre de Purges"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Informations sur l'Algorithme",

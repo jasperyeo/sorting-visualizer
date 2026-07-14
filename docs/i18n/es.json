@@ -79,7 +79,8 @@
       "SWAPS": "Intercambios",
       "GAPS": "Brechas",
       "WRITES": "Escribir Cuenta",
-      "FLIPS": "Conteo de Voltear"
+      "FLIPS": "Conteo de Voltear",
+      "PURGES": "Recuento de Purga"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Información del Algoritmo",

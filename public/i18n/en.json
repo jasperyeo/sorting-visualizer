@@ -79,7 +79,8 @@
       "SWAPS": "Swaps",
       "GAPS": "Gaps",
       "WRITES": "Write Count",
-      "FLIPS": "Flip Count"
+      "FLIPS": "Flip Count",
+      "PURGES": "Purge Count"
     },
     "ALGORITHM_INFORMATION": {
       "TITLE": "Algorithm Information",
