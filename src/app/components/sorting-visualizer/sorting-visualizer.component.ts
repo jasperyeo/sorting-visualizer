@@ -36,7 +36,7 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
   private readonly _sortingVisualizerService: SortingVisualizerService = inject(SortingVisualizerService);
   private readonly _translateService: TranslateService = inject(TranslateService);
   private readonly _iterableDiffers: IterableDiffers = inject(IterableDiffers);
-  private readonly _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+  public readonly changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
   public readonly langs: InputSignal<any[]> = input<any[]>([]);
   public readonly isMobileSafari: InputSignal<boolean> = input<boolean>(false);
   private readonly _stopwatch: StopwatchComponent = new StopwatchComponent();
@@ -168,22 +168,24 @@ export class SortingVisualizerComponent implements OnInit, DoCheck {
             }
           }
         });
-        swapCoords[1].x = (swapCoords[2].x - swapCoords[0].x) / 2 + swapCoords[0].x;
-        swapCoords[1].y = (swapCoords[0].y > swapCoords[2].y) ?
-          swapCoords[0].y + VISUALIZER_DEFAULTS.SWAPLINE_CURVE_PEAK :
-          swapCoords[2].y + VISUALIZER_DEFAULTS.SWAPLINE_CURVE_PEAK;
-        swapCoords.forEach((swapCoord: any, index: number) => {
-          let finalX: string = swapCoord.x.toString();
-          if (index === 0) {
-            finalX = 'M' + finalX;
-          } else if (index === 1) {
-            finalX = 'Q' + finalX;
-          }
-          coord = coord.concat(finalX, ',', swapCoord.y.toString(), ' ');
-        });
-        this.swaplineCoords.set(coord);
+        if (swapCoords.length === 3) {
+          swapCoords[1].x = (swapCoords[2].x - swapCoords[0].x) / 2 + swapCoords[0].x;
+          swapCoords[1].y = (swapCoords[0].y > swapCoords[2].y) ?
+            swapCoords[0].y + VISUALIZER_DEFAULTS.SWAPLINE_CURVE_PEAK :
+            swapCoords[2].y + VISUALIZER_DEFAULTS.SWAPLINE_CURVE_PEAK;
+          swapCoords.forEach((swapCoord: any, index: number) => {
+            let finalX: string = swapCoord.x.toString();
+            if (index === 0) {
+              finalX = 'M' + finalX;
+            } else if (index === 1) {
+              finalX = 'Q' + finalX;
+            }
+            coord = coord.concat(finalX, ',', swapCoord.y.toString(), ' ');
+          });
+          this.swaplineCoords.set(coord);
+        }
       }
-      this._changeDetectorRef.markForCheck();
+      this.changeDetectorRef.markForCheck();
     }
   }
 

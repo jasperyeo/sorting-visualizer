@@ -29,6 +29,7 @@ import { stoogeSort } from './stooge-sort';
 import { slowSort } from './slow-sort';
 import { bogoSort } from './bogo-sort';
 import { purgeSort } from './purgesort';
+import { thanosSort } from './thanos-sort';
 
 export const ALGORITHMS: Map<string, (visualizer: SortingVisualizerComponent, array: SortBarInterface[]) => Promise<void>> = new Map([
   ['leftPivotQuickSort', leftPivotQuickSort], ['middlePivotQuickSort', middlePivotQuickSort], ['medianPivotQuickSort', medianPivotQuickSort],
@@ -56,7 +57,8 @@ export const ALGORITHMS: Map<string, (visualizer: SortingVisualizerComponent, ar
   ['stoogeSort', stoogeSort],
   ['slowSort', slowSort],
   ['bogoSort', bogoSort],
-  ['purgeSort', purgeSort]
+  ['purgeSort', purgeSort],
+  ['thanosSort', thanosSort]
 ]);
 
 export const ALGORITHMS_INFO = [
@@ -745,6 +747,22 @@ export const ALGORITHMS_INFO = [
             "value": "0"
           }
         ],
+        "labels": {
+          "en": "Sorting_algorithm",
+          "es": "Algoritmo_de_ordenamiento",
+          "fr": "Algorithme_de_tri",
+          "id": "Algoritme_penyortiran",
+          "zh": "排序算法"
+        }
+      },
+      {
+        "active": true,
+        "label": "Thanos Sort",
+        "value": "Thanos",
+        "best": "-",
+        "average": "-",
+        "worst": "-",
+        "memory": "",
         "labels": {
           "en": "Sorting_algorithm",
           "es": "Algoritmo_de_ordenamiento",
