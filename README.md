@@ -60,6 +60,7 @@
 - Selection Sort
 - Double Selection Sort
 - Heap Sort
+- Tournament Sort
 - Cycle Sort
 
 ### Insertion
@@ -96,6 +97,10 @@
 - Stooge Sort
 - Slow Sort
 - Bogo Sort
+
+### Nonsensical
+- Purge Sort
+- Thanos Sort
 
 ### System
 - JavaScript Sort

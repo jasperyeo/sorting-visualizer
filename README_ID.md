@@ -60,6 +60,7 @@
 - Sortir Seleksi
 - Sortir Seleksi Ganda
 - Sortir Tumpukan
+- Sortir Turnamen
 - Sortir Siklus
 
 ### Penyisipan
@@ -96,6 +97,10 @@
 - Sortir Stooge
 - Sortir Lambat
 - Sortir Bogo
+
+### Tidak Masuk Akal
+- Sortir Pembersihan
+- Sortir Thanos
 
 ### Sistem
 - Sortir JavaScript

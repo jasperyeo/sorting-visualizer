@@ -6,6 +6,7 @@ import { mergeSort } from './merge-sort';
 import { timSort } from './tim-sort';
 import { selectionSort, doubleSelectionSort } from './selection-sort';
 import { heapSort } from './heap-sort';
+import { tournamentSort } from './tournament-sort';
 import { cycleSort } from './cycle-sort';
 import { insertionSort } from './insertion-sort';
 import { shellSort, frankLazarusShellSort, hibbardShellSort, papernovStasevichShellSort, tokudaShellSort, ciuraShellSort } from './shell-sort';
@@ -36,7 +37,7 @@ export const ALGORITHMS: Map<string, (visualizer: SortingVisualizerComponent, ar
   ['mergeSort', mergeSort],
   ['timSort', timSort],
   ['selectionSort', selectionSort], ['doubleSelectionSort', doubleSelectionSort],
-  ['heapSort', heapSort],
+  ['heapSort', heapSort], ['tournamentSort', tournamentSort],
   ['cycleSort', cycleSort],
   ['insertionSort', insertionSort],
   ['shellSort', shellSort], ['frankLazarusShellSort', frankLazarusShellSort], ['hibbardShellSort', hibbardShellSort], ['papernovStasevichShellSort', papernovStasevichShellSort], ['tokudaShellSort', tokudaShellSort], ['ciuraShellSort', ciuraShellSort],
@@ -201,6 +202,22 @@ export const ALGORITHMS_INFO = [
           "fr": "Tri_par_tas",
           "id": undefined,
           "zh": "堆排序"
+        }
+      },
+      {
+        "active": true,
+        "label": "Tournament Sort",
+        "value": "Tournament",
+        "best": "nlogn",
+        "average": "nlogn",
+        "worst": "nlogn",
+        "memory": "n",
+        "labels": {
+          "en": "Tournament_sort",
+          "es": undefined,
+          "fr": undefined,
+          "id": undefined,
+          "zh": "锦标赛排序"
         }
       },
       {

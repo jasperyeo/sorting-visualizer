@@ -60,6 +60,7 @@
 - Tri de Sélection
 - Tri à Double Sélection
 - Tri de Tas
+- Tri par Tournoi
 - Tri de Cycle
 
 ### Insertion
@@ -96,6 +97,10 @@
 - Tri Stooge
 - Tri Lent
 - Tri Bogo
+
+### Absurde
+- Tri par Purge
+- Tri par Thanos
 
 ### Système
 - Tri JavaScript

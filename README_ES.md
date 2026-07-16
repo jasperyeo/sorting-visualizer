@@ -60,6 +60,7 @@
 - Clasificación de Selección
 - Clasificación de Selección Doble
 - Ordenar Montón
+- Ordenación Torneo
 - Ordenar Ciclo
 
 ### Inserción
@@ -96,6 +97,10 @@
 - Tipo Títere
 - Tipo Lenta
 - Tipo Bogo
+
+### Sin Sentido
+- Ordenación Purga
+- Ordenación Thanos
 
 ### Sistema
 - Ordenar JavaScript
