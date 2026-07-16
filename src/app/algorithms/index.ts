@@ -25,6 +25,7 @@ import { lsdRadixSort } from './lsd-radix-sort';
 import { msdRadixSort } from './msd-radix-sort';
 import { beadSort } from './bead-sort';
 import { pancakeSort } from './pancake-sort';
+import { spaghettiSort } from './spaghetti-sort';
 import { bitonicSort } from './bitonic-sort';
 import { stoogeSort } from './stooge-sort';
 import { slowSort } from './slow-sort';
@@ -54,6 +55,7 @@ export const ALGORITHMS: Map<string, (visualizer: SortingVisualizerComponent, ar
   ['lsdRadixSort', lsdRadixSort], ['msdRadixSort', msdRadixSort],
   ['beadSort', beadSort],
   ['pancakeSort', pancakeSort],
+  ['spaghettiSort', spaghettiSort],
   ['bitonicSort', bitonicSort],
   ['stoogeSort', stoogeSort],
   ['slowSort', slowSort],
@@ -678,6 +680,22 @@ export const ALGORITHMS_INFO = [
           "fr": "Tri_de_crêpes",
           "id": "Penyortiran_panekuk",
           "zh": "煎餅排序"
+        }
+      },
+      {
+        "active": true,
+        "label": "Spaghetti Sort",
+        "value": "Spaghetti",
+        "best": "n + k",
+        "average": "n + k",
+        "worst": "n + k",
+        "memory": "n + k",
+        "labels": {
+          "en": "Spaghetti_sort",
+          "es": undefined,
+          "fr": "Tri_spaghetti",
+          "id": "Menyortir_spageti",
+          "zh": undefined
         }
       },
       {

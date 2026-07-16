@@ -93,6 +93,7 @@
 ### Otros
 - Clasificación de Cuentas
 - Tipo de Panqueques
+- Clasificación de Espaguetis
 - Tipo Bitónico
 - Tipo Títere
 - Tipo Lenta

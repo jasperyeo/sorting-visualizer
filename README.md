@@ -93,6 +93,7 @@
 ### Others
 - Bead Sort
 - Pancake Sort
+- Spaghetti Sort
 - Bitonic Sort
 - Stooge Sort
 - Slow Sort

@@ -93,6 +93,7 @@
 ### Les Autres
 - Tri de Perles
 - Trier les Crêpes
+- Tri de Spaghettis
 - Tri Bitonique
 - Tri Stooge
 - Tri Lent

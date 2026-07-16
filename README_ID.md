@@ -93,6 +93,7 @@
 ### Yang lain
 - Sortir Manik-Manik
 - Sortir Pancake
+- Sortir Spageti
 - Sortir Bitonik
 - Sortir Stooge
 - Sortir Lambat
