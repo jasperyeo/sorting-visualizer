@@ -1,45 +1,47 @@
-<div class="comparison-dialog__overlay">
+<dialog closedby="closerequest" id="comparison-dialog">
   <div class="comparison-dialog__container">
     <h1 class="comparison-dialog__title">{{ 'COMPARISON.TITLE' | translate }}</h1>
-    <div class="sticky-search">
-      <input type="text" [placeholder]="'COMPARISON.SEARCH' | translate"  class="comparison-dialog__dropdown-search"
-        [(ngModel)]="sortSearchTerm" (keyup)="search()">
-      <div class="comparison-dialog__dropdown-icon"></div>
-    </div>
-    <div class="comparison-dialog__content">
-      <table>
-        <thead>
-          <tr>
-            <th class="sticky-header no-wrap">{{ 'COMPARISON.NAME' | translate }}</th>
-            <th class="sticky-header no-wrap">{{ 'COMPARISON.METHOD' | translate }}</th>
-            <th class="sticky-header no-wrap">{{ 'COMPARISON.BEST' | translate }}</th>
-            <th class="sticky-header no-wrap">{{ 'COMPARISON.AVERAGE' | translate }}</th>
-            <th class="sticky-header no-wrap">{{ 'COMPARISON.WORST' | translate }}</th>
-            <th class="sticky-header no-wrap">{{ 'COMPARISON.MEMORY' | translate }}</th>
-          </tr>
-        </thead>
-        <tbody class="comparison-dialog__table">
-          @for (algo of filteredAlgorithms(); track algo) {
+    <div class="comparison-dialog__scrollable">
+      <div class="sticky-search">
+        <input type="text" [placeholder]="'COMPARISON.SEARCH' | translate"  class="comparison-dialog__dropdown-search"
+          [(ngModel)]="sortSearchTerm" (keyup)="search()">
+        <div class="comparison-dialog__dropdown-icon"></div>
+      </div>
+      <div class="comparison-dialog__content">
+        <table>
+          <thead>
             <tr>
-              <td>
-                <a [href]="$safeNavigationMigration(algo?.link)" [title]="$safeNavigationMigration(algo?.label)" target="_blank" class="comparison-dialog__link" rel="noopener noreferrer">
-                  {{ algo?.label }}
-                </a>
-              </td>
-              <td>{{ algo?.category }}</td>
-              <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.best) | bigONotation" [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(algo?.best))"></td>
-              <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.average) | bigONotation" [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(algo?.average))"></td>
-              <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.worst) | bigONotation" [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(algo?.worst))"></td>
-              <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.memory) | bigONotation" [style.background-color]="COMPLEXITY_SPACE.get($safeNavigationMigration(algo?.memory))"></td>
+              <th class="sticky-header no-wrap">{{ 'COMPARISON.NAME' | translate }}</th>
+              <th class="sticky-header no-wrap">{{ 'COMPARISON.METHOD' | translate }}</th>
+              <th class="sticky-header no-wrap">{{ 'COMPARISON.BEST' | translate }}</th>
+              <th class="sticky-header no-wrap">{{ 'COMPARISON.AVERAGE' | translate }}</th>
+              <th class="sticky-header no-wrap">{{ 'COMPARISON.WORST' | translate }}</th>
+              <th class="sticky-header no-wrap">{{ 'COMPARISON.MEMORY' | translate }}</th>
             </tr>
-          }
-        </tbody>
-      </table>
+          </thead>
+          <tbody class="comparison-dialog__table">
+            @for (algo of filteredAlgorithms(); track algo) {
+              <tr>
+                <td>
+                  <a [href]="$safeNavigationMigration(algo?.link)" [title]="$safeNavigationMigration(algo?.label)" target="_blank" class="comparison-dialog__link" rel="noopener noreferrer">
+                    {{ algo?.label }}
+                  </a>
+                </td>
+                <td>{{ algo?.category }}</td>
+                <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.best) | bigONotation" [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(algo?.best))"></td>
+                <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.average) | bigONotation" [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(algo?.average))"></td>
+                <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.worst) | bigONotation" [style.background-color]="COMPLEXITY_TIME.get($safeNavigationMigration(algo?.worst))"></td>
+                <td class="no-wrap" [innerHTML]="$safeNavigationMigration(algo?.memory) | bigONotation" [style.background-color]="COMPLEXITY_SPACE.get($safeNavigationMigration(algo?.memory))"></td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="comparison-dialog__footer">
-      <button (click)="closeDialog()" [title]="'INTRO.CLOSE' | translate">
+      <button autofocus (click)="closeDialog()" [title]="'INTRO.CLOSE' | translate">
         {{ 'COMPARISON.CLOSE' | translate }}
       </button>
     </div>
   </div>
-</div>
+</dialog>

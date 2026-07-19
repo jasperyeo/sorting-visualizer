@@ -10,6 +10,9 @@ import { TranslatePipe } from '@ngx-translate/core';
   selector: 'intro-dialog',
   templateUrl: './intro-dialog.component.html',
   styleUrls: ['./intro-dialog.component.scss'],
+  host: {
+    '(keydown.escape)': 'closeDialog()'
+  }
 })
 export class IntroDialogComponent implements OnInit, AfterViewInit {
 

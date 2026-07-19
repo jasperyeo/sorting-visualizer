@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ModelSignal, model, input, output, InputSignal, OutputEmitterRef, WritableSignal, signal } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ModelSignal, model, input, output, InputSignal, OutputEmitterRef, WritableSignal, signal, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 import { COMPLEXITY_TIME, COMPLEXITY_SPACE } from '../../../shared/models/complexity-time-space.constants';
@@ -14,9 +14,12 @@ import { BigONotationPipe } from '../../../shared/pipes/big-o-notation.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'comparison-dialog',
   templateUrl: './comparison-dialog.component.html',
-  styleUrls: ['./comparison-dialog.component.scss']
+  styleUrls: ['./comparison-dialog.component.scss'],
+  host: {
+    '(keydown.escape)': 'closeDialog()'
+  }
 })
-export class ComparisonDialogComponent implements OnInit {
+export class ComparisonDialogComponent implements OnInit, AfterViewInit {
 
   public readonly algorithms: InputSignal<any[]> = input<any[]>([]);
   protected readonly onDialogClose: OutputEmitterRef<boolean> = output<boolean>({ alias: 'onDialogClose' });
@@ -38,6 +41,11 @@ export class ComparisonDialogComponent implements OnInit {
       });
     }
     this.filteredAlgorithms.update(() => this.listedAlgorithms());
+  }
+
+  public ngAfterViewInit(): void {
+    const dialog = document.getElementById('comparison-dialog') as HTMLDialogElement;
+    dialog.showModal();
   }
 
   protected closeDialog(): void {
