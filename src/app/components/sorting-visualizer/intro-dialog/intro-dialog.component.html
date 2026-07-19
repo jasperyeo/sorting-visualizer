@@ -1,4 +1,4 @@
-<div class="intro-dialog__overlay">
+<dialog closedby="any" id="intro-dialog">
   <div class="intro-dialog__container">
     <h1 class="intro-dialog__title">{{ 'INTRO.TITLE' | translate }}</h1>
     <div class="intro-dialog__content">
@@ -28,9 +28,9 @@
       </p>
     </div>
     <div class="intro-dialog__footer">
-      <button (click)="closeDialog()" [title]="'INTRO.CLOSE' | translate">
+      <button autofocus (click)="closeDialog()" [title]="'INTRO.CLOSE' | translate">
         {{ 'INTRO.CLOSE' | translate }}
       </button>
     </div>
   </div>
-</div>
+</dialog>
